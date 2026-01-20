@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   elasticsearch:
@@ -19,7 +18,7 @@ services:
       - 9200:9200
       - 9300:9300
     networks:
-      - elk-net
+      - el-net
 
   logstash:
     build:
@@ -37,10 +36,10 @@ services:
     depends_on:
       - elasticsearch
     networks:
-      - elk-net
+      - el-net
 
 volumes:
   es-data:
 networks:
-  elk-net:
+  el-net:
     driver: bridge

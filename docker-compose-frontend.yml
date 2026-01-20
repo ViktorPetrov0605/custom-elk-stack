@@ -1,4 +1,3 @@
-version: '3.8'
 
 services:
   kibana:
@@ -22,8 +21,8 @@ services:
               memory: 16G 
               cpus: '6.0'
     networks:
-      - elk-net
+      - k-net
 
 networks:
-  elk-net:
+  k-net:
     driver: bridge
