@@ -16,7 +16,8 @@ services:
     volumes:
       - es-data:/usr/share/elasticsearch/data
     ports:
-      - "9200:9200"
+      - 9200:9200
+      - 9300:9300
     networks:
       - elk-net
 
@@ -27,7 +28,10 @@ services:
     environment:
       LS_JAVA_OPTS: "-Xms2g -Xmx2g"
     ports:
-      - "2055:2055/udp" # Standard NetFlow port
+      - 5044:5044
+      - 50000:50000/tcp
+      - 50000:50000/udp
+      - 9600:9600
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
     depends_on:
