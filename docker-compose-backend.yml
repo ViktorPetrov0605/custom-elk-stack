@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    build:
+      context: ./elasticsearch
+    container_name: es-spoke
+    environment:
+      node.name: ${HOSTNAME} # Ensures each server appears uniquely
+      cluster.name: decentralised-cluster
+      discovery.type: single-node # For decentralized spokes
+      ES_JAVA_OPTS: "-Xms4g -Xmx4g"
+      # Security is mandatory in v9
+      xpack.security.enabled: "true"
+      network.host: 0.0.0.0 # Accessible by the Hub
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - elk-net
+
+  logstash:
+    build:
+      context: ./logstash
+    container_name: logstash-spoke
+    environment:
+      LS_JAVA_OPTS: "-Xms2g -Xmx2g"
+    ports:
+      - "2055:2055/udp" # Standard NetFlow port
+    volumes:
+      - ./logstash/pipeline:/usr/share/logstash/pipeline:ro
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk-net
+
+volumes:
+  es-data:
+networks:
+  elk-net:
+    driver: bridge
