@@ -1,0 +1,34 @@
+services:
+  es-backend:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.2.4
+    container_name: es-backend
+    environment:
+      - node.name=es-backend
+      - cluster.name=backend-cluster-01
+      - discovery.type=single-node
+      # This node MUST have data roles
+      - node.roles=master,data,ingest,remote_cluster_client
+      - ELASTIC_PASSWORD=telehouse
+      - xpack.security.enabled=true
+      - "ES_JAVA_OPTS=-Xms31g -Xmx31g" # Recommended max for ES
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=certs/es-backend/es-backend.p12
+      - xpack.security.transport.ssl.truststore.path=certs/es-backend/es-backend.p12
+
+    ports:
+      - 9200:9200 # ES API
+      - 9300:9300 # Transport port (Needed for Cross-Cluster Search)
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+      - ./certs:/usr/share/elasticsearch/config/certs
+
+  logstash-backend:
+    image: docker.elastic.co/logstash/logstash:9.2.4
+    container_name: logstash-backend
+    volumes:
+      - ./logstash_pipeline:/usr/share/logstash/pipeline
+    ports:
+      - 2055:2055/udp # Netflow UDP port
+    environment:
+      - LS_JAVA_OPTS=-Xms4g -Xmx4g

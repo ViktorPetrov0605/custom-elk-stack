@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "Startup script, run me as root"
+sudo sysctl -w vm.max_map_count=262144
+docker-compose up -d

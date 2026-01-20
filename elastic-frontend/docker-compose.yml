@@ -1,0 +1,51 @@
+services:
+  # Elasticsearch: Central Coordinating Node
+  es-frontend:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.2.4
+    container_name: es-frontend
+    environment:
+      - node.name=es-frontend
+      - cluster.name=frontend-cluster
+      - discovery.type=single-node
+      # Explicitly set roles to exclude 'data' and 'ingest'
+      - node.roles=master,remote_cluster_client
+      - ELASTIC_PASSWORD=telehouse
+      - xpack.security.enabled=true
+      # High Resource JVM limits
+      - "ES_JAVA_OPTS=-Xms16g -Xmx16g" 
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.transport.ssl.keystore.path=certs/es-frontend/es-frontend.p12
+      - xpack.security.transport.ssl.truststore.path=certs/es-frontend/es-frontend.p12
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    deploy:
+      resources:
+        limits:
+          memory: 32G # Total container limit
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+      - ./certs:/usr/share/elasticsearch/config/certs
+    ports:
+      - 9200:9200
+
+  # Kibana: Central Interface
+  kibana-frontend:
+    image: docker.elastic.co/kibana/kibana:9.2.4
+    container_name: kibana-frontend
+    depends_on:
+      - es-frontend
+    environment:
+      - ELASTICSEARCH_HOSTS=http://es-frontend:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=telehouse
+      # High Resource optimization
+      - "NODE_OPTIONS=--max-old-space-size=8192"
+    deploy:
+      resources:
+        limits:
+          memory: 12G
+    ports:
+      - 5601:5601
