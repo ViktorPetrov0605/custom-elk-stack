@@ -95,6 +95,6 @@ echo "Finalizing deployment using $COMPOSE_FILE..."
 read -p "Start containers now? (y/n): " start_now
 if [[ $start_now =~ ^[Yy]$ ]]; then
     # Run setup first to initialize v9 security settings if necessary
-    docker-compose -f "$COMPOSE_FILE" up -d
-    echo "Deployment complete! Check logs with: docker-compose logs -f"
+    docker compose -f "$COMPOSE_FILE" up -d
+    echo "Deployment complete! Check logs with: docker compose logs -f"
 fi

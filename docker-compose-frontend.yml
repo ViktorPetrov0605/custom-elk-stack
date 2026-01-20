@@ -7,21 +7,20 @@ services:
     container_name: kibana-hub
     restart: always
     environment:
-      # Redirect Kibana to query the distributed Elasticsearch backend
-      # For a decentralized setup, list your primary ES node here or use CCS
-      ELASTICSEARCH_HOSTS: '["https://<SERVER_1_IP_HERE>:9200"]'
+      # Use the variable defined in your .env file or shell environment
+      ELASTICSEARCH_HOSTS: "https://${SPOKE_IP}:9200"
       ELASTICSEARCH_USERNAME: kibana_system
       ELASTICSEARCH_PASSWORD: ${KIBANA_PASSWORD}
-      # Optimization: Boost Node.js memory for heavy dashboards
+      # Optimization: Boost memory for version 9.2.4 Node.js runtime
       NODE_OPTIONS: "--max-old-space-size=8192" 
     ports:
       - "5601:5601"
     deploy:
-      resources:
-        limits:
-          # Allowing Kibana to use significant resources for dashboard rendering
-          memory: 16G 
-          cpus: '6.0'
+          resources:
+            limits:
+              # Allowing Kibana to use significant resources for dashboard rendering
+              memory: 16G 
+              cpus: '6.0'
     networks:
       - elk-net
 
