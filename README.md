@@ -10,7 +10,6 @@ This solution separates the visualization layer (Frontend) from the data ingesti
 
 - **Frontend (The Hub):** Hosts Kibana and a lightweight Elasticsearch instance for metadata and internal logs. It acts as the central gateway for Cross-Cluster Search (CCS).
 - **Backend (The Spokes):** Distributed nodes running Elasticsearch and Logstash to ingest and store local Netflow data.
-- Shutterstock
 
 ---
 
