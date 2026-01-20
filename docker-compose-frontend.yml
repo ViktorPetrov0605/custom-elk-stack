@@ -4,7 +4,7 @@ services:
   kibana:
     build:
       context: ./kibana
-    container_name: kibana-central-frontend
+    container_name: kibana-hub
     restart: always
     environment:
       # Redirect Kibana to query the distributed Elasticsearch backend
@@ -20,8 +20,8 @@ services:
       resources:
         limits:
           # Allowing Kibana to use significant resources for dashboard rendering
-          memory: 12G 
-          cpus: '4.0'
+          memory: 16G 
+          cpus: '6.0'
     networks:
       - elk-net
 
