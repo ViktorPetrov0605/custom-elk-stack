@@ -85,10 +85,18 @@ docker compose up -d es-frontend
 ```bash
 docker exec -it es-frontend /usr/share/elasticsearch/bin/elasticsearch-service-tokens create elastic/kibana kibana-token
 ```
- The output should be similar to: ```SERVICE_TOKEN elastic/kibana/kibana-token = AOIUSGHDAWLDAWD....```
+ The output should be similar to: 
+ ```yaml
+ SERVICE_TOKEN elastic/kibana/kibana-token = AOIUSGHDAWLDAWD....
+ ```
  Copy the token value, which follows the equal sign.
+ 
 3. Edit the compose file to include the token:
-Find the line ```- ELASTICSEARCH_SERVICEACCOUNT_TOKEN= #Put your token here``` and place the token value before the comment.
+Find the line 
+```yaml
+- ELASTICSEARCH_SERVICEACCOUNT_TOKEN= #Put your token here
+``` 
+and place the token value before the comment.
 Here is an example of how the line should look:
 
 ```yaml
