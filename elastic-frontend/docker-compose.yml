@@ -39,8 +39,7 @@ services:
       - es-frontend
     environment:
       - ELASTICSEARCH_HOSTS=http://es-frontend:9200
-      - ELASTICSEARCH_USERNAME=elastic
-      - ELASTICSEARCH_PASSWORD=telehouse
+      - ELASTICSEARCH_SERVICEACCOUNT_TOKEN= #Put your token here
       # High Resource optimization
       - "NODE_OPTIONS=--max-old-space-size=8192"
     deploy:
