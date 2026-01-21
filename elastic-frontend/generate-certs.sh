@@ -13,6 +13,8 @@ fi
 
 # Create directory structure
 mkdir -p $OUTPUT_DIR
+# Grant ownership to the Elasticsearch user (UID 1000)
+sudo chown 1000:1000 $OUTPUT_DIR
 
 echo "--- Generating Certificate Authority (CA) ---"
 # This creates a CA that both clusters will trust
