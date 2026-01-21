@@ -71,7 +71,36 @@ instances:
 
  Run the script and distribute the generated folders in `./certs` to their respective backend servers.
 
-### 3. Frontend Deployment
+### 3. Frontend account token generation
+
+Running the frontend ```docker-compose.yml``` file for the first time requires the creation of a kibana access token. This can be achieved in the following way:
+
+1. From the directory of the frontend compose file start up only the elasticsearch container:
+
+```bash
+docker compose up -d es-frontend
+```
+2. Use the built-in binary inside the container to create a new service token:
+
+```bash
+docker exec -it es-frontend /usr/share/elasticsearch/bin/elasticsearch-service-tokens create elastic/kibana kibana-token
+```
+ The output should be similar to: ```SERVICE_TOKEN elastic/kibana/kibana-token = AOIUSGHDAWLDAWD....```
+ Copy the token value, which follows the equal sign.
+3. Edit the compose file to include the token:
+Find the line ```- ELASTICSEARCH_SERVICEACCOUNT_TOKEN= #Put your token here``` and place the token value before the comment.
+Here is an example of how the line should look:
+
+```yaml
+- ELASTICSEARCH_SERVICEACCOUNT_TOKEN=AOIUSGHDAWLDAWD.... #Put your token here
+```
+4. Start up the kibana frontend container ( **WITHOUT** shutting down the currently running elasticsearch container )
+   
+```bash
+ docker compose up -d kibana-frontend
+```
+
+### 4. Frontend Deployment
 
 Navigate to `elastic-frontend/` and execute the startup script:
 
