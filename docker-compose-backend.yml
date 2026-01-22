@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  es-remote:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    volumes: ["./certs:/usr/share/elasticsearch/config/certs", "data-remote:/usr/share/elasticsearch/data"]
+    environment:
+      - node.name=es-remote
+      - cluster.name=${CLUSTER_NAME}
+      - discovery.seed_hosts=${FRONTEND_IP}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - xpack.license.self_generated.type=${LICENSE}
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=certs/es-remote/es-remote.key
+      - xpack.security.http.ssl.certificate=certs/es-remote/es-remote.crt
+      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.key=certs/es-remote/es-remote.key
+      - xpack.security.transport.ssl.certificate=certs/es-remote/es-remote.crt
+      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
+    mem_limit: ${MEM_LIMIT}
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+  logstash:
+    image: docker.elastic.co/logstash/logstash:${STACK_VERSION}
+    volumes: ["./logstash.conf:/usr/share/logstash/pipeline/logstash.conf", "./certs/ca/ca.crt:/usr/share/logstash/ca.crt"]
+    ports: ["2050:2050/udp"]
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+
+volumes: { data-remote: { driver: local } }

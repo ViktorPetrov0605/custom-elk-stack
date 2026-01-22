@@ -1,193 +1,212 @@
-# TH Customised ELK Stack
 
-A specialized, in-house monitoring solution designed for distributed environments. This project implements a **"Hub-and-Spoke"** architecture utilizing **ELK Stack 9.2.4**, enabling centralized visualization with decentralized data ingestion.
+# Custom TH-ELK Horizontally Scalable Monitoring Solution
 
----
+## This repository provides a framework for deploying a distributed, horizontally scalable ELK (Elasticsearch, Logstash, Kibana) stack. It is designed to handle remote ingestion across multiple backend servers while maintaining a centralized frontend dashboard.
 
-##  Architecture Overview
 
-This solution separates the visualization layer (Frontend) from the data ingestion layer (Backend).
+## Configuration
 
-- **Frontend (The Hub):** Hosts Kibana and a lightweight Elasticsearch instance for metadata and internal logs. It acts as the central gateway for Cross-Cluster Search (CCS).
-- **Backend (The Spokes):** Distributed nodes running Elasticsearch and Logstash to ingest and store local Netflow data.
+Before initializing the stack, you must configure the environment variables.
 
----
+1. **Create the environment file**:
 
-## Project Structure
+```bash
+cp env.example .env
+```
+2. **Edit the configuration**:
 
-```plaintext
-.
-├── elastic-frontend/
-│   ├── certs/                 # Generated SSL certificates
-│   ├── config/                # Kibana & Elasticsearch YAML configs
-│   ├── data/                  # Persistent volume for metadata
-│   ├── docker-compose.yml     # Frontend service definition
-│   ├── generate-certs.sh      # PKI automation script
-│   └── run.sh                 # Initialization & startup script
-└── elastic-backend/
-    ├── config/                # Elasticsearch node configs
-    ├── data/                  # Local ingestion data storage
-    ├── logstash_pipeline/
-    │   └── netflow.conf       # Logstash ingestion logic
-    └── docker-compose.yml     # Backend service definition
+```bash
+nano .env
+```
 
+### Environment File Template
+
+The `.env` file should contain the following structure:
+
+```bash
+# Security Credentials
+ELASTIC_PASSWORD=changeme
+KIBANA_PASSWORD=changeme
+
+# Stack Configuration
+STACK_VERSION=9.2.4
+CLUSTER_NAME=netflow-cluster
+LICENSE=basic
+
+# Networking - Frontend (Centralized Dashboard)
+FRONTEND_IP=10.20.30.40
+ES_PORT=9200
+KIBANA_PORT=5601
+
+# Networking - Backend (Remote Ingestion)
+BACKEND_IP=50.60.70.80
+
+# Resource Limits (1GB)
+MEM_LIMIT=1073741824
+```
+
+> **Note**: Update the passwords, version, cluster name, ports, and IP address assignments to match your specific requirements.
+>
+>
+
+### Adding Multiple Backend Servers
+
+To scale the ingestion layer, define unique variables for each backend server:
+
+```bash
+BACKEND_IP=50.60.70.80
+BACKEND_IP_2=1.2.3.4
+DEBIAN_BACKEND_SERVER=5.6.7.8
 ```
 
 ---
 
-##  Getting Started
+## Initializing the Frontend
 
-### 1. Prerequisites
+The setup service on the frontend generates the Certificate Authority (CA) and node certificates. These must be moved to the remote servers manually.
 
-On both Frontend and Backend servers, you must increase the memory map count for Elasticsearch to initialize properly:
+### 1. Execute on the Frontend Server (10.20.30.40)
+
+Prepare the directories and start the service to generate certificates:
+
+```bash
+# Create local certs folder
+mkdir -p ./certs
+
+# Start the frontend service
+docker-compose -f docker-compose-frontend.yml up -d
+
+# Extract generated certs from the ES container to the host
+docker cp es-frontend:/usr/share/elasticsearch/config/certs/. ./certs/
+```
+
+### 2. Distribute Certificates to Backends
+
+Use `scp` to move the CA and the node-specific certificates to the remote ingestion server:
+
+```bash
+# Push certificates to the backend server
+scp -r ./certs/ca ./certs/es-remote user@50.60.70.80:/path/to/project/certs/
+```
+
+### 3. Initialize the Backend
+
+Log into the backend server and start the service:
+
+```bash
+docker-compose -f docker-compose-backend.yml up -d
+```
+
+---
+
+## Connecting Backend Source to Frontend
+
+After deployment, verify the connection through the Kibana interface.
+
+- **Verify Cluster Join**: Open Kibana at `http://10.20.30.40:5601`. Navigate to **Dev Tools** and run:
+
+```http
+GET _cat/nodes?v
+```
+
+You should see both `es-frontend` and `es-remote` in the list.
+- **Check Indices**: Verify that Logstash is creating indices by running:
+
+```http
+GET _cat/indices?v
+
+```
+- **Create Data View**: Navigate to **Stack Management > Data Views** and create a view for `logstash-*`.
+- **Visualize**: Use **Lens** to create visualizations. For example, drag the `netflow.in_bytes` field to the workspace to monitor traffic volume.
+---
+
+## Adding a Second Backend Server
+
+You can add additional nodes to a running cluster without downtime.
+
+### 1. Update Configuration
+
+Update the `.env` on all servers to include the new IP in the discovery list:
+
+- `BACKEND_IP_1=50.60.70.80`
+- `BACKEND_IP_2=8.9.1.2`
+
+### 2. Generate New Certificates
+
+The new node requires unique credentials. Run these commands on the **Frontend Server**:
+
+```bash
+# Enter the frontend container
+docker exec -it es-frontend /bin/bash
+
+# Generate the certificate
+./bin/elasticsearch-certutil cert \
+  --ca-cert config/certs/ca/ca.crt \
+  --ca-key config/certs/ca/ca.key \
+  --dns es-remote-2 \
+  --ip 8.9.1.2 \
+  --pem --silent --out config/certs/es-remote-2.zip
+
+# Exit and copy to host
+exit
+docker cp es-frontend:/usr/share/elasticsearch/config/certs/es-remote-2.zip ./certs/.
+unzip ./certs/es-remote-2.zip -d ./certs/es-remote-2
+
+```
+
+### 3. Security Requirements
+
+|Component|Required Files|Purpose
+|---|---|---|
+|**All Nodes**|`ca.crt`|Verifies identity of cluster members
+|**Each Node**|Specific `.crt` & `.key`|Node-specific identity
+|**Logstash**|`ca.crt`|Trust the ES instance for data pushingExport to Sheets
+
+
+## Step-by-Step Deployment (No Downtime)
+
+### Step A: Prepare the New Host (8.9.1.2)
+
+1. **Increase Virtual Memory**:
 
 ```bash
 sudo sysctl -w vm.max_map_count=262144
-
 ```
+2. **Firewall Configuration**: Ensure ports `9200` (HTTP) and `9300` (Transport) are open for communication between all cluster IPs.
 
-### 2. Certificate Generation
+### Step B: Launch the New Node
 
-The `generate-certs.sh` script manages SSL for the entire cluster.
-
-1. Give execution permissions: `chmod +x generate-certs.sh`
-2. Edit the script (from line 20) to define your nodes. Use a unique `name` (cluster name) for every backend server.
-
-**Example Configuration:**
-
-```yaml
-instances:
-  - name: es-frontend
-    dns: ["es-frontend", "localhost"]
-    ip: ["127.0.0.1"]
-  - name: es-server-01
-    dns: ["es-server-01"]
-    ip: ["1.2.3.4"]
-  - name: bistrica-pod
-    dns: ["bistrica-pod"]
-    ip: ["4.5.6.7"]
-
-```
-
- Run the script and distribute the generated folders in `./certs` to their respective backend servers.
-
-### 3. Frontend account token generation
-
-Running the frontend ```docker-compose.yml``` file for the first time requires the creation of a kibana access token. This can be achieved in the following way:
-
-1. From the directory of the frontend compose file start up only the elasticsearch container:
+1. Transfer `.env`, `docker-compose-backend.yml`, `logstash.conf`, and the `certs/` directory to the new server.
+2. Start the services:
 
 ```bash
-docker compose up -d es-frontend
-```
-2. Use the built-in binary inside the container to create a new service token:
-
-```bash
-docker exec -it es-frontend /usr/share/elasticsearch/bin/elasticsearch-service-tokens create elastic/kibana kibana-token
-```
- The output should be similar to: 
- ```yaml
- SERVICE_TOKEN elastic/kibana/kibana-token = AOIUSGHDAWLDAWD....
- ```
- Copy the token value, which follows the equal sign.
- 
-3. Edit the compose file to include the token:
-Find the line 
-```yaml
-- ELASTICSEARCH_SERVICEACCOUNT_TOKEN= #Put your token here
-``` 
-and place the token value before the comment.
-Here is an example of how the line should look:
-
-```yaml
-- ELASTICSEARCH_SERVICEACCOUNT_TOKEN=AOIUSGHDAWLDAWD.... #Put your token here
-```
-4. Start up the kibana frontend container ( **WITHOUT** shutting down the currently running elasticsearch container )
-   
-```bash
- docker compose up -d kibana-frontend
+docker-compose -f docker-compose-backend.yml up -d
 ```
 
-### 4. Frontend Deployment
+### Step C: Rolling Update
 
-Navigate to `elastic-frontend/` and execute the startup script:
-
-```bash
-./run.sh
-
-```
-
-*Note: run.sh automatically optimizes the JVM heap size before starting containers.*
+To ensure stability after restarts, update the `discovery.seed_hosts` in the environment variables of existing nodes. While the new node joins immediately, existing nodes require a restart to recognize the new seed for future elections.
 
 ---
 
-##  Cross-Cluster Search (CCS) Setup
+## Common Issues
 
-Once your backend nodes are live, "adopt" them into the Frontend via the **Kibana Dev Tools Console**:
+### Permission and Ownership
 
-```http
-PUT _cluster/settings
-{
-  "persistent": {
-    "cluster": {
-      "remote": {
-        "site_a": {
-          "seeds": ["10.0.0.10:9300"]
-        },
-        "site_b": {
-          "seeds": ["10.0.0.20:9300"]
-        }
-      }
-    }
-  }
-}
+Elasticsearch requires write access to the config and data directories. These must be owned by the Elasticsearch user (**UID 1000**).
 
+**Symptoms**:
+
+- `AccessDeniedException`
+- `Permission denied` during startup.
+
+**Solution**:
+
+```bash
+# Grant Ownership
+chown -R 1000:0 ./data
+
+# Grant Group Access
+chmod g+rwx ./data
 ```
-
-### Querying Data
-
-Use the following index pattern syntax in Kibana to target specific locations or the entire network:
-
-| Goal |Index Pattern in Kibana
-|--- | --- 
-|**Search Site A only**|`site_a:netflow-data-*`
-|**Search Site B only**|`site_b:netflow-data-*`
-|**Search ALL Sites**|`*:netflow-data-*`
----
-
-##  Adding a New Monitoring Server (Spoke)
-
-To scale the solution, follow these steps for every new server:
-
-1. **System Prep:** Install Docker and set `vm.max_map_count`.
-2. **Certs:** Update `instances.yml` on the **Frontend**, re-run `generate-certs.sh`, and copy the new certificate folder to the new node.
-3. **Config:** In the backend `docker-compose.yml`:
-
-   - Set a unique `cluster.name` (e.g., `backend-site-c`).
-   - Map the volume to the new certs: `- ./certs/es-backend-site-c:/usr/share/elasticsearch/config/certs`.
-4. **Logstash:** Update the output block to point to the `localhost` Elasticsearch container.
-5. **Networking:** Allow **UDP 2055** for incoming Netflow.
-
-   - Allow **TCP 9300** (Restricted to Frontend IP only).
-6. **Register:** Run the `PUT _cluster/settings` command on the Frontend.
-
----
-
-##  Pro Tip: Data Views & Tagging
-
-To make global dashboards more intuitive, add a location identifier in the Logstash filter of each backend:
-
-```ruby
-filter {
-  mutate {
-    add_field => { "data_source_location" => "London_Data_Center" }
-  }
-}
-
-```
-
-This allows you to build **Map Visualizations** that display exactly which physical location handled a specific flow, even when using the global `*:netflow-data-*` pattern.
-
----
-
 
