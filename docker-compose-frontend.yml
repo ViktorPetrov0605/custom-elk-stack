@@ -11,7 +11,7 @@ services:
           unzip config/certs/ca.zip -d config/certs;
         fi;
         if [ ! -f config/certs/certs.zip ]; then
-          echo -ne "instances:\n  - name: es-frontend\n    dns: [localhost]\n    ip: [127.0.0.1, ${FRONTEND_IP}]\n  - name: es-remote\n    dns: [localhost]\n    ip: [127.0.0.1, ${BACKEND_IP}]\n" > config/certs/instances.yml;
+          echo -ne "instances:\n  - name: wildcard\n    dns: [localhost, \"*\"]\n    ip: [127.0.0.1]\n" > config/certs/instances.yml;
           bin/elasticsearch-certutil cert --silent --pem -out config/certs/certs.zip --in config/certs/instances.yml --ca-cert config/certs/ca/ca.crt --ca-key config/certs/ca/ca.key;
           unzip config/certs/certs.zip -d config/certs;
         fi;
@@ -22,23 +22,54 @@ services:
   es-frontend:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
     volumes: ["certs:/usr/share/elasticsearch/config/certs", "data-frontend:/usr/share/elasticsearch/data"]
-    ports: ["${ES_PORT}:9200"]
+    ports:
+      - "${ES_PORT}:9200"
+      - "9300:9300"
     environment:
       - node.name=es-frontend
       - cluster.name=${CLUSTER_NAME}
-      - cluster.initial_master_nodes=es-frontend
-      - discovery.seed_hosts=${BACKEND_IP}
+      - cluster.initial_master_nodes=es-frontend,es-frontend-2,es-remote
+      - discovery.seed_hosts=es-frontend-2,${BACKEND_IP}
+      - network.publish_host=${FRONTEND_IP}
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - xpack.license.self_generated.type=${LICENSE}
       - bootstrap.memory_lock=true
       - xpack.security.enabled=true
       - xpack.security.http.ssl.enabled=true
-      - xpack.security.http.ssl.key=certs/es-frontend/es-frontend.key
-      - xpack.security.http.ssl.certificate=certs/es-frontend/es-frontend.crt
+      - xpack.security.http.ssl.key=certs/wildcard/wildcard.key
+      - xpack.security.http.ssl.certificate=certs/wildcard/wildcard.crt
       - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt
       - xpack.security.transport.ssl.enabled=true
-      - xpack.security.transport.ssl.key=certs/es-frontend/es-frontend.key
-      - xpack.security.transport.ssl.certificate=certs/es-frontend/es-frontend.crt
+      - xpack.security.transport.ssl.key=certs/wildcard/wildcard.key
+      - xpack.security.transport.ssl.certificate=certs/wildcard/wildcard.crt
+      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
+    mem_limit: ${MEM_LIMIT}
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+  es-frontend-2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    volumes: ["certs:/usr/share/elasticsearch/config/certs", "data-frontend-2:/usr/share/elasticsearch/data"]
+    ports:
+      - "9201:9200"
+      - "9301:9300"
+    environment:
+      - node.name=es-frontend-2
+      - cluster.name=${CLUSTER_NAME}
+      - cluster.initial_master_nodes=es-frontend,es-frontend-2,es-remote
+      - discovery.seed_hosts=es-frontend,${BACKEND_IP}
+      - network.publish_host=${FRONTEND_IP}
+      - transport.port=9300
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - xpack.license.self_generated.type=${LICENSE}
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=true
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.key=certs/wildcard/wildcard.key
+      - xpack.security.http.ssl.certificate=certs/wildcard/wildcard.crt
+      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.key=certs/wildcard/wildcard.key
+      - xpack.security.transport.ssl.certificate=certs/wildcard/wildcard.crt
       - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
     mem_limit: ${MEM_LIMIT}
     ulimits:
@@ -54,4 +85,4 @@ services:
       - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
     mem_limit: ${MEM_LIMIT}
 
-volumes: { certs: { driver: local }, data-frontend: { driver: local } }
+volumes: { certs: { driver: local }, data-frontend: { driver: local }, data-frontend-2: { driver: local } }

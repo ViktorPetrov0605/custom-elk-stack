@@ -1,7 +1,6 @@
-
 # Custom TH-ELK Horizontally Scalable Monitoring Solution
 
-## This repository provides a framework for deploying a distributed, horizontally scalable ELK (Elasticsearch, Logstash, Kibana) stack. It is designed to handle remote ingestion across multiple backend servers while maintaining a centralized frontend dashboard.
+## This repository provides a framework for deploying a distributed, horizontally scalable ELK (Elasticsearch, Logstash, Kibana) stack. It is designed to handle remote ingestion across multiple backend servers while maintaining a centralized frontend dashboard with high availability (3-node cluster).
 
 
 ## Configuration
@@ -41,8 +40,8 @@ KIBANA_PORT=5601
 # Networking - Backend (Remote Ingestion)
 BACKEND_IP=50.60.70.80
 
-# Resource Limits (1GB)
-MEM_LIMIT=1073741824
+# Resource Limits (4GB)
+MEM_LIMIT=4294967296
 ```
 
 > **Note**: Update the passwords, version, cluster name, ports, and IP address assignments to match your specific requirements.
@@ -63,17 +62,17 @@ DEBIAN_BACKEND_SERVER=5.6.7.8
 
 ## Initializing the Frontend
 
-The setup service on the frontend generates the Certificate Authority (CA) and node certificates. These must be moved to the remote servers manually.
+The setup service on the frontend generates the Certificate Authority (CA) and a universal wildcard certificate used by all nodes.
 
 ### 1. Execute on the Frontend Server (10.20.30.40)
 
-Prepare the directories and start the service to generate certificates:
+Prepare the directories and start the service to generate certificates and launch the frontend nodes:
 
 ```bash
 # Create local certs folder
 mkdir -p ./certs
 
-# Start the frontend service
+# Start the frontend services (includes es-frontend and es-frontend-2)
 docker-compose -f docker-compose-frontend.yml up -d
 
 # Extract generated certs from the ES container to the host
@@ -82,11 +81,11 @@ docker cp es-frontend:/usr/share/elasticsearch/config/certs/. ./certs/
 
 ### 2. Distribute Certificates to Backends
 
-Use `scp` to move the CA and the node-specific certificates to the remote ingestion server:
+Use `scp` to move the CA and the wildcard certificates to the remote ingestion server. The wildcard certificate allows any node to join the cluster.
 
 ```bash
 # Push certificates to the backend server
-scp -r ./certs/ca ./certs/es-remote user@50.60.70.80:/path/to/project/certs/
+scp -r ./certs/ca ./certs/wildcard user@50.60.70.80:/path/to/project/certs/
 ```
 
 ### 3. Initialize the Backend
@@ -109,7 +108,8 @@ After deployment, verify the connection through the Kibana interface.
 GET _cat/nodes?v
 ```
 
-You should see both `es-frontend` and `es-remote` in the list.
+You should see 3 nodes in the list: `es-frontend`, `es-frontend-2`, and `es-remote`.
+
 - **Check Indices**: Verify that Logstash is creating indices by running:
 
 ```http
@@ -131,36 +131,17 @@ Update the `.env` on all servers to include the new IP in the discovery list:
 - `BACKEND_IP_1=50.60.70.80`
 - `BACKEND_IP_2=8.9.1.2`
 
-### 2. Generate New Certificates
+### 2. Reuse Certificates
 
-The new node requires unique credentials. Run these commands on the **Frontend Server**:
-
-```bash
-# Enter the frontend container
-docker exec -it es-frontend /bin/bash
-
-# Generate the certificate
-./bin/elasticsearch-certutil cert \
-  --ca-cert config/certs/ca/ca.crt \
-  --ca-key config/certs/ca/ca.key \
-  --dns es-remote-2 \
-  --ip 8.9.1.2 \
-  --pem --silent --out config/certs/es-remote-2.zip
-
-# Exit and copy to host
-exit
-docker cp es-frontend:/usr/share/elasticsearch/config/certs/es-remote-2.zip ./certs/.
-unzip ./certs/es-remote-2.zip -d ./certs/es-remote-2
-
-```
+Simply copy the **same** `certs/` folder (containing the CA and wildcard cert) to the new backend server. No new certificate generation is required!
 
 ### 3. Security Requirements
 
 |Component|Required Files|Purpose
 |---|---|---|
 |**All Nodes**|`ca.crt`|Verifies identity of cluster members
-|**Each Node**|Specific `.crt` & `.key`|Node-specific identity
-|**Logstash**|`ca.crt`|Trust the ES instance for data pushingExport to Sheets
+|**All Nodes**|`wildcard.crt` & `wildcard.key`|Universal Identity for all nodes
+|**Logstash**|`ca.crt`|Trust the ES instance for data pushing
 
 
 ## Step-by-Step Deployment (No Downtime)
@@ -172,7 +153,7 @@ unzip ./certs/es-remote-2.zip -d ./certs/es-remote-2
 ```bash
 sudo sysctl -w vm.max_map_count=262144
 ```
-2. **Firewall Configuration**: Ensure ports `9200` (HTTP) and `9300` (Transport) are open for communication between all cluster IPs.
+2. **Firewall Configuration**: Ensure ports `9200` (HTTP) and `9300` (Transport) are open.
 
 ### Step B: Launch the New Node
 
@@ -209,4 +190,3 @@ chown -R 1000:0 ./data
 # Grant Group Access
 chmod g+rwx ./data
 ```
-
