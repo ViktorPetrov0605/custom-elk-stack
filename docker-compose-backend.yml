@@ -1,4 +1,4 @@
-version: "3.8"
+version: "2.4"
 services:
   es-remote:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
@@ -8,6 +8,8 @@ services:
       - "9300:9300"
     environment:
       - node.name=es-remote
+      - node.attr.data_type=netflow # Tag for this node
+      - node.roles=data,master,ingest
       - cluster.name=${CLUSTER_NAME}
       - discovery.seed_hosts=${FRONTEND_IP},${FRONTEND_IP}:9301
       - network.publish_host=${BACKEND_IP}
