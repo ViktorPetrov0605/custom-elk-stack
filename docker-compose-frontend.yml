@@ -2,7 +2,7 @@ version: "3.8"
 services:
   setup:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
-    volumes: ["certs:/usr/share/elasticsearch/config/certs"]
+    volumes: ["./certs:/usr/share/elasticsearch/config/certs"]
     user: "0"
     command: >
       bash -c '
@@ -16,12 +16,14 @@ services:
           unzip config/certs/certs.zip -d config/certs;
         fi;
         chown -R 1000:0 config/certs;
-        until curl -s --cacert config/certs/ca/ca.crt https://es-frontend:9200 | grep -q "missing authentication credentials"; do sleep 5; done;
-        curl -s -X POST --cacert config/certs/ca/ca.crt -u "elastic:${ELASTIC_PASSWORD}" -H "Content-Type: application/json" https://es-frontend:9200/_security/user/kibana_system/_password -d "{\"password\":\"${KIBANA_PASSWORD}\"}";
+        # Change: Use the IP for the health check to avoid DNS issues     
+        until curl -s -k --cacert config/certs/ca/ca.crt https://${FRONTEND_IP}:9200 | grep -q "missing authentication credentials"; do sleep 5; done;
+        curl -s -k -X POST --cacert config/certs/ca/ca.crt -u "elastic:${ELASTIC_PASSWORD}" -H "Content-Type: application/json" https://${FRONTEND_IP}:9200/_security/user/kibana_system/_password -d "{\"password\":\"${KIBANA_PASSWORD}\"}";
       '
+
   es-frontend:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
-    volumes: ["certs:/usr/share/elasticsearch/config/certs", "data-frontend:/usr/share/elasticsearch/data"]
+    volumes: ["./certs:/usr/share/elasticsearch/config/certs", "data-frontend:/usr/share/elasticsearch/data"]
     ports:
       - "${ES_PORT}:9200"
       - "9300:9300"
@@ -29,26 +31,30 @@ services:
       - node.name=es-frontend
       - cluster.name=${CLUSTER_NAME}
       - cluster.initial_master_nodes=es-frontend,es-frontend-2,es-remote
-      - discovery.seed_hosts=es-frontend-2,${BACKEND_IP}
+      # Change: Use IP:Port for the other frontend node and the backend IP
+      - discovery.seed_hosts=${FRONTEND_IP}:9301,${BACKEND_IP}
       - network.publish_host=${FRONTEND_IP}
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - xpack.license.self_generated.type=${LICENSE}
       - bootstrap.memory_lock=true
       - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.verification_mode=certificate
       - xpack.security.http.ssl.key=certs/wildcard/wildcard.key
       - xpack.security.http.ssl.certificate=certs/wildcard/wildcard.crt
       - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt
-      - xpack.security.transport.ssl.enabled=true
       - xpack.security.transport.ssl.key=certs/wildcard/wildcard.key
       - xpack.security.transport.ssl.certificate=certs/wildcard/wildcard.crt
       - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
     mem_limit: ${MEM_LIMIT}
     ulimits:
       memlock: { soft: -1, hard: -1 }
+
   es-frontend-2:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
-    volumes: ["certs:/usr/share/elasticsearch/config/certs", "data-frontend-2:/usr/share/elasticsearch/data"]
+    volumes: ["./certs:/usr/share/elasticsearch/config/certs", "data-frontend-2:/usr/share/elasticsearch/data"]
     ports:
       - "9201:9200"
       - "9301:9300"
@@ -56,33 +62,41 @@ services:
       - node.name=es-frontend-2
       - cluster.name=${CLUSTER_NAME}
       - cluster.initial_master_nodes=es-frontend,es-frontend-2,es-remote
-      - discovery.seed_hosts=es-frontend,${BACKEND_IP}
+      # Change: Use IP:Port for the first frontend node and the backend IP
+      - discovery.seed_hosts=${FRONTEND_IP}:9300,${BACKEND_IP}
       - network.publish_host=${FRONTEND_IP}
       - transport.port=9300
+      # Fix: Use the correct variable name (underscore instead of dot)
+      - transport.publish_port=9301
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - xpack.license.self_generated.type=${LICENSE}
       - bootstrap.memory_lock=true
       - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
       - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.verification_mode=certificate
       - xpack.security.http.ssl.key=certs/wildcard/wildcard.key
       - xpack.security.http.ssl.certificate=certs/wildcard/wildcard.crt
       - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt
-      - xpack.security.transport.ssl.enabled=true
       - xpack.security.transport.ssl.key=certs/wildcard/wildcard.key
       - xpack.security.transport.ssl.certificate=certs/wildcard/wildcard.crt
       - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
     mem_limit: ${MEM_LIMIT}
     ulimits:
       memlock: { soft: -1, hard: -1 }
+
   kibana:
     image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
-    volumes: ["certs:/usr/share/kibana/config/certs"]
+    volumes: ["./certs:/usr/share/kibana/config/certs"]
     ports: ["${KIBANA_PORT}:5601"]
     environment:
-      - ELASTICSEARCH_HOSTS=https://es-frontend:9200
+      # Change: Use the IP to ensure connectivity to Elasticsearch
+      - ELASTICSEARCH_HOSTS=https://${FRONTEND_IP}:9200
       - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+      - ELASTICSEARCH_SSL_VERIFICATIONMODE=certificate
       - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
     mem_limit: ${MEM_LIMIT}
 
-volumes: { certs: { driver: local }, data-frontend: { driver: local }, data-frontend-2: { driver: local } }
+volumes: { data-frontend: { driver: local }, data-frontend-2: { driver: local } }
