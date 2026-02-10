@@ -1,0 +1,30 @@
+sFlow Configuration Results (v2)
+============================================================
+
+NEXUS1 (10.4.4.3):
+Success: True
+Output:
+sflow sampling-rate : 4096
+sflow max-sampled-size : 128
+sflow counter-poll-interval : 20
+sflow max-datagram-size : 1400
+sflow collector-ip : 10.4.4.90 , vrf : default 
+sflow collector-port : 6343
+sflow agent-ip : 10.4.4.3
+sflow data-source interface port-channel4
+sflow data-source interface port-channel6
+sflow data-source interface port-channel10
+sflow data-source interface port-channel31
+sflow data-source interface port-channel599
+
+
+------------------------------------------------------------
+
+NEXUS2 (10.4.4.4):
+Success: True
+Output:
+                    ^
+% Invalid command at '^' marker.
+
+------------------------------------------------------------
+

@@ -1,0 +1,23 @@
+{
+  "attributes": {
+    "title": "Top Talkers (Source IPs)",
+    "visState": "{\"title\":\"Top Talkers (Source IPs)\",\"type\":\"pie\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"network.bytes\",\"customLabel\":\"Traffic Volume\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"segment\",\"params\":{\"field\":\"source.ip\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Source IP\"}}],\"params\":{\"type\":\"pie\",\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"isDonut\":true,\"labels\":{\"show\":true,\"values\":true,\"last_level\":true,\"truncate\":100},\"maxPiePieces\":10},\"uiState\":{},\"data\":{\"searchSource\":{\"index\":\"netflow-index-pattern\",\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[]}}}",
+    "uiStateJSON": "{}",
+    "description": "Top 10 source IPs by traffic volume",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"index\":\"netflow-index-pattern\",\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[]}"
+    }
+  },
+  "id": "viz-top-talkers",
+  "references": [
+    {
+      "id": "netflow-index-pattern",
+      "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type": "index-pattern"
+    }
+  ],
+  "type": "visualization",
+  "updated_at": "2026-02-09T21:00:00.000Z",
+  "version": "WzEsMV0="
+}

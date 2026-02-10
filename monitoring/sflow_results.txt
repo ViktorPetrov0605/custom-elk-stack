@@ -1,0 +1,19 @@
+sFlow Configuration Results
+============================================================
+
+NEXUS1:
+Success: True
+Output:
+                         ^
+% Invalid command at '^' marker.
+
+------------------------------------------------------------
+
+NEXUS2:
+Success: True
+Output:
+                    ^
+% Invalid command at '^' marker.
+
+------------------------------------------------------------
+
