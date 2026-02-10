@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Кабелна канална мрежа - Радомир</name>
+    <description>Кабелна канална мрежа от 42.313273, 22.748996 до 42.327013, 22.774767</description>
+    <Style id="cableLine">
+      <LineStyle>
+        <color>ff0000ff</color>
+        <width>4</width>
+      </LineStyle>
+    </Style>
+    <Style id="startPoint">
+      <IconStyle>
+        <scale>1.0</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/ms/icons/green-dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="endPoint">
+      <IconStyle>
+        <scale>1.0</scale>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/ms/icons/red-dot.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Placemark>
+      <name>Начало - 42.313273, 22.748996</name>
+      <styleUrl>#startPoint</styleUrl>
+      <Point>
+        <coordinates>22.748996,42.313273,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Край - 42.327013, 22.774767</name>
+      <styleUrl>#endPoint</styleUrl>
+      <Point>
+        <coordinates>22.774767,42.327013,0</coordinates>
+      </Point>
+    </Placemark>
+    <Placemark>
+      <name>Кабелен маршрут</name>
+      <description>Основен кабелен маршрут</description>
+      <styleUrl>#cableLine</styleUrl>
+      <LineString>
+        <tessellate>1</tessellate>
+        <coordinates>
+          22.748996,42.313273,0
+          22.750000,42.314500,0
+          22.752000,42.316000,0
+          22.754000,42.317500,0
+          22.756000,42.319000,0
+          22.758000,42.320500,0
+          22.760000,42.322000,0
+          22.762000,42.323500,0
+          22.764000,42.324500,0
+          22.766000,42.325500,0
+          22.768000,42.326000,0
+          22.770000,42.326500,0
+          22.772000,42.326800,0
+          22.774767,42.327013,0
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Document>
+</kml>

@@ -1,0 +1,3173 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:fb="//www.facebook.com/2008/fbml" xmlns:og="//opengraphprotocol.org/schema/" lang="en" xml:lang="en"  class="no-touch no-js">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="rei" content="3/2/2022 10.39am est" />
+
+    
+        <script tyle="text/javascript" src="/content/dam/cdc/j/cdcrSwitch.js"></script>
+        <script type="text/javascript"> 
+            if (typeof cdc === "undefined"){
+                cdc = {};
+            }
+            cdc.localizedLang="en/us";
+
+            if (window.cdcext === undefined) { window.cdcext = {}; }
+            cdcext.customEnvironment = "prod";
+            if (window.cdclocale === undefined) { window.cdclocale = {}; }
+            cdclocale.locale = cdc.localizedLang=="en/us"?"en_us":cdc.localizedLang;
+
+        </script> 
+         
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/c/dam/cdc/t/ctm-core.js"></script>
+<script>
+    window['adrum-start-time'] = new Date().getTime();
+    window.environ = "prod" ;
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    if (window.cpe === undefined) {
+        window.cpe = {};
+    }
+
+    cpe.accountName = "prod";
+    cpe.config = ["cinf","dsc","pps"];
+    cpe.hideMethod = "elements";
+
+    window.targetGlobalSettings = JSON.parse('{\x22timeout\x22:4000}');
+    window.targetPageParamsAll = () => JSON.parse('{\x22entity\x22:\x22{\\\x22id\\\x22:\\\x221561676642202549\\\x22,\\\x22categoryId\\\x22:\\\x22\\\x22}\x22}');
+
+    
+    const bullseyeLibrary = `/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/external/bullseye.js`;
+
+    import(bullseyeLibrary);
+</script>
+<script src="/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/regional-mbox/regional-mbox.js"></script>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+        <title>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Third-Party Applications [Cisco Nexus 9000 Series Switches] - Cisco</title>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"  />
+    <meta name="description" content="Third-Party Applications"  />
+    <meta name="title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Third-Party Applications [Cisco Nexus 9000 Series Switches]"  />
+    <meta name="documentId" content="1561676624106526"  />
+    <meta name="templateName" content="book"  />
+    <meta property="fb:app_id" content="156494687694418"  />
+    <meta name="ioContentSource" content="WEM"  />
+    <meta name="docType" content="TSD Products Programming Reference Guide Chapter"  />
+    <meta name="concept" content="Cisco Nexus 9000 Series Switches"  />
+    <meta name="iaPath" content="cisco.com#Products#Cisco Products#Switches#Data Center Switches#Cisco Nexus 9000 Series Switches"  />
+    <meta name="contentType" content="cisco.com#US#preSales"  />
+    <meta name="locale" content="US"  />
+    <meta name="language" content="en"  />
+    <meta name="country" content="US"  />
+    <meta name="CCID_Page" content="cc001770"  />
+    <meta name="date" content="Thu Jul 24 01:33:50 PDT 2025"  />
+    <meta name="accessLevel" content="Customer"  />
+    <meta name="accessLevel" content="Guest"  />
+    <meta name="accessLevel" content="Partner"  />
+    <meta name="entitlementExpression" content="contains( &quot;0,1,2,3,4,7&quot; , $profileField[3] )"  />
+    <meta property="og:site_name" content="Cisco"  />
+    <meta property="og:type" content="website"  />
+    <meta property="og:title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Third-Party Applications [Cisco Nexus 9000 Series Switches]"  />
+    <meta property="og:description" content="Third-Party Applications"  />
+    <meta property="og:url" content="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html"  />
+    <link rel="canonical" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html"/>
+	<link rel="alternate" hreflang="x-default" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html"/>
+<link rel="alternate" hreflang="ja-jp" href="https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html"/>
+<link rel="alternate" hreflang="en-us" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html"/>
+
+
+    
+ 
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/shared.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/underscore.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script type="text/javascript">
+    $CQ(function() {
+        CQ_Analytics.SegmentMgr.loadSegments("\/etc\/segmentation");
+        CQ_Analytics.ClientContextUtils.init("\/c\/dnc\/etc\/clientcontext\/default", "\/content\/en\/us\/td\/docs\/switches\/datacenter\/nexus9000\/sw\/93x\/progammability\/guide\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x_chapter_01011");
+
+        
+    });
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/cisco-sans.min.css" type="text/css">
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc/designs/cdc/clientlibs/responsive/js/foundation.min.js"></script>
+
+    <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/books.min.css" type="text/css">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+    <script>
+        sessionStorage.setItem("logOutIntermediateMessage", 'You are being logged out.');
+    </script>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom JSON LD For Products Type -->
+
+    
+    <script type="application/ld+json">
+        [
+           
+            {
+          "@context": "http://www.schema.org",                                                                        
+          "@type": "WebPage",
+          "name": "Third-Party Applications",  		  
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html",
+          "description": "Third-Party Applications",
+          "publisher": {
+              "@type": "Corporation",
+                 "name": "Cisco"
+            }
+        }]
+    </script>
+<!-- End Custom JSON LD For Products Type -->
+
+<!-- Video JSON LD -->
+
+
+
+
+<!-- End Video JSON LD -->
+
+    
+
+                              <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="GKZXC-NS3SU-A7VFH-HKBHM-U7LKH",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"GKZXC-NS3SU-A7VFH-HKBHM-U7LKH";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="wkcfb2s4piiro2mgnfua-f-1cc57d353-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,o={"ak.v":"39","ak.cp":"61004","ak.ai":parseInt("271834",10),"ak.ol":"0","ak.cr":12,"ak.ipv":4,"ak.proto":"h2","ak.rid":"b4a93c57","ak.r":45172,"ak.a2":n,"ak.m":"dsca","ak.n":"essl","ak.bpcip":"178.132.80.0","ak.cport":35600,"ak.gh":"92.123.103.63","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1770416488","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==LdYhpZA4Faba1zkpU7skFlUZMFqYf5ikWAl3Wm+YbRxPI7zWxB2aN4yexQhYB1sfuWx23bTiUSzg2rUJHcVl0VxI6KUfQ1Cs2GN6OsVEC2id8pzpXW+RJ+whMM2MggOH60dMDKUfqm9iRbeUqQQvE82drLRmmCmJl6aBbfXodrwXO4Z+U9o7LyCb6hoJGBEo+kKM1MMPM5E613ezj/vcKy0GMKCT4wzdraWCiBMua3JJXbzdZRmsScN51pS+fyhz9W1Add9etkF6Kdrc9f+wjhzjIIpqOwuJNw4kTRyvC4RGeCwefjyYIB9CuP9eyvAjlze6Gt1LXZpqNKVOACoeNJee7UTWTdtIUUlqFPycsKV2bgn4ixqVCaaHdtXBRhS2tNTBg/HdqNMQJliPN3P13P2AITR79DVO5ZCT136OTeY=","ak.pv":"540","ak.dpoabenc":"","ak.tf":i};if(""!==t)o["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))o["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(o)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:o,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+
+<body id="wcq" class="fw-res cdc-support cdc-books cdc-high-density cdc-full-width cdc-transform
+">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-skiplinks">
+    <ul class="container">
+        <li><a id="skiplink-content" href="#fw-content">Skip to content</a></li>
+        <li><a id="skiplink-search" href="#">Skip to search</a></li>
+        <li><a id="skiplink-footer" href="#fw-footer-v2" class="last">Skip to footer</a></li>
+    </ul>
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="module" src="/site/web-components/us/en/cdc-header.js"></script>
+    <cdc-header></cdc-header>
+    <nav class="fw-c-header__seo-links" aria-hidden="true" style="display:none">
+        <ul>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/index.html">Cisco.com Worldwide</a></li>
+            <li><a tabindex="-1" href="/c/en/us/products/index.html">Products and Services</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/solutions/index.html">Solutions</a></li>
+            <li><a tabindex="-1" href="/c/en/us/support/index.html">Support</a></li>
+            <li><a tabindex="-1" href="/c/en/us/training-events.html">Learn</a></li>
+            <li><a tabindex="-1" href="//www.cisco.com/c/en/us/about/sitemap.html">Explore Cisco</a></li>
+            <li><a tabindex="-1" href="/c/en/us/buy.html">How to Buy</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Partners Home</a></li>                
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/cisco-partner-program/index.html?ccid=cc000864&dtid=odiprc001129">Partner Program</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/support-help/index.html">Support</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/tools/index.html?dtid=odiprc001129">Tools</a></li>
+            <li><a tabindex="-1" href="https://locatr.cloudapps.cisco.com/WWChannels/LOCATR/pf/index.jsp#/">Find a Cisco Partner</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/connect-with-a-partner/index.html?ccid=cc000864&dtid=odiprc001129">Meet our Partners</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Become a Cisco Partner</a></li>
+
+        </ul>
+    </nav>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-content" class="container grid">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+<div class="row full blowout" data-owner="ID">
+	<div class="col full ">
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav id="fw-breadcrumb" class="data-based user-driven-nav" aria-label="breadcrumbs" data-owner="ID">
+
+   
+    <ul itemscope itemtype="//schema.org/BreadcrumbList">
+        <li aria-hidden="true"><a href='#' class="skip"><span></span></a></li>
+        <li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/index.html'><span itemprop='name'>Home</span><meta itemprop='position' content='1' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/index.html'><span itemprop='name'>Support</span><meta itemprop='position' content='2' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/all-products.html'><span itemprop='name'>Product Support</span><meta itemprop='position' content='3' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/category.html'><span itemprop='name'>Switches</span><meta itemprop='position' content='4' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/series.html'><span itemprop='name'>Cisco Nexus 9000 Series Switches</span><meta itemprop='position' content='5' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/products-programming-reference-guides-list.html'><span itemprop='name'>Programming Guides</span><meta itemprop='position' content='6' /></a><span class='caret'></span></li>
+    </ul>
+</nav>
+<script>
+    if (window.cdc === undefined) { window.cdc = {}; }
+    if (cdc.breadcrumb === undefined) {
+        cdc.breadcrumb = (function () {
+            let clone = document.querySelector('#fw-breadcrumb').cloneNode(true);
+
+            let appendClone = function () {
+                let hasBreadcrumb = document.querySelector('#fw-breadcrumb') !== null,
+                    firstMarquee = document.querySelectorAll('.dmc-mq')[0];
+
+                if (!hasBreadcrumb && firstMarquee !== undefined) {
+                    firstMarquee.querySelector('.frame .inset').insertBefore(this.clone, firstMarquee.querySelector('.frame .inset').firstElementChild);
+                }
+            };
+
+            return {
+                clone: clone,
+                appendClone: appendClone
+            }
+        }());
+    }
+    //DE380224
+    var anchorChild = document.getElementsByTagName("a");
+    for(var i=0; i<anchorChild.length; i++){ 
+        if(anchorChild[i].getAttribute("itemprop")=="item")  {  
+            if ( anchorChild[i].href.includes("%3Clocale%3E") ){
+                let anchorChildHREF = anchorChild[i].href;
+                let docLocale = document.querySelector('meta[name="locale"]').getAttribute('content');
+                let docLanguage = document.querySelector('meta[name="language"]').getAttribute('content');
+                
+                var docSeparator;
+                
+                if ((docLocale.toLowerCase() == "us") && (docLanguage.toLowerCase() == "en")) {
+                    docSeparator="/";
+                } else {
+                    docSeparator="_";
+                }
+                
+                let anchorURLReplace = docLanguage.toLowerCase() + docSeparator + docLocale.toLowerCase();
+                anchorChildHREF = anchorChildHREF.replace("%3Clocale%3E", anchorURLReplace);
+                anchorChild[i].setAttribute('href', anchorChildHREF);
+            }
+        }
+    }
+</script>
+
+        
+		        <h1 id="fw-pagetitle" class="" data-owner="ID">Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</h1>
+		
+	</div>
+</div>
+     <!--googleon: index--><!--googleon: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   <!-- have to do this for _g.I18n to be defined in preview and publish modes -->
+  
+  <script type="text/javascript">
+      // initialize dictionary for i18n
+      cdc.util.ensureNamespace("cdc.rc");
+    cdc.rc.eotkeys = {
+        showOnly5Products : "Show Only 5 Products",       
+        showAllRowsProducts : "Show All nRows Products",
+        supportCommunityUrl : "https://community.cisco.com/t5/technology-and-support/ct-p/technology-support",
+        supportCommunity : "Cisco Community",
+        thankYou : "Thank You",
+        viewersAlso : "Customers Also Viewed", 
+        show : "Show", 
+        more : "More", 
+        showOnly3Documents: "Show Only 3 Documents"
+      };
+  </script>
+
+
+
+<div class="row blowout full visitedlinks">
+    <div class="col full">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <div class="disclaimers techdocs">
+        
+        <div class="disclaimerButtons">
+        <div class="aboutBias">
+            <button aria-expanded="false" >Bias-Free Language</button>
+        </div>
+        
+        </div>
+        
+        <div class="biasfreeContent panel">
+            <h3>Bias-Free Language</h3>
+            <p>The documentation set for this product strives to use bias-free language. For the purposes of this documentation set, bias-free is defined as language that does not imply discrimination based on age, disability, gender, racial identity, ethnic identity, sexual orientation, socioeconomic status, and intersectionality. Exceptions may be present in the documentation due to language that is hardcoded in the user interfaces of the product software, language used based on RFP documentation, or language that is used by a referenced third-party product. <a href="https://www.cisco.com/c/en/us/about/social-justice/inclusive-language-policy.html">Learn more</a> about how Cisco is using Inclusive Language.</p>
+        </div>
+        
+    </div><!-- disclaimers -->
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    /* this is needed for the translation selector */
+    if (typeof(cdc) == "undefined") cdc={};
+    if (typeof(cdc.translations) == "undefined") cdc.translations={};
+    var bookTitle = 'Book Title Page';
+</script>
+
+<span id="actionBar-top"></span>
+<section id="actionBar" class="noprint base-blowout">
+    <span class="icons">
+        
+        <button class="bookToc simpleOverlay-trigger" id="onlyforTrigger"> <!--US140575-->
+            Book Contents
+        </button>
+            <div class="bookToc simpleOverlay-content">
+               <div role="heading" class="title">Book Contents</div>
+               <!--googleoff: index--><!--googleoff: snippet-->  
+               <div class="content">
+                  
+
+
+
+<ul id="bookToc">
+    <li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_preface_00.html">Preface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01.html">New and Changed Information</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100101.html">Platform Support for Programmability Features</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html">Overview</a></li>
+<li><button><span></span>Shells and Scripting</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101100.html">Bash</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100.html">Guest Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101.html">Broadcom Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110000.html">Python API</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100111.html">Scripting with Tcl</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01001.html">iPXE</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01010.html">Kernel Stack</a></li>
+</ul>
+</li>
+<li><button><span></span>Applications</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html">Third-Party Applications</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01100.html">Ansible</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101000.html">Puppet Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100100.html">SaltStack</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100000.html">Using Chef Client with Cisco NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01111.html">Nexus Application Development - Yocto</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html">Nexus Application Development - SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101101.html">NX-SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100001.html">Using Docker with Cisco NX-OS</a></li>
+</ul>
+</li>
+<li><button><span></span>NX-API</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010011.html">NX-API CLI</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101110.html">NX-API REST</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010110.html">NX-API Developer Sandbox</a></li>
+</ul>
+</li>
+<li><button><span></span>Model-Driven Programmability</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010111.html">Infrastructure Overview</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011000.html">Managing Components</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html">OpenConfig YANG</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100110.html">NETCONF Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011011.html">Converting CLI Commands to Network Configuration Format</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html">RESTConf Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101111.html">gRPC Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110001.html">gNMI - gRPC Network Management Interface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011110.html">Dynamic Logger</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101001.html">Model Driven Telemetry</a></li>
+</ul>
+</li>
+<li><button><span></span>XML Management Interface</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100010.html">XML Management Interface</a></li>
+</ul>
+</li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_appendix_0100101.html">Streaming Telemetry Sources</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-n9k-websocket-subscription-93x.html">WebSocket Subscription</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-programmability-rfcs.html">Programmability RFCs</a></li>
+
+</ul>
+
+
+               </div>
+               <!--googleon: index--><!--googleon: snippet-->               
+            </div>
+
+        
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='versionddcontainer chapter'></div>
+<script type="text/html" class="versionstemp">
+            <div class="versionsdd">
+                <button class="versionbutton" aria-haspopup="true" aria-expanded="false" aria-labelledby="other versions" class="version"><label></label></button>
+                <ul class="versionlist" aria-labelledby="other versions">
+                <%
+                    let pageUrl = window.location.pathname.replace("/content/","/c/").toLowerCase();
+                    if (true) pageUrl = pageUrl.substring(0,pageUrl.lastIndexOf("/"))+".html";
+                    for(let i=0; i< data.length; i++) {
+                        let item = data[i],
+                            myurl = item.linkUrl,
+                            urlm = myurl.replace("/content/","/c/");;
+                            mytitle = item.linkTitle;
+                            myclass= urlm.toLowerCase() == pageUrl ? "class=\"selected\"":""; 
+%>
+                    <li><a href="${myurl}" ${myclass}>${mytitle}</a></li>
+<%
+                  }   %>
+                </ul>
+             </div>
+</script>
+    
+        <span class="utilities">
+          <button title="Search in this Book" class="mobileSearch simpleOverlay-trigger">
+            Search
+          </button>
+          <div class="mobileSearch simpleOverlay-content">
+            <div class="title">Find Matches in This Book</div>
+              <!--googleoff: index--><!--googleoff: snippet-->  
+              <div class="content">
+                <form id="mobileBooksearch" class="chapter">
+                   <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit"></button>
+                   <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+                </form>
+                <div id="overlayResults" role="region" aria-live="polite" >
+                   <!-- important, keep this results div begin end on same line in here -->
+                   <div class="results"></div>
+                </div>
+              </div>
+              <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="noprint" id="saveModule">
+
+<script type="text/javascript">
+    cdc.util.ensureNamespace("cdc.rc.savedoc");
+    cdc.rc.savedoc.isLoggedIn = false;
+    cdc.rc.savedoc.save = "Save";
+    cdc.rc.savedoc.saved = "Saved";
+</script>
+
+    <button class="save" aria-expanded="false" aria-label="Save">
+        <label>Save</label>
+    </button>    
+
+</div> 
+    <div class="saveDocumentMessage login cdc-expandPanel"  role="region" aria-live="polite">
+        <a href="/c/login/index.html?referer=/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html">Log in</a> to Save Content
+    </div>
+
+
+          <!-- Translation Selctor -->
+          <!-- Translation Selector is used on EOT and Books pages. if a page has a locale of en_US then it will provide a list of avaible translations, if its a translated page (non english locale) then provide the link to the english locale. -->
+
+
+
+                                <div class="noprint translations">
+                                        <a href="#" tabindex="-1">
+                                                <button type="button" class="translations translations-link anchor translationOptions simpleOverlay-trigger">
+                                                        <div class="toolbarIcon translationsIcon"></div><label class="iconLabel" id="onlyForNonEn">Translations</label>
+                                                </button>
+                                        </a>
+                                </div>
+           
+
+
+ 
+          <div class="translations simpleOverlay-content" role="dialog" id="dialogt" aria-labelledby="onlyForNonEN" aria-modal="true">
+            <div role="heading" class="title">Available Languages</div>
+               <!--googleoff: index--><!--googleoff: snippet--> 
+            <script language="javascript">                    
+                cdc.translations.map = "{ja-jp=https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html, en-us=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html, x-default=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html}";//storing the map for use in the JS
+                cdc.translations.locale="en_us";
+            </script>
+            <div class="content">
+              <div class="availableLanguagesList">
+                  <ul id="translationsList">
+                  </ul> 
+              </div>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+          
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // stored value for overlay label to use in js
+    var downloadOPtionLabel = 'Download Options',
+    	bookSearchlabel = 'Find Matches in This Book',
+    	translationsLabel = 'Translations',
+    	bookConentLabel= 'Book Contents';
+</script>
+
+
+        
+
+
+
+        <button title="Document Download Options" id="dwnld-button" class="downloadOptions simpleOverlay-trigger" aria-expanded="false">
+            Download
+        </button>
+        <div class="downloadOptions simpleOverlay-content" role="dialog" id="dialogd" aria-labelledby="dwnld-button" aria-modal="true" class="default_dialog">
+            <div role="heading" class="title">Download Options</div>
+            <!--googleoff: index--><!--googleoff: snippet-->  
+            <div class="content">
+                <header>
+
+                    <h3 class="h4"> Book Title</p>
+                    <p>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</p>
+                    <p class="h4"> Chapter Title</p>
+                    <h3>Third-Party Applications</p>
+
+                </header>
+                <ul>
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.pdf" class="pdfIcon">PDF - Complete Book 
+                            <span>(6.23 MB)</span></a>
+
+                                   <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.pdf" class="chapter">PDF - This Chapter <span>(1.17 MB)</span></a>
+                                                            
+                            <p>View with Adobe Reader on a variety of devices</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.epub" class="epubIcon">ePub - Complete Book 
+                            <span>(2.62 MB)</span></a>
+                            
+                            <p>View in various apps on iPhone, iPad, Android, Sony Reader, or Windows Phone</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.mobi" class="mobiIcon">Mobi - Complete Book 
+                            <span>(6.36 MB)</span></a>
+                            
+                            <p>View on Kindle device or Kindle app on multiple devices</p>
+                        </li>                                  
+              </ul>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+        </div>
+
+          <button title="Print Friendly Page" class="print simpleOverlay-trigger">
+              Print
+          </button>
+        </span> 
+    </span>
+    <form id="booksearch" tabindex="0" class="chapter">
+       <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit" aria-label="Search"></button>
+       <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+    </form>
+      <div id="searchresult" role="region" aria-live="polite"><button class="close" title="Close Panel"><span></span><span></span></button>
+         <span class="headArrow"></span>
+         <h2>Results</h2>
+         <div class="matches">
+         </div>
+         <div class="results" tabindex="0">
+         </div>
+      </div>
+      <div id="searchResultChapterTitle"></div>
+</section>
+<script type="text/html" id="navigateMatchesTemplate">
+   <div>
+      <button class="up on" title="Previous Match"><span></span></button>
+      <button class="up off" title="Previous Match Not Available"><span></span></button>
+      <span class="matchlabel">Matches</span>
+      <button class="down on" title="Next Match"><span></span></button>
+      <button class="down off" title="Next Match Not Available"><span></span></button>
+   </div>
+</script>
+<script type="text/html" id="noChapterMatchTemplate">
+   <p>There are no Matches in this chapter.</p>
+</script>
+<script type="text/html" id="searchResultsListTemplate">
+   <p class="h3">Chapters with Matches</p>
+   <ul>
+<% var i = 0;
+    while ( modelData.links[i] ) {  %>
+      <li>
+<%     curpage = (window.location.pathname.indexOf(modelData.links[i].href) > -1 )?true:false;
+        if ( i === modelData.curpage ) {
+            if ( ! jQuery('.mobileSearch').css("display") == "block") { %>
+               <span class="currentIndicator"></span>${modelData.links[i].title}
+<%         } else {                %>
+               <span class="currentIndicator"></span><button class="curpage" data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%         }
+        } else {  %>
+            <button data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%     }  %>            
+      </li> 
+<% i++;
+    } %>
+   </ul> 
+</script>      
+<script type="text/html" id="noBookMatchTemplate">
+   <p class="head">No matches found in this book</p>
+   <p>This feature looks for an exact match of what you entered in the box.</p>
+   <p>If you entered several words, try reducing the entry to one or two and search again.</p>
+</script>
+<script type="text/html" id="errorTemplate">
+   <p>Search is currently unavailable due to technical issues. We are working to resolve the problem as quickly as possible.</p>
+</script>
+<script type="text/html" id="mobileSearchFooterTemplate">
+   <div id="mobileSearchFooter">
+      <button class="mobileSearch" title="Search in this Book"></button>
+      <button class="closeFooter"><span></span><span></span></button>
+      <div class="matches"> 
+      </div>
+   </div>   
+</script>
+ 
+    </div>
+</div>
+<div class="row blowout narrow-wide-v2 flip visitedlinks">
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div id="documentInfo">
+                  <dl>
+                     
+                      <dt>Updated:</dt><dd> September 11, 2023</dd>
+                     
+                  </dl>
+                    
+              </div>
+
+ 
+    </div>
+    <div id="chapterTitleDiv" class="col wide-v2 indent-at-xlarge">
+        <!-- this will be chapter title for chapters or header for TOC for books -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="chapter-title">Chapter: Third-Party Applications </h2>  
+    
+
+    </div>
+</div>
+<div class="row blowout wide-narrow-v2 visitedlinks">
+    <div id="pageContentDiv" class="col wide-v2 indent-at-xlarge" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+        
+
+    
+ 
+ 
+
+<div id="chapterToc" class="base-blowout">
+    <button><span></span>Chapter Contents</button>
+    <div>
+    
+<ul>
+<li><a href="#id_84755">Third-Party Applications</a></li>
+<li><a href="#concept_B8273762C1C54C5789AC3F3AB2F85F19">About Third-Party                              	 Applications</a></li>
+<li><a href="#id_72414">Guidelines and Limitations</a></li>
+<li><a href="#task_7BC990F49E094646850F160AB0014D6A"> Installing                              	 Third-Party Native RPMs/Packages</a></li>
+<li><a href="#d32802e264a1635">Installing Signed RPM</a>
+<ul>
+<li><a href="#concept_658AC3EFEF03429FABF334F438BB5D4F">Checking a Signed                              	 RPM</a></li>
+<li><a href="#concept_4FB4EFA70CB54C8EB6F102AC7754F733">Installing Signed                              	 RPMs by Manually Importing Key</a></li>
+<li><a href="#concept_73790052AACA46D4A2F5F08C0C197573">Installing Signed                              	 Third-Party RPMs by Importing Keys Automatically</a></li>
+<li><a href="#task_58216CE803FD4CFA863ADC5EC28CE099">Adding Signed RPM                              	 into Repo</a></li>
+</ul></li>
+<li><a href="#concept_554BCBDB6329468B862C051F43434EC0">Persistent Third-Party RPMs</a></li>
+<li><a href="#d32802e753a1635">Installing RPM from VSH</a>
+<ul>
+<li><a href="#task_059608E006E142079339A8C7746C060A">Package                              	 Addition</a></li>
+<li><a href="#task_DDD53E669F6A4B2F8A76FE91F96C4AE0">Package                              	 Activation</a></li>
+<li><a href="#task_EE503E4B869D48F682A0F82D0287DA9A">Deactivating                              	 Packages</a></li>
+<li><a href="#task_0B8217127E944B7AA4FB100D7A2ED517">Removing                              	 Packages</a></li>
+<li><a href="#task_96084ED6F59D48DC8FCA87BBDEB38507">Displaying Installed                              	 Packages</a></li>
+<li><a href="#task_1F1FCD465BB2480398D52F6E89B317E6">Displaying Detail                              	 Logs</a></li>
+<li><a href="#task_997685E8BC924935B41967EDC060E931">Upgrading a                              	 Package</a></li>
+<li><a href="#task_60292C7124914762A4E814DF16596854">Downgrading a                              	 Package</a></li>
+</ul></li>
+<li><a href="#d32802e1585a1635">Third-Party Applications</a>
+<ul>
+<li><a href="#id_12144">NX-OS</a></li>
+<li><a href="#id_12145"> DevOps                              	 Configuration Management Tools</a></li>
+<li><a href="#id_12147">                              		V9K                              	</a></li>
+<li><a href="#id_12148"> Automation Tool                              	 Educational Content</a></li>
+<li><a href="#reference_2EB1534232404623806AE9AF7F1A578F">collectd</a></li>
+<li><a href="#reference_810E239CD1234323B6D2A92B8693D19D">Ganglia</a></li>
+<li><a href="#reference_56CEAD55B14D48A3A2A2E05F4E62BDF4">Iperf</a></li>
+<li><a href="#reference_809FCF9B6D0F4546A2F09F4EAD6C7D0E">LLDP</a></li>
+<li><a href="#reference_743520A61D4544CB873B0AB03040BAC1">Nagios</a></li>
+<li><a href="#reference_B354190501F54D6A8A49736132866FBE">OpenSSH</a></li>
+<li><a href="#reference_5D02231B554446939819C98F579B30FE">Quagga</a></li>
+<li><a href="#reference_5DF333922FBE4DD6AC30C7FEB02A47D2">Splunk</a></li>
+<li><a href="#reference_6A5CE238482F4C119BA3A1BAD364C1FA">tcollector</a></li>
+<li><a href="#reference_C0D636947CF84BA3A10D2C54CA8AE912">tcpdump</a></li>
+<li><a href="#reference_98F8B69BD1F64292BCB58BB9E2B3B2C3">TShark</a></li></ul></li></ul>
+    <button id="chapterToc-close">Close<span></span></button>
+    </div>
+</div>
+
+ 
+    <div id="chapterContent">
+    
+                  <h1 class="title topictitle1" id="ariaid-title1">Third-Party Applications</h1>
+                  <section class="body">
+                     
+                     <p class="p">This chapter contains the following sections: 
+                        			 
+                     </p>
+                     
+                  </section>
+                  <!-- minitoc start -->
+                  <nav role="navigation" class="related-links">
+                     <ul class="ullinks">
+                        <li class="link ulchildlink"><a href="#concept_B8273762C1C54C5789AC3F3AB2F85F19">About Third-Party Applications</a></li>
+                        <li class="link ulchildlink"><a href="#id_72414">Guidelines and Limitations</a></li>
+                        <li class="link ulchildlink"><a href="#task_7BC990F49E094646850F160AB0014D6A">Installing Third-Party Native RPMs/Packages</a></li>
+                        <li class="link ulchildlink"><a href="#concept_554BCBDB6329468B862C051F43434EC0">Persistent Third-Party RPMs</a></li>
+                     </ul>
+                  </nav>
+                  <!-- minitoc end -->
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title2" lang="en-US" id="concept_B8273762C1C54C5789AC3F3AB2F85F19">
+                     <h2 class="title topictitle2" id="ariaid-title2">About Third-Party
+                        	 Applications
+                     </h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">Third-Party applications are installed in the native host by using the <span><span class="keyword kwd">yum</span> </span> command in the Bash shell or through the NX-OS CLI. 
+                        </p>
+                        <p class="p">When you enter the <span><span class="keyword kwd">yum install</span>
+                              <var> rpm</var> </span> command, a Cisco <span><span class="keyword kwd">YUM</span> </span> plug-in gets executed. This plug-in copies the RPM to a hidden location. On switch reload, the system reinstalls the RPM.
+                           
+                        </p>
+                        <p class="p">For configurations in <span class="ph filepath">/etc</span>, a Linux process, <span><span class="keyword kwd">incrond</span> </span>, monitors artifacts that are created in the directory and copies them to a hidden location, which gets copied back to <span class="ph filepath">/etc</span>. 
+                        </p>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title3" lang="en-US" id="id_72414">
+                     <h2 class="title topictitle2" id="ariaid-title3">Guidelines and Limitations</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="id_72414__d32802e125">
+                           
+                           <p class="p">RPMs for the third-party applications have the following guidelines and limitations: </p>
+                           
+                           <ul class="ul">
+                              
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">The NX-OS 9.2(1) release has a new operating system and rootfs, based on Wind River Linux 8 (WRL8), so third-party RPMs that
+                                    were built using WRL5 might not be compatible with WRL8, so the third-party software might not work. In this case, remove
+                                    old versions of your apps used with previous releases and replace them with new software that is compatible with WRL8, which
+                                    is available in the repository at <a class="xref" href="https://devhub.cisco.com/artifactory/open-nxos/9.2.1/" target="_blank">https://devhub.cisco.com/artifactory/open-nxos/9.2.1/</a></p>
+                                 
+                              </li>
+                              
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Guidelines and instructions for installing signed RPMs are provided in the <em class="ph i">Cisco Nexus 9000 Series NX-OS Software Upgrade and Downgrade Guide, Release 9.2(x)</em>, including YUM and VSH CLI options for managing RPMs, signed and nonsigned RPM installations, the clean-up of repositories,
+                                    and so on. 
+                                 </p>
+                                 
+                              </li>
+                              
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">The third-party applications are started during switch startup. It is possible that a third-party application could be started
+                                    before its communication interface is up, or before the routing between the switch and any communication peer or server is
+                                    established. Therefore, all third-party applications should be written to be robust in case of communication failure, and
+                                    the application should retry establishing the connection. If an application is not resilient in the presence of a communication
+                                    failure, a “wrapper” application might be required to establish that any communication peer is reachable before starting the
+                                    desired application, or restart the desired application if necessary.
+                                 </p>
+                                 
+                              </li>
+                              
+                              
+                           </ul>
+                           
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1 no_summary_steps" aria-labelledby="ariaid-title4" lang="en-US" id="task_7BC990F49E094646850F160AB0014D6A">
+                     <h2 class="title topictitle2" id="ariaid-title4"> Installing
+                        	 Third-Party Native RPMs/Packages
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="task_7BC990F49E094646850F160AB0014D6A__context_B76B5B680506430097A5C37194504BD8"> 
+                           		
+                           <p class="p"> The complete
+                              		  workflow of package installation is as follows: 
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <hr noshade>
+                        <table class="stepTable" border="0">
+                           <tbody>
+                              <tr class="li step" id="task_7BC990F49E094646850F160AB0014D6A__step_3E561F6A060E48D4A68828808C84C0EC">
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd"> Configure the repository on the switch to point to the Cisco repository where agents are stored. </p>
+                                    <section class="itemgroup info">
+                                       					
+                                       <section class="p">
+                                          						<pre class="pre codeblock"><code>bash-4.2#<kbd class="userinput"><b class="ph userinput"> cat /etc/yum/repos.d/open-nxos.repo </b></kbd>
+[open-nxos]
+name=open-nxos
+
+
+
+enabled=1
+gpgcheck=0
+sslverify=0
+</code></pre>
+                                          					</section>
+                                       				
+                                    </section>
+                                    <section class="itemgroup info">
+                                       					
+                                       <p class="p">Instructions for using the CLIs to import the digital signature are available in the section "Using Install CLIs for Digital
+                                          Signature Support" in the <em class="ph i">Cisco Nexus 9000 Series NX-OS Software Upgrade and Downgrade Guide, Release 9.2(x)</em>.
+                                       </p>
+                                       					
+                                       <p class="p"> An example of installation of an RPM using <span><var>yum</var> </span>, with full install log. 
+                                       </p>
+                                       				
+                                    </section>
+                                    <section class="itemgroup stepxmp">
+                                       <section class="tasklabel">
+                                          <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example:</h3>
+                                       </section>
+                                       					<pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">yum install splunkforwarder</b></kbd>
+Loaded plugins: downloadonly, importpubkey, localrpmDB, patchaction, patching, protect-packages
+Setting up Install Process
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package splunkforwarder.x86_64 0:6.2.3-264376 will be installed
+--&gt; Finished Dependency Resolution
+ 
+Dependencies Resolved
+ 
+=============================================================================================
+ Package              Arch                 Version           Repository             Size
+=============================================================================================
+Installing:
+splunkforwarder       x86_64               6.2.3-264376      open-nxos              13 M
+ 
+Transaction Summary
+=============================================================================================
+Install       1 Package
+ 
+Total size: 13 M
+Installed size: 34 M
+Is this ok [y/N]: <kbd class="userinput"><b class="ph userinput">y</b></kbd>
+Downloading Packages:
+Running Transaction Check
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : splunkforwarder-6.2.3-264376.x86_64                                                                                                                      1/1 
+complete
+ 
+Installed:
+  splunkforwarder.x86_64 0:6.2.3-264376                                                                                                                                     
+ 
+Complete!
+bash-4.2# 
+ 
+
+</code></pre>
+                                       				</section>
+                                    <section class="itemgroup info">
+                                       					
+                                       <p class="p"> An example of querying the switch for successful installation of the package, and verifying that its processes or services
+                                          are up and running. 
+                                       </p>
+                                       				
+                                    </section>
+                                    <section class="itemgroup stepxmp">
+                                       <section class="tasklabel">
+                                          <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example:</h3>
+                                       </section>
+                                       					<pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">yum info splunkforwarder</b></kbd>
+Loaded plugins: downloadonly, importpubkey, localrpmDB, patchaction, patching, protect-packages
+Fretta              |  951 B     00:00 ... 
+groups-repo         | 1.1 kB     00:00 ... 
+localdb             |  951 B     00:00 ... 
+patching            |  951 B     00:00 ... 
+thirdparty          |  951 B     00:00 ... 
+Installed Packages
+Name        : splunkforwarder
+Arch        : x86_64
+Version     : 6.2.3
+Release     : 264376
+Size        : 34 M
+Repo        : installed
+From repo   : open-nxos
+Summary     : SplunkForwarder
+License     : Commercial
+Description : The platform for machine data.</code></pre>
+                                       				</section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <hr noshade>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <p class="topictitle1" id="d32802e264a1635">Installing Signed RPM</p>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title5" lang="en-US" id="concept_658AC3EFEF03429FABF334F438BB5D4F">
+                     <h2 class="title topictitle2" id="ariaid-title5">Checking a Signed
+                        	 RPM
+                     </h2>
+                     <section class="body conbody">
+                        <p class="p">Run the following
+                           		command to check if a given RPM is signed or not. 
+                           	 
+                        </p><pre class="pre codeblock"><code>Run, <kbd class="userinput"><b class="ph userinput">rpm -K <var class="keyword varname">rpm_file_name</var></b></kbd></code></pre><section class="example" id="concept_658AC3EFEF03429FABF334F438BB5D4F__example_15FBAC55ECA34FFD8A33D52841702329">
+                           <h3 class="title sectiontitle">
+                              				<strong class="ph b">Not a Signed RPM</strong>
+                              			
+                           </h3> 
+                           		 
+                           		
+                           <section class="p"> 
+                              		  <pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">rpm -K bgp-1.0.0-r0.lib32_n9000.rpm</b></kbd> 
+ 
+bgp-1.0.0-r0.lib32_n9000.rpm: (sha1) dsa sha1 md5 OK</code></pre> 
+                              		</section> 
+                           	 
+                        </section>
+                        <section class="example" id="concept_658AC3EFEF03429FABF334F438BB5D4F__example_2A39AA1D989341EBB156542C459C9C93">
+                           <h3 class="title sectiontitle"> 
+                              		<strong class="ph b">Signed RPM</strong>
+                              		
+                           </h3> 
+                           		 
+                           		<pre class="pre codeblock"><code>bash-4.2# 
+<kbd class="userinput"><b class="ph userinput">rpm -K puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm</b></kbd> 
+ 
+puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm: RSA sha1 MD5 NOT_OK
+ 
+bash-4.2# </code></pre> 
+                           		<p class="p">Signed third-party RPM requires public GPG key to be imported first before the package can be installed otherwise <span><span class="keyword kwd">yum</span> </span> throws the following error: 
+                           </p> 
+                           		<pre class="pre codeblock"><code>bash-4.2# 
+<kbd class="userinput"><b class="ph userinput">yum install puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm -q</b></kbd>
+ 
+Setting up Install Process
+ 
+warning: rpmts_HdrFromFdno: Header V4 RSA/SHA1 signature: NOKEY, key ID 4bd6ec30
+ 
+Cannot open: puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm. Skipping.
+ 
+Error: Nothing to do</code></pre> 
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title6" lang="en-US" id="concept_4FB4EFA70CB54C8EB6F102AC7754F733">
+                     <h2 class="title topictitle2" id="ariaid-title6">Installing Signed
+                        	 RPMs by Manually Importing Key
+                     </h2>
+                     <section class="body conbody">
+                        <ul class="ul">
+                           <li class="li" id="concept_4FB4EFA70CB54C8EB6F102AC7754F733__li_4A8C2F3AF7834134AD69D9F10A27608A">Copy the GPG keys to 
+                              		  <span class="ph filepath">/etc rootfs</span> so that they are persisted across
+                              		  reboots.
+                              		  
+                              <section class="p"> 
+                                 			 <pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">mkdir -p /etc/pki/rpm-gpg</b></kbd>
+ 
+bash-4.2# <kbd class="userinput"><b class="ph userinput">cp -f RPM-GPG-KEY-puppetlabs /etc/pki/rpm-gpg/</b></kbd></code></pre> 
+                                 		  </section> 
+                              		
+                           </li>
+                           <li class="li" id="concept_4FB4EFA70CB54C8EB6F102AC7754F733__li_7D38CC35DB5F4841AC10FDF4C8B34A7C">
+                              		  
+                              <p class="p">Import the keys using the following command. </p> 
+                              		  <pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs </b></kbd>
+ 
+bash-4.2# 
+ 
+bash-4.2# <kbd class="userinput"><b class="ph userinput">rpm -q gpg-pubkey</b></kbd>
+ 
+gpg-pubkey-4bd6ec30-4c37bb40</code></pre> 
+                              		  <pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs </b></kbd>
+ 
+bash-4.2# 
+ 
+bash-4.2# <kbd class="userinput"><b class="ph userinput">rpm -q gpg-pubkey</b></kbd>
+ 
+gpg-pubkey-4bd6ec30-4c37bb40</code></pre> 
+                              		</li>
+                           <li class="li" id="concept_4FB4EFA70CB54C8EB6F102AC7754F733__li_795647B7236A4CDA8AA693247B8138FD">
+                              		  
+                              <section class="p">Install the signed RPM with 
+                                 			 <span><var>yum</var> </span> command 
+                                 			 <pre class="pre codeblock"><code>bash-4.2# 
+<kbd class="userinput"><b class="ph userinput">yum install puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm</b></kbd> 
+ 
+Loaded plugins: downloadonly, importpubkey, localrpmDB, patchaction, patching, 
+protect-packages
+ 
+groups-repo        | 1.1 kB     00:00 ...                                                                                                                                          . 
+localdb            |  951 B     00:00 ...                                                                                                                                       
+ 
+patching           |  951 B     00:00 ...                                                                                                                                  
+ 
+thirdparty         |  951 B     00:00 ...                                                                                                                                  
+ 
+Setting up Install Process
+ 
+Examining puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm: 
+puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64
+ 
+Marking puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm to be installed
+ 
+Resolving Dependencies
+ 
+--&gt; Running transaction check
+ 
+---&gt; Package puppet-enterprise.x86_64 0:3.7.1.rc2.6.g6cdc186-1.pe.nxos will be installed
+ 
+--&gt; Finished Dependency ResolutionDependencies Resolved
+ 
+============================================================================================
+ 
+ Package           Arch					Version                          Repository              Size
+ 
+============================================================================================
+ 
+Installing:
+ 
+puppet-enterprise  x86_64   3.7.1.rc2.6.g6cdc186-1.pe.nxos    /puppet-enterprise-    46 M
+                                                              3.7.1.rc2.6.g6cdc186-1.
+                                                              pe.nxos.x86_64               
+ 
+Transaction Summary
+ 
+============================================================================================
+ 
+Install       1 Package
+ 
+Total size: 46 M
+ 
+Installed size: 46 M
+ 
+Is this ok [y/N]: y
+ 
+Downloading Packages:
+ 
+Running Transaction Check
+ 
+Running Transaction Test
+ 
+Transaction Test Succeeded
+ 
+Running Transaction
+ 
+  Installing : puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64                                                                                                  1/1 
+ 
+Installed:
+ 
+  puppet-enterprise.x86_64 0:3.7.1.rc2.6.g6cdc186-1.pe.nxos                                                                                                                 
+ 
+Complete!
+ 
+bash-4.2# </code></pre>
+                                 		  </section> 
+                              		
+                           </li>
+                        </ul>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title7" lang="en-US" id="concept_73790052AACA46D4A2F5F08C0C197573">
+                     <h2 class="title topictitle2" id="ariaid-title7">Installing Signed
+                        	 Third-Party RPMs by Importing Keys Automatically
+                     </h2>
+                     <section class="body conbody">
+                        <p class="p">Set up the yum repo to point to the keys and RPM. </p><pre class="pre codeblock"><code>root@switch# <kbd class="userinput"><b class="ph userinput">cat /etc/yum/repos.d/puppet.repo</b></kbd>
+ 
+[puppet]
+ 
+name=Puppet RPM
+ 
+baseurl=file:///bootflash/puppet
+ 
+enabled=1
+ 
+gpgcheck=1
+ 
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+ 
+metadata_expire=0
+ 
+cost=500
+ 
+bash-4.2# <kbd class="userinput"><b class="ph userinput">yum install puppet-enterprise</b></kbd>
+ 
+Loaded plugins: downloadonly, importpubkey, localrpmDB, patchaction, patching, 
+protect-packages
+ 
+groups-repo                               | 1.1 kB     00:00 ... 
+ 
+localdb                                   |  951 B     00:00 ... 
+ 
+patching                                  |  951 B     00:00 ... 
+ 
+puppet                                    |  951 B     00:00 ... 
+ 
+thirdparty                                |  951 B     00:00 ... 
+ 
+Setting up Install Process
+ 
+Resolving Dependencies
+ 
+--&gt; Running transaction check
+ 
+---&gt; Package puppet-enterprise.x86_64 0:3.7.1.rc2.6.g6cdc186-1.pe.nxos will be installed
+ 
+--&gt; Finished Dependency Resolution
+ 
+Dependencies Resolved
+ 
+==============================================================================================
+ 
+ Package             Arch     Version                            Repository     Size
+ 
+==============================================================================================
+ 
+Installing:
+ 
+puppet-enterprise    x86_64    3.7.1.rc2.6.g6cdc186-1.pe.nxos    puppet          14 M
+ 
+Transaction Summary
+ 
+==============================================================================================
+ 
+Install       1 Package
+ 
+Total download size: 14 M
+ 
+Installed size: 46 M
+ 
+Is this ok [y/N]: <kbd class="userinput"><b class="ph userinput">y</b></kbd>
+ 
+Retrieving key from file:///bootflash/RPM-GPG-KEY-puppetlabs
+ 
+Importing GPG key 0x4BD6EC30:
+ 
+ Userid: "Puppet Labs Release Key (Puppet Labs Release Key) &lt;info@puppetlabs.com&gt;"
+ 
+ From  : /bootflash/RPM-GPG-KEY-puppetlabs
+ 
+Is this ok [y/N]:<kbd class="userinput"><b class="ph userinput"> y</b></kbd>
+ 
+Downloading Packages:
+ 
+Running Transaction Check
+ 
+Running Transaction Test
+ 
+Transaction Test Succeeded
+ 
+Running Transaction
+ 
+Warning! Standby is not ready. This can cause RPM database inconsistency.
+ 
+If you are certain that standby is not booting up right now, you may proceed.
+ 
+Do you wish to continue?
+ 
+Is this ok [y/N]: <kbd class="userinput"><b class="ph userinput">y</b></kbd>
+ 
+Warning: RPMDB altered outside of yum.
+ 
+Installing : puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64                                                                                                  1/1 
+ 
+/sbin/ldconfig: /usr/lib/libboost_regex.so.1.49.0 is not a symbolic link
+ 
+Installed:
+ 
+puppet-enterprise.x86_64 0:3.7.1.rc2.6.g6cdc186-1.pe.nxos                                                                                                                 
+ 
+Complete!</code></pre></section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1 no_summary_steps" aria-labelledby="ariaid-title8" lang="en-US" id="task_58216CE803FD4CFA863ADC5EC28CE099">
+                     <h2 class="title topictitle2" id="ariaid-title8">Adding Signed RPM
+                        	 into Repo
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="task_58216CE803FD4CFA863ADC5EC28CE099__context_A2CBA8DC70B344BD808A84AD7A258593"> 
+                           		 
+                           	 
+                        </section>
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <hr noshade>
+                        <table class="stepTable" border="0">
+                           <tbody>
+                              <tr class="li step" id="task_58216CE803FD4CFA863ADC5EC28CE099__step_919AB3F5E49C4DD6837298111032F586">
+                                 <td align="left" valign="top" border="0" width="10%">
+                                    <p><b>Step&nbsp;1</b></p>
+                                 </td>
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd">
+                                       					<strong class="ph b">Copy signed RPM to the repo directory</strong>
+                                       				
+                                    </p>
+                                 </td>
+                              </tr>
+                              <tr class="li step" id="task_58216CE803FD4CFA863ADC5EC28CE099__step_B575271C7FDD41D0BB1EDF5A77424582">
+                                 <td align="left" valign="top" border="0" width="10%">
+                                    <p><b>Step&nbsp;2</b></p>
+                                 </td>
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd">
+                                       					<strong class="ph b">Import the corresponding key for the create repo to succeed.</strong>
+                                       				
+                                    </p>
+                                    <section class="itemgroup info">
+                                       					
+                                       <section class="p">
+                                          						<pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">ls</b></kbd>
+puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm  RPM-GPG-KEY-puppetlabs
+bash-4.2# 
+bash-4.2# <kbd class="userinput"><b class="ph userinput">rpm --import RPM-GPG-KEY-puppetlabs</b></kbd>
+bash-4.2# <kbd class="userinput"><b class="ph userinput">createrepo .</b></kbd>
+1/1 - puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm               
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata
+bash-4.2# </code></pre>
+                                          					</section>
+                                       				
+                                    </section>
+                                    <section class="itemgroup info">
+                                       					
+                                       <p class="p">Without importing keys </p>
+                                       					<pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">ls</b></kbd>
+puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm  RPM-GPG-KEY-puppetlabs
+bash-4.2# 
+bash-4.2# <kbd class="userinput"><b class="ph userinput">createrepo .</b></kbd>
+warning: rpmts_HdrFromFdno: Header V4 RSA/SHA1 signature: NOKEY, key ID 4bd6ec30
+ 
+Error opening package - puppet-enterprise-3.7.1.rc2.6.g6cdc186-1.pe.nxos.x86_64.rpm
+ 
+Saving Primary metadata
+Saving file lists metadata
+Saving other metadata</code></pre>
+                                       				</section>
+                                 </td>
+                              </tr>
+                              <tr class="li step">
+                                 <td align="left" valign="top" border="0" width="10%">
+                                    <p><b>Step&nbsp;3</b></p>
+                                 </td>
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd">
+                                       					<strong class="ph b">Create repo config file under <span class="ph filepath">/etc/yum/repos.d</span> pointing to this repo.</strong>
+                                       				
+                                    </p>
+                                    <section class="itemgroup info">
+                                       					
+                                       <section class="p">
+                                          						<pre class="pre codeblock"><code>bash-4.2# <kbd class="userinput"><b class="ph userinput">cat /etc/yum/repos.d/puppet.repo </b></kbd>
+[puppet]
+name=Puppet RPM
+baseurl=file:///bootflash/puppet
+enabled=1
+gpgcheck=1
+gpgkey=file:///bootflash/puppet/RPM-GPG-KEY-puppetlabs
+#gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+metadata_expire=0
+cost=500
+ 
+bash-4.2# <kbd class="userinput"><b class="ph userinput">yum list available puppet-enterprise -q</b></kbd>
+Available Packages
+puppet-enterprise.x86_64        3.7.1.rc2.6.g6cdc186-1.pe.nxos                                                  puppet
+bash-4.2# </code></pre>
+                                          					</section>
+                                       				
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <hr noshade>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title9" lang="en-US" id="concept_554BCBDB6329468B862C051F43434EC0">
+                     <h2 class="title topictitle2" id="ariaid-title9">Persistent Third-Party RPMs</h2>
+                     <section class="body conbody">
+                        <p class="p">The following is the logic behind persistent third-party RPMs: </p>
+                        <ul class="ul">
+                           <li class="li" id="concept_554BCBDB6329468B862C051F43434EC0__li_5EA3C5AABA004DF5AE5AF8A90DAEDF3F"> 
+                              		  
+                              <p class="p">A local <span><span class="keyword kwd">yum</span> </span> repository is dedicated to persistent third-party RPMs. The <span class="ph filepath">/etc/yum/repos.d/thirdparty.repo</span> points to <span class="ph filepath">/bootflash/.rpmstore/thirdparty</span>. 
+                              </p> 
+                              		
+                           </li>
+                           <li class="li" id="concept_554BCBDB6329468B862C051F43434EC0__li_7453F9AC641647C0B9E51E03FCF199A8"> 
+                              		  
+                              <p class="p">Whenever you enter the <span><span class="keyword kwd">yum install third-party.rpm</span> </span> command, a copy of the RPM is saved in <span class="ph filepath">//bootflash/.rpmstore/thirdparty</span>. 
+                              </p> 
+                              		
+                           </li>
+                           <li class="li" id="concept_554BCBDB6329468B862C051F43434EC0__li_2BF38CDA17BF4E20B8891BA36F9D2B53"> 
+                              		  
+                              <p class="p">During a reboot,
+                                 			 all the RPMs in the third-party repository are reinstalled on the switch. 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           <li class="li" id="concept_554BCBDB6329468B862C051F43434EC0__li_59F099E5A0254522958A6E7F5EA59E11"> 
+                              		  
+                              <p class="p">Any change in the <span class="ph filepath">/etc</span> configuration files persists under <span class="ph filepath">/bootflash/.rpmstore/config/etc</span> and they are replayed during boot on <span class="ph filepath">/etc</span>. 
+                              </p> 
+                              		
+                           </li>
+                           <li class="li" id="concept_554BCBDB6329468B862C051F43434EC0__li_9E24EAA2945E44049DF80021774710A3"> 
+                              		  
+                              <p class="p">Any script that is created in the <span class="ph filepath">/etc</span> directory persists across reloads. For example, a third-party service script that is created under <span class="ph filepath">/etc/init.d/</span> brings up the apps during a reload. 
+                              </p>
+                              				
+                              <table class="olh_note" border="0" role="note">
+                                 <tr>
+                                    <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                    </td>
+                                    <td border="0" class="olh_note">
+                                       <section class="note__content">
+                                          <hr>
+                                          					
+                                          					
+                                          <p class="p">The rules in iptables are not persistent across reboots when they are modified in a bash-shell.</p>
+                                          					
+                                          <p class="p">To make the modified iptables persistent, see <a class="xref" href="b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010011.html#id_92107">Making an Iptable Persistent Across Reloads</a>.
+                                          </p>
+                                          					
+                                          					
+                                          				
+                                          <hr>
+                                       </section>
+                                    </td>
+                                 </tr>
+                              </table> 
+                              		
+                           </li>
+                        </ul>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <p class="topictitle1" id="d32802e753a1635">Installing RPM from VSH</p>
+                  <article class="topic task nested1" aria-labelledby="ariaid-title10" lang="en-US" id="task_059608E006E142079339A8C7746C060A">
+                     <h2 class="title topictitle2" id="ariaid-title10">Package
+                        	 Addition
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="task_059608E006E142079339A8C7746C060A__context_BB7611C53B70410EA5B235338F473FB0"> 
+                           		
+                           <p class="p">NX-OS feature RPMs
+                              		  can also be installed by using the VSH CLIs. 
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <table class="ol steps detailed_steps">
+                           <thead>
+                              <tr>
+                                 <th align="left">&nbsp;</th>
+                                 <th font-weight="bold" align="left">Command or Action</th>
+                                 <th font-weight="bold" align="left">Purpose</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" id="task_059608E006E142079339A8C7746C060A__step_BB427756EC3B43F9903543B1266D9041">
+                                    <p><b>Step&nbsp;1</b></p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span><span class="keyword kwd"> show install package</span> </span> 
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Displays the
+                                          				packages and versions that already exist. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                              <tr class="li step">
+                                 <td align="left" valign="top" id="task_059608E006E142079339A8C7746C060A__step_A926CE5117344AA89D18BDDBCC7B5210">
+                                    <p><b>Step&nbsp;2</b></p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span><span class="keyword kwd">install add ?</span> </span> 
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Determine
+                                          				supported URIs. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                              <tr class="li step">
+                                 <td align="left" valign="top" id="task_059608E006E142079339A8C7746C060A__step_89215D3E377D45218FB9275519336824">
+                                    <p><b>Step&nbsp;3</b></p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span><span class="keyword kwd">install add</span> 
+                                          				<var>rpm-packagename</var> </span> 
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">The 
+                                          				<span><span class="keyword kwd">install add</span> </span>
+                                          				command copies the package file to a local storage device or network server. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <section class="example" id="task_059608E006E142079339A8C7746C060A__example_D3D0952EA1E24F31A69D8232D301FEB7">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h3>
+                           </section> 
+                           		
+                           <p class="p">The following
+                              		  example shows how to activate the Chef RPM: 
+                              		
+                           </p> 
+                           		<pre class="pre codeblock"><code>switch# <kbd class="userinput"><b class="ph userinput">show install package</b></kbd>
+switch# <kbd class="userinput"><b class="ph userinput">install add ?</b></kbd>
+WORD        Package name
+bootflash:  Enter package uri
+ftp:        Enter package uri
+http:       Enter package uri
+modflash:   Enter package uri
+scp:        Enter package uri
+sftp:       Enter package uri
+tftp:       Enter package uri
+usb1:       Enter package uri
+usb2:       Enter package uri
+volatile:   Enter package uri
+switch# <kbd class="userinput"><b class="ph userinput">install add bootflash:chef-12.0.0alpha.2+20150319234423.git.1608.b6eb10f-1.el5.x86_64.rpm</b></kbd>
+[####################] 100%
+Install operation 314 completed successfully at Thu Aug  6 12:58:22 2015
+
+</code></pre> 
+                           	 </section>
+                        <section class="section postreq" id="task_059608E006E142079339A8C7746C060A__postreq_92640B6855E74D48A2B97E45FA569049">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">What to do next</h3>
+                           </section>
+                           
+                           		
+                           <p class="p">When you are ready
+                              		  to activate the package, go to 
+                              		  <a class="xref" href="#task_DDD53E669F6A4B2F8A76FE91F96C4AE0">Package Activation</a>.
+                              		  
+                              		
+                           </p> 
+                           		
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>
+                                       		  
+                                       <p class="p">Adding and activating an RPM package can be accomplished in a single
+                                          			 command:
+                                          		  
+                                       </p>
+                                       		  <pre class="pre codeblock"><code>switch# 
+<kbd class="userinput"><b class="ph userinput">install add bootflash:chef-12.0.0alpha.2+20150319234423.git.1608.b6eb10f-1.el5.x86_64.rpm activate</b></kbd></code></pre>
+                                       		<hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table>
+                           	 
+                        </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1" aria-labelledby="ariaid-title11" lang="en-US" id="task_DDD53E669F6A4B2F8A76FE91F96C4AE0">
+                     <h2 class="title topictitle2" id="ariaid-title11">Package
+                        	 Activation
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section prereq p" id="task_DDD53E669F6A4B2F8A76FE91F96C4AE0__prereq_247FB98C2EE4457CA34FC55450DA435D">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Before you begin</h3>
+                           </section> 
+                           		
+                           <p class="p">The RPM has to have been previously
+                              		  added. 
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <table class="ol steps detailed_steps">
+                           <thead>
+                              <tr>
+                                 <th align="left">&nbsp;</th>
+                                 <th font-weight="bold" align="left">Command or Action</th>
+                                 <th font-weight="bold" align="left">Purpose</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" id="task_DDD53E669F6A4B2F8A76FE91F96C4AE0__step_4C5DEDEA5E724D409D7CF0C17C9D0B5C">
+                                    <p><b>Step&nbsp;1</b></p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span><span class="keyword kwd">show install inactive</span> </span> 
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Displays the list of packages that were added and not activated. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                              <tr class="li step">
+                                 <td align="left" valign="top" id="task_DDD53E669F6A4B2F8A76FE91F96C4AE0__step_CAFB5BD84ACA402A8C8FC0318F92ADCF">
+                                    <p><b>Step&nbsp;2</b></p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span><span class="keyword kwd">install activate 
+                                             				</span> 
+                                          				<var>rpm-packagename</var> </span> 
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Activates the package. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <section class="example" id="task_DDD53E669F6A4B2F8A76FE91F96C4AE0__d32802e948">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h3>
+                           </section> 
+                           		
+                           <p class="p">The following example shows how to
+                              		  activate a package:
+                              		
+                           </p> 
+                           		<pre class="pre codeblock"><code>switch# <kbd class="userinput"><b class="ph userinput">show install inactive</b></kbd>
+Boot image:
+        NXOS Image: bootflash:///yumcli6.bin
+
+Inactive Packages:
+        sysinfo-1.0.0-7.0.3.x86_64
+Loaded plugins: downloadonly, importpubkey, localrpmDB, patchaction, patching,
+              : protect-packages
+Available Packages
+chef.x86_64       12.0.0alpha.2+20150319234423.git.1608.b6eb10f-1.el5 thirdparty
+eigrp.lib32_n9000 1.0.0-r0                                            groups-rep
+o
+sysinfo.x86_64    1.0.0-7.0.3                                         patching
+switch# <kbd class="userinput"><b class="ph userinput">install activate chef-12.0-1.el5.x86_64.rpm</b></kbd>
+[####################] 100%
+Install operation completed successfully at Thu Aug  6 12:46:53 2015
+
+</code></pre>
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1" aria-labelledby="ariaid-title12" lang="en-US" id="task_EE503E4B869D48F682A0F82D0287DA9A">
+                     <h2 class="title topictitle2" id="ariaid-title12">Deactivating
+                        	 Packages
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <table class="ol steps detailed_steps">
+                           <thead>
+                              <tr>
+                                 <th font-weight="bold" align="left">Command or Action</th>
+                                 <th font-weight="bold" align="left">Purpose</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span><span class="keyword kwd"> install
+                                             				  deactivate</span> 
+                                          				<var>package-name</var> </span>
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Deactivates the RPM package. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <section class="example" id="task_EE503E4B869D48F682A0F82D0287DA9A__example_F3949502FF9447639C726EC35C40B171">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h3>
+                           </section>
+                           		
+                           <p class="p">The following example shows how to deactivate the Chef RPM package: 
+                              		
+                           </p>
+                           		<pre class="pre codeblock"><code>switch# <kbd class="userinput"><b class="ph userinput">install deactivate chef</b></kbd></code></pre>
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1" aria-labelledby="ariaid-title13" lang="en-US" id="task_0B8217127E944B7AA4FB100D7A2ED517">
+                     <h2 class="title topictitle2" id="ariaid-title13">Removing
+                        	 Packages
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section prereq p" id="task_0B8217127E944B7AA4FB100D7A2ED517__prereq_crt_xgb_m1b">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Before you begin</h3>
+                           </section>
+                           			
+                           			
+                           <p class="p">Deactivate the package before removing it. Only deactivated RPM packages can be removed.</p>
+                           		
+                        </section>
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <table class="ol steps detailed_steps">
+                           <thead>
+                              <tr>
+                                 <th font-weight="bold" align="left">Command or Action</th>
+                                 <th font-weight="bold" align="left">Purpose</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span> 
+                                          				<span class="keyword kwd">install remove</span> 
+                                          				<var>package-name</var> </span>
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Removes the RPM package. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <section class="example" id="task_0B8217127E944B7AA4FB100D7A2ED517__example_F3949502FF9447639C726EC35C40B171">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h3>
+                           </section>
+                           		
+                           <p class="p">The following example shows how to remove the Chef RPM package:
+                              		
+                           </p>
+                           		<pre class="pre codeblock"><code>switch# <kbd class="userinput"><b class="ph userinput">install remove chef-12.0-1.el5.x86_64.rpm</b></kbd></code></pre>
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1" aria-labelledby="ariaid-title14" lang="en-US" id="task_96084ED6F59D48DC8FCA87BBDEB38507">
+                     <h2 class="title topictitle2" id="ariaid-title14">Displaying Installed
+                        	 Packages
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <table class="ol steps detailed_steps">
+                           <thead>
+                              <tr>
+                                 <th font-weight="bold" align="left">Command or Action</th>
+                                 <th font-weight="bold" align="left">Purpose</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span> 
+                                          				<span class="keyword kwd">show install packages</span> 
+                                          			  </span>
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Displays a list of the installed packages.
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <section class="example" id="task_96084ED6F59D48DC8FCA87BBDEB38507__example_F3949502FF9447639C726EC35C40B171">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h3>
+                           </section>
+                           		
+                           <p class="p">The following example shows how to display a list of the installed
+                              		  packages:
+                              		
+                           </p>
+                           		<pre class="pre codeblock"><code>switch# <kbd class="userinput"><b class="ph userinput">show install packages</b></kbd></code></pre>
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1" aria-labelledby="ariaid-title15" lang="en-US" id="task_1F1FCD465BB2480398D52F6E89B317E6">
+                     <h2 class="title topictitle2" id="ariaid-title15">Displaying Detail
+                        	 Logs
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <table class="ol steps detailed_steps">
+                           <thead>
+                              <tr>
+                                 <th font-weight="bold" align="left">Command or Action</th>
+                                 <th font-weight="bold" align="left">Purpose</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span><span class="keyword kwd"> show tech-support
+                                             				  install</span> </span>
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Displays the detail logs. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <section class="example" id="task_1F1FCD465BB2480398D52F6E89B317E6__d32802e1327">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h3>
+                           </section> 
+                           		
+                           <p class="p">The following example shows how to
+                              		  display the detail logs:
+                              		
+                           </p> 
+                           		<pre class="pre codeblock"><code>switch# <kbd class="userinput"><b class="ph userinput">show tech-support install</b></kbd></code></pre>
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1" aria-labelledby="ariaid-title16" lang="en-US" id="task_997685E8BC924935B41967EDC060E931">
+                     <h2 class="title topictitle2" id="ariaid-title16">Upgrading a
+                        	 Package
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <table class="ol steps detailed_steps">
+                           <thead>
+                              <tr>
+                                 <th font-weight="bold" align="left">Command or Action</th>
+                                 <th font-weight="bold" align="left">Purpose</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span>install add 
+                                          				<var>package-name</var> activate upgrade </span>
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Upgrade a package. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <section class="example" id="task_997685E8BC924935B41967EDC060E931__d32802e1419">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h3>
+                           </section> 
+                           		
+                           <p class="p">The following example shows how to upgrade a package: </p> 
+                           		<pre class="pre codeblock"><code>switch# <kbd class="userinput"><b class="ph userinput">install add bootflash:bgp-1.0.1-r0.lib32_n9000.rpm activate ?</b></kbd>
+downgrade  Downgrade package
+forced     Non-interactive
+upgrade    Upgrade package
+switch# <kbd class="userinput"><b class="ph userinput">install add bootflash:bgp-1.0.1-r0.lib32_n9000.rpm activate upgrade</b></kbd> 
+[####################] 100%
+Install operation completed successfully at Thu Aug  6 12:46:53 2015
+
+</code></pre>
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1" aria-labelledby="ariaid-title17" lang="en-US" id="task_60292C7124914762A4E814DF16596854">
+                     <h2 class="title topictitle2" id="ariaid-title17">Downgrading a
+                        	 Package
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <table class="ol steps detailed_steps">
+                           <thead>
+                              <tr>
+                                 <th font-weight="bold" align="left">Command or Action</th>
+                                 <th font-weight="bold" align="left">Purpose</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" class="step--command">
+                                    <p class="ph cmd"><span> install add 
+                                          				<var>package-name</var> activate downgrade 
+                                          			  </span>
+                                       		  
+                                    </p>
+                                 </td>
+                                 <td align="left" valign="top" class="step--purpose">
+                                    <section class="itemgroup info"> 
+                                       			 
+                                       <p class="p">Downgrade a package. 
+                                          			 
+                                       </p> 
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <section class="example" id="task_60292C7124914762A4E814DF16596854__example_8AEBD9814B1E4D82A7BCE6874607CC4A">
+                           <section class="tasklabel">
+                              <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h3>
+                           </section> 
+                           		
+                           <p class="p">The following example shows how to
+                              		  downgrade a package:
+                              		
+                           </p> 
+                           		<pre class="pre codeblock"><code>switch# <kbd class="userinput"><b class="ph userinput">install add bootflash:bgp-1.0.1-r0.lib32_n9000.rpm activate ?</b></kbd>
+downgrade  Downgrade package
+forced     Non-interactive
+upgrade    Upgrade package
+switch# <kbd class="userinput"><b class="ph userinput">install add bootflash:bgp-1.0.1-r0.lib32_n9000.rpm activate downgrade</b></kbd> 
+[####################] 100%
+Install operation completed successfully at Thu Aug  6 12:46:53 2015
+
+</code></pre>
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <p class="topictitle1" id="d32802e1585a1635">Third-Party Applications</p>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title18" lang="en-US" id="id_12144">
+                     <h2 class="title topictitle2" id="ariaid-title18">NX-OS</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="id_12144__section_18E9B35BAAF44969B05088C8FEF41147"> 
+                           		
+                           <p class="p">
+                              For more information about the Cisco NX-OS repository for other third-party applications, see <a class="xref" href="https://devhub.cisco.com/artifactory/open-nxos/7.0-3-I2-1/x86_64/" target="_blank">https://devhub.cisco.com/artifactory/open-nxos/7.0-3-I2-1/x86_64/</a>
+                              			
+                           </p> 
+                           		
+                           <p class="p"> For more information about NX-API REST API object model specifications, see <a class="xref" href="https://developer.cisco.com/docs/nx-api-dme-model-9-3-1-reference/" target="_blank">https://developer.cisco.com/docs/nx-api-dme-model-9-3-1-reference/</a>
+                              			
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title19" lang="en-US" id="id_12145">
+                     <h2 class="title topictitle2" id="ariaid-title19"> DevOps
+                        	 Configuration Management Tools
+                     </h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="id_12145__section_CCC847C23F3248DF99F813DFC7F4A8BE"> 
+                           		
+                           <p class="p">For DevOps configuration management tools, refer to the following links: </p>
+                           			
+                           <ul class="ul" id="id_12145__ul_gv5_syr_rx">
+                              
+                              <li class="li" id="id_12145__li_81615DB578BD4915A7B6712B45F0CAFF">
+                                 					
+                                 <p class="p"> Ansible 2.0 Release(Nexus Support), <a class="xref" href="https://releases.ansible.com/ansible/" target="_blank">Ansible Release Index</a></p>
+                                 				
+                              </li>
+                              
+                              <li class="li" id="id_12145__li_4FC91B90AD5B4850A67E568CF74BAEEB">
+                                 					
+                                 <p class="p"> Ansible NX-OS Sample Modules, <a class="xref" href="https://github.com/jedelman8/nxos-ansible" target="_blank">Ansible NX-OS Sample Modules</a></p>
+                                 				
+                              </li>
+                              
+                              <li class="li" id="id_12145__li_39AD90E22FE548ACA4C88F99A05F638F">
+                                 					
+                                 <p class="p">Puppet, <a class="xref" href="https://forge.puppet.com/puppetlabs/ciscopuppet" target="_blank">Puppet Forge Cisco Puppet</a></p>
+                                 				
+                              </li>
+                              
+                              <li class="li" id="id_12145__li_0343560E16A749318B8D20A8F0255C3E">
+                                 					
+                                 <p class="p"> Cisco Puppet Module(Git), <a class="xref" href="https://github.com/cisco/cisco-network-puppet-module/tree/master" target="_blank">Cisco Network Puppet Module</a></p>
+                                 				
+                              </li>
+                              
+                              <li class="li" id="id_12145__li_458D3D85A98C4B1D89432D29E761D5AD">
+                                 					
+                                 <p class="p">Chef, <a class="xref" href="https://supermarket.chef.io/cookbooks/cisco-cookbook" target="_blank">Chef Supermarket Cisco Cookbook</a></p>
+                                 				
+                              </li>
+                              
+                              <li class="li" id="id_12145__li_66587DEE724D4F70A2490B3988095192">
+                                 					
+                                 <p class="p">Cisco Chef Cookbook(Git), <a class="xref" href="https://github.com/cisco/cisco-network-chef-cookbook/tree/master" target="_blank">Cisco Network Chef Cookbook</a></p>
+                                 				
+                              </li>
+                              
+                           </ul> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title20" lang="en-US" id="id_12147">
+                     <h2 class="title topictitle2" id="ariaid-title20">
+                        		<strong class="ph b">V9K</strong>
+                        	
+                     </h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="id_12147__section_1E416DA9167A4514829B5B594FF54456">
+                           			
+                           			
+                           <p class="p">To download a virtual Nexus 9000 switch, for an <span class="keyword">ESX5.1/5.5</span>, <span class="keyword">VirtualBox</span>, <span class="keyword">Fusion</span>, and <span class="keyword">KVM</span>, go to <a class="xref" href="https://software.cisco.com/portal/pub/download/portal/select.html?&amp;mdfid=286312239&amp;flowid=81422&amp;softwareid=282088129" target="_blank">https://software.cisco.com/portal/pub/download/portal/select.html?&amp;mdfid=286312239&amp;flowid=81422&amp;softwareid=282088129</a>. 
+                           </p>
+                           		
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title21" lang="en-US" id="id_12148">
+                     <h2 class="title topictitle2" id="ariaid-title21"> Automation Tool
+                        	 Educational Content
+                     </h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="id_12148__section_30349E1262AF4750BF44AE84C67384E0"> 
+                           		
+                           <p class="p"> For a free book on Open NX-OS architecture and automation, see <a class="xref" href="http://www.cisco.com/c/dam/en/us/td/docs/switches/datacenter/nexus9000/sw/open_nxos/programmability/guide/Programmability_Open_NX-OS.pdf" target="_blank">http://www.cisco.com/c/dam/en/us/td/docs/switches/datacenter/nexus9000/sw/open_nxos/programmability/guide/Programmability_Open_NX-OS.pdf</a>
+                              			
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title22" lang="en-US" id="reference_2EB1534232404623806AE9AF7F1A578F">
+                     <h2 class="title topictitle2" id="ariaid-title22">collectd</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_2EB1534232404623806AE9AF7F1A578F__section_26844941E8D7480BB0701D6C593D5577"> 
+                           		
+                           <p class="p">collectd is a daemon that periodically collects system performance statistics and provides multiple means to store the values,
+                              such as RRD files. Those statistics can then be used to find current performance bottlenecks (for example, performance analysis)
+                              and predict future system load (that is, capacity planning). 
+                           </p>
+                           		
+                           <p class="p">For additional information, see 
+                              		  <a class="xref" href="https://collectd.org" target="_blank">https://collectd.org</a>.
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title23" lang="en-US" id="reference_810E239CD1234323B6D2A92B8693D19D">
+                     <h2 class="title topictitle2" id="ariaid-title23">Ganglia</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_810E239CD1234323B6D2A92B8693D19D__section_2789C59DA97B44ADB8BBA71B5E7D7424"> 
+                           		
+                           <p class="p">Ganglia is a scalable distributed monitoring system for high-performance computing systems such as clusters and grids. It
+                              is based on a hierarchical design that is targeted at federations of clusters. It leverages widely used technologies such
+                              as XML for data representation, XDR for compact, portable data transport, and RRDtool for data storage and visualization.
+                              It uses engineered data structures and algorithms to achieve low per-node overheads and high concurrency. The implementation
+                              is robust, has been ported to an extensive set of operating systems and processor architectures, and is currently in use on
+                              thousands of clusters around the world. It has been used to link clusters across university campuses and around the world
+                              and can scale to handle clusters with 2000 nodes. 
+                           </p>
+                           		
+                           <p class="p">For additional information, see 
+                              		  <a class="xref" href="http://ganglia.info" target="_blank">http://ganglia.info</a>.
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title24" lang="en-US" id="reference_56CEAD55B14D48A3A2A2E05F4E62BDF4">
+                     <h2 class="title topictitle2" id="ariaid-title24">Iperf</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_56CEAD55B14D48A3A2A2E05F4E62BDF4__section_D943284349E74E0B9BE41ED0F0B0D4F9"> 
+                           		
+                           <p class="p">Iperf was developed by NLANR/DAST to measure maximum TCP and UDP bandwidth performance. Iperf allows the tuning of various
+                              parameters and UDP characteristics. Iperf reports bandwidth, delay jitter, datagram loss. 
+                           </p>
+                           		
+                           <p class="p">For additional information, see 
+                              		  <a class="xref" href="http://sourceforge.net/projects/iperf/" target="_blank">http://sourceforge.net/projects/iperf/</a>
+                              		  or 
+                              		  <a class="xref" href="http://iperf.sourceforge.net" target="_blank">http://iperf.sourceforge.net</a>. 
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title25" lang="en-US" id="reference_809FCF9B6D0F4546A2F09F4EAD6C7D0E">
+                     <h2 class="title topictitle2" id="ariaid-title25">LLDP</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_809FCF9B6D0F4546A2F09F4EAD6C7D0E__section_AA56AA1F36BF4A249A72E51C06A03584"> 
+                           		
+                           <p class="p">The link layer discover protocol (LLDP) is an industry standard protocol that is designed to supplant proprietary link layer
+                              protocols such as EDP or CDP. The goal of LLDP is to provide an intervendor compatible mechanism to deliver link layer notifications
+                              to adjacent network devices. 
+                           </p>
+                           		
+                           <p class="p">For more information, see 
+                              		  <a class="xref" href="https://vincentbernat.github.io/lldpd/index.html" target="_blank">https://vincentbernat.github.io/lldpd/index.html</a>.
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title26" lang="en-US" id="reference_743520A61D4544CB873B0AB03040BAC1">
+                     <h2 class="title topictitle2" id="ariaid-title26">Nagios</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_743520A61D4544CB873B0AB03040BAC1__section_5E589DF2B31F4E4B867E3DFD2D96EB1C"> 
+                           		
+                           <section class="p">Nagios is open source software that monitors the following through the Nagios remote plug-in executor (NRPE) and through SSH
+                              or SSL tunnels:
+                              <ul class="ul" id="reference_743520A61D4544CB873B0AB03040BAC1__ul_cwq_gq3_qgb">
+                                 
+                                 <li class="li">
+                                    						
+                                    <p class="p">Network services through ICMP, SNMP, SSH, FTP, HTTP, and so on</p>
+                                    					
+                                 </li>
+                                 
+                                 <li class="li">
+                                    						
+                                    <p class="p">Host resources, such as CPU load, disk usage, system logs, and so on</p>
+                                    					
+                                 </li>
+                                 
+                                 <li class="li">
+                                    						
+                                    <p class="p">Alert services for servers, switches, applications</p>
+                                    					
+                                 </li>
+                                 
+                                 <li class="li">
+                                    						
+                                    <p class="p">Services</p>
+                                    					
+                                 </li>
+                                 
+                              </ul>
+                              
+                           </section>
+                           		
+                           <p class="p">For more information, see 
+                              		  <a class="xref" href="https://www.nagios.org/" target="_blank">https://www.nagios.org/</a>.
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title27" lang="en-US" id="reference_B354190501F54D6A8A49736132866FBE">
+                     <h2 class="title topictitle2" id="ariaid-title27">OpenSSH</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_B354190501F54D6A8A49736132866FBE__section_C9590044870F4D4FAC7EC06BA2715E21"> 
+                           		
+                           <p class="p">OpenSSH is an open-source version of the SSH connectivity tools that encrypts all traffic (including passwords) to eliminate
+                              eavesdropping, connection hijacking, and other attacks. OpenSSH provides secure tunneling capabilities and several authentication
+                              methods, and supports all SSH protocol versions. 
+                           </p>
+                           		
+                           <p class="p">For more information, see 
+                              		  <a class="xref" href="http://www.openssh.com" target="_blank">http://www.openssh.com</a>.
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title28" lang="en-US" id="reference_5D02231B554446939819C98F579B30FE">
+                     <h2 class="title topictitle2" id="ariaid-title28">Quagga</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_5D02231B554446939819C98F579B30FE__section_1E623F0DBD2C432A871D29D155EBD3F8"> 
+                           		
+                           <p class="p">Quagga is a network routing software suite that implements various routing protocols. Quagga daemons are configured through
+                              a network accessible CLI called a "vty."
+                           </p>
+                           		
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>
+                                       		  
+                                       <p class="p">Only Quagga BGP has been validated. 
+                                          		  
+                                       </p>
+                                       		
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table>
+                           		
+                           <p class="p">For more information, see 
+                              		  <a class="xref" href="http://www.nongnu.org/quagga/" target="_blank">http://www.nongnu.org/quagga/</a>.
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title29" lang="en-US" id="reference_5DF333922FBE4DD6AC30C7FEB02A47D2">
+                     <h2 class="title topictitle2" id="ariaid-title29">Splunk</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_5DF333922FBE4DD6AC30C7FEB02A47D2__section_7FB2F6D2FADA43FEBBDB49B85DBF000C"> 
+                           		
+                           <p class="p">Splunk is a web-based data collection, analysis, and monitoring tool that has search, visualization, and prepackaged content
+                              for use-cases. The raw data is sent to the Splunk server using the Splunk Universal Forwarder. Universal Forwarders provide
+                              reliable, secure data collection from remote sources and forward that data into the Splunk Enterprise for indexing and consolidation.
+                              They can scale to tens of thousands of remote systems, collecting terabytes of data with a minimal impact on performance.
+                              
+                           </p> 
+                           		
+                           <p class="p">For additional
+                              		  information, see 
+                              		  <a class="xref" href="http://www.splunk.com/en_us/download/universal-forwarder.html" target="_blank">http://www.splunk.com/en_us/download/universal-forwarder.html</a>.
+                              		  
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title30" lang="en-US" id="reference_6A5CE238482F4C119BA3A1BAD364C1FA">
+                     <h2 class="title topictitle2" id="ariaid-title30">tcollector</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_6A5CE238482F4C119BA3A1BAD364C1FA__section_7D8EC519382A46BBA13842CC1BE45324"> 
+                           		
+                           <p class="p">tcollector is a client-side process that gathers data from local collectors and pushes the data to Open Time Series Database
+                              (OpenTSDB).
+                           </p>
+                           			
+                           <p class="p">tcollector has the following features:</p>
+                           			
+                           <ul class="ul" id="reference_6A5CE238482F4C119BA3A1BAD364C1FA__ul_j3s_yfq_4y">
+                              
+                              <li class="li">
+                                 					
+                                 <p class="p">Runs data collectors and collates the data.</p>
+                                 				
+                              </li>
+                              
+                              <li class="li">
+                                 					
+                                 <p class="p">Manages connections to the time series database (TSD).</p>
+                                 				
+                              </li>
+                              
+                              <li class="li">
+                                 					
+                                 <p class="p">Eliminates the need to embed TSD code in collectors.</p>
+                                 				
+                              </li>
+                              
+                              <li class="li">
+                                 					
+                                 <p class="p">Deduplicates repeated values.</p>
+                                 				
+                              </li>
+                              
+                              <li class="li">
+                                 					
+                                 <p class="p">Handles wire protocol work.</p>
+                                 				
+                              </li>
+                              
+                           </ul>
+                           		
+                           <p class="p">For additional information, see 
+                              		  <a class="xref" href="http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html" target="_blank">http://opentsdb.net/docs/build/html/user_guide/utilities/tcollector.html</a>.
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title31" lang="en-US" id="reference_C0D636947CF84BA3A10D2C54CA8AE912">
+                     <h2 class="title topictitle2" id="ariaid-title31">tcpdump</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_C0D636947CF84BA3A10D2C54CA8AE912__section_75A08FA0D13E4C7482ED9E0087FE09CD"> 
+                           		
+                           <p class="p">tcpdump is a CLI application that prints a description of the contents of packets on a network interface that match a Boolean
+                              expression. The description is preceded by a timestamp, printed, by default, as hours, minutes, seconds, and fractions of
+                              a second since midnight. 
+                           </p>
+                           			
+                           <section class="p">tcpdump can be run with the following flags:
+                              <ul class="ul" id="reference_C0D636947CF84BA3A10D2C54CA8AE912__ul_lyj_ys3_qgb">
+                                 
+                                 <li class="li">
+                                    						
+                                    <p class="p">-w, which causes it to save the packet data to a file for later analysis.</p>
+                                    					
+                                 </li>
+                                 
+                                 <li class="li">
+                                    						
+                                    <p class="p">-r, which causes it to read from a saved packet file rather than to read packets from a network interface.</p>
+                                    					
+                                 </li>
+                                 
+                                 <li class="li">
+                                    						
+                                    <p class="p">-V, which causes it to read a list of saved packet files.</p>
+                                    					
+                                 </li>
+                                 
+                              </ul> In all cases, tcpdump processes only the packets that match the expression. 
+                           </section>
+                           		
+                           <p class="p">For more information, see 
+                              		  <a class="xref" href="http://www.tcpdump.org/manpages/tcpdump.1.html" target="_blank">http://www.tcpdump.org/manpages/tcpdump.1.html</a>.
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title32" lang="en-US" id="reference_98F8B69BD1F64292BCB58BB9E2B3B2C3">
+                     <h2 class="title topictitle2" id="ariaid-title32">TShark</h2>
+                     <section class="body refbody">
+                        <section class="section" id="reference_98F8B69BD1F64292BCB58BB9E2B3B2C3__section_D100D58D70B4432CA98BA07367217826"> 
+                           		
+                           <p class="p">TShark is a network protocol analyzer on the CLI. Tshar lets you capture packet data from a live network, or read packets
+                              from a previously saved capture file. You can print either a decoded form of those packets to the standard output or write
+                              the packets to a file. TShark's native capture file format is pcap, the format that is used by <span><span class="keyword kwd">tcpdump</span> </span> and various other tools also. TShark can be used within the Guest Shell after removing the cap_net_admin file capability.
+                              
+                           </p> 
+                           		<pre class="pre codeblock"><code>setcap
+ cap_net_raw=ep /sbin/dumpcap</code></pre> 
+                           		<table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr> 
+                                       		  
+                                       <p class="p">This command must
+                                          			 be run within the Guest Shell. 
+                                          		  
+                                       </p> 
+                                       		
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table> 
+                           		
+                           <p class="p">For more
+                              		  information, see 
+                              		  <a class="xref" href="https://www.wireshark.org/docs/man-pages/tshark.html" target="_blank">https://www.wireshark.org/docs/man-pages/tshark.html</a>. 
+                              		
+                           </p> 
+                           	 
+                        </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+               </article>
+            </article>
+         </main>
+      
+
+</div> 
+ 
+    </div>
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rightRailComponent noprint base-blowout">
+    <div class="eotPersonalization">
+        <section id="eotTDCampaign"></section>
+    </div>    
+    <div class="eot-feedback-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-feedback">
+  <h3>Was this Document Helpful?</h3>
+  <span class="eot-feedback-btnwrap">
+    <button class="eot-feedback-btn eot-feedback-btn-yes" aria-label="Was this Document Helpful?? Yes">Yes</button>
+    <button class="eot-feedback-btn eot-feedback-btn-no" aria-label="Was this Document Helpful?? No">No</button>
+  </span>
+  <span lang="en" class="eot-feedback-olwrap">
+    
+      <a href="javascript: void(0);" class="eot-feedback-ol" onclick="window.open('https://ciscocx.qualtrics.com/jfe/form/SV_be0fHnqDoKM7sto?Ref=' + location.href + '&resize=false', 'feedback', 'width=650, height=460, scrollbars=1, menubar=1, resizable=1'); return false;">
+      <img id="feedback_img" border="0" style="cursor: pointer;" title="Feedback" src="//www.cisco.com/c/dam/cdc/i/Feedback_OceanBlue.png" alt="Feedback">Feedback</a>
+    
+  </span>
+</div>
+
+
+</div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-vav">
+  <ul>
+  </ul>
+</div>
+    </div>
+			
+    <div class="letUsHelp">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eotLetUsHelp">
+    <h3>Contact Cisco</h3>
+    <ul>
+         <li><a id="eotLetUsHelpProdDocUrl" href="https://mycase.cloudapps.cisco.com/start?prodDocUrl=">Open a Support Case</a><img src="/etc/designs/cdc/fw/i/icon_lock_small.png" alt="login required"/></li>
+        <li>(Requires a <a href="//www.cisco.com/c/en/us/services/order-services.html">Cisco Service Contract</a>)</li>
+    </ul>
+</div>
+
+
+<script>
+    jQuery(document).ready(function() {
+        var getURL=jQuery("#eotLetUsHelpProdDocUrl").attr("href"), 
+            domInd = location.href.indexOf('cisco.com') ;
+        if ( domInd > -1 && domInd < location.href.search(/\w\/\w/) ) {
+            getURL += encodeURI(location.href);
+        }
+		jQuery("#eotLetUsHelpProdDocUrl").attr("href",getURL);
+    });
+</script>
+
+
+    </div>
+
+    <div id="eotRightRailMBox"><!--MBox-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- IT:components/mbox/banner-mbox:V0.0.0 -->
+
+
+
+<div>
+    <div class="mboxDefault"></div>   
+    <script type="text/javascript">
+        var test="";
+        if(test!=undefined && test.trim().length>0){
+           mboxCreate('en-us_dg_support_bookchapters','type=default','');
+        }else{
+           mboxCreate('en-us_dg_support_bookchapters','type=default');
+        }
+       
+    </script>
+</div>
+<!--MBox--></div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+	<script type="text/javascript">
+			    var eottdatp = document.getElementsByClassName('eot-tdatp');
+			    if (eottdatp && eottdatp.style) {
+        			eottdatp.style.display="none";
+			    }
+        		  </script>
+  	
+
+
+    </div>
+			
+    <div></div>
+
+</div>
+
+
+    </div>
+</div>
+
+     <!--googleoff: index--><!--googleoff: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end: responsive fat footer re-use wrapper-->
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="module" src="/site/web-components/us/en/cdc-footer.js"></script>
+        <cdc-footer></cdc-footer>
+    
+
+<script type="text/javascript">
+    if(document.querySelector('#privacy-manager')!=null){
+        document.querySelector('#privacy-manager').href='#cookies';
+    }
+  </script>   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-overlay"></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/etc/designs/cdc/clientlibs/responsive/js/books.min.js"></script>
+
+<script src="/etc/designs/cdc/fw/m/books_metricsrule.js" type="text/javascript" async></script>
+    
+    
+
+    <!-- SiteCatalyst code version: H.24.4. -->
+    <noscript><img src="//cisco.112.2o7.net/b/ss/cisco-mobile/5/12345" width="2" height="2" border="0" alt=""/></noscript>
+
+</body>
+</html>

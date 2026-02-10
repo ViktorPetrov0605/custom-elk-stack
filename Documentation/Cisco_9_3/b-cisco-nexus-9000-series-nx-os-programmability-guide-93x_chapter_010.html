@@ -1,0 +1,2436 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:fb="//www.facebook.com/2008/fbml" xmlns:og="//opengraphprotocol.org/schema/" lang="en" xml:lang="en"  class="no-touch no-js">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="rei" content="3/2/2022 10.39am est" />
+
+    
+        <script tyle="text/javascript" src="/content/dam/cdc/j/cdcrSwitch.js"></script>
+        <script type="text/javascript"> 
+            if (typeof cdc === "undefined"){
+                cdc = {};
+            }
+            cdc.localizedLang="en/us";
+
+            if (window.cdcext === undefined) { window.cdcext = {}; }
+            cdcext.customEnvironment = "prod";
+            if (window.cdclocale === undefined) { window.cdclocale = {}; }
+            cdclocale.locale = cdc.localizedLang=="en/us"?"en_us":cdc.localizedLang;
+
+        </script> 
+         
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/c/dam/cdc/t/ctm-core.js"></script>
+<script>
+    window['adrum-start-time'] = new Date().getTime();
+    window.environ = "prod" ;
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    if (window.cpe === undefined) {
+        window.cpe = {};
+    }
+
+    cpe.accountName = "prod";
+    cpe.config = ["cinf","dsc","pps"];
+    cpe.hideMethod = "elements";
+
+    window.targetGlobalSettings = JSON.parse('{\x22timeout\x22:4000}');
+    window.targetPageParamsAll = () => JSON.parse('{\x22entity\x22:\x22{\\\x22id\\\x22:\\\x221561676649100554\\\x22,\\\x22categoryId\\\x22:\\\x22\\\x22}\x22}');
+
+    
+    const bullseyeLibrary = `/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/external/bullseye.js`;
+
+    import(bullseyeLibrary);
+</script>
+<script src="/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/regional-mbox/regional-mbox.js"></script>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+        <title>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Overview [Cisco Nexus 9000 Series Switches] - Cisco</title>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"  />
+    <meta name="description" content="Overview"  />
+    <meta name="title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Overview [Cisco Nexus 9000 Series Switches]"  />
+    <meta name="documentId" content="1561676615227515"  />
+    <meta name="templateName" content="book"  />
+    <meta property="fb:app_id" content="156494687694418"  />
+    <meta name="ioContentSource" content="WEM"  />
+    <meta name="docType" content="TSD Products Programming Reference Guide Chapter"  />
+    <meta name="concept" content="Cisco Nexus 9000 Series Switches"  />
+    <meta name="iaPath" content="cisco.com#Products#Cisco Products#Switches#Data Center Switches#Cisco Nexus 9000 Series Switches"  />
+    <meta name="contentType" content="cisco.com#US#preSales"  />
+    <meta name="locale" content="US"  />
+    <meta name="language" content="en"  />
+    <meta name="country" content="US"  />
+    <meta name="CCID_Page" content="cc001770"  />
+    <meta name="date" content="Thu Jul 24 01:33:50 PDT 2025"  />
+    <meta name="accessLevel" content="Customer"  />
+    <meta name="accessLevel" content="Guest"  />
+    <meta name="accessLevel" content="Partner"  />
+    <meta name="entitlementExpression" content="contains( &quot;0,1,2,3,4,7&quot; , $profileField[3] )"  />
+    <meta property="og:site_name" content="Cisco"  />
+    <meta property="og:type" content="website"  />
+    <meta property="og:title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Overview [Cisco Nexus 9000 Series Switches]"  />
+    <meta property="og:description" content="Overview"  />
+    <meta property="og:url" content="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html"  />
+    <link rel="canonical" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html"/>
+	<link rel="alternate" hreflang="x-default" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html"/>
+<link rel="alternate" hreflang="ja-jp" href="https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html"/>
+<link rel="alternate" hreflang="en-us" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html"/>
+
+
+    
+ 
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/shared.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/underscore.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script type="text/javascript">
+    $CQ(function() {
+        CQ_Analytics.SegmentMgr.loadSegments("\/etc\/segmentation");
+        CQ_Analytics.ClientContextUtils.init("\/c\/dnc\/etc\/clientcontext\/default", "\/content\/en\/us\/td\/docs\/switches\/datacenter\/nexus9000\/sw\/93x\/progammability\/guide\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x_chapter_010");
+
+        
+    });
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/cisco-sans.min.css" type="text/css">
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc/designs/cdc/clientlibs/responsive/js/foundation.min.js"></script>
+
+    <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/books.min.css" type="text/css">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+    <script>
+        sessionStorage.setItem("logOutIntermediateMessage", 'You are being logged out.');
+    </script>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom JSON LD For Products Type -->
+
+    
+    <script type="application/ld+json">
+        [
+           
+            {
+          "@context": "http://www.schema.org",                                                                        
+          "@type": "WebPage",
+          "name": "Overview",  		  
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html",
+          "description": "Overview",
+          "publisher": {
+              "@type": "Corporation",
+                 "name": "Cisco"
+            }
+        }]
+    </script>
+<!-- End Custom JSON LD For Products Type -->
+
+<!-- Video JSON LD -->
+
+
+
+
+<!-- End Video JSON LD -->
+
+    
+
+                              <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="GKZXC-NS3SU-A7VFH-HKBHM-U7LKH",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"GKZXC-NS3SU-A7VFH-HKBHM-U7LKH";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="wkcfb2s4piiro2mgnfqq-f-ad9bbb0ff-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,o={"ak.v":"39","ak.cp":"61004","ak.ai":parseInt("271834",10),"ak.ol":"0","ak.cr":13,"ak.ipv":4,"ak.proto":"h2","ak.rid":"b4a8e275","ak.r":45172,"ak.a2":n,"ak.m":"dsca","ak.n":"essl","ak.bpcip":"178.132.80.0","ak.cport":35562,"ak.gh":"92.123.103.63","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1770416481","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==JlL9mldUMhz83W4nnfMbZIwuhI9OSD/8284Nh/9/kdvnYeY6sMM42KJHcVYi35uP1+roYF7xPuOWH+ocHToTXbdbrvVny1OYnnnvAICd642wCGePpQ8DV+y8mmFhtI5wI2Pg33N2160N4seAOvFuHCFU4kFQz0GllG8SuZnhW1iVJpC8s50oa2INzN+oooJQ2zl4kUUuRj3N7guH3K7ElFDL1VhS/pa5gKuhbF984+6obr+m3tud2X7Fk4R5wNFV+aMUHNyx5Yzix4Vcebogmy8TsRVyCa90xGxXxp6hcqenawheaf1rqTowyUG4GhO6d6Ojq47yuso8Ztz+Mo4O8AqFeN4DI8PWbdWSPLNHPSMBI2K/k7X+5Z4VyDBJaI3OJJ/PuJxTrcTto/sFm+Slb0Ot/AwZvOsQoi7oM/D9eeY=","ak.pv":"540","ak.dpoabenc":"","ak.tf":i};if(""!==t)o["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))o["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(o)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:o,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+
+<body id="wcq" class="fw-res cdc-support cdc-books cdc-high-density cdc-full-width cdc-transform
+">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-skiplinks">
+    <ul class="container">
+        <li><a id="skiplink-content" href="#fw-content">Skip to content</a></li>
+        <li><a id="skiplink-search" href="#">Skip to search</a></li>
+        <li><a id="skiplink-footer" href="#fw-footer-v2" class="last">Skip to footer</a></li>
+    </ul>
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="module" src="/site/web-components/us/en/cdc-header.js"></script>
+    <cdc-header></cdc-header>
+    <nav class="fw-c-header__seo-links" aria-hidden="true" style="display:none">
+        <ul>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/index.html">Cisco.com Worldwide</a></li>
+            <li><a tabindex="-1" href="/c/en/us/products/index.html">Products and Services</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/solutions/index.html">Solutions</a></li>
+            <li><a tabindex="-1" href="/c/en/us/support/index.html">Support</a></li>
+            <li><a tabindex="-1" href="/c/en/us/training-events.html">Learn</a></li>
+            <li><a tabindex="-1" href="//www.cisco.com/c/en/us/about/sitemap.html">Explore Cisco</a></li>
+            <li><a tabindex="-1" href="/c/en/us/buy.html">How to Buy</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Partners Home</a></li>                
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/cisco-partner-program/index.html?ccid=cc000864&dtid=odiprc001129">Partner Program</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/support-help/index.html">Support</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/tools/index.html?dtid=odiprc001129">Tools</a></li>
+            <li><a tabindex="-1" href="https://locatr.cloudapps.cisco.com/WWChannels/LOCATR/pf/index.jsp#/">Find a Cisco Partner</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/connect-with-a-partner/index.html?ccid=cc000864&dtid=odiprc001129">Meet our Partners</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Become a Cisco Partner</a></li>
+
+        </ul>
+    </nav>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-content" class="container grid">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+<div class="row full blowout" data-owner="ID">
+	<div class="col full ">
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav id="fw-breadcrumb" class="data-based user-driven-nav" aria-label="breadcrumbs" data-owner="ID">
+
+   
+    <ul itemscope itemtype="//schema.org/BreadcrumbList">
+        <li aria-hidden="true"><a href='#' class="skip"><span></span></a></li>
+        <li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/index.html'><span itemprop='name'>Home</span><meta itemprop='position' content='1' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/index.html'><span itemprop='name'>Support</span><meta itemprop='position' content='2' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/all-products.html'><span itemprop='name'>Product Support</span><meta itemprop='position' content='3' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/category.html'><span itemprop='name'>Switches</span><meta itemprop='position' content='4' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/series.html'><span itemprop='name'>Cisco Nexus 9000 Series Switches</span><meta itemprop='position' content='5' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/products-programming-reference-guides-list.html'><span itemprop='name'>Programming Guides</span><meta itemprop='position' content='6' /></a><span class='caret'></span></li>
+    </ul>
+</nav>
+<script>
+    if (window.cdc === undefined) { window.cdc = {}; }
+    if (cdc.breadcrumb === undefined) {
+        cdc.breadcrumb = (function () {
+            let clone = document.querySelector('#fw-breadcrumb').cloneNode(true);
+
+            let appendClone = function () {
+                let hasBreadcrumb = document.querySelector('#fw-breadcrumb') !== null,
+                    firstMarquee = document.querySelectorAll('.dmc-mq')[0];
+
+                if (!hasBreadcrumb && firstMarquee !== undefined) {
+                    firstMarquee.querySelector('.frame .inset').insertBefore(this.clone, firstMarquee.querySelector('.frame .inset').firstElementChild);
+                }
+            };
+
+            return {
+                clone: clone,
+                appendClone: appendClone
+            }
+        }());
+    }
+    //DE380224
+    var anchorChild = document.getElementsByTagName("a");
+    for(var i=0; i<anchorChild.length; i++){ 
+        if(anchorChild[i].getAttribute("itemprop")=="item")  {  
+            if ( anchorChild[i].href.includes("%3Clocale%3E") ){
+                let anchorChildHREF = anchorChild[i].href;
+                let docLocale = document.querySelector('meta[name="locale"]').getAttribute('content');
+                let docLanguage = document.querySelector('meta[name="language"]').getAttribute('content');
+                
+                var docSeparator;
+                
+                if ((docLocale.toLowerCase() == "us") && (docLanguage.toLowerCase() == "en")) {
+                    docSeparator="/";
+                } else {
+                    docSeparator="_";
+                }
+                
+                let anchorURLReplace = docLanguage.toLowerCase() + docSeparator + docLocale.toLowerCase();
+                anchorChildHREF = anchorChildHREF.replace("%3Clocale%3E", anchorURLReplace);
+                anchorChild[i].setAttribute('href', anchorChildHREF);
+            }
+        }
+    }
+</script>
+
+        
+		        <h1 id="fw-pagetitle" class="" data-owner="ID">Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</h1>
+		
+	</div>
+</div>
+     <!--googleon: index--><!--googleon: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   <!-- have to do this for _g.I18n to be defined in preview and publish modes -->
+  
+  <script type="text/javascript">
+      // initialize dictionary for i18n
+      cdc.util.ensureNamespace("cdc.rc");
+    cdc.rc.eotkeys = {
+        showOnly5Products : "Show Only 5 Products",       
+        showAllRowsProducts : "Show All nRows Products",
+        supportCommunityUrl : "https://community.cisco.com/t5/technology-and-support/ct-p/technology-support",
+        supportCommunity : "Cisco Community",
+        thankYou : "Thank You",
+        viewersAlso : "Customers Also Viewed", 
+        show : "Show", 
+        more : "More", 
+        showOnly3Documents: "Show Only 3 Documents"
+      };
+  </script>
+
+
+
+<div class="row blowout full visitedlinks">
+    <div class="col full">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <div class="disclaimers techdocs">
+        
+        <div class="disclaimerButtons">
+        <div class="aboutBias">
+            <button aria-expanded="false" >Bias-Free Language</button>
+        </div>
+        
+        </div>
+        
+        <div class="biasfreeContent panel">
+            <h3>Bias-Free Language</h3>
+            <p>The documentation set for this product strives to use bias-free language. For the purposes of this documentation set, bias-free is defined as language that does not imply discrimination based on age, disability, gender, racial identity, ethnic identity, sexual orientation, socioeconomic status, and intersectionality. Exceptions may be present in the documentation due to language that is hardcoded in the user interfaces of the product software, language used based on RFP documentation, or language that is used by a referenced third-party product. <a href="https://www.cisco.com/c/en/us/about/social-justice/inclusive-language-policy.html">Learn more</a> about how Cisco is using Inclusive Language.</p>
+        </div>
+        
+    </div><!-- disclaimers -->
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    /* this is needed for the translation selector */
+    if (typeof(cdc) == "undefined") cdc={};
+    if (typeof(cdc.translations) == "undefined") cdc.translations={};
+    var bookTitle = 'Book Title Page';
+</script>
+
+<span id="actionBar-top"></span>
+<section id="actionBar" class="noprint base-blowout">
+    <span class="icons">
+        
+        <button class="bookToc simpleOverlay-trigger" id="onlyforTrigger"> <!--US140575-->
+            Book Contents
+        </button>
+            <div class="bookToc simpleOverlay-content">
+               <div role="heading" class="title">Book Contents</div>
+               <!--googleoff: index--><!--googleoff: snippet-->  
+               <div class="content">
+                  
+
+
+
+<ul id="bookToc">
+    <li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_preface_00.html">Preface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01.html">New and Changed Information</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100101.html">Platform Support for Programmability Features</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html">Overview</a></li>
+<li><button><span></span>Shells and Scripting</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101100.html">Bash</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100.html">Guest Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101.html">Broadcom Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110000.html">Python API</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100111.html">Scripting with Tcl</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01001.html">iPXE</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01010.html">Kernel Stack</a></li>
+</ul>
+</li>
+<li><button><span></span>Applications</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html">Third-Party Applications</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01100.html">Ansible</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101000.html">Puppet Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100100.html">SaltStack</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100000.html">Using Chef Client with Cisco NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01111.html">Nexus Application Development - Yocto</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html">Nexus Application Development - SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101101.html">NX-SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100001.html">Using Docker with Cisco NX-OS</a></li>
+</ul>
+</li>
+<li><button><span></span>NX-API</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010011.html">NX-API CLI</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101110.html">NX-API REST</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010110.html">NX-API Developer Sandbox</a></li>
+</ul>
+</li>
+<li><button><span></span>Model-Driven Programmability</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010111.html">Infrastructure Overview</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011000.html">Managing Components</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html">OpenConfig YANG</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100110.html">NETCONF Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011011.html">Converting CLI Commands to Network Configuration Format</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html">RESTConf Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101111.html">gRPC Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110001.html">gNMI - gRPC Network Management Interface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011110.html">Dynamic Logger</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101001.html">Model Driven Telemetry</a></li>
+</ul>
+</li>
+<li><button><span></span>XML Management Interface</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100010.html">XML Management Interface</a></li>
+</ul>
+</li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_appendix_0100101.html">Streaming Telemetry Sources</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-n9k-websocket-subscription-93x.html">WebSocket Subscription</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-programmability-rfcs.html">Programmability RFCs</a></li>
+
+</ul>
+
+
+               </div>
+               <!--googleon: index--><!--googleon: snippet-->               
+            </div>
+
+        
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='versionddcontainer chapter'></div>
+<script type="text/html" class="versionstemp">
+            <div class="versionsdd">
+                <button class="versionbutton" aria-haspopup="true" aria-expanded="false" aria-labelledby="other versions" class="version"><label></label></button>
+                <ul class="versionlist" aria-labelledby="other versions">
+                <%
+                    let pageUrl = window.location.pathname.replace("/content/","/c/").toLowerCase();
+                    if (true) pageUrl = pageUrl.substring(0,pageUrl.lastIndexOf("/"))+".html";
+                    for(let i=0; i< data.length; i++) {
+                        let item = data[i],
+                            myurl = item.linkUrl,
+                            urlm = myurl.replace("/content/","/c/");;
+                            mytitle = item.linkTitle;
+                            myclass= urlm.toLowerCase() == pageUrl ? "class=\"selected\"":""; 
+%>
+                    <li><a href="${myurl}" ${myclass}>${mytitle}</a></li>
+<%
+                  }   %>
+                </ul>
+             </div>
+</script>
+    
+        <span class="utilities">
+          <button title="Search in this Book" class="mobileSearch simpleOverlay-trigger">
+            Search
+          </button>
+          <div class="mobileSearch simpleOverlay-content">
+            <div class="title">Find Matches in This Book</div>
+              <!--googleoff: index--><!--googleoff: snippet-->  
+              <div class="content">
+                <form id="mobileBooksearch" class="chapter">
+                   <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit"></button>
+                   <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+                </form>
+                <div id="overlayResults" role="region" aria-live="polite" >
+                   <!-- important, keep this results div begin end on same line in here -->
+                   <div class="results"></div>
+                </div>
+              </div>
+              <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="noprint" id="saveModule">
+
+<script type="text/javascript">
+    cdc.util.ensureNamespace("cdc.rc.savedoc");
+    cdc.rc.savedoc.isLoggedIn = false;
+    cdc.rc.savedoc.save = "Save";
+    cdc.rc.savedoc.saved = "Saved";
+</script>
+
+    <button class="save" aria-expanded="false" aria-label="Save">
+        <label>Save</label>
+    </button>    
+
+</div> 
+    <div class="saveDocumentMessage login cdc-expandPanel"  role="region" aria-live="polite">
+        <a href="/c/login/index.html?referer=/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html">Log in</a> to Save Content
+    </div>
+
+
+          <!-- Translation Selctor -->
+          <!-- Translation Selector is used on EOT and Books pages. if a page has a locale of en_US then it will provide a list of avaible translations, if its a translated page (non english locale) then provide the link to the english locale. -->
+
+
+
+                                <div class="noprint translations">
+                                        <a href="#" tabindex="-1">
+                                                <button type="button" class="translations translations-link anchor translationOptions simpleOverlay-trigger">
+                                                        <div class="toolbarIcon translationsIcon"></div><label class="iconLabel" id="onlyForNonEn">Translations</label>
+                                                </button>
+                                        </a>
+                                </div>
+           
+
+
+ 
+          <div class="translations simpleOverlay-content" role="dialog" id="dialogt" aria-labelledby="onlyForNonEN" aria-modal="true">
+            <div role="heading" class="title">Available Languages</div>
+               <!--googleoff: index--><!--googleoff: snippet--> 
+            <script language="javascript">                    
+                cdc.translations.map = "{ja-jp=https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html, en-us=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html, x-default=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html}";//storing the map for use in the JS
+                cdc.translations.locale="en_us";
+            </script>
+            <div class="content">
+              <div class="availableLanguagesList">
+                  <ul id="translationsList">
+                  </ul> 
+              </div>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+          
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // stored value for overlay label to use in js
+    var downloadOPtionLabel = 'Download Options',
+    	bookSearchlabel = 'Find Matches in This Book',
+    	translationsLabel = 'Translations',
+    	bookConentLabel= 'Book Contents';
+</script>
+
+
+        
+
+
+
+        <button title="Document Download Options" id="dwnld-button" class="downloadOptions simpleOverlay-trigger" aria-expanded="false">
+            Download
+        </button>
+        <div class="downloadOptions simpleOverlay-content" role="dialog" id="dialogd" aria-labelledby="dwnld-button" aria-modal="true" class="default_dialog">
+            <div role="heading" class="title">Download Options</div>
+            <!--googleoff: index--><!--googleoff: snippet-->  
+            <div class="content">
+                <header>
+
+                    <h3 class="h4"> Book Title</p>
+                    <p>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</p>
+                    <p class="h4"> Chapter Title</p>
+                    <h3>Overview</p>
+
+                </header>
+                <ul>
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.pdf" class="pdfIcon">PDF - Complete Book 
+                            <span>(6.23 MB)</span></a>
+
+                                   <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.pdf" class="chapter">PDF - This Chapter <span>(1.0 MB)</span></a>
+                                                            
+                            <p>View with Adobe Reader on a variety of devices</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.epub" class="epubIcon">ePub - Complete Book 
+                            <span>(2.62 MB)</span></a>
+                            
+                            <p>View in various apps on iPhone, iPad, Android, Sony Reader, or Windows Phone</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.mobi" class="mobiIcon">Mobi - Complete Book 
+                            <span>(6.36 MB)</span></a>
+                            
+                            <p>View on Kindle device or Kindle app on multiple devices</p>
+                        </li>                                  
+              </ul>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+        </div>
+
+          <button title="Print Friendly Page" class="print simpleOverlay-trigger">
+              Print
+          </button>
+        </span> 
+    </span>
+    <form id="booksearch" tabindex="0" class="chapter">
+       <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit" aria-label="Search"></button>
+       <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+    </form>
+      <div id="searchresult" role="region" aria-live="polite"><button class="close" title="Close Panel"><span></span><span></span></button>
+         <span class="headArrow"></span>
+         <h2>Results</h2>
+         <div class="matches">
+         </div>
+         <div class="results" tabindex="0">
+         </div>
+      </div>
+      <div id="searchResultChapterTitle"></div>
+</section>
+<script type="text/html" id="navigateMatchesTemplate">
+   <div>
+      <button class="up on" title="Previous Match"><span></span></button>
+      <button class="up off" title="Previous Match Not Available"><span></span></button>
+      <span class="matchlabel">Matches</span>
+      <button class="down on" title="Next Match"><span></span></button>
+      <button class="down off" title="Next Match Not Available"><span></span></button>
+   </div>
+</script>
+<script type="text/html" id="noChapterMatchTemplate">
+   <p>There are no Matches in this chapter.</p>
+</script>
+<script type="text/html" id="searchResultsListTemplate">
+   <p class="h3">Chapters with Matches</p>
+   <ul>
+<% var i = 0;
+    while ( modelData.links[i] ) {  %>
+      <li>
+<%     curpage = (window.location.pathname.indexOf(modelData.links[i].href) > -1 )?true:false;
+        if ( i === modelData.curpage ) {
+            if ( ! jQuery('.mobileSearch').css("display") == "block") { %>
+               <span class="currentIndicator"></span>${modelData.links[i].title}
+<%         } else {                %>
+               <span class="currentIndicator"></span><button class="curpage" data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%         }
+        } else {  %>
+            <button data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%     }  %>            
+      </li> 
+<% i++;
+    } %>
+   </ul> 
+</script>      
+<script type="text/html" id="noBookMatchTemplate">
+   <p class="head">No matches found in this book</p>
+   <p>This feature looks for an exact match of what you entered in the box.</p>
+   <p>If you entered several words, try reducing the entry to one or two and search again.</p>
+</script>
+<script type="text/html" id="errorTemplate">
+   <p>Search is currently unavailable due to technical issues. We are working to resolve the problem as quickly as possible.</p>
+</script>
+<script type="text/html" id="mobileSearchFooterTemplate">
+   <div id="mobileSearchFooter">
+      <button class="mobileSearch" title="Search in this Book"></button>
+      <button class="closeFooter"><span></span><span></span></button>
+      <div class="matches"> 
+      </div>
+   </div>   
+</script>
+ 
+    </div>
+</div>
+<div class="row blowout narrow-wide-v2 flip visitedlinks">
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div id="documentInfo">
+                  <dl>
+                     
+                      <dt>Updated:</dt><dd> September 11, 2023</dd>
+                     
+                  </dl>
+                    
+              </div>
+
+ 
+    </div>
+    <div id="chapterTitleDiv" class="col wide-v2 indent-at-xlarge">
+        <!-- this will be chapter title for chapters or header for TOC for books -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="chapter-title">Chapter: Overview </h2>  
+    
+
+    </div>
+</div>
+<div class="row blowout wide-narrow-v2 visitedlinks">
+    <div id="pageContentDiv" class="col wide-v2 indent-at-xlarge" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+        
+
+    
+ 
+ 
+
+<div id="chapterToc" class="base-blowout">
+    <button><span></span>Chapter Contents</button>
+    <div>
+    
+<ul>
+<li><a href="#id_84738">Overview</a></li>
+<li><a href="#concept_B9387E3F67944C32B746BD11D7656463">Programmability                              	 Overview</a></li>
+<li><a href="#reference_vvw_1tv_rxb">Supported Platforms</a></li>
+<li><a href="#concept_05FECF1444014E0D9CCDEAED89824261">Standard Network                              	 Manageability Features</a></li>
+<li><a href="#Cisco_Concept.dita_80fdb276-d1b7-4160-8c18-865d71d4bfac">Advanced Automation Features</a>
+<ul>
+<li><a href="#concept_B3A79618689C42799894792F2726C3B5">Power On Auto Provisioning Support</a></li>
+<li><a href="#concept_251F591C7395408099614ED09F8CBF11">XMPP Support</a></li>
+<li><a href="#concept_7F4786A2D26144D0B9A049D4233E0D39">Chef and Puppet                              	 Integration</a></li>
+<li><a href="#concept_24E8FDFF049641B4A2717FA9B705DD2B">OpenDayLight                              	 Integration and OpenFlow Support</a></li>
+</ul></li>
+<li><a href="#concept_96574AB83B0E4DA3A8909EB7AF365057">Programmability                              	 Support</a>
+<ul>
+<li><a href="#concept_D41CEFFCE5774C2F946BAA944A3EAB3F">NX-API                              	 Support</a></li>
+<li><a href="#concept_BBCBD03A46CC4D10AE9009258BB47ED0">Python                              	 Scripting</a></li>
+<li><a href="#concept_54E417BE43E84D378C4E4DEE277E42F8">Tcl                              	 Scripting</a></li>
+<li><a href="#concept_AE625CCB49CB4817A6FEAD59C4187304">Broadcom                              	 Shell</a></li>
+<li><a href="#concept_2C9D538F31A145C0863B76CC5D8C390F">Bash </a></li>
+<li><a href="#concept_2C9D538F31A145C0863B76CC5D8C390F">Bash Shell Access                              	 and Linux Container Support</a></li>
+<li><a href="#concept_B18F6A4AB28D4ADAB2D835DAECC14902">Guest Shell</a></li>
+<li><a href="#concept_2C9D538F31A145C0863B76CC5D8C390F">Container Tracker Support</a></li>
+<li><a href="#id_70731">Perl Modules</a></li></ul></li></ul>
+    <button id="chapterToc-close">Close<span></span></button>
+    </div>
+</div>
+
+ 
+    <div id="chapterContent">
+    
+                  <h1 class="title topictitle1" id="ariaid-title1">Overview</h1>
+                  <section class="body">
+                     
+                     
+                  </section>
+                  <!-- minitoc start -->
+                  <nav role="navigation" class="related-links">
+                     <ul class="ullinks">
+                        <li class="link ulchildlink"><a href="#concept_B9387E3F67944C32B746BD11D7656463">Programmability Overview</a></li>
+                        <li class="link ulchildlink"><a href="#reference_vvw_1tv_rxb">Supported Platforms</a></li>
+                        <li class="link ulchildlink"><a href="#concept_05FECF1444014E0D9CCDEAED89824261">Standard Network Manageability Features</a></li>
+                        <li class="link ulchildlink"><a href="#Cisco_Concept.dita_80fdb276-d1b7-4160-8c18-865d71d4bfac">Advanced Automation Features</a></li>
+                        <li class="link ulchildlink"><a href="#concept_96574AB83B0E4DA3A8909EB7AF365057">Programmability Support</a></li>
+                     </ul>
+                  </nav>
+                  <!-- minitoc end -->
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title2" lang="en-US" id="concept_B9387E3F67944C32B746BD11D7656463">
+                     <h2 class="title topictitle2" id="ariaid-title2">Programmability
+                        	 Overview
+                     </h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">The Cisco NX-OS software running on the Cisco Nexus 9000 Series switches is as follows: </p>
+                        
+                        <ul class="ul">
+                           
+                           <li class="li" id="concept_B9387E3F67944C32B746BD11D7656463__li_E8F4853D314B4449ACD4DF0A280C11C1"> 
+                              		  
+                              <p class="p">
+                                 <strong class="ph b">Resilient</strong> 
+                                 		  
+                              </p> 
+                              		  
+                              <p class="p">Provides critical
+                                 			 business-class availability. 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_B9387E3F67944C32B746BD11D7656463__li_74F9FA989314404DAA2BB9DA3BE02AFF"> 
+                              		  
+                              <p class="p">
+                                 <strong class="ph b">Modular</strong> 
+                                 		  
+                              </p> 
+                              		  
+                              <p class="p">Has extensions
+                                 			 that accommodate business needs. 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_B9387E3F67944C32B746BD11D7656463__li_013E547B03BC47C091BAB8602FF663CC"> 
+                              		  
+                              <p class="p">
+                                 <strong class="ph b">Highly Programmatic</strong> 
+                                 		  
+                              </p> 
+                              		  
+                              <p class="p">Allows for rapid
+                                 			 automation and orchestration through Application Programming Interfaces (APIs).
+                                 			 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_B9387E3F67944C32B746BD11D7656463__li_B6BB7315D9CD4C8E9DA6DEAA7EE7B1EE"> 
+                              		  
+                              <p class="p">
+                                 <strong class="ph b">Secure</strong> 
+                                 		  
+                              </p> 
+                              		  
+                              <p class="p">Protects and
+                                 			 preserves data and operations. 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_B9387E3F67944C32B746BD11D7656463__li_72660995970F461DAC51CDC02A9E3ABD"> 
+                              		  
+                              <p class="p">
+                                 <strong class="ph b">Flexible</strong> 
+                                 		  
+                              </p> 
+                              		  
+                              <p class="p">Integrates and
+                                 			 enables new technologies. 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_B9387E3F67944C32B746BD11D7656463__li_92BB20481086471D983A817F5A08FEAA"> 
+                              		  
+                              <p class="p">
+                                 <strong class="ph b">Scalable</strong> 
+                                 		  
+                              </p> 
+                              		  
+                              <p class="p">Accommodates and
+                                 			 grows with the business and its requirements. 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_B9387E3F67944C32B746BD11D7656463__li_3DABB2B5716B4874A3A0E7F0185178FA"> 
+                              		  
+                              <p class="p">
+                                 <strong class="ph b">Easy to use</strong> 
+                                 		  
+                              </p> 
+                              		  
+                              <p class="p">Reduces the amount
+                                 			 of learning required, simplifies deployment, and provides ease of
+                                 			 manageability. 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                        </ul>
+                        
+                        <p class="p">With the Cisco NX-OS
+                           		operating system, the device functions in the unified fabric mode to provide
+                           		network connectivity with programmatic automation functions. 
+                           	 
+                        </p>
+                        
+                        <p class="p"> Cisco NX-OS contains Open Source Software (OSS) and commercial technologies that provide automation, orchestration, programmability,
+                           monitoring, and compliance support. 
+                        </p>
+                        
+                        <p class="p"> For more information on Open NX-OS, see <a class="xref" href="https://developer.cisco.com/site/nx-os/" target="_blank">https://developer.cisco.com/site/nx-os/</a>. 
+                        </p>
+                        		
+                        		
+                        		
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1 cn_reference" aria-labelledby="ariaid-title3" lang="en-US" id="reference_vvw_1tv_rxb">
+                     <h2 class="title topictitle2" id="ariaid-title3">Supported Platforms</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="reference_vvw_1tv_rxb__section_k5f_b1n_gy">
+                           
+                           <p class="p">Starting with Cisco NX-OS release 7.0(3)I7(1), use the <a class="xref" href="https://www.cisco.com/c/dam/en/us/td/docs/Website/datacenter/platform/platform.html" target="_blank">Nexus Switch Platform Support Matrix</a> to know from which Cisco NX-OS releases various Cisco Nexus 9000 and 3000 switches support a selected feature. 
+                           </p>
+                           
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title4" lang="en-US" id="concept_05FECF1444014E0D9CCDEAED89824261">
+                     <h2 class="title topictitle2" id="ariaid-title4">Standard Network
+                        	 Manageability Features
+                     </h2>
+                     <section class="body conbody">
+                        
+                        <ul class="ul">
+                           
+                           <li class="li" id="concept_05FECF1444014E0D9CCDEAED89824261__li_9D12092A4EC6437AA800DBD52E70D268"> 
+                              		  
+                              <p class="p">SNMP (V1, V2, V3) 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_05FECF1444014E0D9CCDEAED89824261__li_19DBDA194C254F77A9B5CEED0219A227"> 
+                              		  
+                              <p class="p">Syslog 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_05FECF1444014E0D9CCDEAED89824261__li_476AB694BBA2464387EB68A7632A8558"> 
+                              		  
+                              <p class="p">RMON 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_05FECF1444014E0D9CCDEAED89824261__li_E10A1EEF444647F692A2752CE753FE73"> 
+                              		  
+                              <p class="p">NETCONF 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                           <li class="li" id="concept_05FECF1444014E0D9CCDEAED89824261__li_0A0401F097F84A8E85DE5AF9905C7CF8"> 
+                              		  
+                              <p class="p">CLI and CLI
+                                 			 scripting 
+                                 		  
+                              </p> 
+                              		
+                           </li>
+                           
+                        </ul>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title5" lang="en-US" id="Cisco_Concept.dita_80fdb276-d1b7-4160-8c18-865d71d4bfac">
+                     <h2 class="title topictitle2" id="ariaid-title5">Advanced Automation Features</h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">The enhanced Cisco NX-OS on the device supports automation. The platform includes support
+                           for Power On Auto Provisioning (POAP). 
+                        </p>
+                        
+                        <p class="p">The enhanced Cisco NX-OS on the device supports automation. The platform includes the
+                           features that support automation.
+                        </p>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links">
+                        <ul class="ullinks">
+                           <li class="link ulchildlink"><a href="#concept_B3A79618689C42799894792F2726C3B5">Power On Auto Provisioning Support</a></li>
+                           <li class="link ulchildlink"><a href="#concept_251F591C7395408099614ED09F8CBF11">XMPP Support</a></li>
+                           <li class="link ulchildlink"><a href="#concept_7F4786A2D26144D0B9A049D4233E0D39">Chef and Puppet Integration</a></li>
+                           <li class="link ulchildlink"><a href="#concept_24E8FDFF049641B4A2717FA9B705DD2B">OpenDayLight Integration and OpenFlow Support</a></li>
+                        </ul>
+                     </nav>
+                     <!-- minitoc end -->
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title6" lang="en-US" id="concept_B3A79618689C42799894792F2726C3B5">
+                        <h3 class="title topictitle3" id="ariaid-title6">Power On Auto Provisioning Support</h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">Power On Auto Provisioning (POAP) automates the process of installing and upgrading software images and installing configuration
+                              files on switches that are being deployed in the network for the first time. It reduces the manual tasks that are required
+                              to scale the network capacity. 
+                           </p>
+                           
+                           <p class="p">When a switch with the POAP feature boots and does not find the startup configuration, the device enters POAP mode. It locates
+                              a DHCP server and bootstraps itself with its interface IP address, gateway, and DNS server IP addresses. The device obtains
+                              the IP address of a TFTP server or the URL of an HTTP server and downloads a configuration script that enables the device
+                              to download and install the appropriate software image and configuration file. 
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title7" lang="en-US" id="concept_251F591C7395408099614ED09F8CBF11">
+                        <h3 class="title topictitle3" id="ariaid-title7">XMPP Support</h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">The enhanced NX-OS on
+                              		Nexus 9000 family of switches integrates an XMPP client into the operating
+                              		system. This allows a Nexus 9000 switch to be managed and configured with XMPP
+                              		enabled chat clients. (Chat clients are commonly used for communication among
+                              		users). The XMPP support enables certain useful capabilities: 
+                              	 
+                           </p>
+                           
+                           <ul class="ul">
+                              
+                              <li class="li" id="concept_251F591C7395408099614ED09F8CBF11__li_BF2C5327323C4A759480F4719E04953E"> 
+                                 		  
+                                 <p class="p"> 
+                                    			 <strong class="ph b">Group
+                                       				configuration</strong> 
+                                    		  
+                                 </p> 
+                                 		  
+                                 <p class="p">When you add a set
+                                    			 of Nexus 9000 devices into a chat group, you can manage a set of Nexus 9000
+                                    			 switches as a group. This is useful to push certain common configurations to a
+                                    			 set of Nexus 9000 devices, instead of configuring the devices individually. 
+                                    		  
+                                 </p> 
+                                 		
+                              </li>
+                              
+                              <li class="li" id="concept_251F591C7395408099614ED09F8CBF11__li_3892D6D5F7EE489095283E0E6A3D5AAA"> 
+                                 		  
+                                 <p class="p"> 
+                                    			 <strong class="ph b">Single point of
+                                       				management</strong> 
+                                    		  
+                                 </p> 
+                                 		  
+                                 <p class="p">The XMPP server can act as a single point of management. When you authenticate against a single XMPP server, you gain access
+                                    to all the devices registered on the server. 
+                                 </p> 
+                                 		
+                              </li>
+                              
+                              <li class="li" id="concept_251F591C7395408099614ED09F8CBF11__li_D568DE2E86FF4799B0665404F28D998F"> 
+                                 		  
+                                 <p class="p"> 
+                                    			 <strong class="ph b">Security</strong> 
+                                    		  
+                                 </p> 
+                                 		  
+                                 <p class="p">The XMPP interface
+                                    			 supports role-based access control. It ensures that users execute only the
+                                    			 commands they are authorized for. 
+                                    		  
+                                 </p> 
+                                 		
+                              </li>
+                              
+                              <li class="li" id="concept_251F591C7395408099614ED09F8CBF11__li_01006C6087F4439CB6E4287ECBF44B5C"> 
+                                 		  
+                                 <p class="p"> 
+                                    			 <strong class="ph b">Automation</strong> 
+                                    		  
+                                 </p> 
+                                 		  
+                                 <p class="p">XMPP is a standards-based interface. The interface allows scripts and management tools to automate the management of Nexus
+                                    9000 devices. 
+                                 </p> 
+                                 		
+                              </li>
+                              
+                           </ul>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title8" lang="en-US" id="concept_7F4786A2D26144D0B9A049D4233E0D39">
+                        <h3 class="title topictitle3" id="ariaid-title8">Chef and Puppet
+                           	 Integration
+                        </h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">Chef and Puppet are
+                              		two intent-based infrastructure automation frameworks. 
+                              	 
+                           </p>
+                           
+                           <p class="p">Chef allows you to define your intent with a recipe. A recipe is a reusable set of configuration or management tasks. Chef
+                              allows the recipe to be deployed on numerous devices. When deployed on a switch, a recipe translates into a network configuration
+                              or a set of commands for gathering statistics and analytics information. A recipe provides a way for automated configuration
+                              and management of a switch. 
+                           </p>
+                           
+                           <p class="p">Puppet provides a similar intent definition construct that is called a manifest. When deployed on a switch, a manifest translates
+                              into a network configuration or a set of commands for gathering information from the switch. 
+                           </p>
+                           
+                           <p class="p">The switch supports both the Puppet and Chef frameworks. The Puppet client and the Chef client are both integrated into the
+                              enhanced Cisco NX-OS on the switch. 
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title9" lang="en-US" id="concept_24E8FDFF049641B4A2717FA9B705DD2B">
+                        <h3 class="title topictitle3" id="ariaid-title9">OpenDayLight
+                           	 Integration and OpenFlow Support
+                        </h3>
+                        <section class="body conbody">
+                           
+                           <p class="p"> Cisco Nexus switches support integration with the open source OpenDayLight project. OpenDayLight helps meet some of the requirements
+                              of operators and application developers for infrastructure: 
+                           </p>
+                           
+                           <ul class="ul">
+                              
+                              <li class="li" id="concept_24E8FDFF049641B4A2717FA9B705DD2B__li_5F8D67C781244FD6918ED4EEE0E3DD6A"> 
+                                 		  
+                                 <p class="p">Real-time
+                                    			 orchestration and operation of integrated virtual compute, application, and
+                                    			 network. 
+                                    		  
+                                 </p> 
+                                 		
+                              </li>
+                              
+                              <li class="li" id="concept_24E8FDFF049641B4A2717FA9B705DD2B__li_C7D7FFDF5BE14583A454912C9B950CD9"> 
+                                 		  
+                                 <p class="p">Simple interface
+                                    			 to the network. An underlying detail such as a router, switch, or topology can
+                                    			 be made abstract and more simple. 
+                                    		  
+                                 </p> 
+                                 		
+                              </li>
+                              
+                           </ul>
+                           
+                           <p class="p">
+                              			For OpenDayLight orchestration of Cisco Nexus switches, support is also available for other programmatic interfaces, such
+                              as NETCONF, that OpenDaylight can use in the southbound flow.
+                           </p>
+                           
+                           <p class="p"> Cisco Nexus switches also support OpenFlow to enable use cases such as network TAP aggregation. </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title10" lang="en-US" id="concept_96574AB83B0E4DA3A8909EB7AF365057">
+                     <h2 class="title topictitle2" id="ariaid-title10">Programmability
+                        	 Support
+                     </h2>
+                     <section class="body conbody">
+                        
+                        <p class="p"> Cisco NX-OS software on switches support several capabilities to aid programmability.</p>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links">
+                        <ul class="ullinks">
+                           <li class="link ulchildlink"><a href="#concept_D41CEFFCE5774C2F946BAA944A3EAB3F">NX-API Support</a></li>
+                           <li class="link ulchildlink"><a href="#concept_BBCBD03A46CC4D10AE9009258BB47ED0">Python Scripting</a></li>
+                           <li class="link ulchildlink"><a href="#concept_54E417BE43E84D378C4E4DEE277E42F8">Tcl Scripting</a></li>
+                           <li class="link ulchildlink"><a href="#concept_AE625CCB49CB4817A6FEAD59C4187304">Broadcom Shell</a></li>
+                           <li class="link ulchildlink"><a href="#concept_2C9D538F31A145C0863B76CC5D8C390F">Bash</a></li>
+                           <li class="link ulchildlink"><a href="#concept_2C9D538F31A145C0863B76CC5D8C390F">Bash Shell Access and Linux Container Support</a></li>
+                           <li class="link ulchildlink"><a href="#concept_B18F6A4AB28D4ADAB2D835DAECC14902">Guest Shell</a></li>
+                           <li class="link ulchildlink"><a href="#concept_2C9D538F31A145C0863B76CC5D8C390F">Container Tracker Support</a></li>
+                           <li class="link ulchildlink"><a href="#id_70731">Perl Modules</a></li>
+                        </ul>
+                     </nav>
+                     <!-- minitoc end -->
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title11" lang="en-US" id="concept_D41CEFFCE5774C2F946BAA944A3EAB3F">
+                        <h3 class="title topictitle3" id="ariaid-title11">NX-API
+                           	 Support
+                        </h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">Cisco NX-API allows for HTTP-based programmatic access to the switches. This support is delivered by NX-API, an open source
+                              webserver. NX-API provides the configuration and management capabilities of the Cisco NX-OS CLI with web-based APIs. The device
+                              can be set to publish the output of the API calls in XML or JSON format. This API enables rapid development on the switches.
+                              
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title12" lang="en-US" id="concept_BBCBD03A46CC4D10AE9009258BB47ED0">
+                        <h3 class="title topictitle3" id="ariaid-title12">Python
+                           	 Scripting
+                        </h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">Cisco NX-OS supports Python v2.7.5 in both interactive and noninteractive (script) modes. </p>
+                           
+                           <p class="p">Beginning in Cisco NX-OS Release 9.3(5), Python 3 is also supported. </p>
+                           
+                           <p class="p">The Python scripting capability on the devices provides programmatic access to the switch CLI to perform various tasks, and
+                              to Power-On Auto Provisioning (POAP) and Embedded Event Manager (EEM) actions. Responses to Python calls that invoke the Cisco
+                              NX-OS CLI return text or JSON output. 
+                           </p>
+                           
+                           <p class="p">The Python interpreter
+                              		is included in the Cisco NX-OS software. 
+                              	 
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title13" lang="en-US" id="concept_54E417BE43E84D378C4E4DEE277E42F8">
+                        <h3 class="title topictitle3" id="ariaid-title13">Tcl
+                           	 Scripting
+                        </h3>
+                        <section class="body conbody">
+                           <p class="p">Cisco Nexus 9000 Series switches support Tcl (Tool Command Language). Tcl is a scripting language that enables greater flexibility
+                              with CLI commands on the switch. You can use Tcl to extract certain values in the output of a <span class="keyword cmdname">show</span> command, perform switch configurations, run Cisco NX-OS commands in a loop, or define EEM policies in a script. 
+                           </p>
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title14" lang="en-US" id="concept_AE625CCB49CB4817A6FEAD59C4187304">
+                        <h3 class="title topictitle3" id="ariaid-title14">Broadcom
+                           	 Shell
+                        </h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">The Cisco Nexus 9000 Series switch front panel and fabric module line cards contain Broadcom Network Forwarding Engine (NFE).
+                              You can access the Broadcom command-line shell (bcm-shell) from these NFEs. 
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title15" lang="en-US" id="concept_2C9D538F31A145C0863B76CC5D8C390F">
+                        <h3 class="title topictitle3" id="ariaid-title15">Bash </h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">Cisco Nexus switches support direct Bourne-Again Shell (Bash) access. With Bash, you can access the underlying Linux system
+                              on the device and manage the system. 
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title16" lang="en-US" id="concept_2C9D538F31A145C0863B76CC5D8C390F">
+                        <h3 class="title topictitle3" id="ariaid-title16">Bash Shell Access
+                           	 and Linux Container Support
+                        </h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">Cisco Nexus switches support direct Linux shell access and Linux containers. With Linux shell access, you can access the underlying
+                              Linux system on the switch and manage the underlying system. You can also use Linux containers to securely install your own
+                              software and to enhance the capabilities of the Cisco Nexus switch. For example, you can install bare-metal provisioning tools
+                              like Cobbler on a Cisco Nexus switch to enable automatic provisioning of bare-metal servers from the top-of-rack switch. 
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title17" lang="en-US" id="concept_B18F6A4AB28D4ADAB2D835DAECC14902">
+                        <h3 class="title topictitle3" id="ariaid-title17">Guest Shell</h3>
+                        <section class="body conbody">
+                           
+                           <table width="100%" border="1" class="table" id="concept_B18F6A4AB28D4ADAB2D835DAECC14902__table_8558D232D57F4D9198E7373C20F6445A">
+                              <caption></caption>
+                              <colgroup>
+                                 <col style="width:100%">
+                              </colgroup>
+                              <tbody class="tbody">
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry">
+                                       
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry">
+                                       
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry">
+                                       
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p"> In process-hosted deployments, a virtual service execution environment (VSEE) isolates the onePK application from core routing
+                                          and switching applications that the NOS provides; the environment also isolates its contents from other virtual services on
+                                          the same host. The Application Developer can allocate specified quantities of CPU time, memory, disk space, and other resources
+                                          to any particular VSEE. 
+                                          							
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p"> Cisco
+                                          					 utilizes the Cisco Secure Development Lifecycle (SDLC) to develop onePK
+                                          					 applications that run in VSEEs on closed Cisco systems. The SDLC comprises a
+                                          					 continuously evolving set of industry-recognized best practices and tools
+                                          					 (including Cisco-proprietary tools) that reduce the vulnerability footprint of
+                                          					 Cisco-provided applications, VSEEs, and platforms. These practices include the
+                                          					 use of runtime checks that ensure the integrity of Cisco-signed binaries before
+                                          					 loading them, and the establishment of a trust domain in which Cisco-provided
+                                          					 onePK applications are allowed to run as trusted processes. 
+                                          				  
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p">onePK applications in a VSEE communicate with the network element using onePK APIs that the onePK SDK provides. A secure communications
+                                          channel carries messages between the VSEE and the onePK server. The use of the trust domain ensures the integrity of interprocess
+                                          communications within the Cisco-provided VSEE, and additional security measures protect communications between the VSEE and
+                                          the Cisco host. 
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p"> The Network Administrator exercises direct control over the deployment of VSEEs and applications that interact with network
+                                          elements. The duties of the Network Administrator include responsibility for verifying the integrity and validity of application
+                                          packages. Cisco provides information (such as digital signatures or MD5 checksums) that enable Network Administrators to use
+                                          standard software development tools to verify the integrity of application packages before deploying them. In addition, the
+                                          default settings of the onePK VSEE security infrastructure allow only Cisco-signed application packages to run in process-hosted
+                                          mode. To allow the deployment of unsigned containers or those containers that signed by third parties, the Network Administrator
+                                          must take explicit action. 
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p">Because
+                                          					 onePK allows low-level access to network elements, the Network Administrator
+                                          					 must be very selective about user profiles and applications that are given
+                                          					 access to onePK. 
+                                          				  
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                              </tbody>
+                           </table>
+                           
+                           <table width="100%" border="1" class="table" id="concept_B18F6A4AB28D4ADAB2D835DAECC14902__table_53ABBC7E3FCF4495AE3C5183C9DFB914">
+                              <caption></caption>
+                              <colgroup>
+                                 <col style="width:100%">
+                              </colgroup>
+                              <tbody class="tbody">
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p">The Cisco Nexus 9000 Series switches support a virtual service environment that runs inside a secure Linux container (LXC).
+                                          It isolates the application running in the guest shell of the virtual service environment from other routing and switching
+                                          applications that the host Cisco NX-OS provides. The environment also isolates its contents from other virtual services on
+                                          the same host. You can allocate specified quantities of CPU time, memory, disk space, and other resources to any particular
+                                          virtual service environment. 
+                                          							
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p"> Cisco
+                                          					 utilizes the Cisco Secure Development Lifecycle (SDLC) to develop applications
+                                          					 that run in virtual service environments on Cisco Nexus 9000 Series devices.
+                                          					 The SDLC comprises a continuously evolving set of industry-recognized best
+                                          					 practices and tools (including Cisco-proprietary tools) that reduce the
+                                          					 vulnerability footprint of Cisco-provided applications, virtual service
+                                          					 environments, and platforms. These practices include the use of runtime checks
+                                          					 that ensure the integrity of Cisco-signed binaries before loading them, and the
+                                          					 establishment of a trust domain in which Cisco-provided applications are
+                                          					 allowed to run as trusted processes. 
+                                          				  
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p">Applications in a guest shell communicate with the network using APIs. A secure communications channel carries messages between
+                                          the guest shell and the device. The use of the trust domain ensures the integrity of interprocess communications within the
+                                          Cisco-provided guest shell, and additional security measures protect communications between the guest shell and the device.
+                                          
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry"> 
+                                       				  
+                                       <p class="p"> A network administrator controls the deployment of virtual service environments and applications that interact with the network.
+                                          The duties of a network administrator include the responsibility for verifying the integrity and validity of application packages.
+                                          Cisco provides information (such as digital signatures or MD5 checksums) that enable network administrators to use standard
+                                          software development tools to verify the integrity of application packages before deploying them. In addition, the default
+                                          settings of the guest shell security infrastructure allow only Cisco-signed application packages to run on the host. To allow
+                                          the deployment of unsigned containers or those containers that are signed by third parties, the network administrator must
+                                          take explicit action. 
+                                       </p> 
+                                       				
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                              </tbody>
+                           </table>
+                           
+                           <p class="p">The Cisco Nexus 9000 Series switches support a guest shell that provides Bash access into a Linux execution space on the host
+                              system that is decoupled from the host Cisco Nexus 9000 NX-OS software. With the guest shell, you can add software packages
+                              and update libraries as needed without impacting the host system software. 
+                           </p>
+                           
+                           <p class="p">
+                              Applications running in the guest shell have IP connectivity to the host system and the external network through socket APIs.
+                              
+                           </p>
+                           
+                           <p class="p">
+                              The guest shell is implemented as a secure Linux container (LXC) and is started automatically when the host system is started.
+                              This allows applications in the guest shell to be automatically started when the system is started. The amount of CPU, memory,
+                              and bootflash space used for the guest shell can be tuned to balance the resource usage between the guest shell and the host
+                              system. The guest shell mounts the system's bootflash to allow access to files on the bootflash using Linux commands. 
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title18" lang="en-US" id="concept_2C9D538F31A145C0863B76CC5D8C390F">
+                        <h3 class="title topictitle3" id="ariaid-title18">Container Tracker Support</h3>
+                        <section class="body conbody">
+                           <p class="p">Cisco NX-OS is configured to communicate with the Kubernetes API Server to understand the capabilities of the containers behind
+                              a given switch port.
+                           </p>
+                           <p class="p">The following commands communicate with the Kubernetes API Server:</p>
+                           <ul class="ul" id="concept_2C9D538F31A145C0863B76CC5D8C390F__ul_zy5_l5w_j1b">
+                              <li class="li">
+                                 
+                                 <p class="p"> The <span><span class="keyword kwd">show containers kubernetes</span> </span> command obtains data from <em class="ph i">kube-apiserver</em> using API calls over HTTP. 
+                                 </p>
+                                 
+                              </li>
+                              <li class="li">
+                                 
+                                 <p class="p">The <span><span class="keyword kwd">kubernetes watch</span>
+                                       <var>resource</var> </span> command uses a daemon to subscribe to requested resources and process streaming data from <em class="ph i">kube-apiserver</em>. 
+                                 </p>
+                                 
+                              </li>
+                              <li class="li">
+                                 
+                                 <p class="p">The <span><span class="keyword kwd">action</span> </span> assigned in the <span><span class="keyword kwd">watch</span> </span> command is performed on pre-defined triggers. (For example, Add or Delete of a Pod.) 
+                                 </p>
+                                 
+                              </li>
+                           </ul>
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title19" lang="en-US" id="id_70731">
+                        <h3 class="title topictitle3" id="ariaid-title19">Perl Modules</h3>
+                        <section class="body conbody">
+                           
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>
+                                       
+                                       <p class="p">Beginning with Cisco NX-OS Release 9.2(2), support for the Perl modules has been added for the Cisco Nexus 9504 and 9508 switches
+                                          with -R line cards.
+                                       </p>
+                                       
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table>
+                           
+                           <p class="p">In order to support more applications, the following Perl modules have been added:</p>
+                           
+                           <ul class="ul">
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">bytes.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">feature.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">hostname.pl</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">lib.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">overload.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Carp.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Class/Struct.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Data/Dumper.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">DynaLoader.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Exporter/Heavy.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">FileHandle.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">File/Basename.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">File/Glob.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">File/Spec.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">File/Spec/Unix.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">File/stat.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Getopt/Std.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">IO.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">IO/File.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">IO/Handle.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">IO/Seekable.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">IO/Select.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">List/Util.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">MIME/Base64.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">SelectSaver.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Socket.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Symbol.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Sys/Hostname.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Time/HiRes.pm</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">auto/Data/Dumper/Dumper.so</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">auto/File/Glob/Glob.so</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">auto/IO/IO.so</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">auto/List/Util/Util.so</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">auto/MIME/Base64/Base64.so</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">auto/Socket/Socket.so</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">auto/Sys/Hostname/Hostname.so</p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">auto/Time/HiRes/HiRes.so</p>
+                                 
+                              </li>
+                              
+                           </ul>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                  </article>
+               </article>
+            </article>
+         </main>
+      
+
+</div> 
+ 
+    </div>
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rightRailComponent noprint base-blowout">
+    <div class="eotPersonalization">
+        <section id="eotTDCampaign"></section>
+    </div>    
+    <div class="eot-feedback-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-feedback">
+  <h3>Was this Document Helpful?</h3>
+  <span class="eot-feedback-btnwrap">
+    <button class="eot-feedback-btn eot-feedback-btn-yes" aria-label="Was this Document Helpful?? Yes">Yes</button>
+    <button class="eot-feedback-btn eot-feedback-btn-no" aria-label="Was this Document Helpful?? No">No</button>
+  </span>
+  <span lang="en" class="eot-feedback-olwrap">
+    
+      <a href="javascript: void(0);" class="eot-feedback-ol" onclick="window.open('https://ciscocx.qualtrics.com/jfe/form/SV_be0fHnqDoKM7sto?Ref=' + location.href + '&resize=false', 'feedback', 'width=650, height=460, scrollbars=1, menubar=1, resizable=1'); return false;">
+      <img id="feedback_img" border="0" style="cursor: pointer;" title="Feedback" src="//www.cisco.com/c/dam/cdc/i/Feedback_OceanBlue.png" alt="Feedback">Feedback</a>
+    
+  </span>
+</div>
+
+
+</div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-vav">
+  <ul>
+  </ul>
+</div>
+    </div>
+			
+    <div class="letUsHelp">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eotLetUsHelp">
+    <h3>Contact Cisco</h3>
+    <ul>
+         <li><a id="eotLetUsHelpProdDocUrl" href="https://mycase.cloudapps.cisco.com/start?prodDocUrl=">Open a Support Case</a><img src="/etc/designs/cdc/fw/i/icon_lock_small.png" alt="login required"/></li>
+        <li>(Requires a <a href="//www.cisco.com/c/en/us/services/order-services.html">Cisco Service Contract</a>)</li>
+    </ul>
+</div>
+
+
+<script>
+    jQuery(document).ready(function() {
+        var getURL=jQuery("#eotLetUsHelpProdDocUrl").attr("href"), 
+            domInd = location.href.indexOf('cisco.com') ;
+        if ( domInd > -1 && domInd < location.href.search(/\w\/\w/) ) {
+            getURL += encodeURI(location.href);
+        }
+		jQuery("#eotLetUsHelpProdDocUrl").attr("href",getURL);
+    });
+</script>
+
+
+    </div>
+
+    <div id="eotRightRailMBox"><!--MBox-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- IT:components/mbox/banner-mbox:V0.0.0 -->
+
+
+
+<div>
+    <div class="mboxDefault"></div>   
+    <script type="text/javascript">
+        var test="";
+        if(test!=undefined && test.trim().length>0){
+           mboxCreate('en-us_dg_support_bookchapters','type=default','');
+        }else{
+           mboxCreate('en-us_dg_support_bookchapters','type=default');
+        }
+       
+    </script>
+</div>
+<!--MBox--></div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+	<script type="text/javascript">
+			    var eottdatp = document.getElementsByClassName('eot-tdatp');
+			    if (eottdatp && eottdatp.style) {
+        			eottdatp.style.display="none";
+			    }
+        		  </script>
+  	
+
+
+    </div>
+			
+    <div></div>
+
+</div>
+
+
+    </div>
+</div>
+
+     <!--googleoff: index--><!--googleoff: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end: responsive fat footer re-use wrapper-->
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="module" src="/site/web-components/us/en/cdc-footer.js"></script>
+        <cdc-footer></cdc-footer>
+    
+
+<script type="text/javascript">
+    if(document.querySelector('#privacy-manager')!=null){
+        document.querySelector('#privacy-manager').href='#cookies';
+    }
+  </script>   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-overlay"></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/etc/designs/cdc/clientlibs/responsive/js/books.min.js"></script>
+
+<script src="/etc/designs/cdc/fw/m/books_metricsrule.js" type="text/javascript" async></script>
+    
+    
+
+    <!-- SiteCatalyst code version: H.24.4. -->
+    <noscript><img src="//cisco.112.2o7.net/b/ss/cisco-mobile/5/12345" width="2" height="2" border="0" alt=""/></noscript>
+
+</body>
+</html>

@@ -2,12 +2,12 @@
 
 *Learn about the person you're helping. Update this as you go.*
 
-- **Name:** Viktor
-- **What to call them:** Viktor
+- **Name:** Stefan
+- **What to call them:** Stefan
 - **Pronouns:** *(optional)*
-- **Timezone:** EST (based on timestamps)
-- **Communication preferences:** Professional and brief, no emojis unless specified otherwise
-- **Notes:** Setting me up for in-house use at TeleHouse/TelePoint, my creator 
+- **Timezone:** Europe/Sofia (GMT+2)
+- **Communication preferences:** Casual, brief
+- **Notes:** In-house use at TeleHouse/TelePoint 
 
 ## Context
 

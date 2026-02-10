@@ -1,0 +1,1904 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:fb="//www.facebook.com/2008/fbml" xmlns:og="//opengraphprotocol.org/schema/" lang="en" xml:lang="en"  class="no-touch no-js">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="rei" content="3/2/2022 10.39am est" />
+
+    
+        <script tyle="text/javascript" src="/content/dam/cdc/j/cdcrSwitch.js"></script>
+        <script type="text/javascript"> 
+            if (typeof cdc === "undefined"){
+                cdc = {};
+            }
+            cdc.localizedLang="en/us";
+
+            if (window.cdcext === undefined) { window.cdcext = {}; }
+            cdcext.customEnvironment = "prod";
+            if (window.cdclocale === undefined) { window.cdclocale = {}; }
+            cdclocale.locale = cdc.localizedLang=="en/us"?"en_us":cdc.localizedLang;
+
+        </script> 
+         
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/c/dam/cdc/t/ctm-core.js"></script>
+<script>
+    window['adrum-start-time'] = new Date().getTime();
+    window.environ = "prod" ;
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    if (window.cpe === undefined) {
+        window.cpe = {};
+    }
+
+    cpe.accountName = "prod";
+    cpe.config = ["cinf","dsc","pps"];
+    cpe.hideMethod = "elements";
+
+    window.targetGlobalSettings = JSON.parse('{\x22timeout\x22:4000}');
+    window.targetPageParamsAll = () => JSON.parse('{\x22entity\x22:\x22{\\\x22id\\\x22:\\\x221561676635521546\\\x22,\\\x22categoryId\\\x22:\\\x22\\\x22}\x22}');
+
+    
+    const bullseyeLibrary = `/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/external/bullseye.js`;
+
+    import(bullseyeLibrary);
+</script>
+<script src="/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/regional-mbox/regional-mbox.js"></script>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+        <title>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - RESTConf Agent [Cisco Nexus 9000 Series Switches] - Cisco</title>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"  />
+    <meta name="description" content="RESTConf Agent"  />
+    <meta name="title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - RESTConf Agent [Cisco Nexus 9000 Series Switches]"  />
+    <meta name="documentId" content="1561676609594506"  />
+    <meta name="templateName" content="book"  />
+    <meta property="fb:app_id" content="156494687694418"  />
+    <meta name="ioContentSource" content="WEM"  />
+    <meta name="docType" content="TSD Products Programming Reference Guide Chapter"  />
+    <meta name="concept" content="Cisco Nexus 9000 Series Switches"  />
+    <meta name="iaPath" content="cisco.com#Products#Cisco Products#Switches#Data Center Switches#Cisco Nexus 9000 Series Switches"  />
+    <meta name="contentType" content="cisco.com#US#preSales"  />
+    <meta name="locale" content="US"  />
+    <meta name="language" content="en"  />
+    <meta name="country" content="US"  />
+    <meta name="CCID_Page" content="cc001770"  />
+    <meta name="date" content="Thu Jul 24 01:33:50 PDT 2025"  />
+    <meta name="accessLevel" content="Customer"  />
+    <meta name="accessLevel" content="Guest"  />
+    <meta name="accessLevel" content="Partner"  />
+    <meta name="entitlementExpression" content="contains( &quot;0,1,2,3,4,7&quot; , $profileField[3] )"  />
+    <meta property="og:site_name" content="Cisco"  />
+    <meta property="og:type" content="website"  />
+    <meta property="og:title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - RESTConf Agent [Cisco Nexus 9000 Series Switches]"  />
+    <meta property="og:description" content="RESTConf Agent"  />
+    <meta property="og:url" content="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html"  />
+    <link rel="canonical" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html"/>
+	<link rel="alternate" hreflang="x-default" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html"/>
+<link rel="alternate" hreflang="ja-jp" href="https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html"/>
+<link rel="alternate" hreflang="en-us" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html"/>
+
+
+    
+ 
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/shared.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/underscore.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script type="text/javascript">
+    $CQ(function() {
+        CQ_Analytics.SegmentMgr.loadSegments("\/etc\/segmentation");
+        CQ_Analytics.ClientContextUtils.init("\/c\/dnc\/etc\/clientcontext\/default", "\/content\/en\/us\/td\/docs\/switches\/datacenter\/nexus9000\/sw\/93x\/progammability\/guide\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x_chapter_011100");
+
+        
+    });
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/cisco-sans.min.css" type="text/css">
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc/designs/cdc/clientlibs/responsive/js/foundation.min.js"></script>
+
+    <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/books.min.css" type="text/css">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+    <script>
+        sessionStorage.setItem("logOutIntermediateMessage", 'You are being logged out.');
+    </script>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom JSON LD For Products Type -->
+
+    
+    <script type="application/ld+json">
+        [
+           
+            {
+          "@context": "http://www.schema.org",                                                                        
+          "@type": "WebPage",
+          "name": "RESTConf Agent",  		  
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html",
+          "description": "RESTConf Agent",
+          "publisher": {
+              "@type": "Corporation",
+                 "name": "Cisco"
+            }
+        }]
+    </script>
+<!-- End Custom JSON LD For Products Type -->
+
+<!-- Video JSON LD -->
+
+
+
+
+<!-- End Video JSON LD -->
+
+    
+
+                              <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="GKZXC-NS3SU-A7VFH-HKBHM-U7LKH",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"GKZXC-NS3SU-A7VFH-HKBHM-U7LKH";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="wkcfb2s4piiro2mgnf2q-f-38341c991-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,o={"ak.v":"39","ak.cp":"61004","ak.ai":parseInt("271834",10),"ak.ol":"0","ak.cr":13,"ak.ipv":4,"ak.proto":"h2","ak.rid":"b4aa03ba","ak.r":45172,"ak.a2":n,"ak.m":"dsca","ak.n":"essl","ak.bpcip":"178.132.80.0","ak.cport":52618,"ak.gh":"92.123.103.63","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1770416501","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==lDzhXOJVdAIKThxrkqhdZzJoX3Ys+gpVOsqLGIinxCvZdD/4/7xKIJgTa4IfBUSwtJDCQXje5DqPXhko32dQSy07fbjrin2x9ZIZDmtmqdOHcYqeXJnXReXtMC5SPaTOGWLyLTrKnr4LM4A1Y/jVhUWFlKu6AF/RQ+ESOLc4KwVcLtVJq9CUge1xUx7YweiMtrG3QLxfKtHiZlaXT3+a/4A0aUx+oyxYEFKdCrXtLXdGaefuckmr7hETOnAcwxvoTUjQb+YdfCbpd80mfIWLB94RNOVTAlXULx480aQbH5nOwTVVbhB9jeLJOIaJoRaMwWtkWHEm1NETNe92DJfQmmyhan3lHV9n70Dt8q96iEDoIEdQctqIJsiHyHqOGXJDYCH9lqch9VIAHJYaNzBHkFPXyzcGJwu9GPVHruF+9LQ=","ak.pv":"540","ak.dpoabenc":"","ak.tf":i};if(""!==t)o["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))o["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(o)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:o,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+
+<body id="wcq" class="fw-res cdc-support cdc-books cdc-high-density cdc-full-width cdc-transform
+">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-skiplinks">
+    <ul class="container">
+        <li><a id="skiplink-content" href="#fw-content">Skip to content</a></li>
+        <li><a id="skiplink-search" href="#">Skip to search</a></li>
+        <li><a id="skiplink-footer" href="#fw-footer-v2" class="last">Skip to footer</a></li>
+    </ul>
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="module" src="/site/web-components/us/en/cdc-header.js"></script>
+    <cdc-header></cdc-header>
+    <nav class="fw-c-header__seo-links" aria-hidden="true" style="display:none">
+        <ul>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/index.html">Cisco.com Worldwide</a></li>
+            <li><a tabindex="-1" href="/c/en/us/products/index.html">Products and Services</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/solutions/index.html">Solutions</a></li>
+            <li><a tabindex="-1" href="/c/en/us/support/index.html">Support</a></li>
+            <li><a tabindex="-1" href="/c/en/us/training-events.html">Learn</a></li>
+            <li><a tabindex="-1" href="//www.cisco.com/c/en/us/about/sitemap.html">Explore Cisco</a></li>
+            <li><a tabindex="-1" href="/c/en/us/buy.html">How to Buy</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Partners Home</a></li>                
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/cisco-partner-program/index.html?ccid=cc000864&dtid=odiprc001129">Partner Program</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/support-help/index.html">Support</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/tools/index.html?dtid=odiprc001129">Tools</a></li>
+            <li><a tabindex="-1" href="https://locatr.cloudapps.cisco.com/WWChannels/LOCATR/pf/index.jsp#/">Find a Cisco Partner</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/connect-with-a-partner/index.html?ccid=cc000864&dtid=odiprc001129">Meet our Partners</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Become a Cisco Partner</a></li>
+
+        </ul>
+    </nav>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-content" class="container grid">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+<div class="row full blowout" data-owner="ID">
+	<div class="col full ">
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav id="fw-breadcrumb" class="data-based user-driven-nav" aria-label="breadcrumbs" data-owner="ID">
+
+   
+    <ul itemscope itemtype="//schema.org/BreadcrumbList">
+        <li aria-hidden="true"><a href='#' class="skip"><span></span></a></li>
+        <li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/index.html'><span itemprop='name'>Home</span><meta itemprop='position' content='1' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/index.html'><span itemprop='name'>Support</span><meta itemprop='position' content='2' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/all-products.html'><span itemprop='name'>Product Support</span><meta itemprop='position' content='3' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/category.html'><span itemprop='name'>Switches</span><meta itemprop='position' content='4' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/series.html'><span itemprop='name'>Cisco Nexus 9000 Series Switches</span><meta itemprop='position' content='5' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/products-programming-reference-guides-list.html'><span itemprop='name'>Programming Guides</span><meta itemprop='position' content='6' /></a><span class='caret'></span></li>
+    </ul>
+</nav>
+<script>
+    if (window.cdc === undefined) { window.cdc = {}; }
+    if (cdc.breadcrumb === undefined) {
+        cdc.breadcrumb = (function () {
+            let clone = document.querySelector('#fw-breadcrumb').cloneNode(true);
+
+            let appendClone = function () {
+                let hasBreadcrumb = document.querySelector('#fw-breadcrumb') !== null,
+                    firstMarquee = document.querySelectorAll('.dmc-mq')[0];
+
+                if (!hasBreadcrumb && firstMarquee !== undefined) {
+                    firstMarquee.querySelector('.frame .inset').insertBefore(this.clone, firstMarquee.querySelector('.frame .inset').firstElementChild);
+                }
+            };
+
+            return {
+                clone: clone,
+                appendClone: appendClone
+            }
+        }());
+    }
+    //DE380224
+    var anchorChild = document.getElementsByTagName("a");
+    for(var i=0; i<anchorChild.length; i++){ 
+        if(anchorChild[i].getAttribute("itemprop")=="item")  {  
+            if ( anchorChild[i].href.includes("%3Clocale%3E") ){
+                let anchorChildHREF = anchorChild[i].href;
+                let docLocale = document.querySelector('meta[name="locale"]').getAttribute('content');
+                let docLanguage = document.querySelector('meta[name="language"]').getAttribute('content');
+                
+                var docSeparator;
+                
+                if ((docLocale.toLowerCase() == "us") && (docLanguage.toLowerCase() == "en")) {
+                    docSeparator="/";
+                } else {
+                    docSeparator="_";
+                }
+                
+                let anchorURLReplace = docLanguage.toLowerCase() + docSeparator + docLocale.toLowerCase();
+                anchorChildHREF = anchorChildHREF.replace("%3Clocale%3E", anchorURLReplace);
+                anchorChild[i].setAttribute('href', anchorChildHREF);
+            }
+        }
+    }
+</script>
+
+        
+		        <h1 id="fw-pagetitle" class="" data-owner="ID">Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</h1>
+		
+	</div>
+</div>
+     <!--googleon: index--><!--googleon: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   <!-- have to do this for _g.I18n to be defined in preview and publish modes -->
+  
+  <script type="text/javascript">
+      // initialize dictionary for i18n
+      cdc.util.ensureNamespace("cdc.rc");
+    cdc.rc.eotkeys = {
+        showOnly5Products : "Show Only 5 Products",       
+        showAllRowsProducts : "Show All nRows Products",
+        supportCommunityUrl : "https://community.cisco.com/t5/technology-and-support/ct-p/technology-support",
+        supportCommunity : "Cisco Community",
+        thankYou : "Thank You",
+        viewersAlso : "Customers Also Viewed", 
+        show : "Show", 
+        more : "More", 
+        showOnly3Documents: "Show Only 3 Documents"
+      };
+  </script>
+
+
+
+<div class="row blowout full visitedlinks">
+    <div class="col full">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <div class="disclaimers techdocs">
+        
+        <div class="disclaimerButtons">
+        <div class="aboutBias">
+            <button aria-expanded="false" >Bias-Free Language</button>
+        </div>
+        
+        </div>
+        
+        <div class="biasfreeContent panel">
+            <h3>Bias-Free Language</h3>
+            <p>The documentation set for this product strives to use bias-free language. For the purposes of this documentation set, bias-free is defined as language that does not imply discrimination based on age, disability, gender, racial identity, ethnic identity, sexual orientation, socioeconomic status, and intersectionality. Exceptions may be present in the documentation due to language that is hardcoded in the user interfaces of the product software, language used based on RFP documentation, or language that is used by a referenced third-party product. <a href="https://www.cisco.com/c/en/us/about/social-justice/inclusive-language-policy.html">Learn more</a> about how Cisco is using Inclusive Language.</p>
+        </div>
+        
+    </div><!-- disclaimers -->
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    /* this is needed for the translation selector */
+    if (typeof(cdc) == "undefined") cdc={};
+    if (typeof(cdc.translations) == "undefined") cdc.translations={};
+    var bookTitle = 'Book Title Page';
+</script>
+
+<span id="actionBar-top"></span>
+<section id="actionBar" class="noprint base-blowout">
+    <span class="icons">
+        
+        <button class="bookToc simpleOverlay-trigger" id="onlyforTrigger"> <!--US140575-->
+            Book Contents
+        </button>
+            <div class="bookToc simpleOverlay-content">
+               <div role="heading" class="title">Book Contents</div>
+               <!--googleoff: index--><!--googleoff: snippet-->  
+               <div class="content">
+                  
+
+
+
+<ul id="bookToc">
+    <li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_preface_00.html">Preface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01.html">New and Changed Information</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100101.html">Platform Support for Programmability Features</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html">Overview</a></li>
+<li><button><span></span>Shells and Scripting</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101100.html">Bash</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100.html">Guest Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101.html">Broadcom Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110000.html">Python API</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100111.html">Scripting with Tcl</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01001.html">iPXE</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01010.html">Kernel Stack</a></li>
+</ul>
+</li>
+<li><button><span></span>Applications</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html">Third-Party Applications</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01100.html">Ansible</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101000.html">Puppet Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100100.html">SaltStack</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100000.html">Using Chef Client with Cisco NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01111.html">Nexus Application Development - Yocto</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html">Nexus Application Development - SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101101.html">NX-SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100001.html">Using Docker with Cisco NX-OS</a></li>
+</ul>
+</li>
+<li><button><span></span>NX-API</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010011.html">NX-API CLI</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101110.html">NX-API REST</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010110.html">NX-API Developer Sandbox</a></li>
+</ul>
+</li>
+<li><button><span></span>Model-Driven Programmability</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010111.html">Infrastructure Overview</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011000.html">Managing Components</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html">OpenConfig YANG</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100110.html">NETCONF Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011011.html">Converting CLI Commands to Network Configuration Format</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html">RESTConf Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101111.html">gRPC Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110001.html">gNMI - gRPC Network Management Interface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011110.html">Dynamic Logger</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101001.html">Model Driven Telemetry</a></li>
+</ul>
+</li>
+<li><button><span></span>XML Management Interface</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100010.html">XML Management Interface</a></li>
+</ul>
+</li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_appendix_0100101.html">Streaming Telemetry Sources</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-n9k-websocket-subscription-93x.html">WebSocket Subscription</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-programmability-rfcs.html">Programmability RFCs</a></li>
+
+</ul>
+
+
+               </div>
+               <!--googleon: index--><!--googleon: snippet-->               
+            </div>
+
+        
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='versionddcontainer chapter'></div>
+<script type="text/html" class="versionstemp">
+            <div class="versionsdd">
+                <button class="versionbutton" aria-haspopup="true" aria-expanded="false" aria-labelledby="other versions" class="version"><label></label></button>
+                <ul class="versionlist" aria-labelledby="other versions">
+                <%
+                    let pageUrl = window.location.pathname.replace("/content/","/c/").toLowerCase();
+                    if (true) pageUrl = pageUrl.substring(0,pageUrl.lastIndexOf("/"))+".html";
+                    for(let i=0; i< data.length; i++) {
+                        let item = data[i],
+                            myurl = item.linkUrl,
+                            urlm = myurl.replace("/content/","/c/");;
+                            mytitle = item.linkTitle;
+                            myclass= urlm.toLowerCase() == pageUrl ? "class=\"selected\"":""; 
+%>
+                    <li><a href="${myurl}" ${myclass}>${mytitle}</a></li>
+<%
+                  }   %>
+                </ul>
+             </div>
+</script>
+    
+        <span class="utilities">
+          <button title="Search in this Book" class="mobileSearch simpleOverlay-trigger">
+            Search
+          </button>
+          <div class="mobileSearch simpleOverlay-content">
+            <div class="title">Find Matches in This Book</div>
+              <!--googleoff: index--><!--googleoff: snippet-->  
+              <div class="content">
+                <form id="mobileBooksearch" class="chapter">
+                   <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit"></button>
+                   <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+                </form>
+                <div id="overlayResults" role="region" aria-live="polite" >
+                   <!-- important, keep this results div begin end on same line in here -->
+                   <div class="results"></div>
+                </div>
+              </div>
+              <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="noprint" id="saveModule">
+
+<script type="text/javascript">
+    cdc.util.ensureNamespace("cdc.rc.savedoc");
+    cdc.rc.savedoc.isLoggedIn = false;
+    cdc.rc.savedoc.save = "Save";
+    cdc.rc.savedoc.saved = "Saved";
+</script>
+
+    <button class="save" aria-expanded="false" aria-label="Save">
+        <label>Save</label>
+    </button>    
+
+</div> 
+    <div class="saveDocumentMessage login cdc-expandPanel"  role="region" aria-live="polite">
+        <a href="/c/login/index.html?referer=/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html">Log in</a> to Save Content
+    </div>
+
+
+          <!-- Translation Selctor -->
+          <!-- Translation Selector is used on EOT and Books pages. if a page has a locale of en_US then it will provide a list of avaible translations, if its a translated page (non english locale) then provide the link to the english locale. -->
+
+
+
+                                <div class="noprint translations">
+                                        <a href="#" tabindex="-1">
+                                                <button type="button" class="translations translations-link anchor translationOptions simpleOverlay-trigger">
+                                                        <div class="toolbarIcon translationsIcon"></div><label class="iconLabel" id="onlyForNonEn">Translations</label>
+                                                </button>
+                                        </a>
+                                </div>
+           
+
+
+ 
+          <div class="translations simpleOverlay-content" role="dialog" id="dialogt" aria-labelledby="onlyForNonEN" aria-modal="true">
+            <div role="heading" class="title">Available Languages</div>
+               <!--googleoff: index--><!--googleoff: snippet--> 
+            <script language="javascript">                    
+                cdc.translations.map = "{ja-jp=https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html, en-us=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html, x-default=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html}";//storing the map for use in the JS
+                cdc.translations.locale="en_us";
+            </script>
+            <div class="content">
+              <div class="availableLanguagesList">
+                  <ul id="translationsList">
+                  </ul> 
+              </div>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+          
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // stored value for overlay label to use in js
+    var downloadOPtionLabel = 'Download Options',
+    	bookSearchlabel = 'Find Matches in This Book',
+    	translationsLabel = 'Translations',
+    	bookConentLabel= 'Book Contents';
+</script>
+
+
+        
+
+
+
+        <button title="Document Download Options" id="dwnld-button" class="downloadOptions simpleOverlay-trigger" aria-expanded="false">
+            Download
+        </button>
+        <div class="downloadOptions simpleOverlay-content" role="dialog" id="dialogd" aria-labelledby="dwnld-button" aria-modal="true" class="default_dialog">
+            <div role="heading" class="title">Download Options</div>
+            <!--googleoff: index--><!--googleoff: snippet-->  
+            <div class="content">
+                <header>
+
+                    <h3 class="h4"> Book Title</p>
+                    <p>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</p>
+                    <p class="h4"> Chapter Title</p>
+                    <h3>RESTConf Agent</p>
+
+                </header>
+                <ul>
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.pdf" class="pdfIcon">PDF - Complete Book 
+                            <span>(6.23 MB)</span></a>
+
+                                   <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.pdf" class="chapter">PDF - This Chapter <span>(1.07 MB)</span></a>
+                                                            
+                            <p>View with Adobe Reader on a variety of devices</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.epub" class="epubIcon">ePub - Complete Book 
+                            <span>(2.62 MB)</span></a>
+                            
+                            <p>View in various apps on iPhone, iPad, Android, Sony Reader, or Windows Phone</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.mobi" class="mobiIcon">Mobi - Complete Book 
+                            <span>(6.36 MB)</span></a>
+                            
+                            <p>View on Kindle device or Kindle app on multiple devices</p>
+                        </li>                                  
+              </ul>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+        </div>
+
+          <button title="Print Friendly Page" class="print simpleOverlay-trigger">
+              Print
+          </button>
+        </span> 
+    </span>
+    <form id="booksearch" tabindex="0" class="chapter">
+       <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit" aria-label="Search"></button>
+       <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+    </form>
+      <div id="searchresult" role="region" aria-live="polite"><button class="close" title="Close Panel"><span></span><span></span></button>
+         <span class="headArrow"></span>
+         <h2>Results</h2>
+         <div class="matches">
+         </div>
+         <div class="results" tabindex="0">
+         </div>
+      </div>
+      <div id="searchResultChapterTitle"></div>
+</section>
+<script type="text/html" id="navigateMatchesTemplate">
+   <div>
+      <button class="up on" title="Previous Match"><span></span></button>
+      <button class="up off" title="Previous Match Not Available"><span></span></button>
+      <span class="matchlabel">Matches</span>
+      <button class="down on" title="Next Match"><span></span></button>
+      <button class="down off" title="Next Match Not Available"><span></span></button>
+   </div>
+</script>
+<script type="text/html" id="noChapterMatchTemplate">
+   <p>There are no Matches in this chapter.</p>
+</script>
+<script type="text/html" id="searchResultsListTemplate">
+   <p class="h3">Chapters with Matches</p>
+   <ul>
+<% var i = 0;
+    while ( modelData.links[i] ) {  %>
+      <li>
+<%     curpage = (window.location.pathname.indexOf(modelData.links[i].href) > -1 )?true:false;
+        if ( i === modelData.curpage ) {
+            if ( ! jQuery('.mobileSearch').css("display") == "block") { %>
+               <span class="currentIndicator"></span>${modelData.links[i].title}
+<%         } else {                %>
+               <span class="currentIndicator"></span><button class="curpage" data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%         }
+        } else {  %>
+            <button data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%     }  %>            
+      </li> 
+<% i++;
+    } %>
+   </ul> 
+</script>      
+<script type="text/html" id="noBookMatchTemplate">
+   <p class="head">No matches found in this book</p>
+   <p>This feature looks for an exact match of what you entered in the box.</p>
+   <p>If you entered several words, try reducing the entry to one or two and search again.</p>
+</script>
+<script type="text/html" id="errorTemplate">
+   <p>Search is currently unavailable due to technical issues. We are working to resolve the problem as quickly as possible.</p>
+</script>
+<script type="text/html" id="mobileSearchFooterTemplate">
+   <div id="mobileSearchFooter">
+      <button class="mobileSearch" title="Search in this Book"></button>
+      <button class="closeFooter"><span></span><span></span></button>
+      <div class="matches"> 
+      </div>
+   </div>   
+</script>
+ 
+    </div>
+</div>
+<div class="row blowout narrow-wide-v2 flip visitedlinks">
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div id="documentInfo">
+                  <dl>
+                     
+                      <dt>Updated:</dt><dd> September 11, 2023</dd>
+                     
+                  </dl>
+                    
+              </div>
+
+ 
+    </div>
+    <div id="chapterTitleDiv" class="col wide-v2 indent-at-xlarge">
+        <!-- this will be chapter title for chapters or header for TOC for books -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="chapter-title">Chapter: RESTConf Agent </h2>  
+    
+
+    </div>
+</div>
+<div class="row blowout wide-narrow-v2 visitedlinks">
+    <div id="pageContentDiv" class="col wide-v2 indent-at-xlarge" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+        
+
+    
+ 
+ 
+
+<div id="chapterToc" class="base-blowout">
+    <button><span></span>Chapter Contents</button>
+    <div>
+    
+<ul>
+<li><a href="#id_84789">RESTConf Agent</a></li>
+<li><a href="#id_41461">About the RESTCONF Agent</a></li>
+<li><a href="#id_72427">Guidelines and Limitations</a></li>
+<li><a href="#id_41496">Using the RESTCONF Agent</a></li>
+<li><a href="#id_41509">Troubleshooting the RESTCONF Agent</a></li>
+<li><a href="#d48116e596a1635">Ephemeral Data</a>
+<ul>
+<li><a href="#Cisco_Concept.dita_3659049e-5f89-4af6-9e27-37bba34db879">About Ephemeral Data in RESTCONF</a></li>
+<li><a href="#Cisco_Reference.dita_6effdc5e-fddb-4d01-91b1-d96caf6142fd">RESTCONF Ephemeral Data Example</a></li></ul></li></ul>
+    <button id="chapterToc-close">Close<span></span></button>
+    </div>
+</div>
+
+ 
+    <div id="chapterContent">
+    
+                  <h1 class="title topictitle1" id="ariaid-title1">RESTConf Agent</h1>
+                  <section class="body">
+                     
+                     
+                  </section>
+                  <!-- minitoc start -->
+                  <nav role="navigation" class="related-links">
+                     <ul class="ullinks">
+                        <li class="link ulchildlink"><a href="#id_41461">About the RESTCONF Agent</a></li>
+                        <li class="link ulchildlink"><a href="#id_72427">Guidelines and Limitations</a></li>
+                        <li class="link ulchildlink"><a href="#id_41496">Using the RESTCONF Agent</a></li>
+                        <li class="link ulchildlink"><a href="#id_41509">Troubleshooting the RESTCONF Agent</a></li>
+                     </ul>
+                  </nav>
+                  <!-- minitoc end -->
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title2" lang="en-US" id="id_41461">
+                     <h2 class="title topictitle2" id="ariaid-title2">About the RESTCONF Agent</h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">Cisco NX-OS RESTCONF is an HTTP -based protocol for configuring data that are defined in YANG version 1, using datastores
+                           defined in NETCONF.
+                        </p>
+                        
+                        <p class="p">NETCONF defines configuration datastores and a set of Create, Retrieve, Update, and Delete (CRUD) operations that can be used
+                           to access these datastores. The YANG language defines the syntax and semantics of datastore content, operational data, protocol
+                           operations, and event notifications.
+                        </p>
+                        
+                        <p class="p">Cisco NX-OS RESTCONF uses HTTP operations to provide CRUD operations on a conceptual datastore containing YANG-defined data.
+                           This data is compatible with a server which implements NETCONF datastores.
+                        </p>
+                        
+                        <p class="p">The RESTCONF protocol supports both XML and JSON payload encodings. User authentication is done through the HTTP Basic Authentication.</p>
+                        
+                        <p class="p">The following table shows the Protocol operations that the Cisco NX-OS RESTCONF Agent supports: </p>
+                        
+                        <table width="100%" border="1" class="table frame-all" id="id_41461__table_ebc_gzm_px">
+                           <caption></caption>
+                           <colgroup>
+                              <col style="width:25%">
+                              <col style="width:75%">
+                           </colgroup>
+                           <thead class="thead">
+                              
+                              <tr>
+                                 
+                                 <th font-weight="bold" class="entry colsep-1 rowsep-1" id="id_41461__table_ebc_gzm_px__entry__1">
+                                    
+                                    <p class="p">RESTCONF</p>
+                                    
+                                 </th>
+                                 
+                                 <th font-weight="bold" class="entry colsep-1 rowsep-1" id="id_41461__table_ebc_gzm_px__entry__2">
+                                    
+                                    <p class="p">NETCONF Equivalent</p>
+                                    
+                                 </th>
+                                 
+                              </tr>
+                              
+                           </thead>
+                           <tbody class="tbody">
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__1 ">
+                                    
+                                    <p class="p">OPTIONS</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__2 ">
+                                    
+                                    <p class="p">NETCONF: none</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__1 ">
+                                    
+                                    <p class="p">HEAD </p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__2 ">
+                                    
+                                    <p class="p">NETCONF: none</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__1 ">
+                                    
+                                    <p class="p">GET</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__2 ">
+                                    
+                                    <p class="p">NETCONF: &lt;get-config&gt;, &lt;get&gt;</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__1 ">
+                                    
+                                    <p class="p">POST</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__2 ">
+                                    
+                                    <p class="p">NETCONF: &lt;edit-config&gt; (operation="create")</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__1 ">
+                                    
+                                    <p class="p">PUT</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__2 ">
+                                    
+                                    <p class="p">NETCONF: &lt;edit-config&gt; (operation="create/replace")</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__1 ">
+                                    
+                                    <p class="p">PATCH</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__2 ">
+                                    
+                                    <p class="p">NETCONF: &lt;edit-config&gt; (operation="merge")</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__1 ">
+                                    
+                                    <p class="p">DELETE</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_41461__table_ebc_gzm_px__entry__2 ">
+                                    
+                                    <p class="p">NETCONF: &lt;edit-config&gt; (operation="delete")</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                           </tbody>
+                        </table>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title3" lang="en-US" id="id_72427">
+                     <h2 class="title topictitle2" id="ariaid-title3">Guidelines and Limitations</h2>
+                     <section class="body refbody">
+                        <section class="section" id="id_72427__d48116e250">
+                           
+                           <p class="p">The RESTCONF Agent has the following guideline and limitation: </p>
+                           
+                           <ul class="ul">
+                              <li class="li" id="id_72427__li_C5FD3F71492B46ECB496626A659FF700">
+                                 
+                                 
+                                 <p class="p">Cisco NX-OS RESTCONF is based on an RFC draft entitled RESTCONF Protocol draft-ietf-netconf-restconf-10. See <a class="xref" href="https://datatracker.ietf.org/doc/html/draft-ietf-netconf-restconf-10" target="_blank">  RESTCONF Protocol draft-ietf-netconf-restconf-10</a>. 
+                                 </p>
+                                 
+                              </li>
+                              <li class="li" id="id_72427__li_026F3A9006974BB39355C5F9A28A4290">
+                                 
+                                 
+                                 <p class="p"> RESTCONF does not support enhanced Role-Based Access Control (RBAC) as specified in RFC 6536. Only users with a "network-admin"
+                                    role are granted access to the RESTCONF agent. 
+                                 </p>
+                                 
+                              </li>
+                              
+                           </ul>
+                           
+                        </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title4" lang="en-US" id="id_41496">
+                     <h2 class="title topictitle2" id="ariaid-title4">Using the RESTCONF Agent</h2>
+                     <section class="body conbody">
+                        <section class="section" id="id_41496__d48116e301">
+                           <h3 class="title sectiontitle">General Commands</h3>
+                           			
+                           			
+                           			
+                           <ul class="ul">
+                              <li class="li">
+                                 					
+                                 <p class="p">Configure the following commands to enable HTTP or HTTPS access:</p>
+                                 					
+                                 <ul class="ul">
+                                    <li class="li">
+                                       							
+                                       <p class="p"><span><span class="keyword kwd">feature nxapi</span> </span></p>
+                                       						
+                                    </li>
+                                    <li class="li">
+                                       							
+                                       <p class="p"><span><span class="keyword kwd">nxapi http port 80</span> </span></p>
+                                       						
+                                    </li>
+                                    <li class="li">
+                                       							
+                                       <p class="p"><span><span class="keyword kwd">nxapi https port 443</span> </span></p>
+                                       						
+                                    </li>
+                                 </ul>
+                                 				
+                              </li>
+                           </ul>
+                           		
+                        </section>
+                        <section class="section" id="id_41496__section_vyj_qtr_px">
+                           <h3 class="title sectiontitle">General Control Commands</h3>
+                           			
+                           			
+                           			
+                           <p class="p">You can enable or disable the RESTCONF Agent <span>[<span class="keyword kwd">no</span>] <span class="keyword kwd">feature restconf</span> </span> command.
+                           </p>
+                           			
+                           <p class="p">The available control commands for the RESTCONF agent are: </p>
+                           			
+                           <p class="p"><span><span class="keyword kwd">restconfctl { status | start | restart | reload | stop }</span> </span>
+                              			
+                           </p>
+                           		
+                        </section>
+                        <section class="section" id="id_41496__section_aqf_ctr_px">
+                           <h3 class="title sectiontitle">Viewing the Agent Status</h3>
+                           			
+                           			
+                           			
+                           <section class="p">To view the status of the RESTCONF agent, use the <span><span class="keyword kwd">show feature</span> </span> command and include the expression restconf. <pre class="pre codeblock"><code>switch-1# <kbd class="userinput"><b class="ph userinput">show feature | grep restconf</b></kbd>
+restconf               1          enabled 
+switch-1# 
+</code></pre></section>
+                           			<pre class="pre codeblock"><code>
+bash-4.2# <kbd class="userinput"><b class="ph userinput">restconfctl status</b></kbd>
+xosdsd is stopped
+restconfctl is stopped
+
+</code></pre>
+                           		</section>
+                        <section class="section" id="id_41496__section_hp2_ctr_px">
+                           <h3 class="title sectiontitle">Starting the Agent</h3>
+                           			
+                           			
+                           			<pre class="pre codeblock"><code>
+bash-4.2# <kbd class="userinput"><b class="ph userinput">restconfctl start</b></kbd>
+Starting Restconf Agent: [OK]
+
+</code></pre>
+                           		</section>
+                        <section class="section" id="id_41496__section_n4c_ctr_px">
+                           <h3 class="title sectiontitle">Sending a POST Request to the Server Using Curl</h3> 
+                           		 
+                           		<pre class="pre codeblock"><code>
+client-host % <kbd class="userinput"><b class="ph userinput">curl -X POST -H "Authorization: Basic YWRtaW46Y2lzY28=" -H "Content-Type: application/yang.data+xml" -d '&lt;always&gt;enabled&lt;/always&gt;&lt;rtrId&gt;2.2.2.2&lt;/rtrId&gt;' "http://192.0.20.123/restconf/data/Cisco-NX-OS-device:System/bgp-items/inst-items/dom-items/Dom-list=default" -i</b></kbd>
+
+HTTP/1.1 201 Created
+Server: nginx/1.7.10
+Date: Tue, 27 Sep 2016 20:25:31 GMT
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: nxapi_auth=admin:147500853169574134
+Status: 201 Created
+Location: /System/bgp-items/inst-items/dom-items/Dom-list=default/always/rtrId/
+
+</code></pre> 
+                           	 </section>
+                        <section class="section" id="id_41496__section_fhb_ctr_px">
+                           <h3 class="title sectiontitle">Sending a GET Request to the Server Using Curl</h3> 
+                           		 
+                           		<pre class="pre codeblock"><code>
+client-host % <kbd class="userinput"><b class="ph userinput">curl -X GET -H "Authorization: Basic YWRtaW46Y2lzY28=" -H "Accept: application/yang.data+xml" "http://192.0.20.123/restconf/data/Cisco-NX-OS-device:System/bgp-items/inst-items/dom-items/Dom-list?content=config" -i</b></kbd>
+
+HTTP/1.1 200 OK
+Server: nginx/1.7.10
+Date: Tue, 27 Sep 2016 20:26:03 GMT
+Content-Type: application/yang.data+xml
+Content-Length: 395
+Connection: keep-alive
+Set-Cookie: nxapi_auth=admin:147500856185650327
+Status: 200 OK
+
+    &lt;Dom-list&gt;
+        &lt;name&gt;default&lt;/name&gt;
+        &lt;always&gt;enabled&lt;/always&gt;
+        &lt;bestPathIntvl&gt;300&lt;/bestPathIntvl&gt;
+        &lt;holdIntvl&gt;180&lt;/holdIntvl&gt;
+        &lt;kaIntvl&gt;60&lt;/kaIntvl&gt;
+        &lt;maxAsLimit&gt;0&lt;/maxAsLimit&gt;
+        &lt;pfxPeerTimeout&gt;30&lt;/pfxPeerTimeout&gt;
+        &lt;pfxPeerWaitTime&gt;90&lt;/pfxPeerWaitTime&gt;
+        &lt;reConnIntvl&gt;60&lt;/reConnIntvl&gt;
+        &lt;rtrId&gt;2.2.2.2&lt;/rtrId&gt;
+    &lt;/Dom-list&gt;
+client-host %
+
+</code></pre> 
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title5" lang="en-US" id="id_41509">
+                     <h2 class="title topictitle2" id="ariaid-title5">Troubleshooting the RESTCONF Agent</h2>
+                     <section class="body conbody">
+                        <section class="section" id="id_41509__section_m4y_b1s_px">
+                           <h3 class="title sectiontitle">Troubleshooting Connectivity</h3>
+                           
+                           
+                           <ul class="ul" id="id_41509__ul_wmn_d1s_px">
+                              <li class="li">
+                                 
+                                 <p class="p">Enable the web server by issuing the <span><span class="keyword kwd">feature nxapi</span> </span> command.
+                                 </p>
+                                 
+                              </li>
+                              <li class="li">
+                                 
+                                 
+                                 <p class="p">Ensure that the <span><span class="keyword kwd">nxapi http port 80</span> </span> command is configured to open up the port for HTTP
+                                 </p>
+                                 
+                              </li>
+                              <li class="li">
+                                 
+                                 <p class="p">Ensure that the <span><span class="keyword kwd">nxapi https port 443</span> </span> command is configured to open up the port for HTTPS.
+                                 </p>
+                                 
+                              </li>
+                              <li class="li">
+                                 
+                                 <p class="p">Ping the management port of the switch to verify that the switch is reachable.</p>
+                                 
+                              </li>
+                           </ul>
+                           
+                        </section>
+                        <section class="section" id="id_41509__d48116e486">
+                           <h3 class="title sectiontitle">Troubleshooting Errors</h3>
+                           
+                           
+                           
+                           <p class="p">The following shows a common error message and offers guidelines for resolving it.</p>
+                           
+                           <p class="p"><strong class="ph b">Error Message:</strong>
+                              <code class="ph codeph">Sorry, the page you are looking for is currently unavailable</code>
+                              
+                           </p>
+                           
+                           <ul class="ul">
+                              <li class="li">
+                                 
+                                 <section class="p">If you receive this message soon after sending a request (for example, seconds), verify the following:
+                                    <ul class="ul">
+                                       <li class="li">
+                                          
+                                          <p class="p">The NXAPI feature is enabled as documented in "Troubleshooting Connectivity"</p>
+                                          
+                                       </li>
+                                       <li class="li">
+                                          
+                                          <p class="p">The RESTCONF feature is enabled (<span><span class="keyword kwd">show feature | grep restconf</span> </span>). If RESTCONF is not enabled, enable it (<span><span class="keyword kwd">feature restconf</span> </span>). 
+                                          </p>
+                                          
+                                       </li>
+                                       <li class="li">
+                                          
+                                          <section class="p">The port is configured for HTTP or HTTPS by NX-API. Use <span><span class="keyword kwd">show nxapi</span> </span> to verify that the port is configured.<pre class="pre codeblock"><code>switch-1# <kbd class="userinput"><b class="ph userinput">show nxapi</b></kbd>
+nxapi enabled
+HTTP Listen on port 80
+HTTPS Listen on port 443
+...
+switch-1#</code></pre></section>
+                                          
+                                          <p class="p">If the port is not configured for HTTP or HTTPs, configure it by issuing <span><span class="keyword kwd">nxapi http port 80</span> </span> or  <span><span class="keyword kwd">nxapi https port 443</span> </span>.
+                                          </p>
+                                          
+                                       </li>
+                                    </ul>
+                                 </section>
+                                 
+                              </li>
+                              <li class="li">
+                                 
+                                 <p class="p">If you receive this message long after sending a request (for example, minutes), ensure that the system is not overloaded
+                                    with excessive concurrent requests to query from the top level of the switch. Excessive top-level queries can create a significant
+                                    resource burden.
+                                 </p>
+                                 
+                                 <section class="p">You can ensure the switch is not overloaded by either of the following:
+                                    <ul class="ul">
+                                       <li class="li">
+                                          
+                                          <p class="p">Throttle back the number of requests that the client is sending.</p>
+                                          
+                                       </li>
+                                       <li class="li">
+                                          
+                                          <p class="p">On the switch, restart the RESTCONF agent by issuing <span><span class="keyword kwd">no feature restconf</span> </span>, then <span><span class="keyword kwd">feature restconf</span> </span>. 
+                                          </p>
+                                          
+                                       </li>
+                                    </ul>
+                                 </section>
+                                 
+                              </li>
+                           </ul>
+                           
+                        </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <p class="topictitle1" id="d48116e596a1635">Ephemeral Data</p>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title6" lang="en-US" id="Cisco_Concept.dita_3659049e-5f89-4af6-9e27-37bba34db879">
+                     <h2 class="title topictitle2" id="ariaid-title6">About Ephemeral Data in RESTCONF</h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">This feature provides access to ephemeral data. Ephemeral data is high volume data. DME provides a batching mechanism to retrieve
+                           the data so that each batch is of a manageable size in terms of memory usage. The size of the batch is the number of MOs to
+                           be retrieved. 
+                        </p>
+                        
+                        
+                        <p class="p">You can find information about which data is ephemeral by the comment "Ephemeral data" in the published Cisco-NX-OS-device.yang
+                           file. 
+                        </p>
+                        
+                        <p class="p">The output from ephemeral data is returned, if and only if the URI in the request points to:</p>
+                        
+                        <ul class="ul">
+                           
+                           <li class="li">
+                              
+                              <p class="p">A leaf from ephemeral data</p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">A container or list with ephemeral data children</p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              
+                              <p class="p">An empty container that is used to wrap a list that has direct ephemeral data children </p>
+                              
+                           </li>
+                           
+                        </ul>
+                        
+                        <p class="p">System level GET queries do not return ephemeral data.</p>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title7" lang="en-US" id="Cisco_Reference.dita_6effdc5e-fddb-4d01-91b1-d96caf6142fd">
+                     <h2 class="title topictitle2" id="ariaid-title7">RESTCONF Ephemeral Data Example</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="Cisco_Reference.dita_6effdc5e-fddb-4d01-91b1-d96caf6142fd__d48116e682">
+                           
+                           <p class="p">This is an example for retrieving ephemeral data. </p>
+                           
+                           <p class="p">The client might send the following GET request message:</p>
+                           <pre class="pre codeblock"><code>GET /restconf/data/Cisco-NX-OS-device:System//urib-items/table4-items/Table4-list=management/route4-items HTTP/1.1
+   Host: example.com
+   Accept: application/yang.data+json
+ 
+   The server might respond:
+ 
+      HTTP/1.1 200 OK
+      Date: Fri, 06 Mar 2020 11:10:30 GMT
+      Server: nginx/1.7.10
+      Content-Type: application/yang.data+json
+ 
+      {
+          "route4-items": {
+               "Route4-list": [{
+                   "prefix": "172.23.167.255/32",
+                   "flags": "0",
+                   ...</code></pre>
+                           
+                           </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+               </article>
+            </article>
+         </main>
+      
+
+</div> 
+ 
+    </div>
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rightRailComponent noprint base-blowout">
+    <div class="eotPersonalization">
+        <section id="eotTDCampaign"></section>
+    </div>    
+    <div class="eot-feedback-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-feedback">
+  <h3>Was this Document Helpful?</h3>
+  <span class="eot-feedback-btnwrap">
+    <button class="eot-feedback-btn eot-feedback-btn-yes" aria-label="Was this Document Helpful?? Yes">Yes</button>
+    <button class="eot-feedback-btn eot-feedback-btn-no" aria-label="Was this Document Helpful?? No">No</button>
+  </span>
+  <span lang="en" class="eot-feedback-olwrap">
+    
+      <a href="javascript: void(0);" class="eot-feedback-ol" onclick="window.open('https://ciscocx.qualtrics.com/jfe/form/SV_be0fHnqDoKM7sto?Ref=' + location.href + '&resize=false', 'feedback', 'width=650, height=460, scrollbars=1, menubar=1, resizable=1'); return false;">
+      <img id="feedback_img" border="0" style="cursor: pointer;" title="Feedback" src="//www.cisco.com/c/dam/cdc/i/Feedback_OceanBlue.png" alt="Feedback">Feedback</a>
+    
+  </span>
+</div>
+
+
+</div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-vav">
+  <ul>
+  </ul>
+</div>
+    </div>
+			
+    <div class="letUsHelp">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eotLetUsHelp">
+    <h3>Contact Cisco</h3>
+    <ul>
+         <li><a id="eotLetUsHelpProdDocUrl" href="https://mycase.cloudapps.cisco.com/start?prodDocUrl=">Open a Support Case</a><img src="/etc/designs/cdc/fw/i/icon_lock_small.png" alt="login required"/></li>
+        <li>(Requires a <a href="//www.cisco.com/c/en/us/services/order-services.html">Cisco Service Contract</a>)</li>
+    </ul>
+</div>
+
+
+<script>
+    jQuery(document).ready(function() {
+        var getURL=jQuery("#eotLetUsHelpProdDocUrl").attr("href"), 
+            domInd = location.href.indexOf('cisco.com') ;
+        if ( domInd > -1 && domInd < location.href.search(/\w\/\w/) ) {
+            getURL += encodeURI(location.href);
+        }
+		jQuery("#eotLetUsHelpProdDocUrl").attr("href",getURL);
+    });
+</script>
+
+
+    </div>
+
+    <div id="eotRightRailMBox"><!--MBox-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- IT:components/mbox/banner-mbox:V0.0.0 -->
+
+
+
+<div>
+    <div class="mboxDefault"></div>   
+    <script type="text/javascript">
+        var test="";
+        if(test!=undefined && test.trim().length>0){
+           mboxCreate('en-us_dg_support_bookchapters','type=default','');
+        }else{
+           mboxCreate('en-us_dg_support_bookchapters','type=default');
+        }
+       
+    </script>
+</div>
+<!--MBox--></div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+	<script type="text/javascript">
+			    var eottdatp = document.getElementsByClassName('eot-tdatp');
+			    if (eottdatp && eottdatp.style) {
+        			eottdatp.style.display="none";
+			    }
+        		  </script>
+  	
+
+
+    </div>
+			
+    <div></div>
+
+</div>
+
+
+    </div>
+</div>
+
+     <!--googleoff: index--><!--googleoff: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end: responsive fat footer re-use wrapper-->
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="module" src="/site/web-components/us/en/cdc-footer.js"></script>
+        <cdc-footer></cdc-footer>
+    
+
+<script type="text/javascript">
+    if(document.querySelector('#privacy-manager')!=null){
+        document.querySelector('#privacy-manager').href='#cookies';
+    }
+  </script>   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-overlay"></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/etc/designs/cdc/clientlibs/responsive/js/books.min.js"></script>
+
+<script src="/etc/designs/cdc/fw/m/books_metricsrule.js" type="text/javascript" async></script>
+    
+    
+
+    <!-- SiteCatalyst code version: H.24.4. -->
+    <noscript><img src="//cisco.112.2o7.net/b/ss/cisco-mobile/5/12345" width="2" height="2" border="0" alt=""/></noscript>
+
+</body>
+</html>

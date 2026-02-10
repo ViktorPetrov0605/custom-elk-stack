@@ -1,0 +1,2410 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:fb="//www.facebook.com/2008/fbml" xmlns:og="//opengraphprotocol.org/schema/" lang="en" xml:lang="en"  class="no-touch no-js">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="rei" content="3/2/2022 10.39am est" />
+
+    
+        <script tyle="text/javascript" src="/content/dam/cdc/j/cdcrSwitch.js"></script>
+        <script type="text/javascript"> 
+            if (typeof cdc === "undefined"){
+                cdc = {};
+            }
+            cdc.localizedLang="en/us";
+
+            if (window.cdcext === undefined) { window.cdcext = {}; }
+            cdcext.customEnvironment = "prod";
+            if (window.cdclocale === undefined) { window.cdclocale = {}; }
+            cdclocale.locale = cdc.localizedLang=="en/us"?"en_us":cdc.localizedLang;
+
+        </script> 
+         
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/c/dam/cdc/t/ctm-core.js"></script>
+<script>
+    window['adrum-start-time'] = new Date().getTime();
+    window.environ = "prod" ;
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    if (window.cpe === undefined) {
+        window.cpe = {};
+    }
+
+    cpe.accountName = "prod";
+    cpe.config = ["cinf","dsc","pps"];
+    cpe.hideMethod = "elements";
+
+    window.targetGlobalSettings = JSON.parse('{\x22timeout\x22:4000}');
+    window.targetPageParamsAll = () => JSON.parse('{\x22entity\x22:\x22{\\\x22id\\\x22:\\\x221561676635009545\\\x22,\\\x22categoryId\\\x22:\\\x22\\\x22}\x22}');
+
+    
+    const bullseyeLibrary = `/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/external/bullseye.js`;
+
+    import(bullseyeLibrary);
+</script>
+<script src="/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/regional-mbox/regional-mbox.js"></script>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+        <title>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - OpenConfig YANG [Cisco Nexus 9000 Series Switches] - Cisco</title>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"  />
+    <meta name="description" content="OpenConfig YANG"  />
+    <meta name="title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - OpenConfig YANG [Cisco Nexus 9000 Series Switches]"  />
+    <meta name="documentId" content="1561676602229495"  />
+    <meta name="templateName" content="book"  />
+    <meta property="fb:app_id" content="156494687694418"  />
+    <meta name="ioContentSource" content="WEM"  />
+    <meta name="docType" content="TSD Products Programming Reference Guide Chapter"  />
+    <meta name="concept" content="Cisco Nexus 9000 Series Switches"  />
+    <meta name="iaPath" content="cisco.com#Products#Cisco Products#Switches#Data Center Switches#Cisco Nexus 9000 Series Switches"  />
+    <meta name="contentType" content="cisco.com#US#preSales"  />
+    <meta name="locale" content="US"  />
+    <meta name="language" content="en"  />
+    <meta name="country" content="US"  />
+    <meta name="CCID_Page" content="cc001770"  />
+    <meta name="date" content="Thu Jul 24 01:33:50 PDT 2025"  />
+    <meta name="accessLevel" content="Customer"  />
+    <meta name="accessLevel" content="Guest"  />
+    <meta name="accessLevel" content="Partner"  />
+    <meta name="entitlementExpression" content="contains( &quot;0,1,2,3,4,7&quot; , $profileField[3] )"  />
+    <meta property="og:site_name" content="Cisco"  />
+    <meta property="og:type" content="website"  />
+    <meta property="og:title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - OpenConfig YANG [Cisco Nexus 9000 Series Switches]"  />
+    <meta property="og:description" content="OpenConfig YANG"  />
+    <meta property="og:url" content="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html"  />
+    <link rel="canonical" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html"/>
+	<link rel="alternate" hreflang="x-default" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html"/>
+<link rel="alternate" hreflang="ja-jp" href="https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html"/>
+<link rel="alternate" hreflang="en-us" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html"/>
+
+
+    
+ 
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/shared.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/underscore.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script type="text/javascript">
+    $CQ(function() {
+        CQ_Analytics.SegmentMgr.loadSegments("\/etc\/segmentation");
+        CQ_Analytics.ClientContextUtils.init("\/c\/dnc\/etc\/clientcontext\/default", "\/content\/en\/us\/td\/docs\/switches\/datacenter\/nexus9000\/sw\/93x\/progammability\/guide\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x_chapter_011001");
+
+        
+    });
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/cisco-sans.min.css" type="text/css">
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc/designs/cdc/clientlibs/responsive/js/foundation.min.js"></script>
+
+    <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/books.min.css" type="text/css">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+    <script>
+        sessionStorage.setItem("logOutIntermediateMessage", 'You are being logged out.');
+    </script>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom JSON LD For Products Type -->
+
+    
+    <script type="application/ld+json">
+        [
+           
+            {
+          "@context": "http://www.schema.org",                                                                        
+          "@type": "WebPage",
+          "name": "OpenConfig YANG",  		  
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html",
+          "description": "OpenConfig YANG",
+          "publisher": {
+              "@type": "Corporation",
+                 "name": "Cisco"
+            }
+        }]
+    </script>
+<!-- End Custom JSON LD For Products Type -->
+
+<!-- Video JSON LD -->
+
+
+
+
+<!-- End Video JSON LD -->
+
+    
+
+                              <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="GKZXC-NS3SU-A7VFH-HKBHM-U7LKH",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"GKZXC-NS3SU-A7VFH-HKBHM-U7LKH";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="wkcfb2s4piiro2mgnfzq-f-f8816efee-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,o={"ak.v":"39","ak.cp":"61004","ak.ai":parseInt("271834",10),"ak.ol":"0","ak.cr":13,"ak.ipv":4,"ak.proto":"h2","ak.rid":"b4a9dee6","ak.r":45172,"ak.a2":n,"ak.m":"dsca","ak.n":"essl","ak.bpcip":"178.132.80.0","ak.cport":52588,"ak.gh":"92.123.103.63","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1770416499","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==TaQit5hsn0KbVJeskqU5t5FPZxRMkhxLs0fWcYUkdEYo9vHwO0xyRdOflpF+EDMGeetHlbL9I9Et06tjQQI+xmCaLjOPz6wNjRIib34GuCxw3mOIfAfwuLRe3HXIPnYC3MmTr1MbpTqdmzS+4F5WrghIZW1Gs/reJS0lrFs8r9sdKSODXLc2YU5ST23qz8ZAJeRrWc3wulJ04XUzTRqwaIR+dG9DztXP26qBaqbHM6cwQAYkXLAtMUkss2ejHIU3H3ucO4hUKHJzq4pRw/h7FSDw8RT+SsQ475o8uXssDYQAg6K17m4zs1yE7tk6neGz1Hp6Pc2wBWWJhjMQ0DvRabl9JN58Cs+X5qkYuq+PZ0PA7Yotn5ii1TuPqs+IZp1rZZQucPAJCOp6YxDU6/f7C4iuVsOKVF3Yf6f99HdeezM=","ak.pv":"540","ak.dpoabenc":"","ak.tf":i};if(""!==t)o["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))o["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(o)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:o,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+
+<body id="wcq" class="fw-res cdc-support cdc-books cdc-high-density cdc-full-width cdc-transform
+">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-skiplinks">
+    <ul class="container">
+        <li><a id="skiplink-content" href="#fw-content">Skip to content</a></li>
+        <li><a id="skiplink-search" href="#">Skip to search</a></li>
+        <li><a id="skiplink-footer" href="#fw-footer-v2" class="last">Skip to footer</a></li>
+    </ul>
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="module" src="/site/web-components/us/en/cdc-header.js"></script>
+    <cdc-header></cdc-header>
+    <nav class="fw-c-header__seo-links" aria-hidden="true" style="display:none">
+        <ul>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/index.html">Cisco.com Worldwide</a></li>
+            <li><a tabindex="-1" href="/c/en/us/products/index.html">Products and Services</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/solutions/index.html">Solutions</a></li>
+            <li><a tabindex="-1" href="/c/en/us/support/index.html">Support</a></li>
+            <li><a tabindex="-1" href="/c/en/us/training-events.html">Learn</a></li>
+            <li><a tabindex="-1" href="//www.cisco.com/c/en/us/about/sitemap.html">Explore Cisco</a></li>
+            <li><a tabindex="-1" href="/c/en/us/buy.html">How to Buy</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Partners Home</a></li>                
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/cisco-partner-program/index.html?ccid=cc000864&dtid=odiprc001129">Partner Program</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/support-help/index.html">Support</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/tools/index.html?dtid=odiprc001129">Tools</a></li>
+            <li><a tabindex="-1" href="https://locatr.cloudapps.cisco.com/WWChannels/LOCATR/pf/index.jsp#/">Find a Cisco Partner</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/connect-with-a-partner/index.html?ccid=cc000864&dtid=odiprc001129">Meet our Partners</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Become a Cisco Partner</a></li>
+
+        </ul>
+    </nav>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-content" class="container grid">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+<div class="row full blowout" data-owner="ID">
+	<div class="col full ">
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav id="fw-breadcrumb" class="data-based user-driven-nav" aria-label="breadcrumbs" data-owner="ID">
+
+   
+    <ul itemscope itemtype="//schema.org/BreadcrumbList">
+        <li aria-hidden="true"><a href='#' class="skip"><span></span></a></li>
+        <li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/index.html'><span itemprop='name'>Home</span><meta itemprop='position' content='1' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/index.html'><span itemprop='name'>Support</span><meta itemprop='position' content='2' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/all-products.html'><span itemprop='name'>Product Support</span><meta itemprop='position' content='3' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/category.html'><span itemprop='name'>Switches</span><meta itemprop='position' content='4' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/series.html'><span itemprop='name'>Cisco Nexus 9000 Series Switches</span><meta itemprop='position' content='5' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/products-programming-reference-guides-list.html'><span itemprop='name'>Programming Guides</span><meta itemprop='position' content='6' /></a><span class='caret'></span></li>
+    </ul>
+</nav>
+<script>
+    if (window.cdc === undefined) { window.cdc = {}; }
+    if (cdc.breadcrumb === undefined) {
+        cdc.breadcrumb = (function () {
+            let clone = document.querySelector('#fw-breadcrumb').cloneNode(true);
+
+            let appendClone = function () {
+                let hasBreadcrumb = document.querySelector('#fw-breadcrumb') !== null,
+                    firstMarquee = document.querySelectorAll('.dmc-mq')[0];
+
+                if (!hasBreadcrumb && firstMarquee !== undefined) {
+                    firstMarquee.querySelector('.frame .inset').insertBefore(this.clone, firstMarquee.querySelector('.frame .inset').firstElementChild);
+                }
+            };
+
+            return {
+                clone: clone,
+                appendClone: appendClone
+            }
+        }());
+    }
+    //DE380224
+    var anchorChild = document.getElementsByTagName("a");
+    for(var i=0; i<anchorChild.length; i++){ 
+        if(anchorChild[i].getAttribute("itemprop")=="item")  {  
+            if ( anchorChild[i].href.includes("%3Clocale%3E") ){
+                let anchorChildHREF = anchorChild[i].href;
+                let docLocale = document.querySelector('meta[name="locale"]').getAttribute('content');
+                let docLanguage = document.querySelector('meta[name="language"]').getAttribute('content');
+                
+                var docSeparator;
+                
+                if ((docLocale.toLowerCase() == "us") && (docLanguage.toLowerCase() == "en")) {
+                    docSeparator="/";
+                } else {
+                    docSeparator="_";
+                }
+                
+                let anchorURLReplace = docLanguage.toLowerCase() + docSeparator + docLocale.toLowerCase();
+                anchorChildHREF = anchorChildHREF.replace("%3Clocale%3E", anchorURLReplace);
+                anchorChild[i].setAttribute('href', anchorChildHREF);
+            }
+        }
+    }
+</script>
+
+        
+		        <h1 id="fw-pagetitle" class="" data-owner="ID">Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</h1>
+		
+	</div>
+</div>
+     <!--googleon: index--><!--googleon: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   <!-- have to do this for _g.I18n to be defined in preview and publish modes -->
+  
+  <script type="text/javascript">
+      // initialize dictionary for i18n
+      cdc.util.ensureNamespace("cdc.rc");
+    cdc.rc.eotkeys = {
+        showOnly5Products : "Show Only 5 Products",       
+        showAllRowsProducts : "Show All nRows Products",
+        supportCommunityUrl : "https://community.cisco.com/t5/technology-and-support/ct-p/technology-support",
+        supportCommunity : "Cisco Community",
+        thankYou : "Thank You",
+        viewersAlso : "Customers Also Viewed", 
+        show : "Show", 
+        more : "More", 
+        showOnly3Documents: "Show Only 3 Documents"
+      };
+  </script>
+
+
+
+<div class="row blowout full visitedlinks">
+    <div class="col full">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <div class="disclaimers techdocs">
+        
+        <div class="disclaimerButtons">
+        <div class="aboutBias">
+            <button aria-expanded="false" >Bias-Free Language</button>
+        </div>
+        
+        </div>
+        
+        <div class="biasfreeContent panel">
+            <h3>Bias-Free Language</h3>
+            <p>The documentation set for this product strives to use bias-free language. For the purposes of this documentation set, bias-free is defined as language that does not imply discrimination based on age, disability, gender, racial identity, ethnic identity, sexual orientation, socioeconomic status, and intersectionality. Exceptions may be present in the documentation due to language that is hardcoded in the user interfaces of the product software, language used based on RFP documentation, or language that is used by a referenced third-party product. <a href="https://www.cisco.com/c/en/us/about/social-justice/inclusive-language-policy.html">Learn more</a> about how Cisco is using Inclusive Language.</p>
+        </div>
+        
+    </div><!-- disclaimers -->
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    /* this is needed for the translation selector */
+    if (typeof(cdc) == "undefined") cdc={};
+    if (typeof(cdc.translations) == "undefined") cdc.translations={};
+    var bookTitle = 'Book Title Page';
+</script>
+
+<span id="actionBar-top"></span>
+<section id="actionBar" class="noprint base-blowout">
+    <span class="icons">
+        
+        <button class="bookToc simpleOverlay-trigger" id="onlyforTrigger"> <!--US140575-->
+            Book Contents
+        </button>
+            <div class="bookToc simpleOverlay-content">
+               <div role="heading" class="title">Book Contents</div>
+               <!--googleoff: index--><!--googleoff: snippet-->  
+               <div class="content">
+                  
+
+
+
+<ul id="bookToc">
+    <li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_preface_00.html">Preface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01.html">New and Changed Information</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100101.html">Platform Support for Programmability Features</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html">Overview</a></li>
+<li><button><span></span>Shells and Scripting</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101100.html">Bash</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100.html">Guest Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101.html">Broadcom Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110000.html">Python API</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100111.html">Scripting with Tcl</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01001.html">iPXE</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01010.html">Kernel Stack</a></li>
+</ul>
+</li>
+<li><button><span></span>Applications</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html">Third-Party Applications</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01100.html">Ansible</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101000.html">Puppet Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100100.html">SaltStack</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100000.html">Using Chef Client with Cisco NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01111.html">Nexus Application Development - Yocto</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html">Nexus Application Development - SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101101.html">NX-SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100001.html">Using Docker with Cisco NX-OS</a></li>
+</ul>
+</li>
+<li><button><span></span>NX-API</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010011.html">NX-API CLI</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101110.html">NX-API REST</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010110.html">NX-API Developer Sandbox</a></li>
+</ul>
+</li>
+<li><button><span></span>Model-Driven Programmability</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010111.html">Infrastructure Overview</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011000.html">Managing Components</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html">OpenConfig YANG</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100110.html">NETCONF Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011011.html">Converting CLI Commands to Network Configuration Format</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html">RESTConf Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101111.html">gRPC Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110001.html">gNMI - gRPC Network Management Interface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011110.html">Dynamic Logger</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101001.html">Model Driven Telemetry</a></li>
+</ul>
+</li>
+<li><button><span></span>XML Management Interface</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100010.html">XML Management Interface</a></li>
+</ul>
+</li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_appendix_0100101.html">Streaming Telemetry Sources</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-n9k-websocket-subscription-93x.html">WebSocket Subscription</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-programmability-rfcs.html">Programmability RFCs</a></li>
+
+</ul>
+
+
+               </div>
+               <!--googleon: index--><!--googleon: snippet-->               
+            </div>
+
+        
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='versionddcontainer chapter'></div>
+<script type="text/html" class="versionstemp">
+            <div class="versionsdd">
+                <button class="versionbutton" aria-haspopup="true" aria-expanded="false" aria-labelledby="other versions" class="version"><label></label></button>
+                <ul class="versionlist" aria-labelledby="other versions">
+                <%
+                    let pageUrl = window.location.pathname.replace("/content/","/c/").toLowerCase();
+                    if (true) pageUrl = pageUrl.substring(0,pageUrl.lastIndexOf("/"))+".html";
+                    for(let i=0; i< data.length; i++) {
+                        let item = data[i],
+                            myurl = item.linkUrl,
+                            urlm = myurl.replace("/content/","/c/");;
+                            mytitle = item.linkTitle;
+                            myclass= urlm.toLowerCase() == pageUrl ? "class=\"selected\"":""; 
+%>
+                    <li><a href="${myurl}" ${myclass}>${mytitle}</a></li>
+<%
+                  }   %>
+                </ul>
+             </div>
+</script>
+    
+        <span class="utilities">
+          <button title="Search in this Book" class="mobileSearch simpleOverlay-trigger">
+            Search
+          </button>
+          <div class="mobileSearch simpleOverlay-content">
+            <div class="title">Find Matches in This Book</div>
+              <!--googleoff: index--><!--googleoff: snippet-->  
+              <div class="content">
+                <form id="mobileBooksearch" class="chapter">
+                   <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit"></button>
+                   <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+                </form>
+                <div id="overlayResults" role="region" aria-live="polite" >
+                   <!-- important, keep this results div begin end on same line in here -->
+                   <div class="results"></div>
+                </div>
+              </div>
+              <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="noprint" id="saveModule">
+
+<script type="text/javascript">
+    cdc.util.ensureNamespace("cdc.rc.savedoc");
+    cdc.rc.savedoc.isLoggedIn = false;
+    cdc.rc.savedoc.save = "Save";
+    cdc.rc.savedoc.saved = "Saved";
+</script>
+
+    <button class="save" aria-expanded="false" aria-label="Save">
+        <label>Save</label>
+    </button>    
+
+</div> 
+    <div class="saveDocumentMessage login cdc-expandPanel"  role="region" aria-live="polite">
+        <a href="/c/login/index.html?referer=/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html">Log in</a> to Save Content
+    </div>
+
+
+          <!-- Translation Selctor -->
+          <!-- Translation Selector is used on EOT and Books pages. if a page has a locale of en_US then it will provide a list of avaible translations, if its a translated page (non english locale) then provide the link to the english locale. -->
+
+
+
+                                <div class="noprint translations">
+                                        <a href="#" tabindex="-1">
+                                                <button type="button" class="translations translations-link anchor translationOptions simpleOverlay-trigger">
+                                                        <div class="toolbarIcon translationsIcon"></div><label class="iconLabel" id="onlyForNonEn">Translations</label>
+                                                </button>
+                                        </a>
+                                </div>
+           
+
+
+ 
+          <div class="translations simpleOverlay-content" role="dialog" id="dialogt" aria-labelledby="onlyForNonEN" aria-modal="true">
+            <div role="heading" class="title">Available Languages</div>
+               <!--googleoff: index--><!--googleoff: snippet--> 
+            <script language="javascript">                    
+                cdc.translations.map = "{ja-jp=https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html, en-us=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html, x-default=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html}";//storing the map for use in the JS
+                cdc.translations.locale="en_us";
+            </script>
+            <div class="content">
+              <div class="availableLanguagesList">
+                  <ul id="translationsList">
+                  </ul> 
+              </div>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+          
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // stored value for overlay label to use in js
+    var downloadOPtionLabel = 'Download Options',
+    	bookSearchlabel = 'Find Matches in This Book',
+    	translationsLabel = 'Translations',
+    	bookConentLabel= 'Book Contents';
+</script>
+
+
+        
+
+
+
+        <button title="Document Download Options" id="dwnld-button" class="downloadOptions simpleOverlay-trigger" aria-expanded="false">
+            Download
+        </button>
+        <div class="downloadOptions simpleOverlay-content" role="dialog" id="dialogd" aria-labelledby="dwnld-button" aria-modal="true" class="default_dialog">
+            <div role="heading" class="title">Download Options</div>
+            <!--googleoff: index--><!--googleoff: snippet-->  
+            <div class="content">
+                <header>
+
+                    <h3 class="h4"> Book Title</p>
+                    <p>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</p>
+                    <p class="h4"> Chapter Title</p>
+                    <h3>OpenConfig YANG</p>
+
+                </header>
+                <ul>
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.pdf" class="pdfIcon">PDF - Complete Book 
+                            <span>(6.23 MB)</span></a>
+
+                                   <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.pdf" class="chapter">PDF - This Chapter <span>(1.09 MB)</span></a>
+                                                            
+                            <p>View with Adobe Reader on a variety of devices</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.epub" class="epubIcon">ePub - Complete Book 
+                            <span>(2.62 MB)</span></a>
+                            
+                            <p>View in various apps on iPhone, iPad, Android, Sony Reader, or Windows Phone</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.mobi" class="mobiIcon">Mobi - Complete Book 
+                            <span>(6.36 MB)</span></a>
+                            
+                            <p>View on Kindle device or Kindle app on multiple devices</p>
+                        </li>                                  
+              </ul>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+        </div>
+
+          <button title="Print Friendly Page" class="print simpleOverlay-trigger">
+              Print
+          </button>
+        </span> 
+    </span>
+    <form id="booksearch" tabindex="0" class="chapter">
+       <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit" aria-label="Search"></button>
+       <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+    </form>
+      <div id="searchresult" role="region" aria-live="polite"><button class="close" title="Close Panel"><span></span><span></span></button>
+         <span class="headArrow"></span>
+         <h2>Results</h2>
+         <div class="matches">
+         </div>
+         <div class="results" tabindex="0">
+         </div>
+      </div>
+      <div id="searchResultChapterTitle"></div>
+</section>
+<script type="text/html" id="navigateMatchesTemplate">
+   <div>
+      <button class="up on" title="Previous Match"><span></span></button>
+      <button class="up off" title="Previous Match Not Available"><span></span></button>
+      <span class="matchlabel">Matches</span>
+      <button class="down on" title="Next Match"><span></span></button>
+      <button class="down off" title="Next Match Not Available"><span></span></button>
+   </div>
+</script>
+<script type="text/html" id="noChapterMatchTemplate">
+   <p>There are no Matches in this chapter.</p>
+</script>
+<script type="text/html" id="searchResultsListTemplate">
+   <p class="h3">Chapters with Matches</p>
+   <ul>
+<% var i = 0;
+    while ( modelData.links[i] ) {  %>
+      <li>
+<%     curpage = (window.location.pathname.indexOf(modelData.links[i].href) > -1 )?true:false;
+        if ( i === modelData.curpage ) {
+            if ( ! jQuery('.mobileSearch').css("display") == "block") { %>
+               <span class="currentIndicator"></span>${modelData.links[i].title}
+<%         } else {                %>
+               <span class="currentIndicator"></span><button class="curpage" data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%         }
+        } else {  %>
+            <button data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%     }  %>            
+      </li> 
+<% i++;
+    } %>
+   </ul> 
+</script>      
+<script type="text/html" id="noBookMatchTemplate">
+   <p class="head">No matches found in this book</p>
+   <p>This feature looks for an exact match of what you entered in the box.</p>
+   <p>If you entered several words, try reducing the entry to one or two and search again.</p>
+</script>
+<script type="text/html" id="errorTemplate">
+   <p>Search is currently unavailable due to technical issues. We are working to resolve the problem as quickly as possible.</p>
+</script>
+<script type="text/html" id="mobileSearchFooterTemplate">
+   <div id="mobileSearchFooter">
+      <button class="mobileSearch" title="Search in this Book"></button>
+      <button class="closeFooter"><span></span><span></span></button>
+      <div class="matches"> 
+      </div>
+   </div>   
+</script>
+ 
+    </div>
+</div>
+<div class="row blowout narrow-wide-v2 flip visitedlinks">
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div id="documentInfo">
+                  <dl>
+                     
+                      <dt>Updated:</dt><dd> September 11, 2023</dd>
+                     
+                  </dl>
+                    
+              </div>
+
+ 
+    </div>
+    <div id="chapterTitleDiv" class="col wide-v2 indent-at-xlarge">
+        <!-- this will be chapter title for chapters or header for TOC for books -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="chapter-title">Chapter: OpenConfig YANG </h2>  
+    
+
+    </div>
+</div>
+<div class="row blowout wide-narrow-v2 visitedlinks">
+    <div id="pageContentDiv" class="col wide-v2 indent-at-xlarge" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+        
+
+    
+ 
+ 
+
+<div id="chapterToc" class="base-blowout">
+    <button><span></span>Chapter Contents</button>
+    <div>
+    
+<ul>
+<li><a href="#id_88684">OpenConfig YANG</a></li>
+<li><a href="#id_88678">About OpenConfig YANG</a></li>
+<li><a href="#id_88681">Guidelines and Limitations for OpenConfig YANG</a></li>
+<li><a href="#id_88682">Understanding Deletion of BGP Routing Instance</a></li>
+<li><a href="#Cisco_Reference.dita_643ed053-dca7-4418-877f-e6f483fa7f0e">Verifying YANG</a></li></ul>
+    <button id="chapterToc-close">Close<span></span></button>
+    </div>
+</div>
+
+ 
+    <div id="chapterContent">
+    
+                  <h1 class="title topictitle1" id="ariaid-title1">OpenConfig YANG</h1>
+                  <section class="body">
+                     
+                     <p class="p">This section contains the following topics:</p>
+                     
+                     
+                  </section>
+                  <!-- minitoc start -->
+                  <nav role="navigation" class="related-links">
+                     <ul class="ullinks">
+                        <li class="link ulchildlink"><a href="#id_88678">About OpenConfig YANG</a></li>
+                        <li class="link ulchildlink"><a href="#id_88681">Guidelines and Limitations for OpenConfig YANG</a></li>
+                        <li class="link ulchildlink"><a href="#id_88682">Understanding Deletion of BGP Routing Instance</a></li>
+                        <li class="link ulchildlink"><a href="#Cisco_Reference.dita_643ed053-dca7-4418-877f-e6f483fa7f0e">Verifying YANG</a></li>
+                     </ul>
+                  </nav>
+                  <!-- minitoc end -->
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title2" lang="en-US" id="id_88678">
+                     <h2 class="title topictitle2" id="ariaid-title2">About OpenConfig YANG</h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">OpenConfig YANG supports modern networking principles, such as declarative configuration and model-driven management and operations.
+                           OpenConfig provides vendor-neutral data models for configuration and monitoring of the network. And, helping with moving from
+                           a pull model to a push model, with subscriptions and event update streaming. 
+                        </p>
+                        
+                        <p class="p">Beginning with Cisco NX-OS Release 9.2(1), support is added across a broad range of functional areas. Those include BGP, OSPF,
+                           Interface L2 and L3, VRFs, VLANs, and TACACs.
+                        </p>
+                        
+                        
+                        
+                        
+                        <p class="p">For additional information about OpenConfig YANG, see <a class="xref" href="https://developer.cisco.com/docs/openconfig-yang-release-9-2x/" target="_blank">About OpenConfig YANG</a>.
+                        </p>
+                        
+                        <p class="p">For the OpenConfig models for Cisco NX-OS 9.2(1), see <a class="xref" href="https://github.com/YangModels/yang/tree/master/vendor/cisco/nx/9.2-1" target="_blank">YANG Models 9.2(1)</a>. OpenConfig YANG models are grouped by Cisco NX-OS release, so when the Cisco NX-OS release number changes, the last digits
+                           in the URL change.
+                        </p>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title3" lang="en-US" id="id_88681">
+                     <h2 class="title topictitle2" id="ariaid-title3">Guidelines and Limitations for OpenConfig YANG</h2>
+                     <section class="body refbody">
+                        <section class="section" id="id_88681__d46956e115">
+                           
+                           <p class="p">OpenConfig YANG has the following guidelines and limitations: </p>
+                           
+                           <ul class="ul" id="id_88681__ul_yvx_nfd_4fb">
+                              
+                              <li class="li">
+                                 
+                                 
+                                 <p class="p">For IPv4 and IPv6 addresses, you must provide the same operation for remove and delete for the IP address field (<span class="keyword cmdname">oc-ip:ip</span> and <span class="keyword cmdname">oc-ip:prefix_length</span>).
+                                 </p>
+                                 
+                                 <p class="p">For example:</p>
+                                 <pre class="pre codeblock"><code>oc-ip:ip: remove
+oc-ip:prefix_length: remove </code></pre>
+                                 </li>
+                              
+                              <li class="li">
+                                 
+                                 
+                                 <p class="p">Configuring BGP actions with <span><span class="keyword kwd">set med</span> </span> and OSPF actions with metric in the same route-map via OpenConfig NETCONF is not recommended as the OSPF actions metric takes
+                                    precedence over BGP <span><span class="keyword kwd">set med</span> </span> property.
+                                 </p>
+                                 
+                                 <p class="p">Use two different route-maps to set metrics under OSPF actions. Use <span><span class="keyword kwd">set-med</span> </span> under BGP actions using separate route-maps.
+                                 </p>
+                                 
+                                 <p class="p">We recommended that you do not change the metric of BGP actions to OSPF actions or OSPF actions to BGP actions of a route-map
+                                    in a single payload.
+                                 </p>
+                                 
+                              </li>
+                              
+                              
+                              <li class="li">
+                                 
+                                 
+                                 <p class="p">In order to have a valid BGP instance, an autonomous system (AS) number must be provided. Since there cannot be a default
+                                    value for an AS number, any attempt to delete in NETCONF/OPENCONFIG &lt;asn&gt; without removing the BGP instance, results in the
+                                    following highlighted error message: 
+                                 </p>
+                                 <pre class="pre codeblock"><code>764
+&lt;nc:rpc xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:1ea09de2-605e-46aa-984b-9dfdad03354d"&gt;
+  &lt;nc:edit-config&gt;
+    &lt;nc:target&gt;
+      &lt;nc:running/&gt;
+    &lt;/nc:target&gt;
+    &lt;nc:config&gt;
+      &lt;network-instances xmlns="http://openconfig.net/yang/network-instance"&gt;
+        &lt;network-instance&gt;
+          &lt;name&gt;default&lt;/name&gt;
+          &lt;protocols&gt;
+            &lt;protocol&gt;
+              &lt;identifier&gt;BGP&lt;/identifier&gt;
+              &lt;name&gt;bgp&lt;/name&gt;
+              &lt;bgp&gt;
+                &lt;global&gt;
+                  &lt;config nc:operation="delete"&gt;
+                    &lt;as&gt;100&lt;/as&gt;
+                  &lt;/config&gt;
+                &lt;/global&gt;
+                &lt;neighbors&gt;
+                  &lt;neighbor&gt;
+                    &lt;neighbor-address&gt;1.1.1.1&lt;/neighbor-address&gt;
+                    &lt;enable-bfd xmlns="http://openconfig.net/yang/bfd"&gt;
+                      &lt;config&gt;
+                        &lt;enabled&gt;true&lt;/enabled&gt;
+                      &lt;/config&gt;
+                    &lt;/enable-bfd&gt;
+                  &lt;/neighbor&gt;
+                &lt;/neighbors&gt;
+              &lt;/bgp&gt;
+            &lt;/protocol&gt;
+          &lt;/protocols&gt;
+        &lt;/network-instance&gt;
+      &lt;/network-instances&gt;
+    &lt;/nc:config&gt;
+  &lt;/nc:edit-config&gt;
+&lt;/nc:rpc&gt;
+
+##
+Received:
+&lt;rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:1ea09de2-605e-46aa-984b-9dfdad03354d"&gt;
+    &lt;rpc-error&gt;
+        &lt;error-type&gt;protocol&lt;/error-type&gt;
+        &lt;error-tag&gt;operation-failed&lt;/error-tag&gt;
+        &lt;error-severity&gt;error&lt;/error-severity&gt;
+        &lt;error-message xml:lang="en"&gt;<strong class="ph b">invalid property value , for property asn, class bgpInst</strong>&lt;/error-message&gt;
+        &lt;error-path&gt;/config/network-instances&lt;/error-path&gt;
+    &lt;/rpc-error&gt;
+    &lt;rpc-error&gt;
+        &lt;error-type&gt;protocol&lt;/error-type&gt;
+        &lt;error-tag&gt;operation-failed&lt;/error-tag&gt;
+        &lt;error-severity&gt;error&lt;/error-severity&gt;
+        &lt;error-message xml:lang="en"&gt;<strong class="ph b">invalid property value , for property asn, class bgpInst Commit Failed</strong>&lt;/error-message&gt;
+        &lt;error-path&gt;/config/network-instances&lt;/error-path&gt;
+    &lt;/rpc-error&gt;
+&lt;/rpc-reply&gt;
+ 
+
+</code></pre>
+                                 </li>
+                              
+                              <li class="li" id="id_88681__li_EA3D077D94A344949C5B2ABCF26ECC00">
+                                 
+                                 <p class="p">The following OpenConfig YANG limitations exist for OC-BGP-POLICY: </p>
+                                 
+                                 <ul class="ul" id="id_88681__ul_zvx_nfd_4fb">
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">Action type is always <span class="ph filepath">permit</span> for <span class="ph filepath">community-set</span> and <span class="ph filepath">as-path-set</span>, which applies to the following containers:
+                                       </p>
+                                       
+                                       <ul class="ul" id="id_88681__ul_awx_nfd_4fb">
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p"><span class="ph filepath">/bgp-defined-sets/community-sets/community-set/</span></p>
+                                             
+                                          </li>
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p"><span class="ph filepath">/bgp-defined-sets/as-path-sets/as-path-set/</span></p>
+                                             
+                                          </li>
+                                          
+                                       </ul>
+                                       
+                                       <p class="p">In OpenConfig YANG, there is no action type concept as there is in the CLI for <span class="ph filepath">community-set</span> and <span class="ph filepath">as-path-set</span>. Therefore, the action type is always <span class="ph filepath">permit</span> for <span class="ph filepath">community-set</span> and <span class="ph filepath">as-path-set</span>.
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">The following OpenConfig YANG limitation applies to this container: <span class="ph filepath">/bgp-defined-sets/community-sets/community-set/</span></p>
+                                       
+                                       <p class="p">In the CLI, <span class="ph filepath">community-list</span> can have two different types: standard and expanded. However, in the OpenConfig YANG model, <span class="ph filepath">community-set-name</span> has no such differentiation.
+                                       </p>
+                                       
+                                       <p class="p">When you create the <span class="ph filepath">community-set-name</span> through OpenConfig YANG, the following things happen internally:
+                                       </p>
+                                       
+                                       <ul class="ul" id="id_88681__ul_bwx_nfd_4fb">
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">The <span class="ph filepath">_std</span> suffix will be appended after <span class="ph filepath">community-set-name</span> if <span class="ph filepath">community-member</span> is in the standard form (AS:NN).
+                                             </p>
+                                             
+                                          </li>
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">The <span class="ph filepath">_exp</span> suffix will be appended after <span class="ph filepath">community-set-name</span> if <span class="ph filepath">community-member</span> is in the expanded form (regex):
+                                             </p>
+                                             <pre class="pre codeblock"><code>&lt;community-set&gt;
+    &lt;community-set-name&gt;oc_commset1d&lt;/community-set-name&gt;
+    &lt;config&gt;
+        &lt;community-set-name&gt;oc_commset1d&lt;/community-set-name&gt;
+        &lt;community-member&gt;0:1&lt;/community-member&gt;
+        &lt;community-member&gt;_1_&lt;/community-member&gt;
+    &lt;/config&gt;
+&lt;/community-set&gt;
+
+</code></pre>
+                                             <p class="p">The preceding OpenConfig YANG configuration is mapped to the following CLI:</p>
+                                             <pre class="pre codeblock"><code>ip community-list expanded oc_commset1d_exp seq 5 permit "_1_"
+ip community-list standard oc_commset1d_std seq 5 permit 0:1
+
+</code></pre>
+                                             </li>
+                                          
+                                       </ul>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">The following OpenConfig YANG limitation applies to this container: <span class="ph filepath">/bgp-conditions/match-community-set/config/community-set/</span></p>
+                                       
+                                       <p class="p">OpenConfig YANG can only map to one <span class="ph filepath">community-set</span>, while the CLI can match to multiple instances of the <span class="ph filepath">community-set</span>:
+                                       </p>
+                                       
+                                       <ul class="ul" id="id_88681__ul_cwx_nfd_4fb">
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">In the CLI:</p>
+                                             <pre class="pre codeblock"><code>ip community-list standard 1-1 seq 1 permit 1:1 
+  ip community-list standard 1-2 seq 1 permit 1:2
+  ip community-list standard 1-3 seq 1 permit 1:3
+route-map To_LC permit 10
+  match community 1-1 1-2 1-3
+
+</code></pre>
+                                             </li>
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">The corresponding OpenConfig YANG payload follows:</p>
+                                             <pre class="pre codeblock"><code>&lt;config&gt;
+  &lt;routing-policy xmlns="http://openconfig.net/yang/routing-policy"&gt;
+    &lt;defined-sets&gt;
+      &lt;bgp-defined-sets xmlns="http://openconfig.net/yang/bgp-policy"&gt;
+        &lt;community-sets&gt;
+          &lt;community-set&gt;
+            &lt;community-set-name&gt;cs&lt;/community-set-name&gt;
+            &lt;config&gt;
+              &lt;community-set-name&gt;cs&lt;/community-set-name&gt;
+              &lt;community-member&gt;1:1&lt;/community-member&gt;
+              &lt;community-member&gt;1:2&lt;/community-member&gt;
+              &lt;community-member&gt;1:3&lt;/community-member&gt;
+            &lt;/config&gt;
+          &lt;/community-set&gt;
+        &lt;/community-sets&gt;
+      &lt;/bgp-defined-sets&gt;
+    &lt;/defined-sets&gt;
+    &lt;policy-definitions&gt;
+      &lt;policy-definition&gt;
+        &lt;name&gt;To_LC&lt;/name&gt;
+        &lt;statements&gt;
+          &lt;statement&gt;
+            &lt;name&gt;10&lt;/name&gt;
+            &lt;conditions&gt;
+              &lt;bgp-conditions xmlns="http://openconfig.net/yang/bgp-policy"&gt;
+                &lt;match-community-set&gt;
+                  &lt;config&gt;
+                    &lt;community-set&gt;cs&lt;/community-set&gt;
+                  &lt;/config&gt;
+                &lt;/match-community-set&gt;
+              &lt;/bgp-conditions&gt;
+            &lt;/conditions&gt;
+          &lt;/statement&gt;
+        &lt;/statements&gt;
+      &lt;/policy-definition&gt;
+    &lt;/policy-definitions&gt;
+  &lt;/routing-policy&gt;
+&lt;/config&gt;
+ 
+</code></pre>
+                                             </li>
+                                          
+                                       </ul>
+                                       
+                                       <p class="p">As a workaround, create one community with multiple statements through OpenConfig YANG:</p>
+                                       <pre class="pre codeblock"><code>ip community-list standard cs_std seq 5 permit 1:1 
+  ip community-list standard cs_std seq 10 permit 1:2
+  ip community-list standard cs_std seq 15 permit 1:3
+route-map To_LC permit 10
+  match community cs_std
+
+</code></pre>
+                                       </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">The following OpenConfig YANG limitation applies to this container: <span class="ph filepath">/bgp-conditions/state/next-hop-in</span></p>
+                                       
+                                       <p class="p">In OpenConfig YANG, the <span class="ph filepath">next-hop-in</span> type is an IP address, but in the CLI, it is an IP prefix.
+                                       </p>
+                                       
+                                       <p class="p">While creating the <span class="ph filepath">next-hop-in</span> through OpenConfig YANG, the IP address is converted to a "/32" mask prefix in the CLI configuration. For example:
+                                       </p>
+                                       
+                                       <ul class="ul" id="id_88681__ul_dwx_nfd_4fb">
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">Following is an example of <span class="ph filepath">next-hop-in</span> in the OpenConfig YANG payload:
+                                             </p>
+                                             <pre class="pre codeblock"><code>&lt;policy-definition&gt;
+    &lt;name&gt;sc0&lt;/name&gt;
+    &lt;statements&gt;
+        &lt;statement&gt;
+            &lt;name&gt;5&lt;/name&gt;
+            &lt;conditions&gt;
+                &lt;bgp-conditions xmlns="http://openconfig.net/yang/bgp-policy"&gt;
+                    &lt;config&gt;
+                        <strong class="ph b">&lt;next-hop-in&gt;2.3.4.5&lt;/next-hop-in&gt;</strong>
+                    &lt;/config&gt;
+                &lt;/bgp-conditions&gt;
+            &lt;/conditions&gt;
+        &lt;/statement&gt;
+    &lt;/statements&gt;
+&lt;/policy-definition&gt;
+
+</code></pre>
+                                             </li>
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">Following is an example of the same information in the CLI:</p>
+                                             <pre class="pre codeblock"><code>ip prefix-list IPV4_PFX_LIST_OPENCONFIG_sc0_5 seq 5 permit <strong class="ph b">2.3.4.5/32</strong>
+route-map sc0 permit 5
+  match ip next-hop prefix-list IPV4_PFX_LIST_OPENCONFIG_sc0_5
+
+</code></pre>
+                                             </li>
+                                          
+                                       </ul>
+                                       
+                                    </li>
+                                    
+                                 </ul>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">The following NX-OS limitations exist for OC-BGP-POLICY: </p>
+                                 
+                                 <ul class="ul" id="id_88681__ul_ewx_nfd_4fb">
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/bgp-actions/set-community/config/method</span> enum "REFERENCE" is not supported.
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">enum "SELF", which is supported in the OpenConfig YANG model for <span class="ph filepath">/bgp-actions/config/set-next-hop</span>, is not supported.
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                 </ul>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">For OC-BGP-POLICY, <span class="ph filepath">/bgp-conditions/match-community-set/config/community-set</span> get mapped only to <span class="ph filepath">match community &lt;community-set&gt;_std</span>, so only standard community is supported. Match to expanded community set is not supported.
+                                 </p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">There is a limitation in replacing <span class="ph filepath">match-tag-set</span> because defined sets for <span class="ph filepath">tag-sets</span> are not currently implemented.
+                                 </p>
+                                 
+                                 <p class="p">Currently, replacing <span class="ph filepath">match-tag-set</span> appends the values. To replace <span class="ph filepath">match-tag-set</span>, delete it, then create it again.
+                                 </p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">The following guidelines and limitations apply to OSPF OpenConfig YANG:</p>
+                                 
+                                 <ul class="ul" id="id_88681__ul_fwx_nfd_4fb">
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">If you configure and remove an area configuration in OSPF, the deleted areas (stale entries) are still shown in DME. Those
+                                          stale area entries are shown in the GETCONFIG/GET output in OpenConfig YANG. 
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">Only one area is supported in OpenConfig YANG in the OSPF policy <span class="ph filepath">match ospf-area</span> configuration. In the CLI, you can configure to match multiple areas, such as <span class="ph filepath">match ospf-area 100 101</span>. However, in OpenConfig YANG, you can configure only one area (for example, <span class="ph filepath">match ospf-area 100</span>).
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">The area virtual-link and area interface configurations payload cannot go under the same area list. Split the area container
+                                          payload as a Virtual link area and interface area in the same payload.
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">The MD5 authentication string cannot be configured in OSPF OpenConfig YANG. </p>
+                                       
+                                       <p class="p">In the OSPF model, <span class="ph filepath">Authentication-type</span> is defined for the Authentication:
+                                       </p>
+                                       <pre class="pre codeblock"><code>leaf authentication-type {
+  type string;
+  description
+    "The type of authentication that should be used on this
+    interface";
+}
+</code></pre>
+                                       <p class="p">OSPF OpenConfig YANG does not support an option for authentication password.</p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">The OSPF area authentication configuration is not supported. For example, <span class="ph filepath">area 0.0.0.200 authentication message-digest</span> cannot be configured from OpenConfig YANG.
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">The OSPF/BGP instance configuration that falls under default VRF (for example, <span><span class="keyword kwd">router ospf 1/router bgp 1</span> </span>) is not deleted when you delete the Protocols container with the default network instance.
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                 </ul>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">The following are guidelines and limitations for VLAN configuration between the OpenConfig payload and the Cisco Nexus 9000
+                                    interfaces:
+                                 </p>
+                                 
+                                 <ul class="ul" id="id_88681__ul_vl4_j2p_qfb">
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">When you attempt to simultaneously configure a trunk-mode interface and trunk VLANs in the same OpenConfig payload, the configuration
+                                          does not complete successfully. However, when you split the payload so that the trunk-mode interface is sent first, then the
+                                          trunk VLANs are sent, the configuration completes successfully. 
+                                       </p>
+                                       
+                                       <p class="p">On Cisco NX-OS interfaces, the default interface mode is <span><span class="keyword kwd">access</span> </span>. To implement any trunk-related configurations, you must first change the interface mode to <span><span class="keyword kwd">trunk</span> </span>, then configure the trunk VLAN ranges. Do these configurations in separate payloads.
+                                       </p>
+                                       
+                                       <p class="p">The following examples show the separate payloads for the configuring trunk mode and VLAN ranges.</p>
+                                       
+                                       <p class="p">Example 1, payload configuring the interface to trunk mode.</p>
+                                       <pre class="pre codeblock"><code>&lt;rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101"&gt;
+  &lt;edit-config&gt;
+    &lt;target&gt;
+      &lt;running/&gt;
+    &lt;/target&gt;
+    &lt;config&gt;
+      &lt;interfaces xmlns="http://openconfig.net/yang/interfaces"&gt;
+        &lt;interface&gt;
+          &lt;name&gt;eth1/47&lt;/name&gt;
+          &lt;subinterfaces&gt;
+            &lt;subinterface&gt;
+              &lt;index&gt;0&lt;/index&gt;
+              &lt;config&gt;
+                &lt;index&gt;0&lt;/index&gt;
+              &lt;/config&gt;
+            &lt;/subinterface&gt;
+          &lt;/subinterfaces&gt;
+          &lt;ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet"&gt;
+            &lt;switched-vlan xmlns="http://openconfig.net/yang/vlan"&gt;
+              &lt;config&gt;
+                <strong class="ph b">&lt;interface-mode&gt;TRUNK&lt;/interface-mode&gt;</strong>
+              &lt;/config&gt;
+            &lt;/switched-vlan&gt;
+          &lt;/ethernet&gt;
+        &lt;/interface&gt;
+      &lt;/interfaces&gt;
+    &lt;/config&gt;
+  &lt;/edit-config&gt;
+&lt;/rpc&gt;</code></pre>
+                                       <section class="p">Example 2, payload configuring the VLAN ranges.<pre class="pre codeblock"><code>&lt;rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101"&gt;
+  &lt;edit-config&gt;
+    &lt;target&gt;
+      &lt;running/&gt;
+    &lt;/target&gt;
+    &lt;config&gt;
+      &lt;interfaces xmlns="http://openconfig.net/yang/interfaces"&gt;
+        &lt;interface&gt;
+          &lt;name&gt;eth1/47&lt;/name&gt;
+          &lt;subinterfaces&gt;
+            &lt;subinterface&gt;
+              &lt;index&gt;0&lt;/index&gt;
+              &lt;config&gt;
+                &lt;index&gt;0&lt;/index&gt;
+              &lt;/config&gt;
+            &lt;/subinterface&gt;
+          &lt;/subinterfaces&gt;
+          &lt;ethernet xmlns="http://openconfig.net/yang/interfaces/ethernet"&gt;
+            &lt;switched-vlan xmlns="http://openconfig.net/yang/vlan"&gt;
+              &lt;config&gt;
+                &lt;native-vlan&gt;999&lt;/native-vlan&gt;
+                &lt;trunk-vlans xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="delete"&gt;1..4094&lt;/trunk-vlans&gt;
+                <strong class="ph b">&lt;trunk-vlans&gt;401&lt;/trunk-vlans&gt;</strong>
+                <strong class="ph b">&lt;trunk-vlans&gt;999&lt;/trunk-vlans&gt;</strong>
+              &lt;/config&gt;
+            &lt;/switched-vlan&gt;
+          &lt;/ethernet&gt;
+        &lt;/interface&gt;
+      &lt;/interfaces&gt;
+    &lt;/config&gt;
+  &lt;/edit-config&gt;
+&lt;/rpc&gt;</code></pre></section>
+                                       
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">Because of the design of OpenConfig YANG, when you configure VLANs, there must be no overlap between the VLANs in the payload
+                                          and the VLANs already configured on an interface. If an overlap exists, the configuration through OpenConfig is not successful.
+                                          Make sure that the VLANs configured on an interface are different from the VLANs in the OpenConfig payload. Pay particular
+                                          attention to the starting and ending VLANs in a range.
+                                       </p>
+                                       
+                                       
+                                    </li>
+                                    
+                                 </ul>
+                                 
+                              </li>
+                              
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">The following guidelines and limitations apply to OC-LACP:</p>
+                                 
+                                 <ul class="ul" id="id_88681__ul_zzj_sv3_ghb">
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">Port-channel mode:</p>
+                                       
+                                       <ul class="ul" id="id_88681__ul_vpn_tv3_ghb">
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">OC-LACP enables configuring the port-channel mode on the port-channel interface. However, through the NXOS-CLI, the port-channel
+                                                mode is configured on the member interface using channel-group mode active or passive.
+                                             </p>
+                                             
+                                          </li>
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">Although OC-LACP explicitly configures the port-channel mode on a port-channel interface, issuing the NX-OS <span><span class="keyword kwd">show running-config</span> </span> command on a port-channel interface does not show the port-channel mode configuration for either empty or non-empty port-channels.
+                                             </p>
+                                             
+                                          </li>
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">Once a member is added to the port-channel, <span><span class="keyword kwd">show running interface ethernet &lt;&gt;</span> </span> shows the port-channel mode configuration as a channel-group mode active or passive.
+                                             </p>
+                                             
+                                          </li>
+                                          
+                                       </ul>
+                                       
+                                       <table class="olh_note" border="0" role="note">
+                                          <tr>
+                                             <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                             </td>
+                                             <td border="0" class="olh_note">
+                                                <section class="note__content">
+                                                   <hr>
+                                                   
+                                                   <p class="p">All port-channels that are created through OpenConfig should continue to be managed by OpenConfig.</p>
+                                                   
+                                                   <hr>
+                                                </section>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       
+                                       <p class="p">Port-channel interval rate:</p>
+                                       
+                                       <ul class="ul">
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">Port channel interval can only be changed when members are in <span>shut </span> state.
+                                             </p>
+                                             
+                                          </li>
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">The OC-LACP interval is per port-channel. The NX-OS LACP interval is per port-channel member. Because of this difference,
+                                                the following behavior can be expected:
+                                             </p>
+                                             
+                                             <ul class="ul">
+                                                
+                                                <li class="li">
+                                                   
+                                                   <p class="p">If you configure the port-channel interval through OpenConfig, all members in the port-channel get the same configuration
+                                                      applied to them.
+                                                   </p>
+                                                   
+                                                </li>
+                                                
+                                                <li class="li">
+                                                   
+                                                   <p class="p">If you configure the port-channel interval through OpenConfig and later a member is added to the port-channel, you must configure
+                                                      the interval again through OpenConfig for the configuration to be applied to the new member.
+                                                   </p>
+                                                   
+                                                </li>
+                                                
+                                             </ul>
+                                             
+                                          </li>
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">System MAC ID:</p>
+                                             
+                                             
+                                             <ul class="ul">
+                                                
+                                                <li class="li">
+                                                   
+                                                   <p class="p">In this release, Cisco NX-OS does not support <code class="ph codeph">system-id-mac</code> per port-channel.
+                                                   </p>
+                                                   
+                                                </li>
+                                                
+                                             </ul>
+                                             
+                                          </li>
+                                          
+                                       </ul>
+                                       
+                                    </li>
+                                    
+                                 </ul>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Member-state data for the following is present only when a port is in admin <span>up </span> state:
+                                 </p>
+                                 
+                                 <ul class="ul">
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">LACP</p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">Interface</p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">Interfaces</p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">Member</p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">State</p>
+                                       
+                                    </li>
+                                    
+                                 </ul>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">OSPFv2 can send an error response when you attempt to add an interface through OpenConfig YANG. When the problem occurs, the
+                                    interface is not added, and the RPC reply contains a "list merge failed" error as follows: 
+                                 </p>
+                                 <pre class="pre codeblock"><code>&lt;rpc-reply xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="urn:uuid:39507023-8569-4cf8-869c-e19aaf76a260"&gt;
+    &lt;rpc-error&gt;
+        &lt;error-type&gt;protocol&lt;/error-type&gt;
+        &lt;error-tag&gt;operation-failed&lt;/error-tag&gt;    
+        &lt;error-severity&gt;error&lt;/error-severity&gt;
+       <strong class="ph b"> &lt;error-message xml:lang="en"&gt;List Merge Failed: operation-failed&lt;/error-message&gt;</strong>  
+        &lt;error-path&gt;/network-instances/network-instance/protocols/protocol/ospfv2/areas/area/interfaces/interface/id&lt;/error-path&gt;
+    &lt;/rpc-error&gt;
+&lt;/rpc-reply&gt;
+</code></pre>
+                                 
+                                 </li>
+                              
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">Queueing stats for Hig (ii) ports is not supported.</p>
+                                 
+                              </li>
+                              
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">You do not see the tx-packets, or bytes, and drop-packets per unicast, multicast, or broadcast queue. The stats that display
+                                    in the OC response are a sum of the ucast, mcast, and bcast queues per qos-group. 
+                                 </p>
+                                 
+                              </li>
+                              
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">OpenConfig YANG does not support stats for a QoS policy that is applied at the VLAN level.</p>
+                                 
+                              </li>
+                              
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">The ingress queue drop count that can be retrieved through OC can be displayed at the slice/port/queue level depending on
+                                    the platform. 
+                                 </p>
+                                 
+                              </li>
+                              
+                              <li class="li">
+                                 
+                                 
+                                 <p class="p">The following is the guideline and limitation for OpenConfig configurations for switchport, shut/no shut, MTU, and mac-address:</p>
+                                 
+                                 <ul class="ul">
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p">An ascii reload is required when configuring switchport, shut/no shut, MTU, and mac-address. Using a binary reload results
+                                          in the configuration being lost.
+                                       </p>
+                                       
+                                    </li>
+                                    
+                                 </ul>
+                                 
+                              </li>
+                              
+                           </ul>
+                           
+                           <ul class="ul">
+                              
+                              
+                           </ul>
+                           
+                           <ul class="ul">
+                              
+                              
+                           </ul>
+                           
+                           
+                           <ul class="ul">
+                              
+                              <li class="li">
+                                 
+                                 <p class="p">The following new operational state OpenConfig paths are supported. Some paths have extra guidelines and limitations as mentioned
+                                    below:
+                                 </p>
+                                 
+                                 <ul class="ul">
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/network-instances/network-instance/fdb/l2rib/mac-table</span></p>
+                                       
+                                       <ul class="ul">
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">Parent level queries for l2rib are supported at l2rib level. For example, you can query until <span class="ph filepath">network-instances/network-instance/fdb/l2rib</span> but not at fdb level <span class="ph filepath">network-instances/network-instance/fdb</span>.
+                                             </p>
+                                             
+                                          </li>
+                                          
+                                       </ul>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/interfaces/interface/routed-vlan/ipv4/neighbors/neighbor/state</span></p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/interfaces/interface/routed-vlan/ipv6/neighbors/neighbor/state</span></p>
+                                       
+                                       <ul class="ul">
+                                          
+                                          <li class="li">
+                                             
+                                             <p class="p">For parent queries, the infrastructure retrieves all the keys for all the list items and a request is sent to the back end
+                                                to populate the rest of the data for each of these list items. This means that the infrastructure must have the same view
+                                                of the tree as the back end. 
+                                             </p>
+                                             
+                                             <p class="p">For example, if the infrastructure only sees static entries, while the back end has static and dynamic entries, then for the
+                                                list walk the infrastructure will only send requests for each static entry which will result in incomplete data. The paths
+                                                with this limitation in the current release are <span class="ph filepath">/interfaces/interface/routed-vlan/ipv6/neighbors/neighbor/state</span> and <span class="ph filepath">/interfaces/interface/routed-vlan/ipv4/neighbors/neighbor/state</span>. The data contains both dynamic and static ARP and ND entries if the exact path is given but would only contain the static
+                                                entries if the parent path given.
+                                             </p>
+                                             
+                                          </li>
+                                          
+                                       </ul>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/network-instances/network-instance/protocols/protocol/bgp/rib/afi-safis/afi-safi/l2vpn-evpn/loc-rib/routes</span></p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/network-instances/network-instance/protocols/protocol/bgp/rib/attr-sets</span></p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/network-instances/network-instance/protocols/protocol/bgp/rib/communities</span></p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/network-instances/network-instance/protocols/protocol/bgp/rib/ext-communities</span></p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/vxlan/endpoint-peers</span></p>
+                                       
+                                    </li>
+                                    
+                                    <li class="li">
+                                       
+                                       <p class="p"><span class="ph filepath">/network-instances/network-instance/connection-points/connection-point/endpoints/endpoint/vxlan/endpoint-vnis</span></p>
+                                       
+                                    </li>
+                                    
+                                 </ul>
+                                 
+                              </li>
+                              
+                           </ul>
+                           
+                           
+                        </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title4" lang="en-US" id="id_88682">
+                     <h2 class="title topictitle2" id="ariaid-title4">Understanding Deletion of BGP Routing Instance</h2>
+                     <section class="body refbody">
+                        <section class="section" id="id_88682__section_d55_ngd_4fb">
+                           
+                           <p class="p">With OpenConfig YANG network-instance (OCNI), when attempting to delete only the BGP configuration of the default VRF instead
+                              of deleting the entire BGP routing instance, BGP information might not be deleted at the protocols/BGP level. In this situation,
+                              when the delete is at the protocols or BGP level with the autonomous system number in the payload, only the configuration
+                              of the default VRF is deleted instead of removing the entire BGP routing instance.
+                           </p>
+                           
+                           <p class="p">Following is an example payload that would be used to delete the configuration under the default VRF in BGP.</p>
+                           <pre class="pre codeblock"><code>&lt;rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="101"&gt;
+  &lt;edit-config&gt;
+    &lt;target&gt;
+      &lt;running/&gt;
+    &lt;/target&gt;
+    &lt;config&gt;
+      &lt;network-instances xmlns="http://openconfig.net/yang/network-instance"&gt;
+        &lt;network-instance&gt;
+          &lt;name&gt;default&lt;/name&gt;
+          &lt;protocols&gt;
+            &lt;protocol&gt;
+              &lt;identifier&gt;BGP&lt;/identifier&gt;
+              &lt;name&gt;bgp&lt;/name&gt;
+              &lt;bgp xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" nc:operation="delete"&gt;
+                &lt;global&gt;
+                  &lt;config&gt;
+                    &lt;as&gt;100&lt;/as&gt;
+                  &lt;/config&gt;
+                &lt;/global&gt;
+              &lt;/bgp&gt;
+            &lt;/protocol&gt;
+          &lt;/protocols&gt;
+        &lt;/network-instance&gt;
+      &lt;/network-instances&gt;
+    &lt;/config&gt;
+  &lt;/edit-config&gt;
+&lt;/rpc&gt;
+
+</code></pre>
+                           <p class="p"><strong class="ph b">Expected Behavior:</strong> The BGP routing instance itself should be deleted, which is the equivalent to <span class="keyword cmdname">no router bgp 100</span>.
+                           </p>
+                           
+                           <p class="p"><strong class="ph b">Actual Behavior:</strong> Only the BGP configuration under the default VRF is deleted, and there is no equivalent single CLI configuration.
+                           </p>
+                           
+                           <p class="p">Following is the running configuration before the delete operation:</p>
+                           <pre class="pre codeblock"><code>router bgp 100
+  router-id 1.2.3.4
+  address-family ipv4 unicast
+  vrf abc
+    address-family ipv4 unicast
+      maximum-paths 2
+
+</code></pre>
+                           <p class="p">And following is the running configuration after the delete operation:</p>
+                           <pre class="pre codeblock"><code>router bgp 100
+  vrf abc
+    address-family ipv4 unicast
+      maximum-paths 2
+
+</code></pre>
+                           </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title5" lang="en-US" id="Cisco_Reference.dita_643ed053-dca7-4418-877f-e6f483fa7f0e">
+                     <h2 class="title topictitle2" id="ariaid-title5">Verifying YANG</h2>
+                     <section class="body refbody">
+                        
+                        <section class="section" id="Cisco_Reference.dita_643ed053-dca7-4418-877f-e6f483fa7f0e__d46956e998">
+                           
+                           <p class="p">Use the following commands to verify YANG settings:    : </p>
+                           
+                           <table width="100%" border="1" class="table frame-all">
+                              <caption><span class="table--title-label tabletitle">Table 1. </span><span class="tabletitle">YANG Verification</span></caption>
+                              <colgroup>
+                                 <col style="width:50%">
+                                 <col style="width:50%">
+                              </colgroup>
+                              <thead class="thead">
+                                 
+                                 <tr>
+                                    
+                                    <th font-weight="bold" class="entry colsep-1 rowsep-1" id="Cisco_Reference.dita_643ed053-dca7-4418-877f-e6f483fa7f0e__entry__1">
+                                       
+                                       <p class="p">Command</p>
+                                       
+                                    </th>
+                                    
+                                    <th font-weight="bold" class="entry colsep-1 rowsep-1" id="Cisco_Reference.dita_643ed053-dca7-4418-877f-e6f483fa7f0e__entry__2">
+                                       
+                                       <p class="p">Description</p>
+                                       
+                                    </th>
+                                    
+                                 </tr>
+                                 
+                              </thead>
+                              <tbody class="tbody">
+                                 
+                                 <tr>
+                                    
+                                    <td class="entry colsep-1 rowsep-1" headers="Cisco_Reference.dita_643ed053-dca7-4418-877f-e6f483fa7f0e__entry__1 ">
+                                       
+                                       <p class="p"><span><span class="keyword kwd">show telemetry yang direct-path cisco-nxos-device</span> </span></p>
+                                       
+                                    </td>
+                                    
+                                    <td class="entry colsep-1 rowsep-1" headers="Cisco_Reference.dita_643ed053-dca7-4418-877f-e6f483fa7f0e__entry__2 ">
+                                       
+                                       <p class="p">Displays the paths which are supported. </p>
+                                       
+                                    </td>
+                                    
+                                 </tr>
+                                 
+                              </tbody>
+                           </table>
+                           
+                        </section>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+               </article>
+            </article>
+         </main>
+      
+
+</div> 
+ 
+    </div>
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rightRailComponent noprint base-blowout">
+    <div class="eotPersonalization">
+        <section id="eotTDCampaign"></section>
+    </div>    
+    <div class="eot-feedback-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-feedback">
+  <h3>Was this Document Helpful?</h3>
+  <span class="eot-feedback-btnwrap">
+    <button class="eot-feedback-btn eot-feedback-btn-yes" aria-label="Was this Document Helpful?? Yes">Yes</button>
+    <button class="eot-feedback-btn eot-feedback-btn-no" aria-label="Was this Document Helpful?? No">No</button>
+  </span>
+  <span lang="en" class="eot-feedback-olwrap">
+    
+      <a href="javascript: void(0);" class="eot-feedback-ol" onclick="window.open('https://ciscocx.qualtrics.com/jfe/form/SV_be0fHnqDoKM7sto?Ref=' + location.href + '&resize=false', 'feedback', 'width=650, height=460, scrollbars=1, menubar=1, resizable=1'); return false;">
+      <img id="feedback_img" border="0" style="cursor: pointer;" title="Feedback" src="//www.cisco.com/c/dam/cdc/i/Feedback_OceanBlue.png" alt="Feedback">Feedback</a>
+    
+  </span>
+</div>
+
+
+</div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-vav">
+  <ul>
+  </ul>
+</div>
+    </div>
+			
+    <div class="letUsHelp">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eotLetUsHelp">
+    <h3>Contact Cisco</h3>
+    <ul>
+         <li><a id="eotLetUsHelpProdDocUrl" href="https://mycase.cloudapps.cisco.com/start?prodDocUrl=">Open a Support Case</a><img src="/etc/designs/cdc/fw/i/icon_lock_small.png" alt="login required"/></li>
+        <li>(Requires a <a href="//www.cisco.com/c/en/us/services/order-services.html">Cisco Service Contract</a>)</li>
+    </ul>
+</div>
+
+
+<script>
+    jQuery(document).ready(function() {
+        var getURL=jQuery("#eotLetUsHelpProdDocUrl").attr("href"), 
+            domInd = location.href.indexOf('cisco.com') ;
+        if ( domInd > -1 && domInd < location.href.search(/\w\/\w/) ) {
+            getURL += encodeURI(location.href);
+        }
+		jQuery("#eotLetUsHelpProdDocUrl").attr("href",getURL);
+    });
+</script>
+
+
+    </div>
+
+    <div id="eotRightRailMBox"><!--MBox-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- IT:components/mbox/banner-mbox:V0.0.0 -->
+
+
+
+<div>
+    <div class="mboxDefault"></div>   
+    <script type="text/javascript">
+        var test="";
+        if(test!=undefined && test.trim().length>0){
+           mboxCreate('en-us_dg_support_bookchapters','type=default','');
+        }else{
+           mboxCreate('en-us_dg_support_bookchapters','type=default');
+        }
+       
+    </script>
+</div>
+<!--MBox--></div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+	<script type="text/javascript">
+			    var eottdatp = document.getElementsByClassName('eot-tdatp');
+			    if (eottdatp && eottdatp.style) {
+        			eottdatp.style.display="none";
+			    }
+        		  </script>
+  	
+
+
+    </div>
+			
+    <div></div>
+
+</div>
+
+
+    </div>
+</div>
+
+     <!--googleoff: index--><!--googleoff: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end: responsive fat footer re-use wrapper-->
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="module" src="/site/web-components/us/en/cdc-footer.js"></script>
+        <cdc-footer></cdc-footer>
+    
+
+<script type="text/javascript">
+    if(document.querySelector('#privacy-manager')!=null){
+        document.querySelector('#privacy-manager').href='#cookies';
+    }
+  </script>   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-overlay"></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/etc/designs/cdc/clientlibs/responsive/js/books.min.js"></script>
+
+<script src="/etc/designs/cdc/fw/m/books_metricsrule.js" type="text/javascript" async></script>
+    
+    
+
+    <!-- SiteCatalyst code version: H.24.4. -->
+    <noscript><img src="//cisco.112.2o7.net/b/ss/cisco-mobile/5/12345" width="2" height="2" border="0" alt=""/></noscript>
+
+</body>
+</html>

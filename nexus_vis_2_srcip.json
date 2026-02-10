@@ -1,0 +1,12 @@
+{
+  "attributes": {
+    "title": "Nexus - Top Source IPs",
+    "visState": "{\"title\":\"Nexus - Top Source IPs\",\"type\":\"table\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"sum\",\"schema\":\"metric\",\"params\":{\"field\":\"network.bytes\",\"customLabel\":\"Total Bytes\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"source.ip\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"customLabel\":\"Source IP\"}}],\"params\":{\"perPage\":10,\"showPartialRows\":false,\"showMetricsAtAllLevels\":false,\"showTotal\":false,\"totalFunc\":\"sum\",\"percentageCol\":\"\"},\"uiStateJSON\":\"{}\"}",
+    "uiStateJSON": "{}",
+    "description": "",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"index\":\"sflow-pattern\",\"query\":{\"language\":\"kuery\",\"query\":\"flow.export.ip.addr: 10.4.4.3\"},\"filter\":[]}"
+    }
+  }
+}

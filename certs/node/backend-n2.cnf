@@ -1,0 +1,22 @@
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+prompt = no
+
+[req_distinguished_name]
+C = BG
+ST = Sofia
+L = Sofia
+O = Telehouse
+CN = backend-n2
+
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment, digitalSignature
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = backend-n2
+DNS.2 = localhost
+IP.1 = 10.4.4.90
+IP.2 = 127.0.0.1

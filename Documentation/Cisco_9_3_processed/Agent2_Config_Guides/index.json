@@ -1,0 +1,562 @@
+{
+  "total_files": 54,
+  "processed": 54,
+  "errors": [],
+  "guides": {
+    "b-cisco-nexus-9000-nx-os-fundamentals-configuration-guide-93x": {
+      "file": "fundamentals/fundamentals-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Fundamentals Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "fundamentals",
+        "basics",
+        "getting-started"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-fundamentals-configuration-guide-93x_01": {
+      "file": "fundamentals/fundamentals-configuration-guide-93x-01.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Fundamentals Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "fundamentals",
+        "basics",
+        "getting-started"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x": {
+      "file": "interfaces/interfaces-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_01": {
+      "file": "interfaces/interfaces-configuration-guide-93x-01.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_02": {
+      "file": "interfaces/interfaces-configuration-guide-93x-02.md",
+      "title": "Cisco Nexus 9000 \u30b7\u30ea\u30fc\u30ba NX-OS \u30a4\u30f3\u30bf\u30fc\u30d5\u30a7\u30a4\u30b9\u8a2d\u5b9a\u30ac\u30a4\u30c9\u3001\u30ea\u30ea\u30fc\u30b9 9.3(x)",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_appendix_010000": {
+      "file": "interfaces/interfaces-configuration-guide-93x-appendix-010000.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuration Limits for Cisco NX-OS Interfaces [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_appendix_01110": {
+      "file": "interfaces/interfaces-configuration-guide-93x-appendix-01110.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring Layer 2 Data Center Interconnect [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_appendix_01111": {
+      "file": "interfaces/interfaces-configuration-guide-93x-appendix-01111.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - IETF RFCs supported by Cisco NX-OS Interfaces [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - New and Changed Information [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_010": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-010.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Overview [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_0100": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-0100.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring Layer 2 Interfaces [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01000": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01000.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring vPCs [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_010000": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-010000.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring Port Channels [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01001": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01001.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring IP Tunnels [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_0101": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-0101.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring Layer 3 Interfaces [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01010": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01010.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring Q-in-Q VLAN Tunnels [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport",
+        "vlan"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01011": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01011.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring Static and Dynamic NAT Translation [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01100": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01100.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring IP Event Dampening [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01101": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01101.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring IP TCP MSS [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01110": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01110.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring Basic Interface Parameters [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_chapter_01111": {
+      "file": "interfaces/interfaces-configuration-guide-93x-chapter-01111.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Configuring Bidirectional Forwarding Detection [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_index": {
+      "file": "interfaces/interfaces-configuration-guide-93x-index.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Index [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-interfaces-configuration-guide-93x_preface_00": {
+      "file": "interfaces/interfaces-configuration-guide-93x-preface-00.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Interfaces Configuration Guide, Release 9.3(x) - Preface [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "interfaces",
+        "ethernet",
+        "port-channels",
+        "switchport"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_01": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-01.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_02": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-02.md",
+      "title": "Cisco Nexus 9000 \u30b7\u30ea\u30fc\u30ba NX-OS \u30ec\u30a4\u30e4 2 \u30b9\u30a4\u30c3\u30c1\u30f3\u30b0 \u30b3\u30f3\u30d5\u30a3\u30ae\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3 \u30ac\u30a4\u30c9 \u30ea\u30ea\u30fc\u30b9 9.3\uff08x)",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-01.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - New and Changed Information [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_010": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-010.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Overview [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-0100.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Flex Links [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01000": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-01000.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Switching Modes [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01001": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-01001.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Rapid PVST+ Using Cisco NX-OS [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0101": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-0101.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring VLANs [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01010": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-01010.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring MST Using Cisco NX-OS [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01011": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-01011.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring STP Extensions Using Cisco NX-OS [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_011": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-011.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Layer 2 Switching [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0110": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-0110.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring VTP [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01100": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-01100.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Reflective Relay for Layer 2 Switching [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0111": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-0111.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Private VLANs Using NX-OS [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01110": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-chapter-01110.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Traffic Storm Control [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_index": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-index.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Index [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_preface_00": {
+      "file": "layer2/layer-2-switching-configuration-guide-93x-preface-00.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Preface [Cisco Nexus 9000 Series Switches]",
+      "tags": [
+        "layer2",
+        "vlan",
+        "trunk",
+        "stp",
+        "spanning-tree"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-quality-of-service-configuration-guide-93x": {
+      "file": "qos/quality-of-service-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Quality of Service Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "qos",
+        "quality-of-service",
+        "marking",
+        "queuing",
+        "classification"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-quality-of-service-configuration-guide-93x_01": {
+      "file": "qos/quality-of-service-configuration-guide-93x-01.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Quality of Service Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "qos",
+        "quality-of-service",
+        "marking",
+        "queuing",
+        "classification"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-san-switching-configuration-guide-933": {
+      "file": "san/san-switching-configuration-guide-933.md",
+      "title": "Cisco Nexus 9000 Series NX-OS SAN Switching Configuration Guide, Release 9.3(x) ",
+      "tags": [
+        "san",
+        "fcoe",
+        "fiber-channel",
+        "storage",
+        "vsan"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-san-switching-configuration-guide-933_01": {
+      "file": "san/san-switching-configuration-guide-933-01.md",
+      "title": "Cisco Nexus 9000 Series NX-OS SAN Switching Configuration Guide, Release 9.3(x) ",
+      "tags": [
+        "san",
+        "fcoe",
+        "fiber-channel",
+        "storage",
+        "vsan"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-security-configuration-guide-93x": {
+      "file": "security/security-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Security Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "security",
+        "acl",
+        "radius",
+        "tacacs",
+        "aaa",
+        "ssh",
+        "tls"
+      ]
+    },
+    "b-cisco-nexus-9000-nx-os-security-configuration-guide-93x_01": {
+      "file": "security/security-configuration-guide-93x-01.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Security Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "security",
+        "acl",
+        "radius",
+        "tacacs",
+        "aaa",
+        "ssh",
+        "tls"
+      ]
+    },
+    "b-cisco-nexus-9000-series-nx-os-catena-configuration-guide-93x": {
+      "file": "other/catena-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Catena Configuration Guide, Release 9.3(x) ",
+      "tags": []
+    },
+    "b-cisco-nexus-9000-series-nx-os-icam-configuration-guide-93x": {
+      "file": "other/icam-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS iCAM Configuration Guide, Release 9.3(x)",
+      "tags": []
+    },
+    "b-cisco-nexus-9000-series-nx-os-label-switching-configuration-guide-93x": {
+      "file": "other/label-switching-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Label Switching Configuration Guide, Release 9.3(x)",
+      "tags": []
+    },
+    "b-cisco-nexus-9000-series-nx-os-multicast-routing-configuration-guide-93x": {
+      "file": "multicast-routing/multicast-routing-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Multicast Routing Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "multicast",
+        "pim",
+        "igmp",
+        "routing"
+      ]
+    },
+    "b-cisco-nexus-9000-series-nx-os-system-management-configuration-guide-93x": {
+      "file": "system-management/system-management-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS System Management Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "system-management",
+        "monitoring",
+        "logging",
+        "snmp"
+      ]
+    },
+    "b-cisco-nexus-9000-series-nx-os-unicast-routing-configuration-guide-93x": {
+      "file": "unicast-routing/unicast-routing-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Unicast Routing Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "routing",
+        "unicast",
+        "bgp",
+        "ospf",
+        "eigrp",
+        "static-routes"
+      ]
+    },
+    "b-cisco-nexus-9000-series-nx-os-vxlan-configuration-guide-93x": {
+      "file": "vxlan/vxlan-configuration-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS VXLAN Configuration Guide, Release 9.3(x)",
+      "tags": [
+        "vxlan",
+        "overlay",
+        "evpn",
+        "tunneling",
+        "bgp"
+      ]
+    }
+  }
+}

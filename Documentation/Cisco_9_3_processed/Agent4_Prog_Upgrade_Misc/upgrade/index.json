@@ -1,0 +1,16 @@
+{
+  "category": "Upgrade and Downgrade",
+  "description": "Cisco Nexus 9000 Series NX-OS Software Upgrade and Downgrade Guide",
+  "release": "9.3(x)",
+  "files": [
+    {
+      "filename": "upgrade-downgrade-guide-93x.md",
+      "title": "Cisco Nexus 9000 Series NX-OS Software Upgrade and Downgrade Guide",
+      "source": "b-cisco-nexus-9000-nx-os-software-upgrade-downgrade-guide-93x.html",
+      "tags": ["upgrade", "downgrade", "nx-os", "software", "installation", "fast-reload", "migration", "vPC"],
+      "updated": "September 4, 2025"
+    }
+  ],
+  "total_files": 1,
+  "subdirectories": []
+}

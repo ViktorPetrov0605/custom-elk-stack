@@ -1,0 +1,2112 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:fb="//www.facebook.com/2008/fbml" xmlns:og="//opengraphprotocol.org/schema/" lang="en" xml:lang="en"  class="no-touch no-js">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="rei" content="3/2/2022 10.39am est" />
+
+    
+        <script tyle="text/javascript" src="/content/dam/cdc/j/cdcrSwitch.js"></script>
+        <script type="text/javascript"> 
+            if (typeof cdc === "undefined"){
+                cdc = {};
+            }
+            cdc.localizedLang="en/us";
+
+            if (window.cdcext === undefined) { window.cdcext = {}; }
+            cdcext.customEnvironment = "prod";
+            if (window.cdclocale === undefined) { window.cdclocale = {}; }
+            cdclocale.locale = cdc.localizedLang=="en/us"?"en_us":cdc.localizedLang;
+
+        </script> 
+         
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/c/dam/cdc/t/ctm-core.js"></script>
+<script>
+    window['adrum-start-time'] = new Date().getTime();
+    window.environ = "prod" ;
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    if (window.cpe === undefined) {
+        window.cpe = {};
+    }
+
+    cpe.accountName = "prod";
+    cpe.config = ["cinf","dsc","pps"];
+    cpe.hideMethod = "elements";
+
+    window.targetGlobalSettings = JSON.parse('{\x22timeout\x22:4000}');
+    window.targetPageParamsAll = () => JSON.parse('{\x22entity\x22:\x22{\\\x22id\\\x22:\\\x221561676656046567\\\x22,\\\x22categoryId\\\x22:\\\x22\\\x22}\x22}');
+
+    
+    const bullseyeLibrary = `/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/external/bullseye.js`;
+
+    import(bullseyeLibrary);
+</script>
+<script src="/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/regional-mbox/regional-mbox.js"></script>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+        <title>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Nexus Application Development - SDK [Cisco Nexus 9000 Series Switches] - Cisco</title>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"  />
+    <meta name="description" content="Nexus Application Development - SDK"  />
+    <meta name="title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Nexus Application Development - SDK [Cisco Nexus 9000 Series Switches]"  />
+    <meta name="documentId" content="1561676619466522"  />
+    <meta name="templateName" content="book"  />
+    <meta property="fb:app_id" content="156494687694418"  />
+    <meta name="ioContentSource" content="WEM"  />
+    <meta name="docType" content="TSD Products Programming Reference Guide Chapter"  />
+    <meta name="concept" content="Cisco Nexus 9000 Series Switches"  />
+    <meta name="iaPath" content="cisco.com#Products#Cisco Products#Switches#Data Center Switches#Cisco Nexus 9000 Series Switches"  />
+    <meta name="contentType" content="cisco.com#US#preSales"  />
+    <meta name="locale" content="US"  />
+    <meta name="language" content="en"  />
+    <meta name="country" content="US"  />
+    <meta name="CCID_Page" content="cc001770"  />
+    <meta name="date" content="Thu Jul 24 01:33:50 PDT 2025"  />
+    <meta name="accessLevel" content="Customer"  />
+    <meta name="accessLevel" content="Guest"  />
+    <meta name="accessLevel" content="Partner"  />
+    <meta name="entitlementExpression" content="contains( &quot;0,1,2,3,4,7&quot; , $profileField[3] )"  />
+    <meta property="og:site_name" content="Cisco"  />
+    <meta property="og:type" content="website"  />
+    <meta property="og:title" content="Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x) - Nexus Application Development - SDK [Cisco Nexus 9000 Series Switches]"  />
+    <meta property="og:description" content="Nexus Application Development - SDK"  />
+    <meta property="og:url" content="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html"  />
+    <link rel="canonical" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html"/>
+	<link rel="alternate" hreflang="x-default" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html"/>
+<link rel="alternate" hreflang="ja-jp" href="https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html"/>
+<link rel="alternate" hreflang="en-us" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html"/>
+
+
+    
+ 
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/shared.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/underscore.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script type="text/javascript">
+    $CQ(function() {
+        CQ_Analytics.SegmentMgr.loadSegments("\/etc\/segmentation");
+        CQ_Analytics.ClientContextUtils.init("\/c\/dnc\/etc\/clientcontext\/default", "\/content\/en\/us\/td\/docs\/switches\/datacenter\/nexus9000\/sw\/93x\/progammability\/guide\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dseries\u002Dnx\u002Dos\u002Dprogrammability\u002Dguide\u002D93x_chapter_010000");
+
+        
+    });
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/cisco-sans.min.css" type="text/css">
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc/designs/cdc/clientlibs/responsive/js/foundation.min.js"></script>
+
+    <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/books.min.css" type="text/css">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+    <script>
+        sessionStorage.setItem("logOutIntermediateMessage", 'You are being logged out.');
+    </script>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom JSON LD For Products Type -->
+
+    
+    <script type="application/ld+json">
+        [
+           
+            {
+          "@context": "http://www.schema.org",                                                                        
+          "@type": "WebPage",
+          "name": "Nexus Application Development - SDK",  		  
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html",
+          "description": "Nexus Application Development - SDK",
+          "publisher": {
+              "@type": "Corporation",
+                 "name": "Cisco"
+            }
+        }]
+    </script>
+<!-- End Custom JSON LD For Products Type -->
+
+<!-- Video JSON LD -->
+
+
+
+
+<!-- End Video JSON LD -->
+
+    
+
+                              <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="GKZXC-NS3SU-A7VFH-HKBHM-U7LKH",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"GKZXC-NS3SU-A7VFH-HKBHM-U7LKH";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="wkcfb2s4piiro2mgnfwa-f-0962af25a-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,o={"ak.v":"39","ak.cp":"61004","ak.ai":parseInt("271834",10),"ak.ol":"0","ak.cr":13,"ak.ipv":4,"ak.proto":"h2","ak.rid":"b4a97ecd","ak.r":45172,"ak.a2":n,"ak.m":"dsca","ak.n":"essl","ak.bpcip":"178.132.80.0","ak.cport":43370,"ak.gh":"92.123.103.63","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1770416492","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==TSGy/VF2w3ZtbS9rib8JEkkks2HevvhY6NVPKK2OqlFz+lulP5FeZHQAwPLRwr0rM/7gNoG+MPKF4xYU9KJFaAvd/yR5y5KqJqMoFRqzECH6bJ37VYGmJSGUrpHuFlpPEghLGbvj8PZX/2IWfUyM43YyVuzvehhJEMr89nkA/LdenzeLozoqstP+lMThFVUxbkzl6q6eilQnNVx2nLWwMPPfHnUurE5gsHAwwUmMqzDLpUzHz4YUvw46/18g75OcuAsN2bMYA6nTLWY7wLunUr7zylXj9NFeytOWrXP93SCBQRsQIvx2sTOBlRu7sePg/GgW/6XByB7O1IXWEoWADue74ZfSXH8luIHyCJ+L3AAtj59SqeEaT08RZ/2zs9xatrt5/Nblzk18nIYlfpWuLQmk6OYCA+O9JjOmk41nH/4=","ak.pv":"540","ak.dpoabenc":"","ak.tf":i};if(""!==t)o["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))o["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(o)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:o,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+
+<body id="wcq" class="fw-res cdc-support cdc-books cdc-high-density cdc-full-width cdc-transform
+">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-skiplinks">
+    <ul class="container">
+        <li><a id="skiplink-content" href="#fw-content">Skip to content</a></li>
+        <li><a id="skiplink-search" href="#">Skip to search</a></li>
+        <li><a id="skiplink-footer" href="#fw-footer-v2" class="last">Skip to footer</a></li>
+    </ul>
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="module" src="/site/web-components/us/en/cdc-header.js"></script>
+    <cdc-header></cdc-header>
+    <nav class="fw-c-header__seo-links" aria-hidden="true" style="display:none">
+        <ul>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/index.html">Cisco.com Worldwide</a></li>
+            <li><a tabindex="-1" href="/c/en/us/products/index.html">Products and Services</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/solutions/index.html">Solutions</a></li>
+            <li><a tabindex="-1" href="/c/en/us/support/index.html">Support</a></li>
+            <li><a tabindex="-1" href="/c/en/us/training-events.html">Learn</a></li>
+            <li><a tabindex="-1" href="//www.cisco.com/c/en/us/about/sitemap.html">Explore Cisco</a></li>
+            <li><a tabindex="-1" href="/c/en/us/buy.html">How to Buy</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Partners Home</a></li>                
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/cisco-partner-program/index.html?ccid=cc000864&dtid=odiprc001129">Partner Program</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/support-help/index.html">Support</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/tools/index.html?dtid=odiprc001129">Tools</a></li>
+            <li><a tabindex="-1" href="https://locatr.cloudapps.cisco.com/WWChannels/LOCATR/pf/index.jsp#/">Find a Cisco Partner</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/connect-with-a-partner/index.html?ccid=cc000864&dtid=odiprc001129">Meet our Partners</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Become a Cisco Partner</a></li>
+
+        </ul>
+    </nav>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-content" class="container grid">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+<div class="row full blowout" data-owner="ID">
+	<div class="col full ">
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav id="fw-breadcrumb" class="data-based user-driven-nav" aria-label="breadcrumbs" data-owner="ID">
+
+   
+    <ul itemscope itemtype="//schema.org/BreadcrumbList">
+        <li aria-hidden="true"><a href='#' class="skip"><span></span></a></li>
+        <li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/index.html'><span itemprop='name'>Home</span><meta itemprop='position' content='1' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/index.html'><span itemprop='name'>Support</span><meta itemprop='position' content='2' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/all-products.html'><span itemprop='name'>Product Support</span><meta itemprop='position' content='3' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/category.html'><span itemprop='name'>Switches</span><meta itemprop='position' content='4' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/series.html'><span itemprop='name'>Cisco Nexus 9000 Series Switches</span><meta itemprop='position' content='5' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/products-programming-reference-guides-list.html'><span itemprop='name'>Programming Guides</span><meta itemprop='position' content='6' /></a><span class='caret'></span></li>
+    </ul>
+</nav>
+<script>
+    if (window.cdc === undefined) { window.cdc = {}; }
+    if (cdc.breadcrumb === undefined) {
+        cdc.breadcrumb = (function () {
+            let clone = document.querySelector('#fw-breadcrumb').cloneNode(true);
+
+            let appendClone = function () {
+                let hasBreadcrumb = document.querySelector('#fw-breadcrumb') !== null,
+                    firstMarquee = document.querySelectorAll('.dmc-mq')[0];
+
+                if (!hasBreadcrumb && firstMarquee !== undefined) {
+                    firstMarquee.querySelector('.frame .inset').insertBefore(this.clone, firstMarquee.querySelector('.frame .inset').firstElementChild);
+                }
+            };
+
+            return {
+                clone: clone,
+                appendClone: appendClone
+            }
+        }());
+    }
+    //DE380224
+    var anchorChild = document.getElementsByTagName("a");
+    for(var i=0; i<anchorChild.length; i++){ 
+        if(anchorChild[i].getAttribute("itemprop")=="item")  {  
+            if ( anchorChild[i].href.includes("%3Clocale%3E") ){
+                let anchorChildHREF = anchorChild[i].href;
+                let docLocale = document.querySelector('meta[name="locale"]').getAttribute('content');
+                let docLanguage = document.querySelector('meta[name="language"]').getAttribute('content');
+                
+                var docSeparator;
+                
+                if ((docLocale.toLowerCase() == "us") && (docLanguage.toLowerCase() == "en")) {
+                    docSeparator="/";
+                } else {
+                    docSeparator="_";
+                }
+                
+                let anchorURLReplace = docLanguage.toLowerCase() + docSeparator + docLocale.toLowerCase();
+                anchorChildHREF = anchorChildHREF.replace("%3Clocale%3E", anchorURLReplace);
+                anchorChild[i].setAttribute('href', anchorChildHREF);
+            }
+        }
+    }
+</script>
+
+        
+		        <h1 id="fw-pagetitle" class="" data-owner="ID">Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</h1>
+		
+	</div>
+</div>
+     <!--googleon: index--><!--googleon: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   <!-- have to do this for _g.I18n to be defined in preview and publish modes -->
+  
+  <script type="text/javascript">
+      // initialize dictionary for i18n
+      cdc.util.ensureNamespace("cdc.rc");
+    cdc.rc.eotkeys = {
+        showOnly5Products : "Show Only 5 Products",       
+        showAllRowsProducts : "Show All nRows Products",
+        supportCommunityUrl : "https://community.cisco.com/t5/technology-and-support/ct-p/technology-support",
+        supportCommunity : "Cisco Community",
+        thankYou : "Thank You",
+        viewersAlso : "Customers Also Viewed", 
+        show : "Show", 
+        more : "More", 
+        showOnly3Documents: "Show Only 3 Documents"
+      };
+  </script>
+
+
+
+<div class="row blowout full visitedlinks">
+    <div class="col full">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <div class="disclaimers techdocs">
+        
+        <div class="disclaimerButtons">
+        <div class="aboutBias">
+            <button aria-expanded="false" >Bias-Free Language</button>
+        </div>
+        
+        </div>
+        
+        <div class="biasfreeContent panel">
+            <h3>Bias-Free Language</h3>
+            <p>The documentation set for this product strives to use bias-free language. For the purposes of this documentation set, bias-free is defined as language that does not imply discrimination based on age, disability, gender, racial identity, ethnic identity, sexual orientation, socioeconomic status, and intersectionality. Exceptions may be present in the documentation due to language that is hardcoded in the user interfaces of the product software, language used based on RFP documentation, or language that is used by a referenced third-party product. <a href="https://www.cisco.com/c/en/us/about/social-justice/inclusive-language-policy.html">Learn more</a> about how Cisco is using Inclusive Language.</p>
+        </div>
+        
+    </div><!-- disclaimers -->
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    /* this is needed for the translation selector */
+    if (typeof(cdc) == "undefined") cdc={};
+    if (typeof(cdc.translations) == "undefined") cdc.translations={};
+    var bookTitle = 'Book Title Page';
+</script>
+
+<span id="actionBar-top"></span>
+<section id="actionBar" class="noprint base-blowout">
+    <span class="icons">
+        
+        <button class="bookToc simpleOverlay-trigger" id="onlyforTrigger"> <!--US140575-->
+            Book Contents
+        </button>
+            <div class="bookToc simpleOverlay-content">
+               <div role="heading" class="title">Book Contents</div>
+               <!--googleoff: index--><!--googleoff: snippet-->  
+               <div class="content">
+                  
+
+
+
+<ul id="bookToc">
+    <li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_preface_00.html">Preface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01.html">New and Changed Information</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100101.html">Platform Support for Programmability Features</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010.html">Overview</a></li>
+<li><button><span></span>Shells and Scripting</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101100.html">Bash</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100.html">Guest Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101.html">Broadcom Shell</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110000.html">Python API</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100111.html">Scripting with Tcl</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01001.html">iPXE</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01010.html">Kernel Stack</a></li>
+</ul>
+</li>
+<li><button><span></span>Applications</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01011.html">Third-Party Applications</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01100.html">Ansible</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101000.html">Puppet Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100100.html">SaltStack</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100000.html">Using Chef Client with Cisco NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_01111.html">Nexus Application Development - Yocto</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html">Nexus Application Development - SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101101.html">NX-SDK</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100001.html">Using Docker with Cisco NX-OS</a></li>
+</ul>
+</li>
+<li><button><span></span>NX-API</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010011.html">NX-API CLI</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101110.html">NX-API REST</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010110.html">NX-API Developer Sandbox</a></li>
+</ul>
+</li>
+<li><button><span></span>Model-Driven Programmability</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010111.html">Infrastructure Overview</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011000.html">Managing Components</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011001.html">OpenConfig YANG</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100110.html">NETCONF Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011011.html">Converting CLI Commands to Network Configuration Format</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011100.html">RESTConf Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101111.html">gRPC Agent</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0110001.html">gNMI - gRPC Network Management Interface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_011110.html">Dynamic Logger</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0101001.html">Model Driven Telemetry</a></li>
+</ul>
+</li>
+<li><button><span></span>XML Management Interface</button>
+<ul>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_0100010.html">XML Management Interface</a></li>
+</ul>
+</li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_appendix_0100101.html">Streaming Telemetry Sources</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-n9k-websocket-subscription-93x.html">WebSocket Subscription</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/m-programmability-rfcs.html">Programmability RFCs</a></li>
+
+</ul>
+
+
+               </div>
+               <!--googleon: index--><!--googleon: snippet-->               
+            </div>
+
+        
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='versionddcontainer chapter'></div>
+<script type="text/html" class="versionstemp">
+            <div class="versionsdd">
+                <button class="versionbutton" aria-haspopup="true" aria-expanded="false" aria-labelledby="other versions" class="version"><label></label></button>
+                <ul class="versionlist" aria-labelledby="other versions">
+                <%
+                    let pageUrl = window.location.pathname.replace("/content/","/c/").toLowerCase();
+                    if (true) pageUrl = pageUrl.substring(0,pageUrl.lastIndexOf("/"))+".html";
+                    for(let i=0; i< data.length; i++) {
+                        let item = data[i],
+                            myurl = item.linkUrl,
+                            urlm = myurl.replace("/content/","/c/");;
+                            mytitle = item.linkTitle;
+                            myclass= urlm.toLowerCase() == pageUrl ? "class=\"selected\"":""; 
+%>
+                    <li><a href="${myurl}" ${myclass}>${mytitle}</a></li>
+<%
+                  }   %>
+                </ul>
+             </div>
+</script>
+    
+        <span class="utilities">
+          <button title="Search in this Book" class="mobileSearch simpleOverlay-trigger">
+            Search
+          </button>
+          <div class="mobileSearch simpleOverlay-content">
+            <div class="title">Find Matches in This Book</div>
+              <!--googleoff: index--><!--googleoff: snippet-->  
+              <div class="content">
+                <form id="mobileBooksearch" class="chapter">
+                   <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit"></button>
+                   <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+                </form>
+                <div id="overlayResults" role="region" aria-live="polite" >
+                   <!-- important, keep this results div begin end on same line in here -->
+                   <div class="results"></div>
+                </div>
+              </div>
+              <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="noprint" id="saveModule">
+
+<script type="text/javascript">
+    cdc.util.ensureNamespace("cdc.rc.savedoc");
+    cdc.rc.savedoc.isLoggedIn = false;
+    cdc.rc.savedoc.save = "Save";
+    cdc.rc.savedoc.saved = "Saved";
+</script>
+
+    <button class="save" aria-expanded="false" aria-label="Save">
+        <label>Save</label>
+    </button>    
+
+</div> 
+    <div class="saveDocumentMessage login cdc-expandPanel"  role="region" aria-live="polite">
+        <a href="/c/login/index.html?referer=/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html">Log in</a> to Save Content
+    </div>
+
+
+          <!-- Translation Selctor -->
+          <!-- Translation Selector is used on EOT and Books pages. if a page has a locale of en_US then it will provide a list of avaible translations, if its a translated page (non english locale) then provide the link to the english locale. -->
+
+
+
+                                <div class="noprint translations">
+                                        <a href="#" tabindex="-1">
+                                                <button type="button" class="translations translations-link anchor translationOptions simpleOverlay-trigger">
+                                                        <div class="toolbarIcon translationsIcon"></div><label class="iconLabel" id="onlyForNonEn">Translations</label>
+                                                </button>
+                                        </a>
+                                </div>
+           
+
+
+ 
+          <div class="translations simpleOverlay-content" role="dialog" id="dialogt" aria-labelledby="onlyForNonEN" aria-modal="true">
+            <div role="heading" class="title">Available Languages</div>
+               <!--googleoff: index--><!--googleoff: snippet--> 
+            <script language="javascript">                    
+                cdc.translations.map = "{ja-jp=https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html, en-us=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html, x-default=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.html}";//storing the map for use in the JS
+                cdc.translations.locale="en_us";
+            </script>
+            <div class="content">
+              <div class="availableLanguagesList">
+                  <ul id="translationsList">
+                  </ul> 
+              </div>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+          
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // stored value for overlay label to use in js
+    var downloadOPtionLabel = 'Download Options',
+    	bookSearchlabel = 'Find Matches in This Book',
+    	translationsLabel = 'Translations',
+    	bookConentLabel= 'Book Contents';
+</script>
+
+
+        
+
+
+
+        <button title="Document Download Options" id="dwnld-button" class="downloadOptions simpleOverlay-trigger" aria-expanded="false">
+            Download
+        </button>
+        <div class="downloadOptions simpleOverlay-content" role="dialog" id="dialogd" aria-labelledby="dwnld-button" aria-modal="true" class="default_dialog">
+            <div role="heading" class="title">Download Options</div>
+            <!--googleoff: index--><!--googleoff: snippet-->  
+            <div class="content">
+                <header>
+
+                    <h3 class="h4"> Book Title</p>
+                    <p>Cisco Nexus 9000 Series NX-OS Programmability Guide, Release 9.3(x)</p>
+                    <p class="h4"> Chapter Title</p>
+                    <h3>Nexus Application Development - SDK</p>
+
+                </header>
+                <ul>
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.pdf" class="pdfIcon">PDF - Complete Book 
+                            <span>(6.23 MB)</span></a>
+
+                                   <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x_chapter_010000.pdf" class="chapter">PDF - This Chapter <span>(1.1 MB)</span></a>
+                                                            
+                            <p>View with Adobe Reader on a variety of devices</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.epub" class="epubIcon">ePub - Complete Book 
+                            <span>(2.62 MB)</span></a>
+                            
+                            <p>View in various apps on iPhone, iPad, Android, Sony Reader, or Windows Phone</p>
+                        </li>                                  
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/progammability/guide/b-cisco-nexus-9000-series-nx-os-programmability-guide-93x.mobi" class="mobiIcon">Mobi - Complete Book 
+                            <span>(6.36 MB)</span></a>
+                            
+                            <p>View on Kindle device or Kindle app on multiple devices</p>
+                        </li>                                  
+              </ul>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+        </div>
+
+          <button title="Print Friendly Page" class="print simpleOverlay-trigger">
+              Print
+          </button>
+        </span> 
+    </span>
+    <form id="booksearch" tabindex="0" class="chapter">
+       <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit" aria-label="Search"></button>
+       <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+    </form>
+      <div id="searchresult" role="region" aria-live="polite"><button class="close" title="Close Panel"><span></span><span></span></button>
+         <span class="headArrow"></span>
+         <h2>Results</h2>
+         <div class="matches">
+         </div>
+         <div class="results" tabindex="0">
+         </div>
+      </div>
+      <div id="searchResultChapterTitle"></div>
+</section>
+<script type="text/html" id="navigateMatchesTemplate">
+   <div>
+      <button class="up on" title="Previous Match"><span></span></button>
+      <button class="up off" title="Previous Match Not Available"><span></span></button>
+      <span class="matchlabel">Matches</span>
+      <button class="down on" title="Next Match"><span></span></button>
+      <button class="down off" title="Next Match Not Available"><span></span></button>
+   </div>
+</script>
+<script type="text/html" id="noChapterMatchTemplate">
+   <p>There are no Matches in this chapter.</p>
+</script>
+<script type="text/html" id="searchResultsListTemplate">
+   <p class="h3">Chapters with Matches</p>
+   <ul>
+<% var i = 0;
+    while ( modelData.links[i] ) {  %>
+      <li>
+<%     curpage = (window.location.pathname.indexOf(modelData.links[i].href) > -1 )?true:false;
+        if ( i === modelData.curpage ) {
+            if ( ! jQuery('.mobileSearch').css("display") == "block") { %>
+               <span class="currentIndicator"></span>${modelData.links[i].title}
+<%         } else {                %>
+               <span class="currentIndicator"></span><button class="curpage" data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%         }
+        } else {  %>
+            <button data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%     }  %>            
+      </li> 
+<% i++;
+    } %>
+   </ul> 
+</script>      
+<script type="text/html" id="noBookMatchTemplate">
+   <p class="head">No matches found in this book</p>
+   <p>This feature looks for an exact match of what you entered in the box.</p>
+   <p>If you entered several words, try reducing the entry to one or two and search again.</p>
+</script>
+<script type="text/html" id="errorTemplate">
+   <p>Search is currently unavailable due to technical issues. We are working to resolve the problem as quickly as possible.</p>
+</script>
+<script type="text/html" id="mobileSearchFooterTemplate">
+   <div id="mobileSearchFooter">
+      <button class="mobileSearch" title="Search in this Book"></button>
+      <button class="closeFooter"><span></span><span></span></button>
+      <div class="matches"> 
+      </div>
+   </div>   
+</script>
+ 
+    </div>
+</div>
+<div class="row blowout narrow-wide-v2 flip visitedlinks">
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div id="documentInfo">
+                  <dl>
+                     
+                      <dt>Updated:</dt><dd> September 11, 2023</dd>
+                     
+                  </dl>
+                    
+              </div>
+
+ 
+    </div>
+    <div id="chapterTitleDiv" class="col wide-v2 indent-at-xlarge">
+        <!-- this will be chapter title for chapters or header for TOC for books -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="chapter-title">Chapter: Nexus Application Development - SDK </h2>  
+    
+
+    </div>
+</div>
+<div class="row blowout wide-narrow-v2 visitedlinks">
+    <div id="pageContentDiv" class="col wide-v2 indent-at-xlarge" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+        
+
+    
+ 
+ 
+
+<div id="chapterToc" class="base-blowout">
+    <button><span></span>Chapter Contents</button>
+    <div>
+    
+<ul>
+<li><a href="#id_84764">Nexus Application Development - SDK</a></li>
+<li><a href="#id_87799">About the Cisco SDK</a></li>
+<li><a href="#task_90655AD56EB94873805635FC1E1560C2">Installing the                              	 SDK</a></li>
+<li><a href="#id_87808">Procedure for Installation and Environment Initialization</a></li>
+<li><a href="#task_AE72C8EBCC8341CB90F9C6603D9A7086">Using the SDK to                              	 Build Applications</a></li>
+<li><a href="#task_5D86DBEE4C614BB384D4E77A501756B4">Using RPM to Package                              	 an Application</a></li>
+<li><a href="#task_69A4186E098C446FBC3403890B0E8D21">Creating an RPM                              	 Build Environment</a></li>
+<li><a href="#task_A9ADF82B7FD4474BA49B11F1020C4BEE">Using General RPM                              	 Build Procedure</a></li>
+<li><a href="#reference_5D4880CE1EC74A7796D917ECA5E6A2D0">Example to Build RPM for collectd with No Optional Plug-Ins</a></li>
+<li><a href="#reference_B15394C264994F37AD47C77BA3F7BCB1">Example to Build RPM for collectd with Optional Curl Plug-In</a></li></ul>
+    <button id="chapterToc-close">Close<span></span></button>
+    </div>
+</div>
+
+ 
+    <div id="chapterContent">
+    
+                  <h1 class="title topictitle1" id="ariaid-title1">Nexus Application Development - SDK</h1>
+                  <section class="body">
+                     
+                     <p class="p">This chapter contains the following sections: 
+                        			 
+                     </p>
+                     
+                  </section>
+                  <!-- minitoc start -->
+                  <nav role="navigation" class="related-links">
+                     <ul class="ullinks">
+                        <li class="link ulchildlink"><a href="#id_87799">About the Cisco SDK</a></li>
+                        <li class="link ulchildlink"><a href="#task_90655AD56EB94873805635FC1E1560C2">Installing the SDK</a></li>
+                        <li class="link ulchildlink"><a href="#id_87808">Procedure for Installation and Environment Initialization</a></li>
+                        <li class="link ulchildlink"><a href="#task_AE72C8EBCC8341CB90F9C6603D9A7086">Using the SDK to Build Applications</a></li>
+                        <li class="link ulchildlink"><a href="#task_5D86DBEE4C614BB384D4E77A501756B4">Using RPM to Package an Application</a></li>
+                        <li class="link ulchildlink"><a href="#task_69A4186E098C446FBC3403890B0E8D21">Creating an RPM Build Environment</a></li>
+                        <li class="link ulchildlink"><a href="#task_A9ADF82B7FD4474BA49B11F1020C4BEE">Using General RPM Build Procedure</a></li>
+                        <li class="link ulchildlink"><a href="#reference_5D4880CE1EC74A7796D917ECA5E6A2D0">Example to Build RPM for collectd with No Optional Plug-Ins</a></li>
+                        <li class="link ulchildlink"><a href="#reference_B15394C264994F37AD47C77BA3F7BCB1">Example to Build RPM for collectd with Optional Curl Plug-In</a></li>
+                     </ul>
+                  </nav>
+                  <!-- minitoc end -->
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title2" lang="en-US" id="id_87799">
+                     <h2 class="title topictitle2" id="ariaid-title2">About the Cisco SDK</h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">The Cisco SDK is a development kit that is based on Yocto 2.0. It contains all the tools to build applications for execution
+                           on a Cisco Nexus switch running the Cisco NX-OS Release 9.2(1). The basic components are the C cross-compiler, linker, libraries,
+                           and header files that are commonly used in many applications. The list is not exhaustive, and you might need to download and
+                           build any dependencies that are needed for any particular application. Some applications are ready to be downloaded and used
+                           from the Cisco devhub website and do not require building. The SDK can be used to build RPM packages which may be directly
+                           installed on a switch. 
+                        </p>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1 no_summary_steps" aria-labelledby="ariaid-title3" lang="en-US" id="task_90655AD56EB94873805635FC1E1560C2">
+                     <h2 class="title topictitle2" id="ariaid-title3">Installing the
+                        	 SDK
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="task_90655AD56EB94873805635FC1E1560C2__context_7E7B6B0027C54FF4A8DB77998B37B842"> 
+                           		
+                           <p class="p">The following lists
+                              		  the system requirements: 
+                              		
+                           </p> 
+                           		
+                           <ul class="ul">
+                              <li class="li" id="task_90655AD56EB94873805635FC1E1560C2__li_6F59B484187B47278E934DD222223A63"> 
+                                 			 
+                                 <p class="p">The SDK can run on most modern 64-bit x86_64 Linux systems. It has been verified on CentOS 7 and Ubuntu 14.04. Install and
+                                    run the SDK under the Bash shell. 
+                                 </p> 
+                                 		  
+                              </li>
+                              <li class="li" id="task_90655AD56EB94873805635FC1E1560C2__li_B98B31A09E5244E886EA4D263E542748"> 
+                                 			 
+                                 <p class="p">The SDK includes binaries for both 32-bit and 64-bit architectures, so it must be run on an x86_64 Linux system that also
+                                    has 32-bit libraries installed. 
+                                 </p> 
+                                 		  
+                              </li>
+                           </ul> 
+                           	 
+                        </section>
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <hr noshade>
+                        <table class="stepTable" border="0">
+                           <tbody>
+                              <tr class="li step">
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd">Check if the 32-bit libraries are installed: </p>
+                                    <section class="itemgroup stepxmp">
+                                       <section class="tasklabel">
+                                          <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example:</h3>
+                                       </section>
+                                       					<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">ls /lib/ld-linux.so.2</b></kbd>
+
+</code></pre>
+                                       					<p class="p">If this file exists, then 32-bit libraries should be installed already. Otherwise, install 32-bit libraries as follows: </p>
+                                       					
+                                       <ul class="ul">
+                                          <li class="li">
+                                             							
+                                             <p class="p">For CentOS 7: </p>
+                                             							<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">sudo yum install glibc.i686</b></kbd>
+
+</code></pre>
+                                             						</li>
+                                          <li class="li">
+                                             							
+                                             <p class="p">For Ubuntu 14.04: </p>
+                                             							<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">sudo apt-get install gcc-multilib</b></kbd>
+
+</code></pre>
+                                             						</li>
+                                       </ul>
+                                       				
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <hr noshade>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1 no_summary_steps" aria-labelledby="ariaid-title4" lang="en-US" id="id_87808">
+                     <h2 class="title topictitle2" id="ariaid-title4">Procedure for Installation and Environment Initialization</h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="id_87808__context_472E947C777A42759207205A742A8E16">
+                           
+                           
+                           
+                           <p class="p">The SDK file is a self-extracting archive that installs the SDK into a directory of your choice. You are prompted for a path
+                              to an SDK installation directory. 
+                           </p>
+                           <pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">./wrlinux-8.0.0.25-glibc-x86_64-n9000-nxos-image-rpm-sdk-sdk.sh</b></kbd>
+Wind River Linux SDK installer version 8.0-n9000
+================================================
+Enter target directory for SDK (default: /opt/windriver/wrlinux/8.0-n9000): 
+You are about to install the SDK to "/opt/windriver/wrlinux/8.0-n9000". Proceed[Y/n]? <kbd class="userinput"><b class="ph userinput">Y</b></kbd>
+Extracting SDK...............................................................................done
+Setting it up...done
+SDK has been successfully set up and is ready to be used.
+
+</code></pre>
+                           
+                           <p class="p">Each time that you want to use the SDK in a new shell session, you will need to source the environment setup script. For example:</p>
+                           <pre class="pre codeblock"><code>$ <kbd class="userinput"><b class="ph userinput">. /opt/windriver/wrlinux/8.0-n9000/environment-setup-x86-wrsmllib32-linux</b></kbd>
+$ <kbd class="userinput"><b class="ph userinput">. /opt/windriver/wrlinux/8.0-n9000/environment-setup-x86_64-wrs-linux</b></kbd>
+bash$
+
+</code></pre>
+                           <p class="p">Use the <span><span class="keyword kwd">source environment-setup-x86-wrsmllib32-linux</span> </span> and <span><span class="keyword kwd">source environment-setup-x86_64-wrs-linux</span> </span> commands to add the SDK-specific paths to your shell environment. Add the SDK-specific paths for each shell you intend to
+                              use with the SDK. Adding the SDK-specific paths is the key to setting up the SDK to use the correct versions of the build
+                              tools and libraries.
+                           </p>
+                           
+                        </section>
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <hr noshade>
+                        <table class="stepTable" border="0">
+                           <tbody>
+                              <tr class="li step" id="id_87808__step_9B8FD11E94894D11BDACBAB80B8E43EF">
+                                 <td align="left" valign="top" border="0" width="10%">
+                                    <p><b>Step&nbsp;1</b></p>
+                                 </td>
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd">Browse to the installation directory. </p>
+                                 </td>
+                              </tr>
+                              <tr class="li step" id="id_87808__step_F71AFEA2D6B0420DB8549BA895B5C9FB">
+                                 <td align="left" valign="top" border="0" width="10%">
+                                    <p><b>Step&nbsp;2</b></p>
+                                 </td>
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd">Enter the following commands at the Bash prompt: </p>
+                                    <section class="itemgroup info">
+                                       <pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">source environment-setup-x86-wrsmllib32-linux</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">source environment-setup-x86_64-wrs-linux</b></kbd>
+
+</code></pre>
+                                       </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <hr noshade>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1 no_summary_steps" aria-labelledby="ariaid-title5" lang="en-US" id="task_AE72C8EBCC8341CB90F9C6603D9A7086">
+                     <h2 class="title topictitle2" id="ariaid-title5">Using the SDK to
+                        	 Build Applications
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="task_AE72C8EBCC8341CB90F9C6603D9A7086__context_6F4EF67F260A4521B18468485636B924">Many of the common Linux build processes work for this scenario. Use the techniques that are best suited for your situation.
+                           
+                           <p class="p">The source code for an application package can be retrieved in various ways. For example, you can get the source code either
+                              in tar file form or by downloading from a git repository where the package resides. 
+                           </p>
+                           			
+                           <p class="p">The following are examples of some of the most common cases. </p>
+                           			
+                           <p class="p"><strong class="ph b">(Optional) Verify that the application package builds using standard configure/make/make install. </strong>
+                              			
+                           </p>
+                           			<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">tar --xvzf example-app.tgz</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mkdir example-lib-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd example-app/</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">./configure --prefix=/path/to/example-app-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make install</b></kbd>
+
+</code></pre>
+                           			<p class="p">Sometimes it is necessary to pass extra options to the <span class="ph filepath">./configure</span> script, for example to specify which optional components and dependencies are needed. Passing extra options depends entirely
+                              on the application being built. 
+                           </p>
+                           			
+                           <p class="p"><strong class="ph b">Example - Build Ganglia and its dependencies </strong>
+                              			
+                           </p>
+                           			
+                           <p class="p">In this example, we build ganglia, along with the third-party libraries that it requires - libexpat, libapr, and libconfuse.
+                              
+                           </p>
+                           			
+                           <p class="p"><span><span class="keyword kwd">libexpat</span> </span>
+                              			
+                           </p>
+                           			<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">wget 'http://downloads.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz'</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mkdir expat-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar xvzf expat-2.1.0.tar.gz</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd expat-2.1.0</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">./configure --prefix=/home/sdk-user/expat-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd ..</b></kbd>
+
+</code></pre>
+                           			<p class="p"><span><span class="keyword kwd">libapr</span> </span>
+                              			
+                           </p>
+                           			<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">wget 'http://www.eu.apache.org/dist/apr/apr-1.5.2.tar.gz'</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mkdir apr-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar xvzf apr-1.5.2.tar.gz</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd apr-1.5.2</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">./configure --prefix=/home/sdk-user/apr-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd ..</b></kbd>
+
+</code></pre>
+                           			<p class="p"><span><span class="keyword kwd">libconfuse</span> </span>
+                              			
+                           </p>
+                           			
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>
+                                       				
+                                       <p class="p">confuse requires the extra <span class="keyword">--enable-shared</span> option to <span class="ph filepath">./configure</span>, otherwise it builds a statically linked library instead of the required shared library. 
+                                       </p>
+                                       			
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table>
+                           			<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">wget 'http://savannah.nongnu.org/download/confuse/confuse-2.7.tar.gz'</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mkdir confuse-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar xvzf confuse-2.7.tar.gz</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd confuse-2.7</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">./configure --prefix=/home/sdk-user/confuse-install --enable-shared</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd ..</b></kbd>
+
+</code></pre>
+                           			<p class="p"><span><span class="keyword kwd">ganglia</span> </span>
+                              			
+                           </p>
+                           			
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>
+                                       				
+                                       <p class="p">The locations to all the required libraries are passed to <span class="ph filepath">./configure</span>. 
+                                       </p>
+                                       			
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table>
+                           			<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">wget 'http://downloads.sourceforge.net/project/ganglia/ganglia%20monitoring%20core/3.7.2/ganglia-3.7.2.tar.gz'</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mkdir ganglia-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar xvzf ganglia-3.7.2.tar.gz</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd ganglia-3.7.2</b></kbd>
+bash$ .<kbd class="userinput"><b class="ph userinput">/configure --with-libexpat=/home/sdk-user/expat-install --with-libapr=/home/sdk-user/apr-install/bin/apr-1-config --with-libconfuse=/home/sdk-user/confuse-install --prefix=/home/sdk-user/ganglia-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd ..</b></kbd>
+
+</code></pre>
+                           		</section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1 no_summary_steps" aria-labelledby="ariaid-title6" lang="en-US" id="task_5D86DBEE4C614BB384D4E77A501756B4">
+                     <h2 class="title topictitle2" id="ariaid-title6">Using RPM to Package
+                        	 an Application
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="task_5D86DBEE4C614BB384D4E77A501756B4__context_F861A268B23B4818BAA25A6BA6F2FFCD"> 
+                           		
+                           <p class="p">If the application
+                              		  successfully builds using "make", then it can be packaged into an RPM. 
+                              		
+                           </p> 
+                           		
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>
+                                       <strong class="ph b">RPM and spec files</strong> 
+                                       		  
+                                       <p class="p">The RPM package
+                                          			 format is designed to package up all files (binaries, libraries,
+                                          			 configurations, documents, etc) that are needed for a complete install of the
+                                          			 given application. The process of creating an RPM file is therefore somewhat
+                                          			 non-trivial. To aid in the RPM build process, a .spec file is used that
+                                          			 controls everything about the build process. 
+                                          		  
+                                       </p> 
+                                       		
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table> 
+                           		
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr> 
+                                       		  
+                                       <p class="p">Many third-party
+                                          			 applications are available on the internet in the form of source code packaged
+                                          			 into tarballs. In many cases, these tarballs will include a .spec file to help
+                                          			 with RPM build process. Unfortunately, many of these .spec files are not
+                                          			 updated as frequently as the source code itself. Even worse, sometimes there is
+                                          			 no spec file at all. In these cases the spec file may need editing or even
+                                          			 creating from scratch so that RPMs can be built. 
+                                          		  
+                                       </p> 
+                                       		
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table> 
+                           	 
+                        </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1 no_summary_steps" aria-labelledby="ariaid-title7" lang="en-US" id="task_69A4186E098C446FBC3403890B0E8D21">
+                     <h2 class="title topictitle2" id="ariaid-title7">Creating an RPM
+                        	 Build Environment
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="task_69A4186E098C446FBC3403890B0E8D21__context_F59C0347C6C445D693B94CD0F639313B"> 
+                           		
+                           <p class="p">Before using the SDK to build RPMs, an RPM build directory structure
+                              		  must be created, and some RPM macros set. 
+                              		
+                           </p> 
+                           	 
+                        </section>
+                        <section class="tasklabel">
+                           <h3 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Procedure</h3>
+                        </section>
+                        <hr noshade>
+                        <table class="stepTable" border="0">
+                           <tbody>
+                              <tr class="li step" id="task_69A4186E098C446FBC3403890B0E8D21__step_0A25F76F680D49F78884C60BF5AC9042">
+                                 <td align="left" valign="top" border="0" width="10%">
+                                    <p><b>Step&nbsp;1</b></p>
+                                 </td>
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd"> Create the directory
+                                       			 structure:
+                                       		  
+                                    </p>
+                                    <section class="itemgroup info">
+                                       			 <pre class="pre codeblock"><code>bash$ mkdir rpmbuild
+bash$ cd rpmbuild
+bash$ mkdir BUILD RPMS SOURCES SPECS SRPMS</code></pre> 
+                                       			  
+                                       		  </section>
+                                 </td>
+                              </tr>
+                              <tr class="li step" id="task_69A4186E098C446FBC3403890B0E8D21__step_BCF603A1245A4445BDF82D0B290A4027">
+                                 <td align="left" valign="top" border="0" width="10%">
+                                    <p><b>Step&nbsp;2</b></p>
+                                 </td>
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd">Set the topdir macro to point
+                                       			 to the directory structure created above:
+                                       		  
+                                    </p>
+                                    <section class="itemgroup info">
+                                       			 <pre class="pre codeblock"><code>bash$ echo "_topdir ${PWD}" &gt; ~/.rpmmacros</code></pre> 
+                                       			 <section class="p">
+                                          				
+                                          <table class="olh_note" border="0" role="note">
+                                             <tr>
+                                                <td width="1%" class="td_faq" role="heading" border="0">
+                                                   <p><b>Note</b></p>&nbsp;
+                                                </td>
+                                                <td border="0" class="td_faq">
+                                                   <section class="note__content">
+                                                      				  
+                                                      <p class="p">This step assumes that the current user does not already have a .rpmmacros file that is already set up. If it is inconvenient
+                                                         to alter an existing .rpmmacros file, then the following may be added to all rpmbuild command lines: 
+                                                      </p>
+                                                      				
+                                                   </section>
+                                                </td>
+                                             </tr>
+                                          </table>
+                                          			 
+                                       </section>
+                                       			 <pre class="pre codeblock"><code>--define "_topdir ${PWD}"</code></pre> 
+                                       		  </section>
+                                 </td>
+                              </tr>
+                              <tr class="li step" id="task_69A4186E098C446FBC3403890B0E8D21__step_D50AEA490A7A4711BB0DC09BF2C86E4F">
+                                 <td align="left" valign="top" border="0" width="10%">
+                                    <p><b>Step&nbsp;3</b></p>
+                                 </td>
+                                 <td align="left" valign="top" border="0">
+                                    <p class="ph cmd">Refresh the RPM DB:
+                                       		  
+                                    </p>
+                                    <section class="itemgroup info">
+                                       			 <pre class="pre codeblock"><code>bash$ rm /path/to/sdk/sysroots/x86_64-wrlinuxsdk-linux/var/lib/rpm/__db.*
+bash$ rpm --rebuilddb</code></pre>
+                                       			 <table class="olh_note" border="0" role="note">
+                                          <tr>
+                                             <td width="1%" class="td_faq" role="heading" border="0">
+                                                <p><b>Note</b></p>&nbsp;
+                                             </td>
+                                             <td border="0" class="td_faq">
+                                                <section class="note__content">
+                                                   				
+                                                   <p class="p">The rpm and rpmbuild tools in the SDK have been modified to use <span class="ph filepath">/path/to/sdk/sysroots/x86_64-wrlinuxsdk-linux/var/lib/rpm</span> as the RPM database instead of the normal <span class="ph filepath">/var/lib/rpm</span>. This modification prevents any conflicts with the RPM database for the host when not using the SDK and removes the need
+                                                      for root access. After SDK installation, the SDK RPM database must be rebuilt through this procedure. 
+                                                   </p>
+                                                   			 
+                                                </section>
+                                             </td>
+                                          </tr>
+                                       </table>
+                                       		  
+                                    </section>
+                                 </td>
+                              </tr>
+                           </tbody>
+                        </table>
+                        <hr noshade>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic task nested1 no_summary_steps" aria-labelledby="ariaid-title8" lang="en-US" id="task_A9ADF82B7FD4474BA49B11F1020C4BEE">
+                     <h2 class="title topictitle2" id="ariaid-title8">Using General RPM
+                        	 Build Procedure
+                     </h2>
+                     <section class="body taskbody">
+                        <section class="section context" id="task_A9ADF82B7FD4474BA49B11F1020C4BEE__context_2939907219B64384AB4A6076ACE5F5D0"> 
+                           		
+                           <p class="p">General RPM Build
+                              		  procedure is as follows: 
+                              		
+                           </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">wget --no-check-certificate --directory-prefix=SOURCES http://&lt;URL of example-app tarball&gt;</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput"># determine location of spec file in tarball:</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar tf SOURCES/example-app.tar.bz2 | grep '.spec$'</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar xkvf SOURCES/example-app.tar.bz2 example-app/example-app.spec</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mv example-app/example-app.spec SPECS/</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rm -rf example-app</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild -v --bb SPECS/example-app.spec</b></kbd>
+
+</code></pre> 
+                           		<p class="p">The result is a
+                              		  binary RPM in RPMS/ that can be copied to the switch and installed.
+                              		  Installation and configuration of applications can vary. Refer to the
+                              		  application documents for those instructions. 
+                              		
+                           </p> 
+                           		
+                           <p class="p">This rpmbuild and installation on the switch is required for every software package that is required to support the application.
+                              If a software dependency is required that is not already included in the SDK, the source code must be obtained and the dependencies
+                              built. On the build machine, the package can be built manually for verification of dependencies. The following example is
+                              the most common procedure: 
+                           </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">tar xkzf example-lib.tgz</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mkdir example-lib-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd example-lib/</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">./configure --prefix=/path/to/example-lib-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make install</b></kbd>
+
+</code></pre> 
+                           		<p class="p">These commands place the build files (binaries, headers, libraries, and so on) into the installation directory. From here,
+                              you can use standard compiler and linker flags to pick up the location to these new dependencies. Any runtime code, such as
+                              libraries, are required to be installed on the switch also, so packaging required runtime code into an RPM is required. 
+                           </p> 
+                           		
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr> 
+                                       		  
+                                       <p class="p">There are many
+                                          			 support libraries already in RPM form on the Cisco devhub website. 
+                                          		  
+                                       </p> 
+                                       		
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table> 
+                           	 
+                        </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title9" lang="en-US" id="reference_5D4880CE1EC74A7796D917ECA5E6A2D0">
+                     <h2 class="title topictitle2" id="ariaid-title9">Example to Build RPM for collectd with No Optional Plug-Ins</h2>
+                     <section class="body refbody">
+                        <section class="section" id="reference_5D4880CE1EC74A7796D917ECA5E6A2D0__section_B679BB179B1E45A6828360DFDF75F802"> 
+                           		
+                           <p class="p">Download source
+                              		  tarball and extract spec file: 
+                              		
+                           </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">wget --no-check-certificate --directory-prefix=SOURCES https://collectd.org/files/collectd-5.5.0.tar.bz2</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar tf SOURCES/collectd-5.5.0.tar.bz2 | grep '.spec$'</b></kbd>
+collectd-5.5.0/contrib/redhat/collectd.spec
+collectd-5.5.0/contrib/aix/collectd.spec
+collectd-5.5.0/contrib/sles10.1/collectd.spec
+collectd-5.5.0/contrib/fedora/collectd.spec
+bash$ <kbd class="userinput"><b class="ph userinput">tar xkvf SOURCES/collectd-5.5.0.tar.bz2 collectd-5.5.0/contrib/redhat/collectd.spec</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mv collectd-5.5.0/contrib/redhat/collectd.spec SPECS/</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rm -rf collectd-5.5.0</b></kbd>
+
+</code></pre> 
+                           		<p class="p">There are four spec files in this tarball. The Red Hat spec file is the most comprehensive and is the only one that contains
+                              the correct collectd version. We will use it as an example. 
+                           </p> 
+                           		
+                           <p class="p">This spec file sets the RPM up to use /sbin/chkconfig to install collectd. However on a switch, you will use the <span class="ph filepath">/usr/sbin/chkconfig</span> instead. Edit the following edited in the spec file: 
+                           </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">sed -r -i.bak 's%(^|\s)/sbin/chkconfig%\1/usr/sbin/chkconfig%' SPECS/collectd.spec</b></kbd>
+
+</code></pre> 
+                           		<p class="p"><span><var>collectd</var> </span> has numerous optional plug-ins. This spec file enables many plug-ins by default. Many plug-ins have external dependencies,
+                              so options to disable these plug-ins must be passed to the <span><span class="keyword kwd">rpmbuild</span> </span> command line. Instead of typing out one long command line, we can manage the options in a Bash array as follows: 
+                           </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts=()</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">for rmdep in \</b></kbd>
+&gt; amqp apache ascent bind curl curl_xml dbi ipmi java memcachec mysql nginx \
+&gt; notify_desktop notify_email nut openldap perl pinba ping postgresql python \
+&gt; rrdtool sensors snmp varnish virt write_http write_riemann
+&gt; do
+&gt;  rpmbuild_opts+=("--without")
+&gt;  rpmbuild_opts+=(${rmdep})
+&gt; done
+bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts+=(--nodeps)</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts+=(--define)</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts+=("_unpackaged_files_terminate_build 0")</b></kbd>
+
+</code></pre> 
+                           		<p class="p">It is then passed to rpmbuild as follows to start the entire build and RPM package process: </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild "${rpmbuild_opts[@]}" -bb SPECS/collectd.spec</b></kbd>
+
+</code></pre> 
+                           		<p class="p">You can then find the resulting RPMs for collectd in the RPMS directory. </p> 
+                           		
+                           <p class="p">These RPM files can now be copied to the switch and installed from the switch Bash shell: </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">rpm --noparentdirs -i /bootflash/collectd-5.5.0-1.ia32e.rpm</b></kbd>
+
+</code></pre> 
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title10" lang="en-US" id="reference_B15394C264994F37AD47C77BA3F7BCB1">
+                     <h2 class="title topictitle2" id="ariaid-title10">Example to Build RPM for collectd with Optional Curl Plug-In</h2>
+                     <section class="body refbody">
+                        <section class="section" id="reference_B15394C264994F37AD47C77BA3F7BCB1__section_DA3EC586BBE14F5DB63DB65FE1BD1065"> 
+                           		
+                           <p class="p">The collectd curl plug-in has libcurl as a dependency. </p> 
+                           		
+                           <p class="p"> In order to satisfy
+                              		  this link dependency during the RPM build process, it is necessary to download
+                              		  and build curl under the SDK: 
+                              		
+                           </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">wget --no-check-certificate http://curl.haxx.se/download/curl-7.24.0.tar.gz</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar xkvf curl-7.24.0.tar.gz</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd curl-7.24.0</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">./configure --without-ssl --prefix /path/to/curl-install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">make install</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">cd ..</b></kbd>
+
+</code></pre>
+                           			<table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>The curl binaries and libraries are installed to<span class="ph filepath"> /path/to/curl-install</span>. This directory will be created if it does not already exist, so you must have write permissions for the current user. Next,
+                                       download the source tarball and extract the spec file. This step is exactly the same as in the collectd example for no plugins.
+                                       
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">wget --no-check-certificate --directory-prefix=SOURCES https://collectd.org/files/collectd-5.5.0.tar.bz2</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">tar tf SOURCES/collectd-5.5.0.tar.bz2 | grep '.spec$'</b></kbd>
+collectd-5.5.0/contrib/redhat/collectd.spec
+collectd-5.5.0/contrib/aix/collectd.spec
+collectd-5.5.0/contrib/sles10.1/collectd.spec
+collectd-5.5.0/contrib/fedora/collectd.spec
+bash$ <kbd class="userinput"><b class="ph userinput">tar xkvf SOURCES/collectd-5.5.0.tar.bz2 collectd-5.5.0/contrib/redhat/collectd.spec</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">mv collectd-5.5.0/contrib/redhat/collectd.spec SPECS/</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rm -rf collectd-5.5.0</b></kbd>
+
+</code></pre> 
+                           		<p class="p"> This spec file sets the RPM up to use <span class="ph filepath">/sbin/chkconfig</span> to install collectd. However on a switch, you must use<span class="ph filepath">/usr/sbin/chkconfig</span> instead, so the following can be edited in the spec file: 
+                           </p>
+                           			
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>There are four spec files in this tarball. The Red Hat spec file is the most comprehensive, and it is the only one to contain
+                                       the correct collectd version. We will use that one as an example. 
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">sed -r -i.bak 's%(^|\s)/sbin/chkconfig%\1/usr/sbin/chkconfig%' SPECS/collectd.spec</b></kbd></code></pre> 
+                           		<p class="p">Here a deviation from the previous example is encountered. The collectd rpmbuild process needs to know the location of libcurl.
+                              Edit the collectd spec file to add the following.
+                           </p>
+                           			
+                           <p class="p">Find the string <var class="keyword varname">%configure</var> in <span class="ph filepath">SPECS/collectd.spec</span>. This line and those following it define the options that rpmbuild will pass to the ./configure script. 
+                           </p>
+                           			
+                           <p class="p">Add the following option: </p> 
+                           		<pre class="pre codeblock"><code>--with-libcurl=/path/to/curl-install/bin/curl-config \
+
+</code></pre> 
+                           		<p class="p">Next a Bash array is built again to contain the rpmbuild command options. Note the following differences: </p> 
+                           		
+                           <ul class="ul">
+                              <li class="li" id="reference_B15394C264994F37AD47C77BA3F7BCB1__li_1EFCAF57CAD14A2DB591BE94CA81A936">
+                                 					
+                                 <p class="p"><var class="keyword varname">curl</var> is removed from the list of plug-ins not to be built 
+                                 </p>
+                                 				
+                              </li>
+                              <li class="li" id="reference_B15394C264994F37AD47C77BA3F7BCB1__li_C373C239790D435AA2FC7E1464975415">
+                                 					
+                                 <p class="p">The addition of <var class="keyword varname">--with curl=force</var>
+                                    					
+                                 </p>
+                                 				
+                              </li>
+                           </ul> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts=()</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">for rmdep in \</b></kbd>
+&gt; amqp apache ascent bind curl_xml dbi ipmi java memcachec mysql nginx \
+&gt; notify_desktop notify_email nut openldap perl pinba ping postgresql python \
+&gt; rrdtool sensors snmp varnish virt write_http write_riemann
+&gt; do
+&gt;  rpmbuild_opts+=("--without")
+&gt;  rpmbuild_opts+=(${rmdep})
+&gt; done
+bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts+=("--with")</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts+=("curl=force")bash$ rpmbuild_opts+=(--nodeps)</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts+=(--define)</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild_opts+=("_unpackaged_files_terminate_build 0")</b></kbd>
+
+</code></pre> 
+                           		<p class="p">It is then passed to rpmbuild as follows to start the entire build and RPM package process: </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">rpmbuild "${rpmbuild_opts[@]}" -bb SPECS/collectd.spec</b></kbd>
+
+</code></pre> 
+                           		<p class="p">The resulting RPMs in the RPMs directory will now also include collectd-curl. These RPM files can now be copied to the switch
+                              and installed from the switch Bash shell: 
+                           </p> 
+                           		<pre class="pre codeblock"><code>bash$ <kbd class="userinput"><b class="ph userinput">rpm --noparentdirs -i /bootflash/collectd-5.5.0-1.ia32e.rpm</b></kbd>
+bash$ <kbd class="userinput"><b class="ph userinput">rpm --noparentdirs -i /bootflash/collectd-curl-5.5.0-1.ia32e.rpm</b></kbd>
+
+</code></pre> 
+                           	 </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+               </article>
+            </article>
+         </main>
+      
+
+</div> 
+ 
+    </div>
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rightRailComponent noprint base-blowout">
+    <div class="eotPersonalization">
+        <section id="eotTDCampaign"></section>
+    </div>    
+    <div class="eot-feedback-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-feedback">
+  <h3>Was this Document Helpful?</h3>
+  <span class="eot-feedback-btnwrap">
+    <button class="eot-feedback-btn eot-feedback-btn-yes" aria-label="Was this Document Helpful?? Yes">Yes</button>
+    <button class="eot-feedback-btn eot-feedback-btn-no" aria-label="Was this Document Helpful?? No">No</button>
+  </span>
+  <span lang="en" class="eot-feedback-olwrap">
+    
+      <a href="javascript: void(0);" class="eot-feedback-ol" onclick="window.open('https://ciscocx.qualtrics.com/jfe/form/SV_be0fHnqDoKM7sto?Ref=' + location.href + '&resize=false', 'feedback', 'width=650, height=460, scrollbars=1, menubar=1, resizable=1'); return false;">
+      <img id="feedback_img" border="0" style="cursor: pointer;" title="Feedback" src="//www.cisco.com/c/dam/cdc/i/Feedback_OceanBlue.png" alt="Feedback">Feedback</a>
+    
+  </span>
+</div>
+
+
+</div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-vav">
+  <ul>
+  </ul>
+</div>
+    </div>
+			
+    <div class="letUsHelp">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eotLetUsHelp">
+    <h3>Contact Cisco</h3>
+    <ul>
+         <li><a id="eotLetUsHelpProdDocUrl" href="https://mycase.cloudapps.cisco.com/start?prodDocUrl=">Open a Support Case</a><img src="/etc/designs/cdc/fw/i/icon_lock_small.png" alt="login required"/></li>
+        <li>(Requires a <a href="//www.cisco.com/c/en/us/services/order-services.html">Cisco Service Contract</a>)</li>
+    </ul>
+</div>
+
+
+<script>
+    jQuery(document).ready(function() {
+        var getURL=jQuery("#eotLetUsHelpProdDocUrl").attr("href"), 
+            domInd = location.href.indexOf('cisco.com') ;
+        if ( domInd > -1 && domInd < location.href.search(/\w\/\w/) ) {
+            getURL += encodeURI(location.href);
+        }
+		jQuery("#eotLetUsHelpProdDocUrl").attr("href",getURL);
+    });
+</script>
+
+
+    </div>
+
+    <div id="eotRightRailMBox"><!--MBox-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- IT:components/mbox/banner-mbox:V0.0.0 -->
+
+
+
+<div>
+    <div class="mboxDefault"></div>   
+    <script type="text/javascript">
+        var test="";
+        if(test!=undefined && test.trim().length>0){
+           mboxCreate('en-us_dg_support_bookchapters','type=default','');
+        }else{
+           mboxCreate('en-us_dg_support_bookchapters','type=default');
+        }
+       
+    </script>
+</div>
+<!--MBox--></div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+	<script type="text/javascript">
+			    var eottdatp = document.getElementsByClassName('eot-tdatp');
+			    if (eottdatp && eottdatp.style) {
+        			eottdatp.style.display="none";
+			    }
+        		  </script>
+  	
+
+
+    </div>
+			
+    <div></div>
+
+</div>
+
+
+    </div>
+</div>
+
+     <!--googleoff: index--><!--googleoff: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end: responsive fat footer re-use wrapper-->
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="module" src="/site/web-components/us/en/cdc-footer.js"></script>
+        <cdc-footer></cdc-footer>
+    
+
+<script type="text/javascript">
+    if(document.querySelector('#privacy-manager')!=null){
+        document.querySelector('#privacy-manager').href='#cookies';
+    }
+  </script>   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-overlay"></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/etc/designs/cdc/clientlibs/responsive/js/books.min.js"></script>
+
+<script src="/etc/designs/cdc/fw/m/books_metricsrule.js" type="text/javascript" async></script>
+    
+    
+
+    <!-- SiteCatalyst code version: H.24.4. -->
+    <noscript><img src="//cisco.112.2o7.net/b/ss/cisco-mobile/5/12345" width="2" height="2" border="0" alt=""/></noscript>
+
+</body>
+</html>

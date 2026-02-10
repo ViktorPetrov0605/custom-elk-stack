@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.2.4
+    container_name: elasticsearch-master
+    restart: unless-stopped
+    environment:
+      - node.name=es-master
+      - cluster.name=elastiflow-cluster
+      - node.roles=master
+      - discovery.seed_hosts=es-data-n1,es-data-n2
+      - cluster.initial_master_nodes=es-master
+      - ELASTIC_PASSWORD=elastic123
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es-master-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - elastiflow-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:9.2.4
+    container_name: kibana
+    restart: unless-stopped
+    environment:
+      - ELASTICSEARCH_HOSTS=["http://elasticsearch:9200"]
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=elastic123
+      - xpack.security.enabled=false
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PUBLICBASEURL=http://10.4.4.87:5601
+    ports:
+      - "5601:5601"
+    networks:
+      - elastiflow-net
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+volumes:
+  es-master-data:
+    driver: local
+
+networks:
+  elastiflow-net:
+    driver: bridge

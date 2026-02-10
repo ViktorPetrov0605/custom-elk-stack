@@ -1,0 +1,107 @@
+{
+  "enhanced_dashboard_report": {
+    "timestamp": "2026-02-10T16:55:00+02:00",
+    "dashboard": {
+      "id": "unified-flow-1770732722",
+      "name": "Enhanced Unified - Flow Analysis (Device Filtered)",
+      "url": "http://10.4.4.87:5601/app/dashboards#/view/unified-flow-1770732722",
+      "index_pattern": "elastiflow-flow"
+    },
+    "visualizations": {
+      "filter_control": {
+        "id": "d0cc5b6f-6a77-446f-a138-cff9bfb3e41f",
+        "name": "Device Filter - Exporter IP",
+        "field": "flow.export.ip.addr",
+        "purpose": "Multi-select dropdown to filter flows by exporter device IP",
+        "type": "input_control_vis"
+      },
+      "top_source_ports": {
+        "id": "4da83ab0-ae94-4629-aa62-3ee5352c8abc",
+        "name": "Top Source Ports",
+        "field": "flow.src.port",
+        "metric": "flow.bytes",
+        "purpose": "Show top source ports by byte count",
+        "type": "table"
+      },
+      "top_dest_ports": {
+        "id": "52d0142f-75e5-4936-a772-08ff3f2e0006",
+        "name": "Top Destination Ports",
+        "field": "flow.dst.port",
+        "metric": "flow.bytes",
+        "purpose": "Show top destination ports by byte count",
+        "type": "table"
+      },
+      "traffic_by_hour": {
+        "id": "7c3e30c1-5766-4659-8049-60394deae2b3",
+        "name": "Traffic by Hour of Day",
+        "field": "@timestamp",
+        "purpose": "Hourly traffic pattern over time",
+        "type": "histogram"
+      },
+      "top_exporters": {
+        "id": "a2065f23-6770-45c1-8117-6e76e60273ea",
+        "name": "Top Flow Exporters",
+        "field": "flow.export.ip.addr",
+        "metric": "flow.bytes",
+        "purpose": "List devices by flow export volume",
+        "type": "table"
+      },
+      "bytes_in_out": {
+        "id": "8faf03a9-716a-4ea9-8259-5d2cd79cf0af",
+        "name": "Bytes In vs Out",
+        "fields": {
+          "x": "@timestamp",
+          "y": "flow.bytes",
+          "split": "flow.direction.name"
+        },
+        "purpose": "Compare ingress vs egress traffic over time",
+        "type": "line"
+      },
+      "geo_traffic_map": {
+        "id": "bb9bf3a3-67cb-45b1-8fac-4c6a93d2a22e",
+        "name": "Traffic by Source Country",
+        "field": "flow.src.geo.country_name.keyword",
+        "purpose": "Show geographic distribution of source traffic",
+        "type": "pie",
+        "note": "Implemented as pie chart - Maps require geo_point field configuration"
+      },
+      "flow_count_over_time": {
+        "id": "fbaa5f39-cfbf-46b1-a65b-eafde039f876",
+        "name": "Flow Count Over Time",
+        "purpose": "Count of flow records over selected time period",
+        "type": "metric"
+      }
+    },
+    "device_filtering_mechanism": {
+      "description": "The device filter is an Input Control Visualization that creates a dropdown picker for flow.export.ip.addr",
+      "how_it_works": [
+        "Populates dropdown with unique values from flow.export.ip.addr field",
+        "Supports multi-select for filtering multiple devices simultaneously",
+        "When Apply is clicked, adds filter pills to dashboard",
+        "All panels update to show only flows matching selected exporter IPs",
+        "Filter is global across allvisualizations in the dashboard",
+        "Works with time range filter for temporal analysis"
+      ],
+      "field_used": "flow.export.ip.addr",
+      "control_type": "list (terms aggregation)",
+      "multiselect": true,
+      "dynamic_options": true
+    },
+    "dashboard_layout": {
+      "structure": [
+        {"row": 0, "panels": ["Device Filter Control"], "width": "full"},
+        {"row": 1, "panels": ["existing panels"], "width": "varies"},
+        {"row": 2, "panels": ["Top Source Ports", "Top Destination Ports"], "width": "half"},
+        {"row": 3, "panels": ["Top Flow Exporters", "Traffic by Source Country"], "width": "half"},
+        {"row": 4, "panels": ["Bytes In vs Out", "Flow Count Over Time"], "width": "half"},
+        {"row": 5, "panels": ["Traffic by Hour of Day"], "width": "full"}
+      ]
+    },
+    "verification": {
+      "status": "SUCCESS",
+      "visualizations_created": 8,
+      "dashboard_updated": true,
+      "api_responses": "All 201 Created"
+    }
+  }
+}

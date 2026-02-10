@@ -1,0 +1,2575 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html xmlns:fb="//www.facebook.com/2008/fbml" xmlns:og="//opengraphprotocol.org/schema/" lang="en" xml:lang="en"  class="no-touch no-js">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="rei" content="3/2/2022 10.39am est" />
+
+    
+        <script tyle="text/javascript" src="/content/dam/cdc/j/cdcrSwitch.js"></script>
+        <script type="text/javascript"> 
+            if (typeof cdc === "undefined"){
+                cdc = {};
+            }
+            cdc.localizedLang="en/us";
+
+            if (window.cdcext === undefined) { window.cdcext = {}; }
+            cdcext.customEnvironment = "prod";
+            if (window.cdclocale === undefined) { window.cdclocale = {}; }
+            cdclocale.locale = cdc.localizedLang=="en/us"?"en_us":cdc.localizedLang;
+
+        </script> 
+         
+    
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/c/dam/cdc/t/ctm-core.js"></script>
+<script>
+    window['adrum-start-time'] = new Date().getTime();
+    window.environ = "prod" ;
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    if (window.cpe === undefined) {
+        window.cpe = {};
+    }
+
+    cpe.accountName = "prod";
+    cpe.config = ["cinf","dsc","pps"];
+    cpe.hideMethod = "elements";
+
+    window.targetGlobalSettings = JSON.parse('{\x22timeout\x22:4000}');
+    window.targetPageParamsAll = () => JSON.parse('{\x22entity\x22:\x22{\\\x22id\\\x22:\\\x221563663838941191\\\x22,\\\x22categoryId\\\x22:\\\x22\\\x22}\x22}');
+
+    
+    const bullseyeLibrary = `/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/external/bullseye.js`;
+
+    import(bullseyeLibrary);
+</script>
+<script src="/etc.clientlibs/cisco-cdc/clientlibs/clientlib-external/resources/regional-mbox/regional-mbox.js"></script>
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+        <title>Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Flex Links [Cisco Nexus 9000 Series Switches] - Cisco</title>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"  />
+    <meta name="description" content="Configuring Flex Links"  />
+    <meta name="title" content="Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Flex Links [Cisco Nexus 9000 Series Switches]"  />
+    <meta name="documentId" content="1563663835566186"  />
+    <meta name="templateName" content="book"  />
+    <meta property="fb:app_id" content="156494687694418"  />
+    <meta name="ioContentSource" content="WEM"  />
+    <meta name="docType" content="TSD Products Configuration Guide Chapter"  />
+    <meta name="concept" content="Cisco Nexus 9000 Series Switches"  />
+    <meta name="iaPath" content="cisco.com#Products#Cisco Products#Switches#Data Center Switches#Cisco Nexus 9000 Series Switches"  />
+    <meta name="contentType" content="cisco.com#US#preSales"  />
+    <meta name="locale" content="US"  />
+    <meta name="language" content="en"  />
+    <meta name="country" content="US"  />
+    <meta name="CCID_Page" content="cc001770"  />
+    <meta name="date" content="Mon Jun 23 21:06:22 PDT 2025"  />
+    <meta name="accessLevel" content="Customer"  />
+    <meta name="accessLevel" content="Guest"  />
+    <meta name="accessLevel" content="Partner"  />
+    <meta name="entitlementExpression" content="contains( &quot;0,1,2,3,4,7&quot; , $profileField[3] )"  />
+    <meta property="og:site_name" content="Cisco"  />
+    <meta property="og:type" content="website"  />
+    <meta property="og:title" content="Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x) - Configuring Flex Links [Cisco Nexus 9000 Series Switches]"  />
+    <meta property="og:description" content="Configuring Flex Links"  />
+    <meta property="og:url" content="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html"  />
+    <link rel="canonical" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html"/>
+	<link rel="alternate" hreflang="x-default" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html"/>
+<link rel="alternate" hreflang="ja-jp" href="https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html"/>
+<link rel="alternate" hreflang="en-us" href="https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html"/>
+
+
+    
+ 
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/utils.min.js"></script>
+<script src="/etc.clientlibs/clientlibs/granite/jquery/granite.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/jquery.min.js"></script>
+<script src="/etc.clientlibs/foundation/clientlibs/shared.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/underscore.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script src="/etc.clientlibs/cq/personalization/clientlib/personalization/kernel.min.js"></script>
+<script type="text/javascript">
+    $CQ(function() {
+        CQ_Analytics.SegmentMgr.loadSegments("\/etc\/segmentation");
+        CQ_Analytics.ClientContextUtils.init("\/c\/dnc\/etc\/clientcontext\/default", "\/content\/en\/us\/td\/docs\/switches\/datacenter\/nexus9000\/sw\/93x\/layer\u002D2\u002Dswitching\/configuration\/guide\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dnx\u002Dos\u002Dlayer\u002D2\u002Dswitching\u002Dconfiguration\u002Dguide\u002D93x\/b\u002Dcisco\u002Dnexus\u002D9000\u002Dnx\u002Dos\u002Dlayer\u002D2\u002Dswitching\u002Dconfiguration\u002Dguide\u002D93x_chapter_0100");
+
+        
+    });
+</script>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/cisco-sans.min.css" type="text/css">
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="/etc/designs/cdc/clientlibs/responsive/js/foundation.min.js"></script>
+
+    <link rel="stylesheet" href="/etc/designs/cdc/clientlibs/responsive/css/books.min.css" type="text/css">
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+    <script>
+        sessionStorage.setItem("logOutIntermediateMessage", 'You are being logged out.');
+    </script>
+    
+    
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Custom JSON LD For Products Type -->
+
+    
+    <script type="application/ld+json">
+        [
+           
+            {
+          "@context": "http://www.schema.org",                                                                        
+          "@type": "WebPage",
+          "name": "Configuring Flex Links",  		  
+          "url": "https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html",
+          "description": "Configuring Flex Links",
+          "publisher": {
+              "@type": "Corporation",
+                 "name": "Cisco"
+            }
+        }]
+    </script>
+<!-- End Custom JSON LD For Products Type -->
+
+<!-- Video JSON LD -->
+
+
+
+
+<!-- End Video JSON LD -->
+
+    
+
+                              <script>!function(e){var n="https://s.go-mpulse.net/boomerang/";if("False"=="True")e.BOOMR_config=e.BOOMR_config||{},e.BOOMR_config.PageParams=e.BOOMR_config.PageParams||{},e.BOOMR_config.PageParams.pci=!0,n="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="GKZXC-NS3SU-A7VFH-HKBHM-U7LKH",function(){function e(){if(!o){var e=document.createElement("script");e.id="boomr-scr-as",e.src=window.BOOMR.url,e.async=!0,i.parentNode.appendChild(e),o=!0}}function t(e){o=!0;var n,t,a,r,d=document,O=window;if(window.BOOMR.snippetMethod=e?"if":"i",t=function(e,n){var t=d.createElement("script");t.id=n||"boomr-if-as",t.src=window.BOOMR.url,BOOMR_lstart=(new Date).getTime(),e=e||d.body,e.appendChild(t)},!window.addEventListener&&window.attachEvent&&navigator.userAgent.match(/MSIE [67]\./))return window.BOOMR.snippetMethod="s",void t(i.parentNode,"boomr-async");a=document.createElement("IFRAME"),a.src="about:blank",a.title="",a.role="presentation",a.loading="eager",r=(a.frameElement||a).style,r.width=0,r.height=0,r.border=0,r.display="none",i.parentNode.appendChild(a);try{O=a.contentWindow,d=O.document.open()}catch(_){n=document.domain,a.src="javascript:var d=document.open();d.domain='"+n+"';void(0);",O=a.contentWindow,d=O.document.open()}if(n)d._boomrl=function(){this.domain=n,t()},d.write("<bo"+"dy onload='document._boomrl();'>");else if(O._boomrl=function(){t()},O.addEventListener)O.addEventListener("load",O._boomrl,!1);else if(O.attachEvent)O.attachEvent("onload",O._boomrl);d.close()}function a(e){window.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!window.BOOMR||!window.BOOMR.version&&!window.BOOMR.snippetExecuted){window.BOOMR=window.BOOMR||{},window.BOOMR.snippetStart=(new Date).getTime(),window.BOOMR.snippetExecuted=!0,window.BOOMR.snippetVersion=12,window.BOOMR.url=n+"GKZXC-NS3SU-A7VFH-HKBHM-U7LKH";var i=document.currentScript||document.getElementsByTagName("script")[0],o=!1,r=document.createElement("link");if(r.relList&&"function"==typeof r.relList.supports&&r.relList.supports("preload")&&"as"in r)window.BOOMR.snippetMethod="p",r.href=window.BOOMR.url,r.rel="preload",r.as="script",r.addEventListener("load",e),r.addEventListener("error",function(){t(!0)}),setTimeout(function(){if(!o)t(!0)},3e3),BOOMR_lstart=(new Date).getTime(),i.parentNode.appendChild(r);else t(!1);if(window.addEventListener)window.addEventListener("load",a,!1);else if(window.attachEvent)window.attachEvent("onload",a)}}(),"".length>0)if(e&&"performance"in e&&e.performance&&"function"==typeof e.performance.setResourceTimingBufferSize)e.performance.setResourceTimingBufferSize();!function(){if(BOOMR=e.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var n=""=="true"?1:0,t="",a="wkcfb2s4piiro2mgngba-f-412f413b7-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,o={"ak.v":"39","ak.cp":"61004","ak.ai":parseInt("271834",10),"ak.ol":"0","ak.cr":13,"ak.ipv":4,"ak.proto":"h2","ak.rid":"b4aab275","ak.r":45172,"ak.a2":n,"ak.m":"dsca","ak.n":"essl","ak.bpcip":"178.132.80.0","ak.cport":38116,"ak.gh":"92.123.103.63","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1770416514","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==bo3OxOx5Qz32nrJJCexA1Ydkq+dWt0vXA20FCEA/IvVSaSe9LejvzxScyABqGUNce65+wu0aITOqkjRsGey9h8rJXZ2ygRPD/x+pJn8tmGZ24hnKQxhBY/tUj8zHX9qqjSaacTMSa+TjcxEG68M7hS7wSvoOx1m8Jd88JutqGAjacqUNMjPUaJdmTNEk8K5Bg19vKAyZe45B8Eab64NOidRKtnWt/XXBXyI30/ZIlFksbYnIenfcg8N9IMhJsGBI3B94oksqG4PvT95C8nnyDw4OUzhDkv23szyleiGZT0YNIrcjy7D/66cqya9drXE9C7QtNvEDm7H2wlaK2e0bzSyBoav8+O3YCjcF0GK2ebdgoz/PPpGJ2eNo6iXu3emHr9vKUes22LN39ER3MiA3PVvf6847jrP9UzGcw7Dkspk=","ak.pv":"540","ak.dpoabenc":"","ak.tf":i};if(""!==t)o["ak.ruds"]=t;var r={i:!1,av:function(n){var t="http.initiator";if(n&&(!n[t]||"spa_hard"===n[t]))o["ak.feo"]=void 0!==e.aFeoApplied?1:0,BOOMR.addVar(o)},rv:function(){var e=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(e)}};BOOMR.plugins.AK={akVars:o,akDNSPreFetchDomain:a,init:function(){if(!r.i){var e=BOOMR.subscribe;e("before_beacon",r.av,null,null),e("onbeacon",r.rv,null,null),r.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+
+<body id="wcq" class="fw-res cdc-support cdc-books cdc-high-density cdc-full-width cdc-transform
+">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-skiplinks">
+    <ul class="container">
+        <li><a id="skiplink-content" href="#fw-content">Skip to content</a></li>
+        <li><a id="skiplink-search" href="#">Skip to search</a></li>
+        <li><a id="skiplink-footer" href="#fw-footer-v2" class="last">Skip to footer</a></li>
+    </ul>
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="module" src="/site/web-components/us/en/cdc-header.js"></script>
+    <cdc-header></cdc-header>
+    <nav class="fw-c-header__seo-links" aria-hidden="true" style="display:none">
+        <ul>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/index.html">Cisco.com Worldwide</a></li>
+            <li><a tabindex="-1" href="/c/en/us/products/index.html">Products and Services</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/solutions/index.html">Solutions</a></li>
+            <li><a tabindex="-1" href="/c/en/us/support/index.html">Support</a></li>
+            <li><a tabindex="-1" href="/c/en/us/training-events.html">Learn</a></li>
+            <li><a tabindex="-1" href="//www.cisco.com/c/en/us/about/sitemap.html">Explore Cisco</a></li>
+            <li><a tabindex="-1" href="/c/en/us/buy.html">How to Buy</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Partners Home</a></li>                
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/cisco-partner-program/index.html?ccid=cc000864&dtid=odiprc001129">Partner Program</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/support-help/index.html">Support</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/tools/index.html?dtid=odiprc001129">Tools</a></li>
+            <li><a tabindex="-1" href="https://locatr.cloudapps.cisco.com/WWChannels/LOCATR/pf/index.jsp#/">Find a Cisco Partner</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/connect-with-a-partner/index.html?ccid=cc000864&dtid=odiprc001129">Meet our Partners</a></li>
+            <li><a tabindex="-1" href="https://www.cisco.com/site/us/en/partners/index.html?dtid=odicdc001129">Become a Cisco Partner</a></li>
+
+        </ul>
+    </nav>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-content" class="container grid">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+<div class="row full blowout" data-owner="ID">
+	<div class="col full ">
+        
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<nav id="fw-breadcrumb" class="data-based user-driven-nav" aria-label="breadcrumbs" data-owner="ID">
+
+   
+    <ul itemscope itemtype="//schema.org/BreadcrumbList">
+        <li aria-hidden="true"><a href='#' class="skip"><span></span></a></li>
+        <li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/index.html'><span itemprop='name'>Home</span><meta itemprop='position' content='1' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/index.html'><span itemprop='name'>Support</span><meta itemprop='position' content='2' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/all-products.html'><span itemprop='name'>Product Support</span><meta itemprop='position' content='3' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/category.html'><span itemprop='name'>Switches</span><meta itemprop='position' content='4' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/series.html'><span itemprop='name'>Cisco Nexus 9000 Series Switches</span><meta itemprop='position' content='5' /></a><span class='caret'></span></li><li itemprop='itemListElement' itemscope itemtype='//schema.org/ListItem'><a itemprop='item' href='/c/en/us/support/switches/nexus-9000-series-switches/products-installation-and-configuration-guides-list.html'><span itemprop='name'>Configuration Guides</span><meta itemprop='position' content='6' /></a><span class='caret'></span></li>
+    </ul>
+</nav>
+<script>
+    if (window.cdc === undefined) { window.cdc = {}; }
+    if (cdc.breadcrumb === undefined) {
+        cdc.breadcrumb = (function () {
+            let clone = document.querySelector('#fw-breadcrumb').cloneNode(true);
+
+            let appendClone = function () {
+                let hasBreadcrumb = document.querySelector('#fw-breadcrumb') !== null,
+                    firstMarquee = document.querySelectorAll('.dmc-mq')[0];
+
+                if (!hasBreadcrumb && firstMarquee !== undefined) {
+                    firstMarquee.querySelector('.frame .inset').insertBefore(this.clone, firstMarquee.querySelector('.frame .inset').firstElementChild);
+                }
+            };
+
+            return {
+                clone: clone,
+                appendClone: appendClone
+            }
+        }());
+    }
+    //DE380224
+    var anchorChild = document.getElementsByTagName("a");
+    for(var i=0; i<anchorChild.length; i++){ 
+        if(anchorChild[i].getAttribute("itemprop")=="item")  {  
+            if ( anchorChild[i].href.includes("%3Clocale%3E") ){
+                let anchorChildHREF = anchorChild[i].href;
+                let docLocale = document.querySelector('meta[name="locale"]').getAttribute('content');
+                let docLanguage = document.querySelector('meta[name="language"]').getAttribute('content');
+                
+                var docSeparator;
+                
+                if ((docLocale.toLowerCase() == "us") && (docLanguage.toLowerCase() == "en")) {
+                    docSeparator="/";
+                } else {
+                    docSeparator="_";
+                }
+                
+                let anchorURLReplace = docLanguage.toLowerCase() + docSeparator + docLocale.toLowerCase();
+                anchorChildHREF = anchorChildHREF.replace("%3Clocale%3E", anchorURLReplace);
+                anchorChild[i].setAttribute('href', anchorChildHREF);
+            }
+        }
+    }
+</script>
+
+        
+		        <h1 id="fw-pagetitle" class="" data-owner="ID">Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x)</h1>
+		
+	</div>
+</div>
+     <!--googleon: index--><!--googleon: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+   <!-- have to do this for _g.I18n to be defined in preview and publish modes -->
+  
+  <script type="text/javascript">
+      // initialize dictionary for i18n
+      cdc.util.ensureNamespace("cdc.rc");
+    cdc.rc.eotkeys = {
+        showOnly5Products : "Show Only 5 Products",       
+        showAllRowsProducts : "Show All nRows Products",
+        supportCommunityUrl : "https://community.cisco.com/t5/technology-and-support/ct-p/technology-support",
+        supportCommunity : "Cisco Community",
+        thankYou : "Thank You",
+        viewersAlso : "Customers Also Viewed", 
+        show : "Show", 
+        more : "More", 
+        showOnly3Documents: "Show Only 3 Documents"
+      };
+  </script>
+
+
+
+<div class="row blowout full visitedlinks">
+    <div class="col full">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <div class="disclaimers techdocs">
+        
+        <div class="disclaimerButtons">
+        <div class="aboutBias">
+            <button aria-expanded="false" >Bias-Free Language</button>
+        </div>
+        
+        </div>
+        
+        <div class="biasfreeContent panel">
+            <h3>Bias-Free Language</h3>
+            <p>The documentation set for this product strives to use bias-free language. For the purposes of this documentation set, bias-free is defined as language that does not imply discrimination based on age, disability, gender, racial identity, ethnic identity, sexual orientation, socioeconomic status, and intersectionality. Exceptions may be present in the documentation due to language that is hardcoded in the user interfaces of the product software, language used based on RFP documentation, or language that is used by a referenced third-party product. <a href="https://www.cisco.com/c/en/us/about/social-justice/inclusive-language-policy.html">Learn more</a> about how Cisco is using Inclusive Language.</p>
+        </div>
+        
+    </div><!-- disclaimers -->
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    /* this is needed for the translation selector */
+    if (typeof(cdc) == "undefined") cdc={};
+    if (typeof(cdc.translations) == "undefined") cdc.translations={};
+    var bookTitle = 'Book Title Page';
+</script>
+
+<span id="actionBar-top"></span>
+<section id="actionBar" class="noprint base-blowout">
+    <span class="icons">
+        
+        <button class="bookToc simpleOverlay-trigger" id="onlyforTrigger"> <!--US140575-->
+            Book Contents
+        </button>
+            <div class="bookToc simpleOverlay-content">
+               <div role="heading" class="title">Book Contents</div>
+               <!--googleoff: index--><!--googleoff: snippet-->  
+               <div class="content">
+                  
+
+
+
+<ul id="bookToc">
+    <li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_preface_00.html">Preface</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01.html">New and Changed Information</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_010.html">Overview</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_011.html">Configuring Layer 2 Switching</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html">Configuring Flex Links</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0101.html">Configuring VLANs</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0110.html">Configuring VTP</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0111.html">Configuring Private VLANs Using NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01000.html">Configuring Switching Modes</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01001.html">Configuring Rapid PVST+ Using Cisco NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01010.html">Configuring MST Using Cisco NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01011.html">Configuring STP Extensions Using Cisco NX-OS</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01100.html">Configuring Reflective Relay for Layer 2 Switching</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_01110.html">Configuring Traffic Storm Control</a></li>
+<li><a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_index.html">Index</a></li>
+
+</ul>
+
+
+               </div>
+               <!--googleon: index--><!--googleon: snippet-->               
+            </div>
+
+        
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='versionddcontainer chapter'></div>
+<script type="text/html" class="versionstemp">
+            <div class="versionsdd">
+                <button class="versionbutton" aria-haspopup="true" aria-expanded="false" aria-labelledby="other versions" class="version"><label></label></button>
+                <ul class="versionlist" aria-labelledby="other versions">
+                <%
+                    let pageUrl = window.location.pathname.replace("/content/","/c/").toLowerCase();
+                    if (true) pageUrl = pageUrl.substring(0,pageUrl.lastIndexOf("/"))+".html";
+                    for(let i=0; i< data.length; i++) {
+                        let item = data[i],
+                            myurl = item.linkUrl,
+                            urlm = myurl.replace("/content/","/c/");;
+                            mytitle = item.linkTitle;
+                            myclass= urlm.toLowerCase() == pageUrl ? "class=\"selected\"":""; 
+%>
+                    <li><a href="${myurl}" ${myclass}>${mytitle}</a></li>
+<%
+                  }   %>
+                </ul>
+             </div>
+</script>
+    
+        <span class="utilities">
+          <button title="Search in this Book" class="mobileSearch simpleOverlay-trigger">
+            Search
+          </button>
+          <div class="mobileSearch simpleOverlay-content">
+            <div class="title">Find Matches in This Book</div>
+              <!--googleoff: index--><!--googleoff: snippet-->  
+              <div class="content">
+                <form id="mobileBooksearch" class="chapter">
+                   <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit"></button>
+                   <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+                </form>
+                <div id="overlayResults" role="region" aria-live="polite" >
+                   <!-- important, keep this results div begin end on same line in here -->
+                   <div class="results"></div>
+                </div>
+              </div>
+              <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="noprint" id="saveModule">
+
+<script type="text/javascript">
+    cdc.util.ensureNamespace("cdc.rc.savedoc");
+    cdc.rc.savedoc.isLoggedIn = false;
+    cdc.rc.savedoc.save = "Save";
+    cdc.rc.savedoc.saved = "Saved";
+</script>
+
+    <button class="save" aria-expanded="false" aria-label="Save">
+        <label>Save</label>
+    </button>    
+
+</div> 
+    <div class="saveDocumentMessage login cdc-expandPanel"  role="region" aria-live="polite">
+        <a href="/c/login/index.html?referer=/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html">Log in</a> to Save Content
+    </div>
+
+
+          <!-- Translation Selctor -->
+          <!-- Translation Selector is used on EOT and Books pages. if a page has a locale of en_US then it will provide a list of avaible translations, if its a translated page (non english locale) then provide the link to the english locale. -->
+
+
+
+                                <div class="noprint translations">
+                                        <a href="#" tabindex="-1">
+                                                <button type="button" class="translations translations-link anchor translationOptions simpleOverlay-trigger">
+                                                        <div class="toolbarIcon translationsIcon"></div><label class="iconLabel" id="onlyForNonEn">Translations</label>
+                                                </button>
+                                        </a>
+                                </div>
+           
+
+
+ 
+          <div class="translations simpleOverlay-content" role="dialog" id="dialogt" aria-labelledby="onlyForNonEN" aria-modal="true">
+            <div role="heading" class="title">Available Languages</div>
+               <!--googleoff: index--><!--googleoff: snippet--> 
+            <script language="javascript">                    
+                cdc.translations.map = "{ja-jp=https://www.cisco.com/c/ja_jp/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html, en-us=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html, x-default=https://www.cisco.com/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.html}";//storing the map for use in the JS
+                cdc.translations.locale="en_us";
+            </script>
+            <div class="content">
+              <div class="availableLanguagesList">
+                  <ul id="translationsList">
+                  </ul> 
+              </div>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+          </div>
+          
+          
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    // stored value for overlay label to use in js
+    var downloadOPtionLabel = 'Download Options',
+    	bookSearchlabel = 'Find Matches in This Book',
+    	translationsLabel = 'Translations',
+    	bookConentLabel= 'Book Contents';
+</script>
+
+
+        
+
+
+
+        <button title="Document Download Options" id="dwnld-button" class="downloadOptions simpleOverlay-trigger" aria-expanded="false">
+            Download
+        </button>
+        <div class="downloadOptions simpleOverlay-content" role="dialog" id="dialogd" aria-labelledby="dwnld-button" aria-modal="true" class="default_dialog">
+            <div role="heading" class="title">Download Options</div>
+            <!--googleoff: index--><!--googleoff: snippet-->  
+            <div class="content">
+                <header>
+
+                    <h3 class="h4"> Book Title</p>
+                    <p>Cisco Nexus 9000 Series NX-OS Layer 2 Switching Configuration Guide, Release 9.3(x)</p>
+                    <p class="h4"> Chapter Title</p>
+                    <h3>Configuring Flex Links</p>
+
+                </header>
+                <ul>
+
+                        <li >    
+                            <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x.pdf" class="pdfIcon">PDF - Complete Book 
+                            <span>(3.97 MB)</span></a>
+
+                                   <a href="/c/en/us/td/docs/switches/datacenter/nexus9000/sw/93x/layer-2-switching/configuration/guide/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x/b-cisco-nexus-9000-nx-os-layer-2-switching-configuration-guide-93x_chapter_0100.pdf" class="chapter">PDF - This Chapter <span>(1.07 MB)</span></a>
+                                                            
+                            <p>View with Adobe Reader on a variety of devices</p>
+                        </li>                                  
+              </ul>
+            </div>
+            <!--googleon: index--><!--googleon: snippet-->
+        </div>
+
+          <button title="Print Friendly Page" class="print simpleOverlay-trigger">
+              Print
+          </button>
+        </span> 
+    </span>
+    <form id="booksearch" tabindex="0" class="chapter">
+       <input type="search" name="booksearchPhrase" placeholder='Find Matches in This Book'/><button class="submit" aria-label="Search"></button>
+       <button class="clear"><img src="/etc/designs/cdc/fw/i/ic_clear_gray.png" alt="Clear Contents of Search"/></button>
+    </form>
+      <div id="searchresult" role="region" aria-live="polite"><button class="close" title="Close Panel"><span></span><span></span></button>
+         <span class="headArrow"></span>
+         <h2>Results</h2>
+         <div class="matches">
+         </div>
+         <div class="results" tabindex="0">
+         </div>
+      </div>
+      <div id="searchResultChapterTitle"></div>
+</section>
+<script type="text/html" id="navigateMatchesTemplate">
+   <div>
+      <button class="up on" title="Previous Match"><span></span></button>
+      <button class="up off" title="Previous Match Not Available"><span></span></button>
+      <span class="matchlabel">Matches</span>
+      <button class="down on" title="Next Match"><span></span></button>
+      <button class="down off" title="Next Match Not Available"><span></span></button>
+   </div>
+</script>
+<script type="text/html" id="noChapterMatchTemplate">
+   <p>There are no Matches in this chapter.</p>
+</script>
+<script type="text/html" id="searchResultsListTemplate">
+   <p class="h3">Chapters with Matches</p>
+   <ul>
+<% var i = 0;
+    while ( modelData.links[i] ) {  %>
+      <li>
+<%     curpage = (window.location.pathname.indexOf(modelData.links[i].href) > -1 )?true:false;
+        if ( i === modelData.curpage ) {
+            if ( ! jQuery('.mobileSearch').css("display") == "block") { %>
+               <span class="currentIndicator"></span>${modelData.links[i].title}
+<%         } else {                %>
+               <span class="currentIndicator"></span><button class="curpage" data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%         }
+        } else {  %>
+            <button data-href="${modelData.links[i].url}?bookSearch=true${modelData.wcm}">${modelData.links[i].title}</button>
+<%     }  %>            
+      </li> 
+<% i++;
+    } %>
+   </ul> 
+</script>      
+<script type="text/html" id="noBookMatchTemplate">
+   <p class="head">No matches found in this book</p>
+   <p>This feature looks for an exact match of what you entered in the box.</p>
+   <p>If you entered several words, try reducing the entry to one or two and search again.</p>
+</script>
+<script type="text/html" id="errorTemplate">
+   <p>Search is currently unavailable due to technical issues. We are working to resolve the problem as quickly as possible.</p>
+</script>
+<script type="text/html" id="mobileSearchFooterTemplate">
+   <div id="mobileSearchFooter">
+      <button class="mobileSearch" title="Search in this Book"></button>
+      <button class="closeFooter"><span></span><span></span></button>
+      <div class="matches"> 
+      </div>
+   </div>   
+</script>
+ 
+    </div>
+</div>
+<div class="row blowout narrow-wide-v2 flip visitedlinks">
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              <div id="documentInfo">
+                  <dl>
+                     
+                      <dt>Updated:</dt><dd> September 12, 2023</dd>
+                     
+                  </dl>
+                    
+              </div>
+
+ 
+    </div>
+    <div id="chapterTitleDiv" class="col wide-v2 indent-at-xlarge">
+        <!-- this will be chapter title for chapters or header for TOC for books -->
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="chapter-title">Chapter: Configuring Flex Links </h2>  
+    
+
+    </div>
+</div>
+<div class="row blowout wide-narrow-v2 visitedlinks">
+    <div id="pageContentDiv" class="col wide-v2 indent-at-xlarge" role="main">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+        
+
+    
+ 
+ 
+
+<div id="chapterToc" class="base-blowout">
+    <button><span></span>Chapter Contents</button>
+    <div>
+    
+<ul>
+<li><a href="#id_92388">Configuring Flex Links</a></li>
+<li><a href="#id_92289">Information About Flex Links</a>
+<ul>
+<li><a href="#id_92290">Flex Links</a></li>
+<li><a href="#id_92291">Preemption</a></li>
+<li><a href="#id_98415">Multicast</a></li>
+</ul></li>
+<li><a href="#id_92362">Guidelines and Limitations</a></li>
+<li><a href="#id_92363">Default Settings</a></li>
+<li><a href="#id_92364">Configuring Flex Links</a>
+<ul>
+<li><a href="#id_92367">Configuring Flexlinks</a></li>
+<li><a href="#id_92373">Configuring Flex Link Preemption</a></li>
+</ul></li>
+<li><a href="#id_92383">Verifying Configuration</a></li></ul>
+    <button id="chapterToc-close">Close<span></span></button>
+    </div>
+</div>
+
+ 
+    <div id="chapterContent">
+    
+                  <h1 class="title topictitle1" id="ariaid-title1">Configuring Flex Links</h1>
+                  <section class="body">
+                     
+                     <p class="p">This chapter describes how to configure Flex Links on the Cisco NX-OS 9000 Series Switches. Flex Links are a pair of interfaces
+                        that provide a mutual backup. 
+                     </p>
+                     
+                     <p class="p">The chapter includes the following sections:</p>
+                     
+                  </section>
+                  <!-- minitoc start -->
+                  <nav role="navigation" class="related-links">
+                     <ul class="ullinks">
+                        <li class="link ulchildlink"><a href="#id_92289">Information About Flex Links</a></li>
+                        <li class="link ulchildlink"><a href="#id_92362">Guidelines and Limitations</a></li>
+                        <li class="link ulchildlink"><a href="#id_92363">Default Settings</a></li>
+                        <li class="link ulchildlink"><a href="#id_92364">Configuring Flex Links</a></li>
+                        <li class="link ulchildlink"><a href="#id_92383">Verifying Configuration</a></li>
+                     </ul>
+                  </nav>
+                  <!-- minitoc end -->
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title2" lang="en-US" id="id_92289">
+                     <h2 class="title topictitle2" id="ariaid-title2">Information About Flex Links</h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">This section includes the following topics:</p>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links">
+                        <ul class="ullinks">
+                           <li class="link ulchildlink"><a href="#id_92290">Flex Links</a></li>
+                           <li class="link ulchildlink"><a href="#id_92291">Preemption</a></li>
+                           <li class="link ulchildlink"><a href="#id_98415">Multicast</a></li>
+                        </ul>
+                     </nav>
+                     <!-- minitoc end -->
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title3" lang="en-US" id="id_92290">
+                        <h3 class="title topictitle3" id="ariaid-title3">Flex Links</h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">Flex Links are a pair of a Layer 2 interfaces (switchports or port channels), where one interface is configured to act as
+                              a backup to the other. 
+                           </p>
+                           
+                           <p class="p">This feature provides an alternative solution to the Spanning Tree Protocol (STP), allowing users to turn off STP and still
+                              provide basic link redundancy. You generally configure Flex Links in networks where customers do not want to run STP on the
+                              switch. When you configure STP on the switch, it is not necessary to configure Flex Links because STP already provides link-level
+                              redundancy or backup. 
+                           </p>
+                           
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>
+                                       
+                                       <p class="p">STP is enabled by default on network node interfaces (NNIs). It is disabled on enhanced network interfaces (ENIs), but you
+                                          can enable it. STP is not supported on user network interfaces (UNIs). 
+                                       </p>
+                                       
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table>
+                           
+                           <p class="p">You configure Flex Links on one Layer 2 interface (the active link) by assigning another Layer 2 interface as the Flex Link
+                              or backup link. When one of the links is up and forwarding traffic, the other link is in standby mode, ready to begin forwarding
+                              traffic if the other link shuts down. At any given time, only one of the interfaces is in the linkup state and forwarding
+                              traffic. If the primary link shuts down, the standby link starts forwarding traffic. When the active link comes back up, it
+                              goes into standby mode and does not forward traffic. STP is disabled on Flex Link interfaces. 
+                           </p>
+                           
+                           <p class="p">In Figure <strong class="ph b">Flex Links Configuration Example</strong>, ports 1 and 2 on switch A are connected to uplink switches B and C. Because they are configured as Flex Links, only one
+                              of the interfaces is forwarding traffic; the other is in standby mode. If port 1 is the active link, it begins forwarding
+                              traffic between port 1 and switch B; the link between port 2 (the backup link) and switch C is not forwarding traffic. If
+                              port 1 goes down, port 2 comes up and starts forwarding traffic to switch C. When port 1 comes back up, it goes into standby
+                              mode and does not forward traffic; port 2 continues forwarding traffic. 
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title4" lang="en-US" id="id_92291">
+                        <h3 class="title topictitle3" id="ariaid-title4">Preemption</h3>
+                        <section class="body conbody">
+                           <p class="p">You can also choose to configure a preemption mechanism, specifying the preferred port for forwarding traffic. In the following
+                              figure, for example, you can configure the Flex Link pair with preemption mode so that after port 1 comes back up in the scenario,
+                              if it has greater bandwidth than port 2, port 1 begins forwarding after pre-empt delay (default pre-empt delay is 35 seconds);
+                              and port 2 becomes the standby. You do this by entering the interface configuration switchport backup interface preemption
+                              mode bandwidth and switchport backup interface preemption delay commands.
+                           </p>
+                           <figure class="fig fignone">
+                              <figcaption><span class="fig--title-label">Figure 1. </span>Flex Links Configuration Example
+                              </figcaption><img class="image" src="/c/dam/en/us/td/i/100001-200000/110001-120000/116001-117000/116082.jpg"></figure>
+                           <p class="p">If a primary (forwarding) link or the standby link goes down, a trap notifies the network management stations. Flex Links
+                              are supported only on Layer 2 ports and port channels in either <span><span class="keyword kwd">trunk</span> </span> or <span><span class="keyword kwd">access</span> </span> mode. They are not supported on VLANs or Layer 3 ports. 
+                           </p>
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic concept nested2" aria-labelledby="ariaid-title5" lang="en-US" id="id_98415">
+                        <h3 class="title topictitle3" id="ariaid-title5">Multicast</h3>
+                        <section class="body conbody">
+                           
+                           <p class="p">When a Flex Link interface is learned as an mrouter port, the standby (non-forwarding) interface is also co-learned as an
+                              mrouter port if the link is up. This co-learning is for internal software state maintenance and has no relevance with respect
+                              to IGMP operations or hardware forwarding unless multicast fast-convergence is enabled. With multicast fast-convergence configured,
+                              the co-learned mrouter port is immediately added to the hardware. Flex Link supports multicast fast convergence for IPv4 IGMP.
+                           </p>
+                           
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title6" lang="en-US" id="id_92362">
+                     <h2 class="title topictitle2" id="ariaid-title6">Guidelines and Limitations</h2>
+                     <section class="body conbody">
+                        
+                        <p class="p">Consider the following guidelines and limitations when configuring Flex Links:</p>
+                        
+                        <ul class="ul">
+                           
+                           <li class="li">
+                              
+                              <p class="p">Flex links are supported on the following platforms : Cisco Nexus 9300-EX, 9300-FX , 9300-FX2 , C9364C switches.</p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">Flex Links are supported on Cisco Nexus 9300-FX, 9300-FX2, and 9348GC-FXP switches with IPv4 multicast.</p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">Because the Spanning Tree Protocol is implicitly disabled on Flex Link interfaces, ensure that you do not configure any other
+                                 redundant paths in the same topology to prevent loops. In addition, configure the corresponding links to upstream switches
+                                 by using the spanning-tree port type normal command so they do not get blocked by Bridge Assurance.
+                              </p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">Flex Links are designed for uplink interfaces, which are typically configured as trunk ports. As a link backup mechanism,
+                                 a Flex Link pair must have the same configuration characteristics, including the same switchport mode and list of allowed
+                                 VLANs. Port-profile makes a convenient tool for syncing up such configurations for the Flex Link pair. Flex Link does not
+                                 require that the two interfaces have the same configurations. However, long term mismatches in configurations may result in
+                                 forwarding problems, particularly during failover.
+                              </p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">Flex Links cannot be configured on the following interface types:</p>
+                              
+                              <ul class="ul">
+                                 
+                                 <li class="li">
+                                    
+                                    <p class="p">Layer 3 interfaces</p>
+                                    
+                                 </li>
+                                 
+                                 <li class="li">
+                                    
+                                    <p class="p">SPAN destinations</p>
+                                    
+                                 </li>
+                                 
+                                 <li class="li">
+                                    
+                                    <p class="p">Port channel members</p>
+                                    
+                                 </li>
+                                 
+                                 <li class="li">
+                                    
+                                    <p class="p">Interfaces configured with Private VLANs</p>
+                                    
+                                 </li>
+                                 
+                                 <li class="li">
+                                    
+                                    <p class="p">Interfaces in end node mode</p>
+                                    
+                                 </li>
+                                 
+                                 <li class="li">
+                                    
+                                    <p class="p">Layer 2 multi-path</p>
+                                    
+                                 </li>
+                                 
+                              </ul>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">You can configure only one Flex Link backup link for any active link and it must be a different interface from the active
+                                 interface.
+                              </p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">An interface can belong to only one Flex Link pair; it can be a backup link for only one active link.</p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">Neither of the links can be a port that belongs to an EtherChannel. However, you can configure two port channels (EtherChannel
+                                 logical interfaces) as Flex Links, and you can configure a port channel and a physical interface as Flex Links, with either
+                                 the port channel or the physical interface as the active link.
+                              </p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">A backup link does not have to be the same type (Ethernet or port channel) as the active link. However, we recommend that
+                                 you configure both Flex Links with similar characteristics so that there are no loops or changes in behavior if the standby
+                                 link begins to forward traffic.
+                              </p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">STP is disabled on Flex Link ports. A Flex Link port does not participate in STP, even if the VLANs present on the port are
+                                 configured for STP. When STP is not enabled, be sure that there are no loops in the configured topology.
+                              </p>
+                              
+                              <table class="olh_note" border="0" role="note">
+                                 <tr>
+                                    <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                    </td>
+                                    <td border="0" class="olh_note">
+                                       <section class="note__content">
+                                          <hr>
+                                          
+                                          <p class="p">STP is available only on NNIs or ENIs.</p>
+                                          
+                                          <hr>
+                                       </section>
+                                    </td>
+                                 </tr>
+                              </table>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">Do not configure any STP features (for example, PortFast, and BPDU Guard) on Flex Links ports.</p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">Default interface CLI on the flex link pair (active and standby) is not supported. When either breakout / in is performed
+                                 in either primary or standby interface, flex link configuration is removed.
+                              </p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">vPC is not supported. Flex Link is used in place of vPC where configuration simplicity is desired and there is no need for
+                                 active-active redundancy.
+                              </p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              
+                              <p class="p">Beginning with Cisco NX-OS Release 9.3(5), the Flex Link feature is supported on Cisco Nexus 9300-GX, N9K-C93108TC-FX3H, and
+                                 N9K-C93108TC-FX3P platform switches.
+                              </p>
+                              
+                           </li>
+                           
+                           <li class="li">
+                              
+                              <p class="p">Beginning with Cisco NX-OS Release 9.3(7), the Flex Link feature is supported on Cisco N9K-C93180YC-FX3 platform switch.</p>
+                              
+                           </li>
+                           
+                           
+                           
+                           
+                        </ul>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title7" lang="en-US" id="id_92363">
+                     <h2 class="title topictitle2" id="ariaid-title7">Default Settings</h2>
+                     <section class="body conbody">
+                        
+                        <table width="100%" border="1" class="table frame-all">
+                           <caption></caption>
+                           <colgroup>
+                              <col style="width:50%">
+                              <col style="width:50%">
+                           </colgroup>
+                           <thead class="thead">
+                              
+                              <tr>
+                                 
+                                 <th font-weight="bold" class="entry colsep-1 rowsep-1" id="id_92363__entry__1">
+                                    
+                                    <p class="p">Parameters</p>
+                                    
+                                 </th>
+                                 
+                                 <th font-weight="bold" class="entry colsep-1 rowsep-1" id="id_92363__entry__2">
+                                    
+                                    <p class="p">Default</p>
+                                    
+                                 </th>
+                                 
+                              </tr>
+                              
+                           </thead>
+                           <tbody class="tbody">
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_92363__entry__1 ">
+                                    
+                                    <p class="p">Flex links</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_92363__entry__2 ">
+                                    
+                                    <p class="p">Disabled</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_92363__entry__1 ">
+                                    
+                                    <p class="p">Multicast Fast-Convergence</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_92363__entry__2 ">
+                                    
+                                    <p class="p">Disabled</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_92363__entry__1 ">
+                                    
+                                    <p class="p">Flex links preemption mode</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_92363__entry__2 ">
+                                    
+                                    <p class="p"> Off</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                              <tr>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_92363__entry__1 ">
+                                    
+                                    <p class="p">Flex links preemption delay</p>
+                                    
+                                 </td>
+                                 
+                                 <td class="entry colsep-1 rowsep-1" headers="id_92363__entry__2 ">
+                                    
+                                    <p class="p">35 seconds</p>
+                                    
+                                 </td>
+                                 
+                              </tr>
+                              
+                           </tbody>
+                        </table>
+                        
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+                  <article class="topic concept nested1" aria-labelledby="ariaid-title8" lang="en-US" id="id_92364">
+                     <h2 class="title topictitle2" id="ariaid-title8">Configuring Flex Links</h2>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links">
+                        <ul class="ullinks">
+                           <li class="link ulchildlink"><a href="#id_92367">Configuring Flexlinks</a></li>
+                           <li class="link ulchildlink"><a href="#id_92373">Configuring Flex Link Preemption</a></li>
+                        </ul>
+                     </nav>
+                     <!-- minitoc end -->
+                     <article class="topic task nested2" aria-labelledby="ariaid-title9" lang="en-US" id="id_92367">
+                        <h3 class="title topictitle3" id="ariaid-title9">Configuring Flexlinks</h3>
+                        <section class="body taskbody">
+                           <section class="section context" id="id_92367__d833e528">
+                              
+                              <p class="p">You can configure a pair of layer 2 interfaces (switch ports or port channels) as Flex Link interfaces, where one interface
+                                 is configured to act as a backup to the other.
+                              </p>
+                              
+                           </section>
+                           <section class="section prereq p" id="id_92367__d833e519">
+                              <section class="tasklabel">
+                                 <h4 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Before you begin</h4>
+                              </section>
+                              
+                              <p class="p">Review the Guidelines and Limitations for this feature. (See <a class="xref" href="#id_92362">Guidelines and Limitations</a>.)
+                              </p>
+                              
+                           </section>
+                           <h3 font-weight="bold" class="sectiontitle tasklabel summary_steps cB_Bold">SUMMARY STEPS</h3>
+                           <ol class="ol steps summary_steps">
+                              <li class="summary_indent"><span><span class="keyword kwd">configure terminal</span> </span></li>
+                              <li class="summary_indent"><span><span class="keyword kwd">feature flexlink</span> </span></li>
+                              <li class="summary_indent"><span><span class="keyword kwd">interface</span>{ <span class="keyword kwd">ethernet</span>
+                                    <var>slot</var>/ <var>port</var> | <span class="keyword kwd">port-channel</span>
+                                    <var>channel no</var> </span></li>
+                              <li class="summary_indent"><span><span class="keyword kwd">switchport backup interface</span> {<span class="keyword kwd">ethernet</span>
+                                    <var>slot</var>/<var> port</var> | <span class="keyword kwd">port-channel</span>
+                                    <var>channel-no</var>} [<span class="keyword kwd">multicast fast-convergence</span>]  </span></li>
+                              <li class="summary_indent">(Optional) <span><span class="keyword kwd">end</span> </span>
+                                 
+                              </li>
+                              <li class="summary_indent">(Optional) <span><span class="keyword kwd">show interface switchport backup</span> </span></li>
+                              <li class="summary_indent">(Optional) <span><span class="keyword kwd">copy running-config startup config</span> </span></li>
+                           </ol>
+                           <h3 font-weight="bold" class="sectiontitle tasklabel summary_steps cB_Bold">DETAILED STEPS</h3>
+                           <table class="ol steps">
+                              <thead>
+                                 <tr>
+                                    <th align="left">&nbsp;</th>
+                                    <th font-weight="bold" align="left">Command or Action</th>
+                                    <th font-weight="bold" align="left">Purpose</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;1</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">configure terminal</span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Enter global configuration mode.</p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;2</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">feature flexlink</span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Enables Flex Link.</p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;3</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">interface</span>{ <span class="keyword kwd">ethernet</span>
+                                             <var>slot</var>/ <var>port</var> | <span class="keyword kwd">port-channel</span>
+                                             <var>channel no</var> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Specifies the Ethernet or port channel interface and enters interface configuration mode.</p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;4</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">switchport backup interface</span> {<span class="keyword kwd">ethernet</span>
+                                             <var>slot</var>/<var> port</var> | <span class="keyword kwd">port-channel</span>
+                                             <var>channel-no</var>} [<span class="keyword kwd">multicast fast-convergence</span>]  </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Specifies a physical layer 2 interface (Ethernet or port channel) as the backup interface in a Flex Link pair. When one link
+                                             is forwarding traffic the other interface is in standby mode.
+                                          </p>
+                                          
+                                          <ul class="ul">
+                                             <li class="li">
+                                                
+                                                <p class="p">ethernet slot/port—Specifies the backup Ethernet interface. The slot number is 1 and the port number is from 1 to 48.</p>
+                                                
+                                             </li>
+                                             <li class="li">
+                                                
+                                                <p class="p">port-channel port-channel-no—Specifies the backup port channel interface. The port-channel-no number is from 1 to 4096.</p>
+                                                
+                                             </li>
+                                             <li class="li">
+                                                
+                                                <p class="p">multicast—Specifies the multicast parameters.</p>
+                                                
+                                             </li>
+                                             <li class="li">
+                                                
+                                                <p class="p">fast-convergence—Configures fast convergence on the backup interface.</p>
+                                                
+                                             </li>
+                                          </ul>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;5</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd">(Optional) <span><span class="keyword kwd">end</span> </span>
+                                          
+                                       </p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">(Optional) 
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Return to privileged EXEC mode.</p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;6</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd">(Optional) <span><span class="keyword kwd">show interface switchport backup</span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">(Optional) 
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Verifies the configuration. </p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;7</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd">(Optional) <span><span class="keyword kwd">copy running-config startup config</span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">(Optional) 
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p"> Save your entries in the switch startup configuration file.</p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           <section class="example" id="id_92367__d833e662">
+                              <section class="tasklabel">
+                                 <h4 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h4>
+                              </section>
+                              
+                              <p class="p">This example shows how to configure an Ethernet switchport backup pair: Ethernet 1/1 is active interface, Ethernet 1/2 is
+                                 the backup interface:
+                              </p>
+                              <pre class="pre codeblock"><code>switch(config)# feature flexlink
+switch(config)# interface ethernet 1/1
+switch(config-if)# switchport backup interface ethernet 1/2
+switch(config-if)# exit
+switch(config)# interface port-channel300
+switch(config-if)# switchport backup interface port-channel301
+switch(config-if)# show ip igmp snooping mrouter
+Type: S - Static, D - Dynamic, V - vPC Peer Link,
+      I - Internal,C - Co-learned, U - User Configured
+Vlan  Router-port   Type      Uptime      Expires
+200   Po300          D         13:13:47    00:03:15
+200   Po301          DC        13:13:47    00:03:15</code></pre>
+                              <p class="p">This example shows how to configure the port channel switchport backup pair with multicast fast convergence:</p>
+                              <pre class="pre codeblock"><code>switch(config)# interface port-channel10
+switch(config-if)# switchport backup interface port-channel20 multicast fast-convergence</code></pre>
+                              <p class="p">This example shows an example of multicast convergence with a pair of Flex Link interfaces: po305 and po306. A general query
+                                 received on po305 makes it an mrouter port and po306 as co-learned.
+                              </p>
+                              <pre class="pre codeblock"><code>switch(config)# interface po305
+Switch(config-if)# switchport backup interface po306
+switch# show ip igmp snooping mrouter
+Type: S - Static, D - Dynamic, V - vPC Peer Link, I - Internal, C - Co-learned
+Vlan  Router-port   Type      Uptime      Expires
+4     Po300         D         00:00:12    00:04:50
+4     Po301         DC        00:00:12    00:04:50</code></pre>
+                              </section>
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                     <article class="topic task nested2" aria-labelledby="ariaid-title10" lang="en-US" id="id_92373">
+                        <h3 class="title topictitle3" id="ariaid-title10">Configuring Flex Link Preemption</h3>
+                        <section class="body taskbody">
+                           <section class="section context" id="id_92373__d833e730">
+                              
+                              <p class="p">Configure a preemption scheme for the Flex Links pair (active and backup links).</p>
+                              
+                           </section>
+                           <section class="section prereq p" id="id_92373__d833e707">
+                              <section class="tasklabel">
+                                 <h4 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Before you begin</h4>
+                              </section>
+                              
+                              <p class="p">Review the Guidelines and Limitations for this feature. (See <a class="xref" href="#id_92362">Guidelines and Limitations</a>.) 
+                              </p>
+                              
+                              <p class="p">Define and enable the Flex Link. (See <a class="xref" href="#id_92367">Configuring the Flex Link</a>.) 
+                              </p>
+                              
+                              <p class="p">Determine what preemption mode, if any, you want to assign to the port. (See <a class="xref" href="#id_92291">Preemption</a>.)
+                              </p>
+                              
+                           </section>
+                           <h3 font-weight="bold" class="sectiontitle tasklabel summary_steps cB_Bold">SUMMARY STEPS</h3>
+                           <ol class="ol steps summary_steps">
+                              <li class="summary_indent"><span><span class="keyword kwd">configure terminal</span> </span></li>
+                              <li class="summary_indent"><span><span class="keyword kwd">interface</span>
+                                    <span class="keyword kwd">ethernet</span>
+                                    <var>slot/port</var> </span></li>
+                              <li class="summary_indent"><span><span class="keyword kwd">switchport backup interface ethernet</span>
+                                    <var>slot / port</var> </span></li>
+                              <li class="summary_indent"><span><span class="keyword kwd">switchport backup interface ethernet</span>
+                                    <var>slot / port</var>
+                                    <span class="keyword kwd">preemption mode {forced | bandwidth | off}</span> </span></li>
+                              <li class="summary_indent"><span><span class="keyword kwd">switchport backup interface ethernet</span>
+                                    <var>slot / port</var>
+                                    <span class="keyword kwd"> preemption delay</span>
+                                    <var>delay-time</var> </span></li>
+                              <li class="summary_indent">(Optional) 
+                                 <span><span class="keyword kwd">end</span> </span></li>
+                              <li class="summary_indent">(Optional) <span><span class="keyword kwd">show interface switchport backup </span> </span></li>
+                              <li class="summary_indent">(Optional) <span><span class="keyword kwd">copy running-config startup config</span> </span></li>
+                           </ol>
+                           <h3 font-weight="bold" class="sectiontitle tasklabel summary_steps cB_Bold">DETAILED STEPS</h3>
+                           <table class="ol steps">
+                              <thead>
+                                 <tr>
+                                    <th align="left">&nbsp;</th>
+                                    <th font-weight="bold" align="left">Command or Action</th>
+                                    <th font-weight="bold" align="left">Purpose</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;1</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">configure terminal</span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Enter global configuration mode.</p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;2</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">interface</span>
+                                             <span class="keyword kwd">ethernet</span>
+                                             <var>slot/port</var> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info"></section>
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Specify the interface, and enters interface configuration mode. The interface can be a physical Layer 2 interface or a port
+                                             channel (logical interface). 
+                                          </p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;3</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">switchport backup interface ethernet</span>
+                                             <var>slot / port</var> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Configures a physical Layer 2 interface (or port channel) as part of a Flex Link pair with the interface. When one link is
+                                             forwarding traffic, the other interface is in standby mode. 
+                                          </p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;4</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">switchport backup interface ethernet</span>
+                                             <var>slot / port</var>
+                                             <span class="keyword kwd">preemption mode {forced | bandwidth | off}</span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Configures a physical Layer 2 interface (Ethernet or port channel) as part of a flex link pair. When one link is forwarding
+                                             traffic the other interface is in standby mode.
+                                          </p>
+                                          
+                                          <ul class="ul">
+                                             <li class="li">
+                                                
+                                                <p class="p">preemption—Configures a preemption scheme for a backup interface pair.</p>
+                                                
+                                             </li>
+                                             <li class="li">
+                                                
+                                                <p class="p">mode—Specifies the preemption mode.</p>
+                                                
+                                             </li>
+                                          </ul>
+                                          
+                                          <p class="p">Configure a preemption mechanism and delay for a Flex Link pair. You can configure the preemption as: </p>
+                                          
+                                          <ul class="ul">
+                                             <li class="li">
+                                                
+                                                <p class="p"><span><span class="keyword kwd">forced</span> </span>—the active interface always preempts the backup. 
+                                                </p>
+                                                
+                                             </li>
+                                             <li class="li">
+                                                
+                                                <p class="p"><span><span class="keyword kwd">bandwidth</span> </span>—the interface with the higher bandwidth always acts as the active interface. 
+                                                </p>
+                                                
+                                             </li>
+                                             <li class="li">
+                                                
+                                                <p class="p"><span><span class="keyword kwd">off</span> </span>—no preemption happens from active to backup.
+                                                </p>
+                                                
+                                             </li>
+                                          </ul>
+                                          
+                                          <table class="olh_note" border="0" role="note">
+                                             <tr>
+                                                <td width="1%" class="olh_note" role="heading" border="0">
+                                                   <p><b>Note</b></p>&nbsp;
+                                                </td>
+                                                <td border="0" class="olh_note">
+                                                   <section class="note__content">
+                                                      
+                                                      <p class="p">During a bandwidth preemption mode, only bandwidth changes are considered, speed changes are ignored.</p>
+                                                      
+                                                   </section>
+                                                </td>
+                                             </tr>
+                                          </table>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;5</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd"><span><span class="keyword kwd">switchport backup interface ethernet</span>
+                                             <var>slot / port</var>
+                                             <span class="keyword kwd"> preemption delay</span>
+                                             <var>delay-time</var> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Configure the delay time until a port preempts another port. The delay-time range is from 1 to 300 seconds. The default preemption
+                                             delay is 35 seconds.
+                                          </p>
+                                          
+                                          <table class="olh_note" border="0" role="note">
+                                             <tr>
+                                                <td width="1%" class="olh_note" role="heading" border="0">
+                                                   <p><b>Note</b></p>&nbsp;
+                                                </td>
+                                                <td border="0" class="olh_note">
+                                                   <section class="note__content">
+                                                      
+                                                      <p class="p">Setting a delay time only works with forced and bandwidth modes.</p>
+                                                      
+                                                   </section>
+                                                </td>
+                                             </tr>
+                                          </table>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;6</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd">(Optional) 
+                                          <span><span class="keyword kwd">end</span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">(Optional) 
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Return to privileged EXEC mode.</p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;7</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd">(Optional) <span><span class="keyword kwd">show interface switchport backup </span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">(Optional) 
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p">Verifies the configuration. </p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                                 <tr class="li step">
+                                    <td align="left" valign="top">
+                                       <p><b>Step&nbsp;8</b></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--command">
+                                       <p class="ph cmd">(Optional) <span><span class="keyword kwd">copy running-config startup config</span> </span></p>
+                                    </td>
+                                    <td align="left" valign="top" class="step--purpose">(Optional) 
+                                       <section class="itemgroup info">
+                                          
+                                          <p class="p"> Save your entries in the switch startup configuration file.</p>
+                                          
+                                       </section>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           <section class="example" id="id_92373__d833e895">
+                              <section class="tasklabel">
+                                 <h4 font-weight="bold" class="sectiontitle tasklabel cB_Bold">Example</h4>
+                              </section>
+                              
+                              <p class="p">This example shows how to sets the preemption mode to forced, sets the delay time to 50, and verifies the configuration:</p>
+                              <pre class="pre codeblock"><code>switch(config)# configure terminal
+switch(config)# interface ethernet 1/48
+switch(config-if)# switchport backup interface ethernet 1/4 preemption mode forced
+switch(config-if)# switchport backup interface ethernet 1/4 preemption delay 50
+switch(config-if)# end
+switch# show interface switchport backup detail
+
+
+Switch Backup Interface Pairs:
+
+Active Interface        Backup Interface        State
+------------------------------------------------------------------------
+
+Ethernet1/48            Ethernet1/4             Active Down/Backup Down
+        Preemption Mode  : forced
+        Preemption Delay : 50 seconds
+        Multicast Fast Convergence  : Off
+        Bandwidth : 10000000 Kbit (Ethernet1/48), 10000000 Kbit (Ethernet1/4)</code></pre>
+                              </section>
+                        </section>
+                        <!-- minitoc start -->
+                        <nav role="navigation" class="related-links"></nav>
+                        <!-- minitoc end -->
+                     </article>
+                  </article>
+                  <article class="topic reference nested1" aria-labelledby="ariaid-title11" lang="en-US" id="id_92383">
+                     <h2 class="title topictitle2" id="ariaid-title11">Verifying Configuration</h2>
+                     <section class="body refbody">
+                        <section class="section" id="id_92383__d833e927">
+                           
+                           <table width="100%" border="1" class="table">
+                              <caption></caption>
+                              <colgroup>
+                                 <col>
+                                 <col>
+                              </colgroup>
+                              <thead class="thead">
+                                 <tr>
+                                    <th font-weight="bold" class="entry" id="id_92383__d16867e714">
+                                       
+                                       <p class="p">Command</p>
+                                       
+                                    </th>
+                                    <th font-weight="bold" class="entry" id="id_92383__d16867e716">
+                                       
+                                       <p class="p">Purpose</p>
+                                       
+                                    </th>
+                                 </tr>
+                              </thead>
+                              <tbody class="tbody">
+                                 <tr>
+                                    <td class="entry" headers="id_92383__d16867e714 ">
+                                       
+                                       <p class="p"><span><span class="keyword kwd">show interface switchport backup</span> </span></p>
+                                       
+                                    </td>
+                                    <td class="entry" headers="id_92383__d16867e716 ">
+                                       
+                                       <p class="p">Displays information about all switchport Flex Link interfaces.</p>
+                                       
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="entry" headers="id_92383__d16867e714 "><span><span class="keyword kwd">show interface switchport backup detail</span> </span></td>
+                                    <td class="entry" headers="id_92383__d16867e716 ">
+                                       
+                                       <p class="p">Displays detailed information about all switchport Flex Link interfaces.</p>
+                                       
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="entry" headers="id_92383__d16867e714 ">
+                                       
+                                       <p class="p"><span><span class="keyword kwd">show running-config backup</span> </span></p>
+                                       
+                                       <p class="p"><span><span class="keyword kwd">show startup-config backup</span> </span></p>
+                                       
+                                    </td>
+                                    <td class="entry" headers="id_92383__d16867e716 ">
+                                       
+                                       <p class="p">Displays the running or startup configuration for backup interfaces.</p>
+                                       
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td class="entry" headers="id_92383__d16867e714 ">
+                                       
+                                       <p class="p"><span><span class="keyword kwd">show running-config flexlink</span> </span></p>
+                                       
+                                       <p class="p"><span><span class="keyword kwd">show startup-config flexlink</span> </span></p>
+                                       
+                                    </td>
+                                    <td class="entry" headers="id_92383__d16867e716 ">
+                                       
+                                       <p class="p">Displays the running or startup configuration for flex link interfaces.</p>
+                                       
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                           
+                        </section>
+                        <section class="example" id="id_92383__d833e1006">
+                           
+                           <p class="p">This example shows summary configuration for the Flex Link pair:</p>
+                           <pre class="pre codeblock"><code>9k-203-Pip(config)# show interface switchport backup 
+
+
+Switch Backup Interface Pairs:
+
+Active Interface Backup Interface State
+------------------------------------------------------------------------
+Ethernet1/9 port-channel103 Active Standby/Backup Up
+Ethernet1/12 Ethernet1/13 Active Up/Backup Standby
+Ethernet1/21 port-channel203 Active Up/Backup Standby
+Ethernet1/24 Ethernet1/25 Active Up/Backup Standby
+port-channel301 port-channel302 Active Down/Backup Up
+
+
+k-203-Pip(config)# show interface switchport backup detail 
+
+
+Switch Backup Interface Pairs:
+
+Active Interface Backup Interface State
+------------------------------------------------------------------------
+Ethernet1/9 port-channel103 Active Standby/Backup Up
+Preemption Mode : bandwidth
+Preemption Delay : 1 seconds
+Multicast Fast Convergence : On
+Bandwidth : 1000000 Kbit (Ethernet1/9), 2000000 Kbit (port-channel103)
+
+..</code></pre>
+                           
+                           <p class="p">This example shows information about all switchport Flex Link interfaces:</p>
+                           <pre class="pre codeblock"><code>switch# show interface switchport backup
+
+
+Switch Backup Interface Pairs:
+
+Active Interface        Backup Interface        State
+------------------------------------------------------------------------
+Ethernet1/1             Ethernet1/2             Active Down/Backup Down
+Ethernet1/8             Ethernet1/45            Active Down/Backup Down
+Ethernet1/48            Ethernet1/4             Active Down/Backup Down
+port-channel10          port-channel20          Active Down/Backup Up
+port-channel300         port-channel301         Active Down/Backup Down</code></pre>
+                           
+                           <p class="p">This example shows details about all switchport Flex Link interfaces:</p>
+                           <pre class="pre codeblock"><code>switch# show interface switchport backup detail
+
+
+Switch Backup Interface Pairs:
+
+Active Interface        Backup Interface        State
+------------------------------------------------------------------------
+Ethernet1/1             Ethernet1/2             Active Down/Backup Down
+        Preemption Mode  : off
+        Multicast Fast Convergence  : Off
+        Bandwidth : 10000000 Kbit (Ethernet1/1), 10000000 Kbit (Ethernet1/2)
+
+Ethernet1/8             Ethernet1/45            Active Down/Backup Down
+        Preemption Mode  : forced
+        Preemption Delay : 10 seconds
+        Multicast Fast Convergence  : Off
+        Bandwidth : 10000000 Kbit (Ethernet1/8), 10000000 Kbit (Ethernet1/45)
+
+Ethernet1/48            Ethernet1/4             Active Down/Backup Down
+        Preemption Mode  : forced
+        Preemption Delay : 50 seconds
+        Multicast Fast Convergence  : Off
+        Bandwidth : 10000000 Kbit (Ethernet1/48), 10000000 Kbit (Ethernet1/4)
+
+port-channel10          port-channel20          Active Down/Backup Up
+        Preemption Mode  : forced
+        Preemption Delay : 10 seconds
+        Multicast Fast Convergence  : Off
+        Bandwidth : 100000 Kbit (port-channel10), 10000000 Kbit (port-channel20)
+
+port-channel300         port-channel301         Active Down/Backup Down
+        Preemption Mode  : off
+        Multicast Fast Convergence  : Off
+        Bandwidth : 100000 Kbit (port-channel300), 100000 Kbit (port-channel301)</code></pre>
+                           
+                           <p class="p">This example shows the running configuration for backup interfaces: </p>
+                           <pre class="pre codeblock"><code>switch# show running-config backup
+
+!Command: show running-config backup
+!Time: Sun Mar  2 03:05:17 2014
+
+version 6.0(2)A3(1)
+feature flexlink
+
+
+interface port-channel10
+  switchport backup interface port-channel20 preemption mode forced
+  switchport backup interface port-channel20 preemption delay 10
+
+interface port-channel300
+  switchport backup interface port-channel301
+
+interface Ethernet1/1
+  switchport backup interface Ethernet1/2
+
+interface Ethernet1/8
+  switchport backup interface Ethernet1/45 preemption mode forced
+  switchport backup interface Ethernet1/45 preemption delay 10
+
+interface Ethernet1/48
+  switchport backup interface Ethernet1/4 preemption mode forced
+  switchport backup interface Ethernet1/4 preemption delay 50
+</code></pre>
+                           
+                           <p class="p">This example shows the startup configuration for backup interfaces:</p>
+                           <pre class="pre codeblock"><code>switch# show startup-config backup
+
+!Command: show startup-config backup
+!Time: Sun Mar  2 03:05:35 2014
+!Startup config saved at: Sun Mar  2 02:54:58 2014
+
+version 6.0(2)A3(1)
+feature flexlink
+
+
+interface port-channel10
+  switchport backup interface port-channel20 preemption mode forced
+  switchport backup interface port-channel20 preemption delay 10
+
+interface Ethernet1/8
+  switchport backup interface Ethernet1/45 preemption mode forced
+  switchport backup interface Ethernet1/45 preemption delay 10</code></pre>
+                           
+                           <p class="p">This example shows the startup configuration for backup interfaces:</p>
+                           <pre class="pre codeblock"><code>switch# show startup-config backup
+
+!Command: show startup-config backup
+!Time: Sun Mar  2 03:05:35 2014
+!Startup config saved at: Sun Mar  2 02:54:58 2014
+
+version 6.0(2)A3(1)
+feature flexlink
+
+
+interface port-channel10
+  switchport backup interface port-channel20 preemption mode forced
+  switchport backup interface port-channel20 preemption delay 10
+
+interface Ethernet1/8
+  switchport backup interface Ethernet1/45 preemption mode forced
+  switchport backup interface Ethernet1/45 preemption delay 10</code></pre>
+                           
+                           <p class="p">This example shows the running configuration of Flex Link:</p>
+                           <pre class="pre codeblock"><code>switch# show running-config flexlink
+
+!Command: show running-config flexlink
+!Time: Sun Mar  2 03:11:49 2014
+
+version 6.0(2)A3(1)
+feature flexlink
+
+
+interface port-channel10
+  switchport backup interface port-channel20 preemption mode forced
+
+interface port-channel300
+  switchport backup interface port-channel301
+
+interface port-channel305
+  switchport backup interface port-channel306
+
+interface Ethernet1/1
+  switchport backup interface Ethernet1/2
+
+interface Ethernet1/8
+  switchport backup interface Ethernet1/45 preemption mode forced
+  switchport backup interface Ethernet1/45 preemption delay 10
+
+interface Ethernet1/48
+  switchport backup interface Ethernet1/4 preemption mode forced
+  switchport backup interface Ethernet1/4 preemption delay 50
+</code></pre>
+                           
+                           <p class="p">This example shows the startup configuration of Flex Link:</p>
+                           <pre class="pre codeblock"><code>switch# show startup-config flexlink
+
+!Command: show startup-config flexlink
+!Time: Sun Mar  2 03:06:00 2014
+!Startup config saved at: Sun Mar  2 02:54:58 2014
+
+version 6.0(2)A3(1)
+feature flexlink
+
+
+interface port-channel10
+  switchport backup interface port-channel20 preemption mode forced
+  switchport backup interface port-channel20 preemption delay 10
+
+interface Ethernet1/8
+  switchport backup interface Ethernet1/45 preemption mode forced
+  switchport backup interface Ethernet1/45 preemption delay 10</code></pre>
+                           </section>
+                        <section class="example" id="id_92383__d833e1058">
+                           
+                           <table class="olh_note" border="0" role="note">
+                              <tr>
+                                 <td width="1%" class="olh_note" role="heading" border="0"><img src="https://www.cisco.com/content/dam/en/us/td/i/templates/note.gif"><br><p><b>Note</b></p>
+                                 </td>
+                                 <td border="0" class="olh_note">
+                                    <section class="note__content">
+                                       <hr>
+                                       
+                                       <p class="p">Before using the <span><span class="keyword kwd">no feature flexlink</span> </span>, all flexlink pair configuration must be disabled.
+                                       </p>
+                                       
+                                       <p class="p">In order to ensure, user will be promoted with a confirmation message when user execute <span><span class="keyword kwd">no feature flexlink</span> </span> as shown below:
+                                       </p>
+                                       <pre class="pre codeblock"><code>"WARNING!!! Please remove all flexlink configuration before disabling feature flexlink. </code></pre>
+                                       <pre class="pre codeblock"><code>Failure to do so may put ports in inconsistent state. Do you want to proceed? Y/N :"</code></pre>
+                                       <p class="p">This message is prompted only if DME is enabled in the system.</p>
+                                       
+                                       <p class="p">If the user chooses to proceed with this command, flexlink peer configuration will remain in the running configuration.</p>
+                                       
+                                       <p class="p">This, in turn, may cause system inconsistency in the ports, that are a part of flexlink configuration. </p>
+                                       
+                                       <p class="p">Once system is in an inconsistent state, the user needs to recover the system.</p>
+                                       
+                                       <p class="p">For recovery, the user needs to re-configure using the command <span><span class="keyword kwd">feature flexlink</span> </span> and remove each interface pair configuration using the command <span><span class="keyword kwd">no switchport backup interface Ethernet x/y</span> </span>. 
+                                       </p>
+                                       
+                                       <p class="p">Once all the pair configurations are removed, the user can execute <span><span class="keyword kwd">no feature flexlink</span> </span>.
+                                       </p>
+                                       
+                                       <hr>
+                                    </section>
+                                 </td>
+                              </tr>
+                           </table>
+                           
+                        </section>
+                     </section>
+                     <!-- minitoc start -->
+                     <nav role="navigation" class="related-links"></nav>
+                     <!-- minitoc end -->
+                  </article>
+               </article>
+            </article>
+         </main>
+      
+
+</div> 
+ 
+    </div>
+    <div class="col narrow-v2">
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="rightRailComponent noprint base-blowout">
+    <div class="eotPersonalization">
+        <section id="eotTDCampaign"></section>
+    </div>    
+    <div class="eot-feedback-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-feedback">
+  <h3>Was this Document Helpful?</h3>
+  <span class="eot-feedback-btnwrap">
+    <button class="eot-feedback-btn eot-feedback-btn-yes" aria-label="Was this Document Helpful?? Yes">Yes</button>
+    <button class="eot-feedback-btn eot-feedback-btn-no" aria-label="Was this Document Helpful?? No">No</button>
+  </span>
+  <span lang="en" class="eot-feedback-olwrap">
+    
+      <a href="javascript: void(0);" class="eot-feedback-ol" onclick="window.open('https://ciscocx.qualtrics.com/jfe/form/SV_be0fHnqDoKM7sto?Ref=' + location.href + '&resize=false', 'feedback', 'width=650, height=460, scrollbars=1, menubar=1, resizable=1'); return false;">
+      <img id="feedback_img" border="0" style="cursor: pointer;" title="Feedback" src="//www.cisco.com/c/dam/cdc/i/Feedback_OceanBlue.png" alt="Feedback">Feedback</a>
+    
+  </span>
+</div>
+
+
+</div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eot-vav">
+  <ul>
+  </ul>
+</div>
+    </div>
+			
+    <div class="letUsHelp">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="eotLetUsHelp">
+    <h3>Contact Cisco</h3>
+    <ul>
+         <li><a id="eotLetUsHelpProdDocUrl" href="https://mycase.cloudapps.cisco.com/start?prodDocUrl=">Open a Support Case</a><img src="/etc/designs/cdc/fw/i/icon_lock_small.png" alt="login required"/></li>
+        <li>(Requires a <a href="//www.cisco.com/c/en/us/services/order-services.html">Cisco Service Contract</a>)</li>
+    </ul>
+</div>
+
+
+<script>
+    jQuery(document).ready(function() {
+        var getURL=jQuery("#eotLetUsHelpProdDocUrl").attr("href"), 
+            domInd = location.href.indexOf('cisco.com') ;
+        if ( domInd > -1 && domInd < location.href.search(/\w\/\w/) ) {
+            getURL += encodeURI(location.href);
+        }
+		jQuery("#eotLetUsHelpProdDocUrl").attr("href",getURL);
+    });
+</script>
+
+
+    </div>
+
+    <div id="eotRightRailMBox"><!--MBox-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- IT:components/mbox/banner-mbox:V0.0.0 -->
+
+
+
+<div>
+    <div class="mboxDefault"></div>   
+    <script type="text/javascript">
+        var test="";
+        if(test!=undefined && test.trim().length>0){
+           mboxCreate('en-us_dg_support_bookchapters','type=default','');
+        }else{
+           mboxCreate('en-us_dg_support_bookchapters','type=default');
+        }
+       
+    </script>
+</div>
+<!--MBox--></div>
+			
+    <div class="showComponent">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+	<script type="text/javascript">
+			    var eottdatp = document.getElementsByClassName('eot-tdatp');
+			    if (eottdatp && eottdatp.style) {
+        			eottdatp.style.display="none";
+			    }
+        		  </script>
+  	
+
+
+    </div>
+			
+    <div></div>
+
+</div>
+
+
+    </div>
+</div>
+
+     <!--googleoff: index--><!--googleoff: snippet-->
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end: responsive fat footer re-use wrapper-->
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <script type="module" src="/site/web-components/us/en/cdc-footer.js"></script>
+        <cdc-footer></cdc-footer>
+    
+
+<script type="text/javascript">
+    if(document.querySelector('#privacy-manager')!=null){
+        document.querySelector('#privacy-manager').href='#cookies';
+    }
+  </script>   
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="fw-overlay"></div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/etc/designs/cdc/clientlibs/responsive/js/books.min.js"></script>
+
+<script src="/etc/designs/cdc/fw/m/books_metricsrule.js" type="text/javascript" async></script>
+    
+    
+
+    <!-- SiteCatalyst code version: H.24.4. -->
+    <noscript><img src="//cisco.112.2o7.net/b/ss/cisco-mobile/5/12345" width="2" height="2" border="0" alt=""/></noscript>
+
+</body>
+</html>

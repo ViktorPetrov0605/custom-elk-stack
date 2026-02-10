@@ -1,0 +1,2 @@
+А also how's it going with the whole testing of the browser user automation for interacting with the front end?
+Was that successful? Was that not successful?

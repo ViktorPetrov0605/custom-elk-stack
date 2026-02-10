@@ -1,0 +1,20 @@
+{
+  "attributes": {
+    "title": "Unified Flow Dashboard",
+    "description": "Combined NetFlow/sFlow dashboard with validated fields | Cleaned up - removed deprecated device filter and broken v2 panels",
+    "version": 4,
+    "timeRestore": false,
+    "optionsJSON": "{\"hidePanelTitles\":false,\"useMargins\":true,\"syncColors\":false,\"syncTooltips\":false}",
+    "panelsJSON": "[{\"version\": \"8.5.0\", \"type\": \"visualization\", \"gridData\": {\"x\": 0, \"y\": 0, \"w\": 24, \"h\": 15, \"i\": \"1\"}, \"panelIndex\": \"1\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_0\"}, {\"version\": \"8.5.0\", \"type\": \"visualization\", \"gridData\": {\"x\": 24, \"y\": 0, \"w\": 24, \"h\": 15, \"i\": \"2\"}, \"panelIndex\": \"2\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_1\"}, {\"version\": \"8.5.0\", \"type\": \"visualization\", \"gridData\": {\"x\": 0, \"y\": 15, \"w\": 24, \"h\": 15, \"i\": \"3\"}, \"panelIndex\": \"3\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_2\"}, {\"version\": \"8.5.0\", \"type\": \"visualization\", \"gridData\": {\"x\": 24, \"y\": 15, \"w\": 24, \"h\": 15, \"i\": \"4\"}, \"panelIndex\": \"4\", \"embeddableConfig\": {\"enhancements\": {}}, \"panelRefName\": \"panel_3\"}]",
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[],\"indexRefName\":\"kibanaSavedObjectMeta.searchSourceJSON.index\"}"
+    }
+  },
+  "references": [
+    {"id": "traffic-over-time-1770732689", "name": "panel_0", "type": "visualization"},
+    {"id": "top-sources-1770732697", "name": "panel_1", "type": "visualization"},
+    {"id": "top-dests-1770732699", "name": "panel_2", "type": "visualization"},
+    {"id": "protocols-1770732700", "name": "panel_3", "type": "visualization"},
+    {"id": "elastiflow-flow", "name": "kibanaSavedObjectMeta.searchSourceJSON.index", "type": "index-pattern"}
+  ]
+}
