@@ -1,0 +1,12 @@
+{
+  "user": "Viktor Petrov",
+  "preferred_voices": {
+    "en": "en-US-AvaNeural",
+    "bg": "bg-BG-BorislavNeural"
+  },
+  "notes": {
+    "en": "Ava - female voice, US English, friendly and professional",
+    "bg": "Borislav - male voice, Bulgarian"
+  },
+  "saved_at": "2026-02-11T16:31:00Z"
+}

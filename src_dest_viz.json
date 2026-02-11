@@ -1,0 +1,82 @@
+{
+  "attributes": {
+    "title": "[Unified Flow] Top Source IPs (Source-Dest Graph)",
+    "description": "Top 10 Source IPs for Source-Destination relationship graph",
+    "visualizationType": "lnsXY",
+    "state": {
+      "datasourceStates": {
+        "formBased": {
+          "layers": {
+            "source-dest-layer": {
+              "columnOrder": ["src_ip", "bytes_col"],
+              "columns": {
+                "src_ip": {
+                  "customLabel": true,
+                  "dataType": "ip",
+                  "isBucketed": true,
+                  "label": "Source IP",
+                  "operationType": "terms",
+                  "params": {
+                    "exclude": [],
+                    "excludeIsRegex": false,
+                    "include": [],
+                    "includeIsRegex": false,
+                    "missingBucket": false,
+                    "orderBy": {"columnId": "bytes_col", "type": "column"},
+                    "orderDirection": "desc",
+                    "otherBucket": false,
+                    "parentFormat": {"id": "terms"},
+                    "size": 10
+                  },
+                  "scale": "ordinal",
+                  "sourceField": "source.ip"
+                },
+                "bytes_col": {
+                  "customLabel": true,
+                  "dataType": "number",
+                  "isBucketed": false,
+                  "label": "Bytes",
+                  "operationType": "sum",
+                  "params": {
+                    "emptyAsNull": true,
+                    "format": {"id": "bytes", "params": {"decimals": 2}}
+                  },
+                  "scale": "ratio",
+                  "sourceField": "network.bytes"
+                }
+              },
+              "incompleteColumns": {}
+            }
+          }
+        }
+      },
+      "filters": [],
+      "query": {"language": "kuery", "query": ""},
+      "visualization": {
+        "axisTitlesVisibilitySettings": {"x": true, "yLeft": true, "yRight": true},
+        "fittingFunction": "None",
+        "gridlinesVisibilitySettings": {"x": true, "yLeft": true, "yRight": true},
+        "labelsOrientation": {"x": 0, "yLeft": 0, "yRight": 0},
+        "layers": [{
+          "accessors": ["bytes_col"],
+          "layerId": "source-dest-layer",
+          "layerType": "data",
+          "seriesType": "bar_horizontal",
+          "xAccessor": "src_ip",
+          "palette": {"name": "temperature", "type": "palette"}
+        }],
+        "legend": {"isVisible": false},
+        "preferredSeriesType": "bar_horizontal",
+        "tickLabelsVisibilitySettings": {"x": true, "yLeft": true, "yRight": true},
+        "valueLabels": "hide"
+      }
+    },
+    "references": [
+      {
+        "id": "unified-flow-index",
+        "name": "indexpattern-datasource-layer-source-dest-layer",
+        "type": "index-pattern"
+      }
+    ]
+  }
+}

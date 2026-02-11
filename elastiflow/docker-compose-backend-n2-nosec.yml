@@ -1,0 +1,46 @@
+version: '3.3'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.2.4
+    container_name: es-data-n2
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - node.name=es-data-n2
+      - cluster.name=netflow-cluster
+      - node.roles=data,ingest
+      - discovery.seed_hosts=10.4.4.87:9300,10.4.4.87:9301
+      - cluster.initial_master_nodes=es-frontend,es-frontend-2
+      - network.publish_host=10.4.4.90
+      - ELASTIC_PASSWORD=telehouse
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es-data-n2:/usr/share/elasticsearch/data
+
+  elastiflow-collector:
+    image: elastiflow/flow-collector:7.20.0
+    container_name: elastiflow-collector-sflow
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - EF_LICENSE_ACCEPTED=true
+      - EF_FLOW_SERVER_UDP_PORT=6343
+      - EF_FLOW_SERVER_UDP_TYPE=sflow
+      - EF_OUTPUT_ELASTICSEARCH_ENABLE=true
+      - EF_OUTPUT_ELASTICSEARCH_ADDRESSES=127.0.0.1:9200
+      - EF_OUTPUT_ELASTICSEARCH_USERNAME=elastic
+      - EF_OUTPUT_ELASTICSEARCH_PASSWORD=telehouse
+      - EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_SHARDS=1
+      - EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_REPLICAS=0
+      - EF_LOGGER_LEVEL=info
+
+volumes:
+  es-data-n2:
+    driver: local

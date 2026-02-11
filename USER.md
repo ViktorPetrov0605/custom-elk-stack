@@ -2,12 +2,12 @@
 
 *Learn about the person you're helping. Update this as you go.*
 
-- **Name:** Stefan
-- **What to call them:** Stefan
+- **Name:** Viktor Petrov
+- **What to call them:** Viktor
 - **Pronouns:** *(optional)*
 - **Timezone:** Europe/Sofia (GMT+2)
-- **Communication preferences:** Casual, brief
-- **Notes:** In-house use at TeleHouse/TelePoint 
+- **Communication preferences:** Casual, brief, direct (NOT "Stefan")
+- **Notes:** Work at TeleHouse/TelePoint. Telegram: @vptrv05 
 
 ## Context
 
