@@ -280,8 +280,9 @@ show configuration forwarding-options sampling
 ## Kibana Dashboards
 
 ### Access
-- **URL:** https://10.4.4.87:5601/app/dashboards
+- **URL:** http://10.4.4.87:5601/app/dashboards (HTTP - no SSL cert yet)
 - **Credentials:** elastic / telehouse
+- **Data View:** `elastiflow-flow-ecs-8.0-2.5-*` (ID: cc96ae84-f35b-49a8-8945-a55cd69daea7)
 
 ### Dashboards Available
 - `[Unified Flow] Detailed Traffic Analysis` - Full traffic breakdown
