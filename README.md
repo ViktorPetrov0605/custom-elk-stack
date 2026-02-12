@@ -76,6 +76,20 @@ The script will:
 ./deploy.sh -v              # Verify deployment health
 ```
 
+## Dashboard Screenshots
+
+### Detailed Traffic Analysis
+![Detailed Traffic Analysis](screenshots/dashboard-detailed-analysis.png)
+*Real-time traffic overview showing traffic timeline, protocol distribution (TCP/UDP/ICMP), top sources/destinations, and device traffic metrics. The 4096x sampling multiplier is applied for accurate Juniper NetFlow data.*
+
+### Conversation Partners
+![Conversation Partners](screenshots/dashboard-conversation-partners.png)
+*Conversation tracking showing source-destination pairs, protocol breakdown, and traffic patterns between network endpoints. Useful for identifying top talkers and traffic flows.*
+
+### Top-N Analysis
+![Top-N Analysis](screenshots/dashboard-topn-analysis.png)
+*Comprehensive Top-N analysis including top sources, destinations, ports, protocols, and AS numbers. Displays aggregated statistics with protocol breakdown (TCP 70.7%, UDP 29.3%, ICMP 0.03%).*
+
 ## Manual Deployment (Advanced)
 
 For manual control or fine-tuning:
@@ -204,19 +218,42 @@ All data retained for **1 day** then auto-deleted:
 - Elastic Stack: Basic License (free)
 - Custom configs: MIT
 
-## Status
+## Development Log
 
-Working deployment with:
-- 4-node cluster (GREEN status)
-- NetFlow + sFlow ingestion active
-- Unified dashboards visualizing data
-- Auto-deletion after 1 day
+### 2026-02-12 - Repository Restructure & Unified Deployment
+- **Major refactor**: Flattened repository structure, removed broken submodule
+- **New feature**: Created `deploy.sh` - unified deployment script for automated setup
+  - Auto-generates SSL certificates
+  - Deploys frontend + multiple backends with single command
+  - Built-in verification and health checks
+- **Added**: `docker-compose-backend-universal.yml` - single backend for both NetFlow and sFlow
+- **Added**: `logstash-universal.conf` - unified Logstash config handling both flow types
+- **Cleanup**: Removed 40+ temporary/dev files, Python generators, screenshot scripts
+- **Result**: Clean, production-ready repository structure
 
-## Timeline
+### 2026-02-11 - Dashboard Fixes & Backend Stabilization
+- **Fixed**: Kibana dashboard JSON errors (deleted corrupted v2/v3 versions)
+- **Fixed**: Recreated clean dashboards from `unified-flow-dashboards-v2.ndjson`
+- **Fixed**: Index pattern dependencies - created `unified-flow-pattern`
+- **Fixed**: Backend N1 Logstash config with multi-device support
+- **Fixed**: Cisco Nexus sFlow configuration (10.4.4.3 and 10.4.4.4) - saved to startup-config
+- **Status**: Cluster GREEN, 122K+ flow documents indexed
 
-- Development started: Feb 6, 2026
-- Production ready: Feb 10, 2026
-- Major troubleshooting: Cluster UUID issues, role configuration
+### 2026-02-10 - Initial Production Deployment
+- **Completed**: 4-node cluster deployment (2 frontend + 2 backend)
+- **Resolved**: Cluster UUID mismatch issues between nodes
+- **Resolved**: Frontend ES node role configuration (master,ingest - removed data)
+- **Network**: Juniper (192.168.224.1) sending NetFlow v9 to Backend N1 (10.4.4.21:2050)
+- **Network**: Cisco Nexus switches (10.4.4.3, 10.4.4.4) sending sFlow to Backend N2 (10.4.4.90:6343)
+- **Applied**: ILM policy for 1-day data retention
+- **Sampling**: 4096x multiplier for Juniper NetFlow (data corrected in pipeline)
+
+### 2026-02-09 to 2026-02-06 - Development Phase
+- Initial Docker Compose configurations
+- Logstash pipeline development for NetFlow v9 and sFlow v5
+- SSL certificate generation and distribution
+- Dashboard prototyping in Kibana
+- Network device configuration testing
 
 ---
-*Last updated: 2026-02-10*
+*Repository maintained by Viktor Petrov | Last updated: 2026-02-12*
