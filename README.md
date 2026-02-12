@@ -168,6 +168,34 @@ curl -k -u elastic:pass https://10.4.4.87:9200/_cluster/health
 ss -lnup | grep -E "(2050|6343)"
 ```
 
+### Cluster Node Verification
+**Check:** Verify all nodes joined the cluster
+```bash
+# Check all nodes in the cluster
+curl -k -u elastic:password https://10.4.4.87:9200/_cat/nodes?v
+```
+
+**Expected output (4-node cluster):**
+```
+ip          heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+10.4.4.87   60           72          17  1.05    0.72    0.68     dim       *      es-frontend-2
+10.4.4.21   41           80          57  4.43    4.57    4.99     di        -      es-remote
+10.4.4.87   48           81          17  0.79    0.66    0.66     dim       -      es-frontend
+10.4.4.90   64           66          0   0.00    0.01    0.01     di        -      es-remote
+```
+
+**Node roles explained:**
+- `d` = data node (stores data)
+- `i` = ingest node (processes data)
+- `m` = master node (cluster management)
+- `*` = current master node
+
+**Missing nodes?** If backends don't appear:
+1. Check backend logs: `docker-compose logs es-remote`
+2. Verify network connectivity between nodes
+3. Check firewall rules for ports 9200, 9300
+4. Common fix: Clear ES data and restart (see Cluster UUID Mismatch above)
+
 ## Data Sources
 
 ### NetFlow (Juniper)

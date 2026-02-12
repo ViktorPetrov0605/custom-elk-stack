@@ -556,12 +556,76 @@ create_index_pattern() {
 # VERIFICATION
 # ============================================================
 
+check_cluster_nodes() {
+    log_info "=========================================="
+    log_info "CLUSTER NODE VERIFICATION"
+    log_info "=========================================="
+    
+    log_info "Checking all nodes in the cluster..."
+    echo ""
+    
+    # Fetch node information
+    local nodes_output=$(curl -s -k "https://$FRONTEND_IP:$ES_PORT/_cat/nodes?v" -u "elastic:$ELASTIC_PASSWORD" 2>/dev/null)
+    
+    if [ -z "$nodes_output" ]; then
+        log_error "Cannot retrieve cluster nodes. Is Elasticsearch running?"
+        return 1
+    fi
+    
+    # Display the node table
+    echo "$nodes_output"
+    echo ""
+    
+    # Count nodes
+    local node_count=$(echo "$nodes_output" | tail -n +2 | wc -l)
+    local expected_nodes=0
+    
+    # Count expected nodes (2 frontend + backends)
+    expected_nodes=2
+    local backend_num=1
+    while [ -n "$(eval echo "\${BACKEND_${backend_num}_IP:-}")" ]; do
+        ((expected_nodes++))
+        ((backend_num++))
+    done
+    
+    log_info "Detected $node_count node(s) in cluster (expected: $expected_nodes)"
+    
+    # Check for master node
+    if echo "$nodes_output" | grep -q "\*"; then
+        log_success "Master node elected"
+    else
+        log_warn "No master node detected - cluster may be unstable"
+    fi
+    
+    # Verify each expected backend is present
+    backend_num=1
+    while [ -n "$(eval echo "\${BACKEND_${backend_num}_IP:-}")" ]; do
+        local backend_ip=$(eval echo "\${BACKEND_${backend_num}_IP}")
+        if echo "$nodes_output" | grep -q "$backend_ip"; then
+            log_success "Backend $backend_num ($backend_ip) connected"
+        else
+            log_error "Backend $backend_num ($backend_ip) NOT in cluster!"
+            log_info "Troubleshooting: Check backend logs with: docker-compose -f $COMPOSE_BACKEND logs es-remote"
+        fi
+        ((backend_num++))
+    done
+    
+    echo ""
+    log_info "Node roles key: d=data, i=ingest, m=master, * = current master"
+    echo ""
+    
+    return 0
+}
+
 verify_deployment() {
     log_info "=========================================="
     log_info "VERIFICATION"
     log_info "=========================================="
     
     local all_ok=true
+    
+    # Check cluster nodes first (detailed view)
+    check_cluster_nodes
     
     # Check cluster health
     log_info "Checking cluster health..."
