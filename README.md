@@ -2,7 +2,7 @@
 
 Distributed ELK deployment with NetFlow (Juniper) and sFlow (Cisco Nexus) support.
 
-⚠️ **SECURITY WARNING:** See [SECURITY.md](SECURITY.md) - Change all default passwords before use!
+**SECURITY WARNING:** See [SECURITY.md](SECURITY.md) - Change all default passwords before use!
 
 
 ## Architecture
@@ -160,7 +160,7 @@ All data retained for **1 day** then auto-deleted:
 
 ## Status
 
-✅ Working deployment with:
+Working deployment with:
 - 4-node cluster (GREEN status)
 - NetFlow + sFlow ingestion active
 - Unified dashboards visualizing data
