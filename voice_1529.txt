@@ -1,4 +1,0 @@
-Okay, what's up with the password formatting issue? Is it possible to just use SSH
-pass possibly? Would you mind looking into that real quick as well?
-Simultaneous to while you're doing everything else? Just check out the SSH pass
-like the login in and character escaping the issue, please.
