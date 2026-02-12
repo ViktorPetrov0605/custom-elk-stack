@@ -3,7 +3,7 @@
 **Date:** 2026-02-12  
 **Deployed by:** Valentin-bot  
 **Status:** ✅ Production  
-**Version:** v1.1 (with dashboard fix)
+**Version:** v1.2 (3-day retention, 1 shard, runtime fields)
 
 ## Architecture
 
@@ -35,6 +35,7 @@
 ┌─────────────────────────────────────────────────────────────────┐
 │              Elasticsearch Cluster (10.4.4.87:9200)              │
 │                    Index: elastiflow-flow-ecs-*                  │
+│                    Shards: 1 | Replicas: 0 | Retention: 3 days   │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               │
@@ -54,6 +55,9 @@
 | **sFlow (Cisco)** | 1.48M+ docs |
 | **Index Size** | ~3GB |
 | **Devices** | 3 active |
+| **Shards** | 1 per index |
+| **Replicas** | 0 |
+| **Retention** | 3 days |
 
 ## Collectors
 
@@ -93,8 +97,8 @@ services:
       EF_OUTPUT_ELASTICSEARCH_USERNAME: "elastic"
       EF_OUTPUT_ELASTICSEARCH_PASSWORD: "telehouse"
       EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "true"
-      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_SHARDS: "2"
-      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_REPLICAS: "1"
+      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_SHARDS: "1"
+      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_REPLICAS: "0"
       EF_OUTPUT_ELASTICSEARCH_ECS_ENABLE: "true"
       EF_OUTPUT_ELASTICSEARCH_TLS_ENABLE: "true"
       EF_OUTPUT_ELASTICSEARCH_TLS_SKIP_VERIFICATION: "true"
@@ -123,8 +127,8 @@ services:
       EF_OUTPUT_ELASTICSEARCH_USERNAME: "elastic"
       EF_OUTPUT_ELASTICSEARCH_PASSWORD: "telehouse"
       EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "true"
-      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_SHARDS: "2"
-      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_REPLICAS: "1"
+      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_SHARDS: "1"
+      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_REPLICAS: "0"
       EF_OUTPUT_ELASTICSEARCH_ECS_ENABLE: "true"
       EF_OUTPUT_ELASTICSEARCH_TLS_ENABLE: "true"
       EF_OUTPUT_ELASTICSEARCH_TLS_SKIP_VERIFICATION: "true"
@@ -132,33 +136,53 @@ services:
       EF_PIPELINE_BATCH_SIZE: "1000"
 ```
 
-## Management Scripts
+## Index Lifecycle Management (ILM) v1.2
 
-### Check Status (Both Backends)
+**Policy:** `elastiflow`
+
+| Phase | Trigger | Action |
+|-------|---------|--------|
+| **Hot** | 0-1 days OR 10GB | Active indexing, rollover |
+| **Warm** | Immediately after rollover | Shrink to 1 shard, 0 replicas, forcemerge |
+| **Delete** | **3 days total** | Index removed |
+
+**Key Changes:**
+- Reduced from 365 days → **3 days** retention
+- 1 shard per index (was 2)
+- 0 replicas per index (was 1)
+- Rollover triggers every 1 day or 10GB
+
+### Update Index Settings
 ```bash
-#!/bin/bash
-# check_elastiflow.sh
+# Update ILM policy
+curl -u elastic:telehouse -k -X PUT "https://10.4.4.87:9200/_ilm/policy/elastiflow" \
+  -H 'Content-Type: application/json' \
+  -d '{"policy":{"phases":{"hot":{"min_age":"0ms","actions":{"rollover":{"max_age":"1d","max_primary_shard_size":"10gb"},"set_priority":{"priority":100}},"warm":{"min_age":"0d","actions":{"forcemerge":{"max_num_segments":1},"set_priority":{"priority":50},"shrink":{"number_of_shards":1,"allow_write_after_shrink":false},"allocate":{"number_of_replicas":0}}},"delete":{"min_age":"3d","actions":{"delete":{}}}}}}'
 
-echo "=== Backend N1 (NetFlow) ==="
-sshpass -p 'T3l3h0us#' ssh -p 2332 telehouse@10.4.4.21 "docker ps && docker logs flow-collector --tail 5" 2>/dev/null
+# Update index template for 1 shard, 0 replicas
+curl -u elastic:telehouse -k -X PUT "https://10.4.4.87:9200/_index_template/elastiflow-flow-ecs-8.0-2.5" \
+  -H 'Content-Type: application/json' \
+  -d '{"index_patterns":["elastiflow-flow-ecs-8.0-2.5-*"],"template":{"settings":{"number_of_shards":1,"number_of_replicas":0,"index.lifecycle.name":"elastiflow","index.lifecycle.rollover_alias":"elastiflow-flow-ecs-8.0-2.5-rollover","index.codec":"best_compression","refresh_interval":"20s"}},"priority":500}'
 
-echo ""
-echo "=== Backend N2 (sFlow) ==="
-sshpass -p 'T3l3h0us#' ssh telehouse@10.4.4.90 "docker ps && docker logs flow-collector --tail 5" 2>/dev/null
-
-echo ""
-echo "=== Elasticsearch Index Stats ==="
-curl -s -u elastic:telehouse -k "https://10.4.4.87:9200/_cat/indices/elastiflow-flow-*?v&h=index,docs.count,store.size"
-
-echo ""
-echo "=== Device Stats ==="
-curl -s -u elastic:telehouse -k -X POST "https://10.4.4.87:9200/elastiflow-flow-*/_search?size=0" \
-  -H "Content-Type: application/json" \
-  -d '{"aggs":{"devices":{"terms":{"field":"host.ip","size":10}},"types":{"terms":{"field":"event.dataset"}}}}' | \
-  jq -r '.aggregations | "Devices: " + (.devices.buckets | map(.key + " (" + (.doc_count | tostring) + ")") | join(", ")) + " | Types: " + (.types.buckets | map(.key + " (" + (.doc_count | tostring) + ")") | join(", "))'
+# Force rollover to apply new settings
+curl -u elastic:telehouse -k -X POST "https://10.4.4.87:9200/elastiflow-flow-ecs-8.0-2.5-rollover/_rollover"
 ```
 
-### Quick Filter Examples (Kibana Search Bar)
+## Field Reference for Filtering
+
+| Field | Description | Example Values |
+|-------|-------------|----------------|
+| `host.ip` | Flow exporter IP (**use this!**) | `10.4.4.93`, `10.4.4.3`, `10.4.4.4` |
+| `host.name` | Flow exporter hostname | IP or hostname |
+| `event.dataset` | Flow type | `netflow`, `sflow` |
+| `source.ip` | Source of traffic | Any IP |
+| `destination.ip` | Destination of traffic | Any IP |
+| `@timestamp` | Event time | ISO timestamp |
+| `network.protocol` | Protocol | `tcp`, `udp`, `icmp` |
+| `source.port` | Source port | 80, 443, etc. |
+| `destination.port` | Dest port | 80, 443, etc. |
+
+### Kibana Quick Filters
 
 | Filter | Search Query |
 |--------|--------------|
@@ -168,7 +192,27 @@ curl -s -u elastic:telehouse -k -X POST "https://10.4.4.87:9200/elastiflow-flow-
 | **Both Cisco** | `host.ip: (10.4.4.3 OR 10.4.4.4)` |
 | **All NetFlow** | `event.dataset: netflow` |
 | **All sFlow** | `event.dataset: sflow` |
-| **Specific time range** | `@timestamp >= "2026-02-12T10:00:00"` |
+
+### About device.name
+**Note:** The `device.name` field is **not natively present** in ElastiFlow data. Use `host.ip` instead for device filtering.
+
+If dashboard visualizations reference `device.name` and show errors:
+1. Edit the visualization
+2. Change field from `device.name` to `host.ip`
+3. Save
+
+Or create a **runtime field** in Kibana:
+1. Stack Management → Index Patterns → unified-flow-*
+2. Add field → Runtime field
+3. Name: `device.name`
+4. Script: `emit(doc['host.ip'].value)`
+
+## Management Scripts
+
+### Check Status
+```bash
+./scripts/check_elastiflow.sh
+```
 
 ### Restart Collectors
 ```bash
@@ -179,44 +223,23 @@ sshpass -p 'T3l3h0us#' ssh -p 2332 telehouse@10.4.4.21 "cd ~/elastiflow && docke
 sshpass -p 'T3l3h0us#' ssh telehouse@10.4.4.90 "cd ~/elastiflow && docker-compose restart"
 ```
 
-## Kibana Dashboard Filters
+### View Logs
+```bash
+# Backend N1
+sshpass -p 'T3l3h0us#' ssh -p 2332 telehouse@10.4.4.21 "docker logs flow-collector --tail 50 -f"
 
-### Add Filter Pills
-1. Open dashboard (**Detailed Traffic Analysis** or **Top-N**)
-2. Click **Add filter** (top left)
-3. Configure:
-   - **Field:** `host.ip` or `event.dataset`
-   - **Operator:** is / is one of / is between
-   - **Value:** See table above
-4. Click **Save**
+# Backend N2
+sshpass -p 'T3l3h0us#' ssh telehouse@10.4.4.90 "docker logs flow-collector --tail 50 -f"
+```
 
-### Edit Existing Dashboard Filter
-1. Click filter pill
-2. Click **Edit filter**
-3. Change value
-4. Click **Save**
+### Force Immediate Cleanup (Delete all but latest index)
+```bash
+# List all flow indices
+curl -s -u elastic:telehouse -k "https://10.4.4.87:9200/_cat/indices/elastiflow-flow-*?v&s=index"
 
-## Index Pattern Fix (Important!)
-
-**Issue:** Dashboards originally pointed to `unified-flow-*` (old Logstash index)
-**Fix:** Updated all index patterns to `elastiflow-flow-ecs-*`
-
-**Applied to:**
-- `unified-flow-*` → `elastiflow-flow-ecs-*` ✅
-- `unified-flow-index` → `elastiflow-flow-ecs-*` ✅
-- `unified-flow-clean` → `elastiflow-flow-ecs-*` ✅
-- `unified-flow-pattern` → `elastiflow-flow-ecs-*` ✅
-
-## Index Lifecycle Management (ILM)
-
-**Policy:** `elastiflow` (auto-created by ElastiFlow)
-
-| Phase | Trigger | Action |
-|-------|---------|--------|
-| **Hot** | 0-7 days OR 50GB | Active indexing, rollover |
-| **Warm** | After 7 days | Shrink to 1 shard, forcemerge |
-| **Cold** | After 30 days | Lower priority |
-| **Delete** | After 365 days | Index removed |
+# Delete old indices (use carefully!)
+curl -s -u elastic:telehouse -k -X DELETE "https://10.4.4.87:9200/elastiflow-flow-ecs-8.0-2.5-rollover-000001"
+```
 
 ## Network Device Configuration
 
@@ -254,18 +277,41 @@ commit and-quit
 show configuration forwarding-options sampling
 ```
 
-## Field Reference for Filtering
+## Kibana Dashboards
 
-| Field | Description | Example Values |
-|-------|-------------|----------------|
-| `host.ip` | Flow exporter IP | `10.4.4.93`, `10.4.4.3`, `10.4.4.4` |
-| `event.dataset` | Flow type | `netflow`, `sflow` |
-| `source.ip` | Source of traffic | Any IP |
-| `destination.ip` | Destination of traffic | Any IP |
-| `@timestamp` | Event time | ISO timestamp |
-| `network.protocol` | Protocol | `tcp`, `udp`, `icmp` |
-| `source.port` | Source port | 80, 443, etc. |
-| `destination.port` | Dest port | 80, 443, etc. |
+### Access
+- **URL:** https://10.4.4.87:5601/app/dashboards
+- **Credentials:** elastic / telehouse
+
+### Dashboards Available
+- `[Unified Flow] Detailed Traffic Analysis` - Full traffic breakdown
+- `[Unified Flow] Top-N Analysis` - Top talkers, protocols, ports
+- `[Unified Flow] Conversation Partners` - Flow pairs
+
+### Index Pattern Fix Applied
+| Index Pattern | Now Points To |
+|---------------|---------------|
+| `unified-flow-*` | `elastiflow-flow-ecs-*` ✅ |
+| `unified-flow-index` | `elastiflow-flow-ecs-*` ✅ |
+| `unified-flow-clean` | `elastiflow-flow-ecs-*` ✅ |
+| `unified-flow-pattern` | `elastiflow-flow-ecs-*` ✅ |
+
+### Fixing device.name Errors
+If visualizations show "Field device.name was not found":
+
+**Option 1: Edit Visualization (Quick)**
+1. Open dashboard → Edit panel
+2. Change field from `device.name` to `host.ip`
+3. Save
+
+**Option 2: Add Runtime Field (Persistent)**
+1. Stack Management → Index Patterns
+2. Select `unified-flow-*`
+3. Add field → Runtime field
+4. Name: `device.name`
+5. Type: Keyword
+6. Script: `emit(doc['host.ip'].value)`
+7. Save
 
 ## Troubleshooting
 
@@ -281,42 +327,53 @@ sshpass -p 't3l3h0us3' ssh admin@10.4.4.3 "show sflow"
 
 # Verify collector port
 sshpass -p 'T3l3h0us#' ssh telehouse@10.4.4.90 "ss -ulnp | grep 6343"
-
-# Check logs
-sshpass -p 'T3l3h0us#' ssh telehouse@10.4.4.90 "docker logs flow-collector --tail 50"
 ```
 
 ### Dashboard shows no data
 1. Check index pattern points to `elastiflow-flow-ecs-*`
 2. Check time range (default is last 15 minutes)
 3. Verify filter pills not excluding data
-4. Try broad search: `*` (asterisk = all)
+4. Try broad search: `*`
 
-### Collector stopped
+### High disk usage (old 2-shard indices)
 ```bash
-# Backend N1
-sshpass -p 'T3l3h0us#' ssh -p 2332 telehouse@10.4.4.21 "cd ~/elastiflow && docker-compose up -d"
-
-# Backend N2
-sshpass -p 'T3l3h0us#' ssh telehouse@10.4.4.90 "cd ~/elastiflow && docker-compose up -d"
+# Force ILM to run immediately
+curl -s -u elastic:telehouse -k -X POST "https://10.4.4.87:9200/elastiflow-flow-*/_ilm/retry"
 ```
 
 ## Maintenance
 
 ### Update ElastiFlow Image
 ```bash
-# On both backends
-sshpass -p 'T3l3h0us#' ssh -p 2332 telehouse@10.4.4.21 "cd ~/elastiflow && docker-compose pull && docker-compose up -d"
-sshpass -p 'T3l3h0us#' ssh telehouse@10.4.4.90 "cd ~/elastiflow && docker-compose pull && docker-compose up -d"
+# Backend N1
+sshpass -p 'T3l3h0us#' ssh -p 2332 telehouse@10.4.4.21 \
+  "cd ~/elastiflow && docker-compose pull && docker-compose up -d"
+
+# Backend N2
+sshpass -p 'T3l3h0us#' ssh telehouse@10.4.4.90 \
+  "cd ~/elastiflow && docker-compose pull && docker-compose up -d"
 ```
 
-### Clean Old Indices
+### Manual Index Cleanup (Emergency)
 ```bash
-# Delete indices older than X days (use carefully!)
-curl -s -u elastic:telehouse -k -X DELETE "https://10.4.4.87:9200/elastiflow-flow-ecs-8.0-2.5-2026.02.01"
+# Only if disk is critical and ILM hasn't run
+curl -s -u elastic:telehouse -k -X DELETE \
+  "https://10.4.4.87:9200/elastiflow-flow-ecs-8.0-2.5-rollover-000001"
 ```
+
+## Credentials Reference
+
+| Service | Host | User | Password |
+|---------|------|------|----------|
+| Elasticsearch | 10.4.4.87:9200 | elastic | telehouse |
+| Kibana | 10.4.4.87:5601 | elastic | telehouse |
+| Backend N1 SSH | 10.4.4.21:2332 | telehouse | T3l3h0us# |
+| Backend N2 SSH | 10.4.4.90:22 | telehouse | T3l3h0us# |
+| Cisco Nexus | 10.4.4.3, 10.4.4.4 | admin | t3l3h0us3 |
+| Juniper | 10.4.4.93 | telehouse | telehouse |
 
 ## Credits
 - **ElastiFlow:** https://docs.elastiflow.com
 - **Deployment:** Valentin-bot (2026-02-12)
 - **Repository:** https://github.com/ViktorPetrov0605/custom-elk-stack
+- **Version:** v1.2 (3-day retention, 1 shard, 0 replicas)
