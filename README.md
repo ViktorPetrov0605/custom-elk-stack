@@ -33,7 +33,52 @@ Network Devices
 - Network devices configured for flow export
 - TLS certificates generated
 
-## Quick Start
+## Quick Start (Recommended - Automated Deployment)
+
+Use the unified deployment script for automatic setup:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/ViktorPetrov0605/custom-elk-stack.git
+cd custom-elk-stack
+
+# 2. Generate configuration template
+./deploy.sh --generate
+
+# 3. Edit configuration with your settings
+nano deploy.conf
+# - Set passwords (ELASTIC_PASSWORD, KIBANA_PASSWORD)
+# - Configure IPs (FRONTEND_IP, BACKEND_*_IP)
+# - Add as many backends as needed
+# - Generate encryption keys: openssl rand -hex 32
+
+# 4. Run the deployment
+./deploy.sh
+```
+
+The script will:
+- Check prerequisites on all servers
+- Generate SSL certificates automatically
+- Deploy the frontend (Kibana + Elasticsearch masters)
+- Deploy all configured backends (Elasticsearch data + Logstash)
+- Apply ILM policy for 1-day data retention
+- Import Kibana dashboards
+- Verify the deployment
+
+### Deploy Script Options
+
+```bash
+./deploy.sh -h              # Show help
+./deploy.sh -c              # Check prerequisites only
+./deploy.sh -f              # Deploy frontend only
+./deploy.sh -b              # Deploy local backend only
+./deploy.sh -p              # Post-deploy: apply ILM, import dashboards
+./deploy.sh -v              # Verify deployment health
+```
+
+## Manual Deployment (Advanced)
+
+For manual control or fine-tuning:
 
 ### 1. Clone Repository
 ```bash
@@ -43,39 +88,40 @@ cd custom-elk-stack
 
 ### 2. Generate Certificates
 ```bash
-./generate-certs.sh
-# Distributes certs to all nodes
+# Certificates will be generated automatically by deploy.sh
+# Or manually create in certs/ directory
 ```
 
 ### 3. Configure Environment
 ```bash
-# Edit .env file
-ELASTIC_PASSWORD=your-password
-KIBANA_PASSWORD=your-password
+# Copy and edit environment file
+cp env.example .env
+# Edit passwords, IPs, and settings
 ```
 
 ### 4. Deploy Frontend
 ```bash
-# On 10.4.4.87
+# On frontend server (e.g., 10.4.4.87)
 docker-compose -f docker-compose-frontend.yml up -d
 ```
 
 ### 5. Deploy Backends
 ```bash
-# On 10.4.4.21 (NetFlow)
-docker-compose -f docker-compose-backend.yml up -d
+# On each backend server (e.g., 10.4.4.21, 10.4.4.90)
+# The universal backend supports both NetFlow and sFlow:
+docker-compose -f docker-compose-backend-universal.yml up -d
 
-# On 10.4.4.90 (sFlow)
+# Or use separate configs for dedicated collectors:
 docker-compose -f docker-compose-backend.yml up -d
 ```
 
 ### 6. Import Dashboards
 ```bash
-# Via Kibana UI or API
+# Via API (after Kibana is ready)
 curl -k -u elastic:password \
   -X POST "https://10.4.4.87:5601/api/saved_objects/_import" \
   -H "kbn-xsrf: true" \
-  --form file=@kibana/exports/unified-dashboards.ndjson
+  --form file=@kibana-dashboards-enhanced/unified-flow-dashboards-v2.ndjson
 ```
 
 ## Known Issues & Troubleshooting

@@ -1,0 +1,125 @@
+{
+  "attributes": {
+    "title": "sflow-*",
+    "timeFieldName": "@timestamp",
+    "fields": [
+      {
+        "name": "@timestamp",
+        "type": "date",
+        "esTypes": ["date"],
+        "searchable": true,
+        "aggregatable": true,
+        "readFromDocValues": true
+      },
+      {
+        "name": "agent.ip",
+        "type": "ip",
+        "esTypes": ["ip"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "source.ip",
+        "type": "ip",
+        "esTypes": ["ip"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "destination.ip",
+        "type": "ip",
+        "esTypes": ["ip"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "source.port",
+        "type": "number",
+        "esTypes": ["long"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "destination.port",
+        "type": "number",
+        "esTypes": ["long"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "network.bytes",
+        "type": "number",
+        "esTypes": ["long"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "network.packets",
+        "type": "number",
+        "esTypes": ["long"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "network.protocol",
+        "type": "string",
+        "esTypes": ["keyword"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "network.transport",
+        "type": "string",
+        "esTypes": ["keyword"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "interface.name",
+        "type": "string",
+        "esTypes": ["keyword"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "interface.index",
+        "type": "number",
+        "esTypes": ["long"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "host.hostname",
+        "type": "string",
+        "esTypes": ["keyword"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "flow.locality",
+        "type": "string",
+        "esTypes": ["keyword"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "event.dataset",
+        "type": "string",
+        "esTypes": ["keyword"],
+        "searchable": true,
+        "aggregatable": true
+      },
+      {
+        "name": "sflow.type",
+        "type": "string",
+        "esTypes": ["keyword"],
+        "searchable": true,
+        "aggregatable": true
+      }
+    ]
+  },
+  "id": "sflow-index-pattern",
+  "references": [],
+  "type": "index-pattern",
+  "version": "1"
+}

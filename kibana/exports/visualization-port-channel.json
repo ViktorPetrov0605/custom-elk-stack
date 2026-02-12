@@ -1,0 +1,23 @@
+{
+  "attributes": {
+    "title": "Port-Channel Health Status",
+    "visState": "{\"title\":\"Port-Channel Health Status\",\"type\":\"table\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Flow Count\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"host.hostname\",\"size\":10,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Switch\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"interface.name\",\"size\":20,\"order\":\"desc\",\"orderBy\":\"1\",\"otherBucket\":false,\"otherBucketLabel\":\"Other\",\"missingBucket\":false,\"missingBucketLabel\":\"Missing\",\"customLabel\":\"Interface\"}}],\"params\":{\"perPage\":20,\"showPartialRows\":false,\"showMetricsAtAllLevels\":false,\"showTotal\":false,\"showToolbar\":false,\"autoFitRowToContent\":false,\"totalFunc\":\"sum\",\"percentageCol\":\"Percentage\",\"row\":true},\"uiState\":{\"vis\":{\"colors\":{\"NEXUS1\":\"#7EB26D\",\"NEXUS2\":\"#EAB839\"}},\"table\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}},\"data\":{\"searchSource\":{\"index\":\"sflow-index-pattern\",\"query\":{\"language\":\"kuery\",\"query\":\"interface.name: (Po111 OR Po200 OR Po599 OR Po6 OR Po10 OR Po62 OR Po71 OR Po871 OR Po902 OR Po4 OR Po31)\"},\"filter\":[]}}}",
+    "uiStateJSON": "{\"vis\":{\"colors\":{\"NEXUS1\":\"#7EB26D\",\"NEXUS2\":\"#EAB839\"}},\"table\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}",
+    "description": "Health status of monitored port-channels: Po111 (1-IX), Po200 (vPC), Po599 (TH-DS5/6), Po6 (SOX), Po10 (Google/TurkIX), Po62 (RETN), Po71 (TelecomArmenia), Po871 (A1BG), Po902 (TH-SOF)",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"index\":\"sflow-index-pattern\",\"query\":{\"language\":\"kuery\",\"query\":\"interface.name: (Po111 OR Po200 OR Po599 OR Po6 OR Po10 OR Po62 OR Po71 OR Po871 OR Po902 OR Po4 OR Po31)\"},\"filter\":[]}"
+    }
+  },
+  "id": "viz-port-channel-health",
+  "references": [
+    {
+      "id": "sflow-index-pattern",
+      "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type": "index-pattern"
+    }
+  ],
+  "type": "visualization",
+  "updated_at": "2026-02-09T21:00:00.000Z",
+  "version": "WzEsMV0="
+}

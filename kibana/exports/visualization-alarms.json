@@ -1,0 +1,23 @@
+{
+  "attributes": {
+    "title": "Alarm & Warning Indicators",
+    "visState": "{\"title\":\"Alarm & Warning Indicators\",\"type\":\"metric\",\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Critical Events\"}}],\"params\":{\"metric\":{\"percentageMode\":false,\"useRanges\":false,\"colorSchema\":\"Green to Red\",\"metricColorMode\":\"None\",\"colorsRange\":[{\"from\":0,\"to\":1},{\"from\":1,\"to\":100}],\"labels\":{\"show\":true},\"invertColors\":false,\"style\":{\"bgFill\":\"#000\",\"bgColor\":false,\"labelColor\":false,\"subText\":\"\",\"fontSize\":60}},\"dimensions\":{\"metrics\":[{\"type\":\"vis_dimension\",\"accessor\":0,\"format\":{\"id\":\"number\",\"params\":{}},\"aggType\":\"count\"}]},\"addTooltip\":true,\"type\":\"metric\",\"addLegend\":false},\"uiState\":{},\"data\":{\"searchSource\":{\"index\":\"sflow-index-pattern\",\"query\":{\"language\":\"kuery\",\"query\":\"host.hostname: *NEXUS* AND (interface.name: *Po111* OR interface.name: *Po200* OR interface.name: *down* OR interface.name: *error*)\"},\"filter\":[]}}}",
+    "uiStateJSON": "{}",
+    "description": "Displays count of alarm and warning events from network devices",
+    "version": 1,
+    "kibanaSavedObjectMeta": {
+      "searchSourceJSON": "{\"index\":\"sflow-index-pattern\",\"query\":{\"language\":\"kuery\",\"query\":\"host.hostname: *NEXUS* AND (interface.name: *Po111* OR interface.name: *Po200* OR interface.name: *down* OR interface.name: *error*)\"},\"filter\":[]}"
+    }
+  },
+  "id": "viz-alarms",
+  "references": [
+    {
+      "id": "sflow-index-pattern",
+      "name": "kibanaSavedObjectMeta.searchSourceJSON.index",
+      "type": "index-pattern"
+    }
+  ],
+  "type": "visualization",
+  "updated_at": "2026-02-09T21:00:00.000Z",
+  "version": "WzEsMV0="
+}
