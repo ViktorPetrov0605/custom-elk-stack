@@ -13,8 +13,11 @@
     "fallback": null
   },
   "channel": {
-    "id": null,
-    "name": null
+    "id": -1003741936455,
+    "name": "TestingNetworkAlarmsChannel",
+    "type": "channel",
+    "invite_link": "https://t.me/+LbfTI5SigAdkMWI0",
+    "status": "connected"
   },
   "last_check": null,
   "last_analysis": null
