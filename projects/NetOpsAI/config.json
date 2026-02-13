@@ -1,0 +1,21 @@
+{
+  "alarm_processing": {
+    "enabled": false,
+    "interval_minutes": 3,
+    "batch_size": 15
+  },
+  "recipients": {
+    "active": ["@vptrv05"],
+    "notify_on": ["critical", "major", "digest"]
+  },
+  "shifts": {
+    "current_oncall": "@vptrv05",
+    "fallback": null
+  },
+  "channel": {
+    "id": null,
+    "name": null
+  },
+  "last_check": null,
+  "last_analysis": null
+}
