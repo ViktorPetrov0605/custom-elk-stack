@@ -1,0 +1,61 @@
+# ElastiFlow Flow Collector - Backend N1 (NetFlow Primary)
+# Location: 10.4.4.21:2332
+# Purpose: NetFlow v9 collection from Juniper (10.4.4.93)
+# NOTE: This is the PRIMARY collector - manages Elasticsearch index templates
+
+services:
+  flow-collector:
+    image: elastiflow/flow-collector:7.21.0
+    container_name: flow-collector
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      # License
+      EF_LICENSE_ACCEPTED: "true"
+      
+      # Flow Server Configuration
+      EF_FLOW_SERVER_UDP_IP: "0.0.0.0"
+      EF_FLOW_SERVER_UDP_PORT: "2050"
+      
+      # Enable NetFlow v9 decoding
+      EF_PROCESSOR_DECODE_NETFLOW9_ENABLE: "true"
+      EF_PROCESSOR_DECODE_SFLOW5_ENABLE: "false"
+      EF_PROCESSOR_DECODE_SFLOW_FLOWS_ENABLE: "false"
+      
+      # Enable enrichment
+      EF_PROCESSOR_DECODE_ENRICH_IP_LOOKUP_ENABLED: "true"
+      EF_PROCESSOR_DECODE_ENRICH_DNS_RESOLVER: "true"
+      
+      # Elasticsearch Output
+      EF_OUTPUT_ELASTICSEARCH_ENABLE: "true"
+      EF_OUTPUT_ELASTICSEARCH_ADDRESSES: "10.4.4.87:9200"
+      EF_OUTPUT_ELASTICSEARCH_USERNAME: "elastic"
+      EF_OUTPUT_ELASTICSEARCH_PASSWORD: "telehouse"
+      
+      # Index Configuration - PRIMARY MANAGES TEMPLATES
+      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "true"
+      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_SHARDS: 2
+      EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_REPLICAS: 1
+      EF_OUTPUT_ELASTICSEARCH_ECS_ENABLE: "true"
+      
+      # TLS Configuration
+      EF_OUTPUT_ELASTICSEARCH_TLS_ENABLE: "true"
+      EF_OUTPUT_ELASTICSEARCH_TLS_SKIP_VERIFICATION: "true"
+      
+      # Performance tuning
+      EF_PIPELINE_WORKERS: 2
+      EF_PIPELINE_BATCH_SIZE: 1000
+    
+    volumes:
+      - elastiflow-data:/var/lib/elastiflow/flowcoll
+    
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+volumes:
+  elastiflow-data:
+    driver: local
