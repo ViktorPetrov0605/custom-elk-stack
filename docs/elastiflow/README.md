@@ -120,7 +120,7 @@ environment:
   EF_OUTPUT_ELASTICSEARCH_ADDRESSES: "${ELASTICSEARCH_HOST}"
 ```
 
-### N2 - Secondary (sFlow)
+### N2 - Secondary (sFlow + NetFlow)
 
 ```yaml
 # configs/elastiflow/docker-compose-n2.yml
@@ -131,6 +131,72 @@ environment:
   EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "false"  # SECONDARY
   EF_OUTPUT_ELASTICSEARCH_ADDRESSES: "${ELASTICSEARCH_HOST}"
 ```
+
+## Multiple Backend Configurations
+
+ElastiFlow supports flexible collector deployments. A single collector can receive both NetFlow and sFlow simultaneously, or you can specialize collectors for specific protocols.
+
+### Protocol Support
+
+Each collector can independently enable/disable protocols:
+
+| Setting | Description |
+|---------|-------------|
+| `EF_PROCESSOR_DECODE_NETFLOW9_ENABLE` | NetFlow v9 / IPFIX |
+| `EF_PROCESSOR_DECODE_SFLOW5_ENABLE` | sFlow v5 raw headers |
+| `EF_PROCESSOR_DECODE_SFLOW_FLOWS_ENABLE` | sFlow flow records |
+
+### Example: Three-Backend Deployment
+
+For redundancy and load distribution, you can deploy specialized collectors:
+
+| Backend | Ports | NetFlow | sFlow | Template Manager |
+|---------|-------|---------|-------|------------------|
+| N1 (NetFlow only) | `2050` | `true` | `false` | `true` (PRIMARY) |
+| N2 (sFlow only) | `6343` | `false` | `true` | `false` |
+| N3 (Both) | `2050,6343` | `true` | `true` | `false` |
+
+**N1 — NetFlow Only (Primary, manages templates):**
+```yaml
+environment:
+  EF_FLOW_SERVER_UDP_PORT: "2050"
+  EF_PROCESSOR_DECODE_NETFLOW9_ENABLE: "true"
+  EF_PROCESSOR_DECODE_SFLOW5_ENABLE: "false"
+  EF_PROCESSOR_DECODE_SFLOW_FLOWS_ENABLE: "false"
+  EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "true"
+```
+
+**N2 — sFlow Only:**
+```yaml
+environment:
+  EF_FLOW_SERVER_UDP_PORT: "6343"
+  EF_PROCESSOR_DECODE_NETFLOW9_ENABLE: "false"
+  EF_PROCESSOR_DECODE_SFLOW5_ENABLE: "true"
+  EF_PROCESSOR_DECODE_SFLOW_FLOWS_ENABLE: "true"
+  EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "false"
+```
+
+**N3 — Both Protocols:**
+```yaml
+environment:
+  EF_FLOW_SERVER_UDP_PORT: "2050,6343"
+  EF_PROCESSOR_DECODE_NETFLOW9_ENABLE: "true"
+  EF_PROCESSOR_DECODE_SFLOW5_ENABLE: "true"
+  EF_PROCESSOR_DECODE_SFLOW_FLOWS_ENABLE: "true"
+  EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "false"
+```
+
+### Traffic Distribution
+
+Configure network devices to send flow data to the appropriate collectors:
+
+```
+NetFlow exporters (routers)     → N1:2050 and/or N3:2050
+sFlow exporters (switches)      → N2:6343 and/or N3:6343
+All devices (redundancy)        → Any collector with matching protocol enabled
+```
+
+**Important:** All collectors write to the same Elasticsearch cluster, so data is unified regardless of which collector receives it.
 
 ## Switch Configuration
 
