@@ -8,34 +8,34 @@ Distributed ELK deployment with NetFlow (Juniper) and sFlow (Cisco Nexus) suppor
 ## Architecture
 
 ```
-Frontend (10.4.4.87)
+Frontend (<FRONTEND_IP>)
 ├── Elasticsearch (master+data role)
 ├── Elasticsearch-2 (master+data role)
 ├── Kibana UI (port 5601)
 └── .env configuration
 
-Backend N1 (10.4.4.21:2332) - NetFlow PRIMARY
+Backend N1 (<BACKEND_N1_IP>) - NetFlow PRIMARY
 ├── ElastiFlow 7.21.0 (UDP 2050)
 ├── Manages ES index templates ✓
-└── Receives from: Juniper 10.4.4.93
+└── Receives from: Juniper <NETFLOW_DEVICE_IP>
 
-Backend N2 (10.4.4.90) - sFlow SECONDARY
+Backend N2 (<BACKEND_N2_IP>) - sFlow SECONDARY
 ├── ElastiFlow 7.21.0 (UDP 2050, 6343)
 ├── Index templates DISABLED ✓
-└── Receives from: Nexus 10.4.4.3, 10.4.4.4
+└── Receives from: Nexus <SFLOW_DEVICE_1>, <SFLOW_DEVICE_2>
 
 Network Devices
-├── Juniper 10.4.4.93 (NetFlow v9) → Backend N1:2050
-├── Cisco Nexus 10.4.4.3 (sFlow v5) → Backend N2:6343
-└── Cisco Nexus 10.4.4.4 (sFlow v5) → Backend N2:6343
+├── Juniper <NETFLOW_DEVICE_IP> (NetFlow v9) → Backend N1:2050
+├── Cisco Nexus <SFLOW_DEVICE_1> (sFlow v5) → Backend N2:6343
+└── Cisco Nexus <SFLOW_DEVICE_2> (sFlow v5) → Backend N2:6343
 ```
 
-**Current Data Flow (2026-02-15):**
-| Device | Type | Records |
-|--------|------|---------|
-| 10.4.4.93 | Juniper NetFlow | 109M |
-| 10.4.4.3 | Cisco Nexus sFlow | 43K |
-| 10.4.4.4 | Cisco Nexus sFlow | 50K |
+**Example Data Flow:**
+| Device Type | Protocol | Typical Records |
+|-------------|----------|-----------------|
+| Core Router | NetFlow v9 | High volume |
+| Distribution Switch | sFlow v5 | Medium volume |
+| Access Switch | sFlow v5 | Medium volume |
 
 ## Prerequisites
 
@@ -50,8 +50,8 @@ Use the unified deployment script for automatic setup:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/ViktorPetrov0605/custom-elk-stack.git
-cd custom-elk-stack
+git clone https://github.com/your-org/elk-flow-monitoring.git
+cd elk-flow-monitoring
 
 # 2. Generate configuration template
 ./deploy.sh --generate
@@ -72,7 +72,7 @@ The script will:
 - Generate SSL certificates automatically
 - Deploy the frontend (Kibana + Elasticsearch masters)
 - Deploy all configured backends (Elasticsearch data + Logstash)
-- Apply ILM policy for 1-day data retention
+- Apply ILM policy for configurable data retention
 - Import Kibana dashboards
 - Verify the deployment
 
@@ -91,15 +91,15 @@ The script will:
 
 ### Detailed Traffic Analysis
 ![Detailed Traffic Analysis](screenshots/dashboard-detailed-analysis.png)
-*Real-time traffic overview showing traffic timeline, protocol distribution (TCP/UDP/ICMP), top sources/destinations, and device traffic metrics. The 4096x sampling multiplier is applied for accurate Juniper NetFlow data.*
+*Real-time traffic overview showing traffic timeline, protocol distribution (TCP/UDP/ICMP), top sources/destinations, and device traffic metrics.*
 
 ### Conversation Partners
 ![Conversation Partners](screenshots/dashboard-conversation-partners.png)
-*Conversation tracking showing source-destination pairs, protocol breakdown, and traffic patterns between network endpoints. Useful for identifying top talkers and traffic flows.*
+*Conversation tracking showing source-destination pairs, protocol breakdown, and traffic patterns between network endpoints.*
 
 ### Top-N Analysis
 ![Top-N Analysis](screenshots/dashboard-topn-analysis.png)
-*Comprehensive Top-N analysis including top sources, destinations, ports, protocols, and AS numbers. Displays aggregated statistics with protocol breakdown (TCP 70.7%, UDP 29.3%, ICMP 0.03%).*
+*Comprehensive Top-N analysis including top sources, destinations, ports, protocols, and AS numbers.*
 
 ## Manual Deployment (Advanced)
 
@@ -107,8 +107,8 @@ For manual control or fine-tuning:
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/ViktorPetrov0605/custom-elk-stack.git
-cd custom-elk-stack
+git clone https://github.com/your-org/elk-flow-monitoring.git
+cd elk-flow-monitoring
 ```
 
 ### 2. Generate Certificates
@@ -126,13 +126,13 @@ cp env.example .env
 
 ### 4. Deploy Frontend
 ```bash
-# On frontend server (e.g., 10.4.4.87)
+# On frontend server
 docker-compose -f docker-compose-frontend.yml up -d
 ```
 
 ### 5. Deploy Backends
 ```bash
-# On each backend server (e.g., 10.4.4.21, 10.4.4.90)
+# On each backend server
 # The universal backend supports both NetFlow and sFlow:
 docker-compose -f docker-compose-backend-universal.yml up -d
 
@@ -144,12 +144,20 @@ docker-compose -f docker-compose-backend.yml up -d
 ```bash
 # Via API (after Kibana is ready)
 curl -k -u elastic:password \
-  -X POST "https://10.4.4.87:5601/api/saved_objects/_import" \
+  -X POST "https://<FRONTEND_IP>:5601/api/saved_objects/_import" \
   -H "kbn-xsrf: true" \
   --form file=@kibana-dashboards-enhanced/unified-flow-dashboards-v2.ndjson
 ```
 
 ## Known Issues & Troubleshooting
+
+### Dual Collector Bootstrap Conflict
+**Symptom:** Secondary collector shows "unhealthy" with error:
+```
+Invalid alias name [...] an index or data stream exists with the same name as the alias
+```
+**Cause:** Multiple collectors with `EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: true`
+**Fix:** Set `EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "false"` on secondary collectors
 
 ### Cluster UUID Mismatch
 **Symptom:** `failed to join different cluster UUID`
@@ -170,29 +178,28 @@ docker-compose -f docker-compose-backend.yml up -d
 **Checks:**
 ```bash
 # Verify indices
-curl -k -u elastic:pass https://10.4.4.87:9200/_cat/indices
+curl -k -u elastic:pass https://<FRONTEND_IP>:9200/_cat/indices
 
 # Check cluster health
-curl -k -u elastic:pass https://10.4.4.87:9200/_cluster/health
+curl -k -u elastic:pass https://<FRONTEND_IP>:9200/_cluster/health
 
-# Verify Logstash listening
+# Verify collector listening
 ss -lnup | grep -E "(2050|6343)"
 ```
 
 ### Cluster Node Verification
 **Check:** Verify all nodes joined the cluster
 ```bash
-# Check all nodes in the cluster
-curl -k -u elastic:password https://10.4.4.87:9200/_cat/nodes?v
+curl -k -u elastic:password https://<FRONTEND_IP>:9200/_cat/nodes?v
 ```
 
 **Expected output (4-node cluster):**
 ```
-ip          heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
-10.4.4.87   60           72          17  1.05    0.72    0.68     dim       *      es-frontend-2
-10.4.4.21   41           80          57  4.43    4.57    4.99     di        -      es-remote
-10.4.4.87   48           81          17  0.79    0.66    0.66     dim       -      es-frontend
-10.4.4.90   64           66          0   0.00    0.01    0.01     di        -      es-remote
+ip            heap.percent ram.percent cpu load_1m load_5m load_15m node.role master name
+<FRONTEND_IP> 60           72          17  1.05    0.72    0.68     dim       *      es-frontend-2
+<BACKEND_N1>  41           80          57  4.43    4.57    4.99     di        -      es-remote
+<FRONTEND_IP> 48           81          17  0.79    0.66    0.66     dim       -      es-frontend
+<BACKEND_N2>  64           66          0   0.00    0.01    0.01     di        -      es-remote
 ```
 
 **Node roles explained:**
@@ -201,57 +208,50 @@ ip          heap.percent ram.percent cpu load_1m load_5m load_15m node.role mast
 - `m` = master node (cluster management)
 - `*` = current master node
 
-**Missing nodes?** If backends don't appear:
-1. Check backend logs: `docker-compose logs es-remote`
-2. Verify network connectivity between nodes
-3. Check firewall rules for ports 9200, 9300
-4. Common fix: Clear ES data and restart (see Cluster UUID Mismatch above)
-
 ## Data Sources
 
 ### NetFlow (Juniper)
 - Port: UDP 2050
 - Version: v9
-- Backend: N1 (10.4.4.21)
+- Backend: N1 (NetFlow collector)
 - Field: `netflow.*`
 
 ### sFlow (Cisco Nexus)
 - Port: UDP 6343
-- Sampling: 1/4096
-- Backend: N2 (10.4.4.90)
+- Sampling: 1/4096 (configurable)
+- Backend: N2 (sFlow collector)
 - Field: `flow.*`
 
 ## Filtering Data
 
 **Filter by device/exporter IP:**
 ```json
-{ "term": { "host.ip": "10.4.4.3" } }   // Nexus 1
-{ "term": { "host.ip": "10.4.4.4" } }   // Nexus 2
-{ "term": { "host.ip": "10.4.4.93" } }  // Juniper
+{ "term": { "host.ip": "<YOUR_DEVICE_IP>" } }
 ```
 
 **Filter by source/destination:**
 ```json
-{ "term": { "source.ip": "X.X.X.X" } }
-{ "term": { "destination.ip": "X.X.X.X" } }
+{ "term": { "source.ip": "<SOURCE_IP>" } }
+{ "term": { "destination.ip": "<DEST_IP>" } }
 ```
 
-| Filter By | Field | Example Values |
-|-----------|-------|----------------|
-| Device/Exporter | `host.ip` | `10.4.4.3`, `10.4.4.4`, `10.4.4.93` |
-| Source IP | `source.ip` | Any IP in flow |
-| Destination IP | `destination.ip` | Any IP in flow |
+| Filter By | Field | Description |
+|-----------|-------|-------------|
+| Device/Exporter | `host.ip` | IP of flow-exporting device |
+| Source IP | `source.ip` | Traffic source |
+| Destination IP | `destination.ip` | Traffic destination |
 | Protocol | `network.transport` | `tcp`, `udp`, `icmp` |
 
 ## ILM Policy
 
-All data retained for **1 day** then auto-deleted:
+Default retention is **1 day** then auto-deleted. Customize as needed:
 ```json
 {
   "policy": {
     "phases": {
-      "hot": { "min_age": "0ms" },
-      "delete": { "min_age": "1d" }
+      "hot": { "min_age": "0ms", "actions": { "rollover": { "max_age": "1d", "max_primary_shard_size": "10gb" } } },
+      "warm": { "min_age": "7d", "actions": { "shrink": { "number_of_shards": 1 } } },
+      "delete": { "min_age": "30d", "actions": { "delete": {} } }
     }
   }
 }
@@ -262,9 +262,9 @@ All data retained for **1 day** then auto-deleted:
 | Service | Port | Access |
 |---------|------|--------|
 | Kibana | 5601 | Public (with auth) |
-| Elasticsearch (Frontend) | 9200, 9201 | Private |
-| Logstash NetFlow | 2050/udp | Network devices |
-| Logstash sFlow | 6343/udp | Network devices |
+| Elasticsearch (Frontend) | 9200, 9300 | Private (cluster) |
+| ElastiFlow NetFlow | 2050/udp | Network devices |
+| ElastiFlow sFlow | 6343/udp | Network devices |
 
 ## License
 
@@ -275,12 +275,11 @@ All data retained for **1 day** then auto-deleted:
 
 ### 2026-02-15 - Dual Collector Fix & Documentation
 - **CRITICAL FIX**: Backend N2 sFlow collector was failing to bootstrap
-  - Root cause: Both N1 and N2 had `EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: true`
-  - N1 created Elasticsearch index templates/aliases first, N2 failed with alias conflict
-  - Fix: Set `INDEX_TEMPLATE_ENABLE: false` on N2 (secondary collector)
-- **Result**: sFlow data now flowing from Nexus switches
-  - Before fix: 15 records from 10.4.4.3 + 10.4.4.4
-  - After fix: 94,000+ records and growing
+  - Root cause: Both collectors had `EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: true`
+  - Primary created Elasticsearch index templates/aliases first
+  - Secondary failed with alias conflict during bootstrap
+  - Fix: Set `INDEX_TEMPLATE_ENABLE: false` on secondary collector
+- **Result**: sFlow data now flowing correctly from all devices
 - **Documentation**: Created comprehensive deployment guide in `docs/elastiflow/README.md`
 - **Configs**: Added production-ready docker-compose files:
   - `configs/elastiflow/docker-compose-n1.yml` - Primary (manages templates)
@@ -304,18 +303,16 @@ All data retained for **1 day** then auto-deleted:
 - **Fixed**: Kibana dashboard JSON errors (deleted corrupted v2/v3 versions)
 - **Fixed**: Recreated clean dashboards from `unified-flow-dashboards-v2.ndjson`
 - **Fixed**: Index pattern dependencies - created `unified-flow-pattern`
-- **Fixed**: Backend N1 Logstash config with multi-device support
-- **Fixed**: Cisco Nexus sFlow configuration (10.4.4.3 and 10.4.4.4) - saved to startup-config
-- **Status**: Cluster GREEN, 122K+ flow documents indexed
+- **Fixed**: Backend Logstash config with multi-device support
+- **Status**: Cluster GREEN, flow documents indexed successfully
 
 ### 2026-02-10 - Initial Production Deployment
 - **Completed**: 4-node cluster deployment (2 frontend + 2 backend)
 - **Resolved**: Cluster UUID mismatch issues between nodes
-- **Resolved**: Frontend ES node role configuration (master,ingest - removed data)
-- **Network**: Juniper (192.168.224.1) sending NetFlow v9 to Backend N1 (10.4.4.21:2050)
-- **Network**: Cisco Nexus switches (10.4.4.3, 10.4.4.4) sending sFlow to Backend N2 (10.4.4.90:6343)
-- **Applied**: ILM policy for 1-day data retention
-- **Sampling**: 4096x multiplier for Juniper NetFlow (data corrected in pipeline)
+- **Resolved**: Frontend ES node role configuration (master,ingest,data)
+- **Network**: Configured flow exporters on network devices
+- **Applied**: ILM policy for data retention
+- **Sampling**: Configured appropriate sampling rates
 
 ### 2026-02-09 to 2026-02-06 - Development Phase
 - Initial Docker Compose configurations
@@ -325,4 +322,4 @@ All data retained for **1 day** then auto-deleted:
 - Network device configuration testing
 
 ---
-*Repository maintained by Viktor Petrov | Last updated: 2026-02-15*
+*Last updated: 2026-02-15*
