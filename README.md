@@ -9,22 +9,33 @@ Distributed ELK deployment with NetFlow (Juniper) and sFlow (Cisco Nexus) suppor
 
 ```
 Frontend (10.4.4.87)
-├── Elasticsearch (master role)
+├── Elasticsearch (master+data role)
+├── Elasticsearch-2 (master+data role)
 ├── Kibana UI (port 5601)
 └── .env configuration
 
-Backend N1 (10.4.4.21) - NetFlow
-├── Logstash (UDP 2050)
-└── Elasticsearch (data node)
+Backend N1 (10.4.4.21:2332) - NetFlow PRIMARY
+├── ElastiFlow 7.21.0 (UDP 2050)
+├── Manages ES index templates ✓
+└── Receives from: Juniper 10.4.4.93
 
-Backend N2 (10.4.4.90) - sFlow
-├── Logstash (UDP 6343)
-└── Elasticsearch (data node)
+Backend N2 (10.4.4.90) - sFlow SECONDARY
+├── ElastiFlow 7.21.0 (UDP 2050, 6343)
+├── Index templates DISABLED ✓
+└── Receives from: Nexus 10.4.4.3, 10.4.4.4
 
 Network Devices
-├── Juniper (NetFlow v9) → Backend N1:2050
-└── Cisco Nexus (sFlow) → Backend N2:6343
+├── Juniper 10.4.4.93 (NetFlow v9) → Backend N1:2050
+├── Cisco Nexus 10.4.4.3 (sFlow v5) → Backend N2:6343
+└── Cisco Nexus 10.4.4.4 (sFlow v5) → Backend N2:6343
 ```
+
+**Current Data Flow (2026-02-15):**
+| Device | Type | Records |
+|--------|------|---------|
+| 10.4.4.93 | Juniper NetFlow | 109M |
+| 10.4.4.3 | Cisco Nexus sFlow | 43K |
+| 10.4.4.4 | Cisco Nexus sFlow | 50K |
 
 ## Prerequisites
 
@@ -212,11 +223,25 @@ ip          heap.percent ram.percent cpu load_1m load_5m load_15m node.role mast
 
 ## Filtering Data
 
+**Filter by device/exporter IP:**
+```json
+{ "term": { "host.ip": "10.4.4.3" } }   // Nexus 1
+{ "term": { "host.ip": "10.4.4.4" } }   // Nexus 2
+{ "term": { "host.ip": "10.4.4.93" } }  // Juniper
+```
+
+**Filter by source/destination:**
+```json
+{ "term": { "source.ip": "X.X.X.X" } }
+{ "term": { "destination.ip": "X.X.X.X" } }
+```
+
 | Filter By | Field | Example Values |
 |-----------|-------|----------------|
-| Juniper NetFlow | `host.ip` | `192.168.224.1` |
-| Nexus 1 sFlow | `host.ip` | `10.4.4.3` |
-| Nexus 2 sFlow | `host.ip` | `10.4.4.4` |
+| Device/Exporter | `host.ip` | `10.4.4.3`, `10.4.4.4`, `10.4.4.93` |
+| Source IP | `source.ip` | Any IP in flow |
+| Destination IP | `destination.ip` | Any IP in flow |
+| Protocol | `network.transport` | `tcp`, `udp`, `icmp` |
 
 ## ILM Policy
 
@@ -247,6 +272,22 @@ All data retained for **1 day** then auto-deleted:
 - Custom configs: MIT
 
 ## Development Log
+
+### 2026-02-15 - Dual Collector Fix & Documentation
+- **CRITICAL FIX**: Backend N2 sFlow collector was failing to bootstrap
+  - Root cause: Both N1 and N2 had `EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: true`
+  - N1 created Elasticsearch index templates/aliases first, N2 failed with alias conflict
+  - Fix: Set `INDEX_TEMPLATE_ENABLE: false` on N2 (secondary collector)
+- **Result**: sFlow data now flowing from Nexus switches
+  - Before fix: 15 records from 10.4.4.3 + 10.4.4.4
+  - After fix: 94,000+ records and growing
+- **Documentation**: Created comprehensive deployment guide in `docs/elastiflow/README.md`
+- **Configs**: Added production-ready docker-compose files:
+  - `configs/elastiflow/docker-compose-n1.yml` - Primary (manages templates)
+  - `configs/elastiflow/docker-compose-n2.yml` - Secondary (templates disabled)
+- **Dashboards**: Exported Kibana dashboards to `configs/elastiflow/dashboards/`
+- **ILM**: Exported Elasticsearch lifecycle policy
+- **Architecture Note**: When running multiple ElastiFlow collectors to the same ES cluster, only ONE should manage templates
 
 ### 2026-02-12 - Repository Restructure & Unified Deployment
 - **Major refactor**: Flattened repository structure, removed broken submodule
@@ -284,4 +325,4 @@ All data retained for **1 day** then auto-deleted:
 - Network device configuration testing
 
 ---
-*Repository maintained by Viktor Petrov | Last updated: 2026-02-12*
+*Repository maintained by Viktor Petrov | Last updated: 2026-02-15*
