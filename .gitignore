@@ -1,0 +1,41 @@
+# OpenClaw agent files - these belong in ~/.openclaw/, not the repo
+AGENTS.md
+SOUL.md
+IDENTITY.md
+USER.md
+USERS.md
+TOOLS.md
+HEARTBEAT.md
+BOOTSTRAP.md
+BACKUP_README.md
+MEMORY.md
+memory/
+
+# Projects that aren't ELK-related
+projects/
+
+# Skills
+skills/
+agents/
+
+# Browser automation artifacts
+*.py
+!scripts/*.py
+
+# OpenClaw docs mirror (use docs.openclaw.ai instead)
+docs/
+
+# Development/debug files
+capture_*.py
+fix_*.py
+fix_*.sh
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
