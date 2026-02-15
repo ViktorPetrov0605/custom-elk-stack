@@ -6,8 +6,8 @@ Complete deployment guide for ElastiFlow unified flow collector with NetFlow (Ju
 
 ```
 ┌─────────────────┐     ┌─────────────────┐
-│  Cisco Nexus 1  │     │  Cisco Nexus 2  │
-│   10.4.4.3      │     │   10.4.4.4      │
+│   Switch 1      │     │   Switch 2      │
+│  <SFLOW_IP_1>   │     │  <SFLOW_IP_2>   │
 │   sFlow v5      │     │   sFlow v5      │
 └────────┬────────┘     └────────┬────────┘
          │ UDP 6343              │ UDP 6343
@@ -15,7 +15,7 @@ Complete deployment guide for ElastiFlow unified flow collector with NetFlow (Ju
                     │
          ┌──────────▼──────────┐
          │    Backend N2       │
-         │   10.4.4.90         │
+         │  <BACKEND_N2_IP>    │
          │  ElastiFlow 7.21.0  │
          │  (sFlow collector)  │
          └──────────┬──────────┘
@@ -23,47 +23,47 @@ Complete deployment guide for ElastiFlow unified flow collector with NetFlow (Ju
                     ▼
 ┌─────────────────────────────────────────────────────┐
 │              Elasticsearch Cluster                   │
-│              10.4.4.87:9200                          │
+│              <ES_CLUSTER_IP>:9200                    │
 │         elastiflow-flow-ecs-* indices               │
 └─────────────────────────────────────────────────────┘
                     ▲
                     │
          ┌──────────┴──────────┐
          │    Backend N1       │
-         │   10.4.4.21:2332    │
+         │  <BACKEND_N1_IP>    │
          │  ElastiFlow 7.21.0  │
          │ (NetFlow collector) │
          └──────────┬──────────┘
                     │ UDP 2050
                     │
          ┌──────────▼──────────┐
-         │   Juniper Switch    │
-         │    10.4.4.93        │
+         │   Core Router       │
+         │  <NETFLOW_IP>       │
          │    NetFlow v9       │
          └─────────────────────┘
 ```
 
 ## Prerequisites
 
-- Elasticsearch 8.x cluster (10.4.4.87:9200)
-- Kibana 8.x (10.4.4.87:5601)
+- Elasticsearch 8.x cluster
+- Kibana 8.x
 - Docker & Docker Compose on collector hosts
 - Network connectivity:
   - Backend N1 → Elasticsearch:9200
   - Backend N2 → Elasticsearch:9200
-  - Cisco Nexus switches → Backend N2:6343 (UDP)
-  - Juniper switch → Backend N1:2050 (UDP)
+  - Switches → Backend N2:6343 (UDP sFlow)
+  - Router → Backend N1:2050 (UDP NetFlow)
 
 ## Quick Start
 
 ### Step 1: Deploy Backend N1 (NetFlow Collector)
 
 ```bash
-# On 10.4.4.21:2332
+# On NetFlow collector host
 mkdir -p ~/elastiflow && cd ~/elastiflow
 
 # Download config
-curl -O https://raw.githubusercontent.com/ViktorPetrov0605/oclaw-bak/main/configs/elastiflow/docker-compose-n1.yml
+curl -O https://raw.githubusercontent.com/your-org/elk-flow-monitoring/main/configs/elastiflow/docker-compose-n1.yml
 mv docker-compose-n1.yml docker-compose.yml
 
 # Start collector
@@ -73,11 +73,11 @@ docker compose up -d
 ### Step 2: Deploy Backend N2 (sFlow Collector)
 
 ```bash
-# On 10.4.4.90
+# On sFlow collector host
 mkdir -p ~/elastiflow && cd ~/elastiflow
 
 # Download config
-curl -O https://raw.githubusercontent.com/ViktorPetrov0605/oclaw-bak/main/configs/elastiflow/docker-compose-n2.yml
+curl -O https://raw.githubusercontent.com/your-org/elk-flow-monitoring/main/configs/elastiflow/docker-compose-n2.yml
 mv docker-compose-n2.yml docker-compose.yml
 
 # Start collector
@@ -88,11 +88,11 @@ docker compose up -d
 
 ```bash
 # Check Elasticsearch indices
-curl -k -u elastic:telehouse https://10.4.4.87:9200/_cat/indices/elastiflow-*?v
+curl -k -u elastic:<password> https://<ES_IP>:9200/_cat/indices/elastiflow-*?v
 
 # Query by device
-curl -k -u elastic:telehouse https://10.4.4.87:9200/elastiflow-*/_search -d '{
-  "query": { "term": { "host.ip": "10.4.4.3" } }
+curl -k -u elastic:<password> https://<ES_IP>:9200/elastiflow-*/_search -d '{
+  "query": { "term": { "host.ip": "<DEVICE_IP>" } }
 }'
 ```
 
@@ -127,10 +127,10 @@ When running multiple collectors writing to the same Elasticsearch cluster:
 ### Cisco Nexus (sFlow v5)
 
 ```cisco
-# On Nexus switches (10.4.4.3 and 10.4.4.4)
+# On each Nexus switch
 feature sflow
 
-sflow collector-ip 10.4.4.90 vrf default
+sflow collector-ip <COLLECTOR_IP> vrf default
 sflow collector-port 6343
 sflow agent-ip <switch-ip>
 sflow sampling-rate 4096
@@ -139,20 +139,18 @@ sflow counter-poll-interval 20
 sflow max-datagram-size 1400
 
 # Configure interfaces to monitor
-sflow data-source interface port-channel4
-sflow data-source interface port-channel6
-sflow data-source interface port-channel10
+sflow data-source interface <interface-name>
 # ... add more interfaces as needed
 ```
 
 ### Juniper (NetFlow v9)
 
 ```juniper
-# On Juniper switch (10.4.4.93)
+# On Juniper router
 set services flow-monitoring version 9
 set forwarding-options sampling input rate 4096
-set forwarding-options sampling family inet output flow-server 10.4.4.21 port 2050
-set forwarding-options sampling family inet output flow-server 10.4.4.21 version 9
+set forwarding-options sampling family inet output flow-server <COLLECTOR_IP> port 2050
+set forwarding-options sampling family inet output flow-server <COLLECTOR_IP> version 9
 ```
 
 ## Elasticsearch Indices
@@ -224,24 +222,14 @@ Common issues:
 
 ```json
 // Filter by device/exporter IP
-{ "term": { "host.ip": "10.4.4.3" } }
+{ "term": { "host.ip": "<DEVICE_IP>" } }
 
 // Filter by source IP
-{ "term": { "source.ip": "X.X.X.X" } }
+{ "term": { "source.ip": "<SOURCE_IP>" } }
 
 // Filter by destination IP
-{ "term": { "destination.ip": "X.X.X.X" } }
+{ "term": { "destination.ip": "<DEST_IP>" } }
 ```
-
-## Credentials
-
-| Service | URL | Username | Password |
-|---------|-----|----------|----------|
-| Elasticsearch | https://10.4.4.87:9200 | elastic | telehouse |
-| Kibana | https://10.4.4.87:5601 | elastic | telehouse |
-| Backend N1 SSH | telehouse@10.4.4.21:2332 | telehouse | T3l3h0us# |
-| Backend N2 SSH | telehouse@10.4.4.90 | telehouse | T3l3h0us# |
-| Cisco Nexus | 10.4.4.3, 10.4.4.4 | admin | t3l3h0us3 |
 
 ## Maintenance
 
@@ -282,10 +270,10 @@ configs/elastiflow/
 
 | Date | Change |
 |------|--------|
-| 2026-02-15 | Fixed dual-collector bootstrap conflict (N2 INDEX_TEMPLATE_ENABLE:false) |
-| 2026-02-14 | Added Nexus 10.4.4.3, 10.4.4.4 sFlow data collection |
+| 2026-02-15 | Fixed dual-collector bootstrap conflict (INDEX_TEMPLATE_ENABLE:false on secondary) |
+| 2026-02-14 | Added sFlow data collection from multiple switches |
 | 2026-02-12 | Initial deployment with Juniper NetFlow |
 
 ---
 
-*Last updated: 2026-02-15 by Valentin-bot*
+*Last updated: 2026-02-15*

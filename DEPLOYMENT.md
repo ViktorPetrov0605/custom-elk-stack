@@ -3,8 +3,8 @@
 ## Quick Start
 
 ### Prerequisites
-- Elasticsearch 8.x cluster (10.4.4.87:9200)
-- Kibana 8.x (10.4.4.87:5601)
+- Elasticsearch 8.x cluster
+- Kibana 8.x
 - Docker & Docker Compose on collector hosts
 - Network connectivity between collectors and ES
 
@@ -12,12 +12,12 @@
 
 ```bash
 # Backend N1 (Primary - manages templates)
-curl -O https://raw.githubusercontent.com/ViktorPetrov0605/custom-elk-stack/main/configs/elastiflow/docker-compose-n1.yml
+curl -O https://raw.githubusercontent.com/your-org/elk-flow-monitoring/main/configs/elastiflow/docker-compose-n1.yml
 mv docker-compose-n1.yml docker-compose.yml
 docker compose up -d
 
 # Backend N2 (Secondary - templates disabled)
-curl -O https://raw.githubusercontent.com/ViktorPetrov0605/custom-elk-stack/main/configs/elastiflow/docker-compose-n2.yml
+curl -O https://raw.githubusercontent.com/your-org/elk-flow-monitoring/main/configs/elastiflow/docker-compose-n2.yml
 mv docker-compose-n2.yml docker-compose.yml
 docker compose up -d
 ```
@@ -26,8 +26,8 @@ docker compose up -d
 
 ```
 ┌─────────────────┐     ┌─────────────────┐
-│  Cisco Nexus 1  │     │  Cisco Nexus 2  │
-│   10.4.4.3      │     │   10.4.4.4      │
+│   Switch 1      │     │   Switch 2      │
+│  <SFLOW_IP_1>   │     │  <SFLOW_IP_2>   │
 │   sFlow v5      │     │   sFlow v5      │
 └────────┬────────┘     └────────┬────────┘
          │ UDP 6343              │ UDP 6343
@@ -35,7 +35,7 @@ docker compose up -d
                     │
          ┌──────────▼──────────┐
          │    Backend N2       │
-         │   10.4.4.90         │
+         │  <BACKEND_N2_IP>    │
          │  ElastiFlow 7.21.0  │
          │  (sFlow collector)  │
          └──────────┬──────────┘
@@ -43,22 +43,22 @@ docker compose up -d
                     ▼
 ┌─────────────────────────────────────────────────────┐
 │              Elasticsearch Cluster                   │
-│              10.4.4.87:9200                          │
+│              <ES_CLUSTER_IP>:9200                    │
 │         elastiflow-flow-ecs-* indices               │
 └─────────────────────────────────────────────────────┘
                     ▲
                     │
          ┌──────────┴──────────┐
          │    Backend N1       │
-         │   10.4.4.21:2332    │
+         │  <BACKEND_N1_IP>    │
          │  ElastiFlow 7.21.0  │
          │ (NetFlow collector) │
          └──────────┬──────────┘
                     │ UDP 2050
                     │
          ┌──────────▼──────────┐
-         │   Juniper Switch    │
-         │    10.4.4.93        │
+         │   Core Router       │
+         │  <NETFLOW_IP>       │
          │    NetFlow v9       │
          └─────────────────────┘
 ```
@@ -70,10 +70,10 @@ docker compose up -d
 # On any server with OpenSSL
 ./generate-certs.sh
 # Certificates will be in certs/ directory
-# Copy to all three servers: ~/.openclaw/workspace/custom-elk-stack/certs/
+# Copy to all servers
 ```
 
-### Phase 2: Frontend Server (10.4.4.87)
+### Phase 2: Frontend Server
 
 1. **Install Docker**
 ```bash
@@ -84,13 +84,13 @@ sudo usermod -aG docker $USER
 
 2. **Deploy Frontend**
 ```bash
-cd ~/custom-elk-stack
+cd ~/elk-flow-monitoring
 docker-compose -f docker-compose-frontend.yml up -d
 ```
 
 3. **Verify**
 ```bash
-curl -k -u elastic:$ELASTIC_PASSWORD https://10.4.4.87:9200/_cluster/health
+curl -k -u elastic:$ELASTIC_PASSWORD https://<FRONTEND_IP>:9200/_cluster/health
 # Should show: "status":"green"
 ```
 
@@ -105,12 +105,11 @@ When running multiple ElastiFlow collectors to the same Elasticsearch cluster:
 
 **Backend N1 - NetFlow (Primary Template Manager)**
 ```bash
-# SSH to backend (port 2332)
-ssh -p 2332 $USER@10.4.4.21
+# SSH to backend
+ssh $USER@<BACKEND_N1_IP>
 
 # Deploy
-cd ~/custom-elk-stack
-curl -O https://raw.githubusercontent.com/ViktorPetrov0605/custom-elk-stack/main/configs/elastiflow/docker-compose-n1.yml
+curl -O https://raw.githubusercontent.com/your-org/elk-flow-monitoring/main/configs/elastiflow/docker-compose-n1.yml
 mv docker-compose-n1.yml docker-compose.yml
 docker compose up -d
 ```
@@ -118,11 +117,10 @@ docker compose up -d
 **Backend N2 - sFlow (Secondary)**
 ```bash
 # SSH to backend
-ssh $USER@10.4.4.90
+ssh $USER@<BACKEND_N2_IP>
 
 # Deploy with templates DISABLED
-cd ~/custom-elk-stack
-curl -O https://raw.githubusercontent.com/ViktorPetrov0605/custom-elk-stack/main/configs/elastiflow/docker-compose-n2.yml
+curl -O https://raw.githubusercontent.com/your-org/elk-flow-monitoring/main/configs/elastiflow/docker-compose-n2.yml
 mv docker-compose-n2.yml docker-compose.yml
 docker compose up -d
 ```
@@ -133,37 +131,36 @@ docker compose up -d
 ```
 set services flow-monitoring version 9
 set forwarding-options sampling input rate 4096
-set forwarding-options sampling family inet output flow-server 10.4.4.21 port 2050
-set forwarding-options sampling family inet output flow-server 10.4.4.21 version 9
+set forwarding-options sampling family inet output flow-server <COLLECTOR_IP> port 2050
+set forwarding-options sampling family inet output flow-server <COLLECTOR_IP> version 9
 ```
 
 **Cisco Nexus (sFlow v5)**
 ```
 feature sflow
-sflow collector-ip 10.4.4.90 vrf default
+sflow collector-ip <COLLECTOR_IP> vrf default
 sflow collector-port 6343
 sflow agent-ip <switch-ip>
 sflow sampling-rate 4096
 sflow max-sampled-size 128
 sflow counter-poll-interval 20
 sflow max-datagram-size 1400
-sflow data-source interface port-channel4
-sflow data-source interface port-channel6
-# ... add more interfaces
+sflow data-source interface <interface-name>
+# ... add more interfaces as needed
 ```
 
 ### Phase 5: Dashboard Import
 
 **Option A: Via Kibana UI**
-1. Browse to https://10.4.4.87:5601
-2. Login: elastic / telehouse
+1. Browse to https://<KIBANA_IP>:5601
+2. Login with your credentials
 3. Stack Management → Saved Objects → Import
 4. Select: `configs/elastiflow/dashboards/unified-flow-dashboards.ndjson`
 
 **Option B: Via API**
 ```bash
-curl -k -u elastic:telehouse \
-  -X POST "https://10.4.4.87:5601/api/saved_objects/_import?overwrite=true" \
+curl -k -u elastic:<password> \
+  -X POST "https://<KIBANA_IP>:5601/api/saved_objects/_import?overwrite=true" \
   -H "kbn-xsrf: true" \
   --form file=@configs/elastiflow/dashboards/unified-flow-dashboards.ndjson
 ```
@@ -214,11 +211,11 @@ environment:
 
 ## Verification Checklist
 
-- [ ] All ES nodes in cluster: `curl -k -u elastic:telehouse https://10.4.4.87:9200/_cat/nodes`
-- [ ] Indices exist: `curl -k -u elastic:telehouse https://10.4.4.87:9200/_cat/indices/elastiflow-*`
+- [ ] All ES nodes in cluster: `curl -k -u elastic:<pass> https://<ES_IP>:9200/_cat/nodes`
+- [ ] Indices exist: `curl -k -u elastic:<pass> https://<ES_IP>:9200/_cat/indices/elastiflow-*`
 - [ ] Data from all devices: Query `host.ip` aggregation
 - [ ] Dashboards load without errors
-- [ ] ILM policy applied: `curl -k -u elastic:telehouse https://10.4.4.87:9200/_ilm/policy/elastiflow`
+- [ ] ILM policy applied: `curl -k -u elastic:<pass> https://<ES_IP>:9200/_ilm/policy/elastiflow`
 
 ## Files in This Repository
 
@@ -239,23 +236,13 @@ docs/elastiflow/
 
 | Date | Change |
 |------|--------|
-| 2026-02-15 | Fixed dual-collector bootstrap conflict (N2 INDEX_TEMPLATE_ENABLE:false) |
-| 2026-02-15 | Added Nexus 10.4.4.3, 10.4.4.4 sFlow collection (94K+ records) |
+| 2026-02-15 | Fixed dual-collector bootstrap conflict (INDEX_TEMPLATE_ENABLE:false on secondary) |
+| 2026-02-15 | Added sFlow collection from multiple switches |
 | 2026-02-12 | Deployed ElastiFlow 7.21.0 on both backends |
 | 2026-02-12 | Unified NetFlow/sFlow into single `elastiflow-flow-ecs-*` index |
 | 2026-02-10 | Initial deployment with Juniper NetFlow |
 | 2026-02-10 | Elasticsearch cluster setup (4 nodes) |
 | 2026-02-10 | Kibana dashboards created |
-
-## Credentials
-
-| Service | URL | Username | Password |
-|---------|-----|----------|----------|
-| Elasticsearch | https://10.4.4.87:9200 | elastic | telehouse |
-| Kibana | https://10.4.4.87:5601 | elastic | telehouse |
-| Backend N1 SSH | telehouse@10.4.4.21:2332 | telehouse | T3l3h0us# |
-| Backend N2 SSH | telehouse@10.4.4.90 | telehouse | T3l3h0us# |
-| Cisco Nexus | 10.4.4.3, 10.4.4.4 | admin | t3l3h0us3 |
 
 ---
 *Last updated: 2026-02-15*
