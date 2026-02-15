@@ -1,135 +1,143 @@
 # ElastiFlow Deployment Guide
 
-Complete deployment guide for ElastiFlow unified flow collector with NetFlow (Juniper) and sFlow (Cisco Nexus) support.
+Complete deployment guide for ElastiFlow unified flow collector with NetFlow and sFlow support.
 
 ## Architecture
 
 ```
 ┌─────────────────┐     ┌─────────────────┐
 │   Switch 1      │     │   Switch 2      │
-│  <SFLOW_IP_1>   │     │  <SFLOW_IP_2>   │
-│   sFlow v5      │     │   sFlow v5      │
+│   (sFlow v5)    │     │   (sFlow v5)    │
 └────────┬────────┘     └────────┬────────┘
-         │ UDP 6343              │ UDP 6343
+         │ UDP 6343              │
          └──────────┬────────────┘
                     │
          ┌──────────▼──────────┐
-         │    Backend N2       │
-         │  <BACKEND_N2_IP>    │
+         │    Collector N2     │
          │  ElastiFlow 7.21.0  │
          │  (sFlow collector)  │
+         │  INDEX_TEMPLATE: ✗  │
          └──────────┬──────────┘
                     │
                     ▼
 ┌─────────────────────────────────────────────────────┐
 │              Elasticsearch Cluster                   │
-│              <ES_CLUSTER_IP>:9200                    │
-│         elastiflow-flow-ecs-* indices               │
+│              <ES_HOST>:9200                          │
 └─────────────────────────────────────────────────────┘
                     ▲
                     │
          ┌──────────┴──────────┐
-         │    Backend N1       │
-         │  <BACKEND_N1_IP>    │
+         │    Collector N1     │
          │  ElastiFlow 7.21.0  │
          │ (NetFlow collector) │
+         │  INDEX_TEMPLATE: ✓  │
          └──────────┬──────────┘
                     │ UDP 2050
                     │
          ┌──────────▼──────────┐
-         │   Core Router       │
-         │  <NETFLOW_IP>       │
-         │    NetFlow v9       │
+         │   Router/Switch     │
+         │   (NetFlow v9)      │
          └─────────────────────┘
 ```
 
-## Prerequisites
-
-- Elasticsearch 8.x cluster
-- Kibana 8.x
-- Docker & Docker Compose on collector hosts
-- Network connectivity:
-  - Backend N1 → Elasticsearch:9200
-  - Backend N2 → Elasticsearch:9200
-  - Switches → Backend N2:6343 (UDP sFlow)
-  - Router → Backend N1:2050 (UDP NetFlow)
-
 ## Quick Start
 
-### Step 1: Deploy Backend N1 (NetFlow Collector)
+### Step 1: Deploy Frontend (Elasticsearch + Kibana)
 
 ```bash
-# On NetFlow collector host
-mkdir -p ~/elastiflow && cd ~/elastiflow
+# Generate config
+./deploy.sh --generate
 
-# Download config
-curl -O https://raw.githubusercontent.com/your-org/elk-flow-monitoring/main/configs/elastiflow/docker-compose-n1.yml
-mv docker-compose-n1.yml docker-compose.yml
+# Edit deploy.conf with your IPs and passwords
+nano deploy.conf
 
-# Start collector
-docker compose up -d
+# Deploy
+./deploy.sh --frontend
 ```
 
-### Step 2: Deploy Backend N2 (sFlow Collector)
+### Step 2: Deploy ElastiFlow Collector N1 (Primary)
 
 ```bash
-# On sFlow collector host
-mkdir -p ~/elastiflow && cd ~/elastiflow
+# On collector server
+cat > .env << EOF
+ELASTICSEARCH_HOST=<YOUR_ES_IP>:9200
+ELASTIC_PASSWORD=<YOUR_PASSWORD>
+EOF
 
-# Download config
-curl -O https://raw.githubusercontent.com/your-org/elk-flow-monitoring/main/configs/elastiflow/docker-compose-n2.yml
-mv docker-compose-n2.yml docker-compose.yml
-
-# Start collector
-docker compose up -d
+# Primary collector manages index templates
+docker-compose -f configs/elastiflow/docker-compose-n1.yml up -d
 ```
 
-### Step 3: Verify Data Flow
+### Step 3: Deploy ElastiFlow Collector N2 (Secondary)
 
 ```bash
+# On secondary collector server
+cat > .env << EOF
+ELASTICSEARCH_HOST=<YOUR_ES_IP>:9200
+ELASTIC_PASSWORD=<YOUR_PASSWORD>
+EOF
+
+# Secondary has templates DISABLED
+docker-compose -f configs/elastiflow/docker-compose-n2.yml up -d
+```
+
+### Step 4: Verify
+
+```bash
+# Check collector health
+docker logs flow-collector --tail 20
+curl http://localhost:8080/health
+
 # Check Elasticsearch indices
 curl -k -u elastic:<password> https://<ES_IP>:9200/_cat/indices/elastiflow-*?v
+```
 
-# Query by device
-curl -k -u elastic:<password> https://<ES_IP>:9200/elastiflow-*/_search -d '{
-  "query": { "term": { "host.ip": "<DEVICE_IP>" } }
-}'
+## Critical: Index Template Management
+
+**IMPORTANT:** When running multiple ElastiFlow collectors:
+
+| Collector | INDEX_TEMPLATE_ENABLE | Reason |
+|-----------|----------------------|--------|
+| N1 (Primary) | `true` | Creates/updates ES templates |
+| N2+ (Secondary) | `false` | Avoids bootstrap conflict |
+
+If both have `true`, the second collector will fail with:
+```
+Invalid alias name [...] already exists
 ```
 
 ## Configuration Files
 
-### Backend N1 (NetFlow - Primary Template Manager)
+### N1 - Primary (NetFlow)
 
-Located at: `configs/elastiflow/docker-compose-n1.yml`
+```yaml
+# configs/elastiflow/docker-compose-n1.yml
+environment:
+  EF_FLOW_SERVER_UDP_PORT: "2050"
+  EF_PROCESSOR_DECODE_NETFLOW9_ENABLE: "true"
+  EF_PROCESSOR_DECODE_SFLOW5_ENABLE: "false"
+  EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "true"  # PRIMARY
+  EF_OUTPUT_ELASTICSEARCH_ADDRESSES: "${ELASTICSEARCH_HOST}"
+```
 
-Key settings:
-- `EF_FLOW_SERVER_UDP_PORT: "2050"` - NetFlow port
-- `EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "true"` - **Manages templates**
+### N2 - Secondary (sFlow)
 
-### Backend N2 (sFlow - Secondary Collector)
-
-Located at: `configs/elastiflow/docker-compose-n2.yml`
-
-Key settings:
-- `EF_FLOW_SERVER_UDP_PORT: "2050,6343"` - Both ports
-- `EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "false"` - **Disabled to avoid conflict**
-
-### Important: Dual Collector Setup
-
-When running multiple collectors writing to the same Elasticsearch cluster:
-
-1. **Only ONE collector** should have `EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "true"`
-2. All other collectors must set this to `"false"`
-3. This prevents index template/alias conflicts during bootstrap
+```yaml
+# configs/elastiflow/docker-compose-n2.yml
+environment:
+  EF_FLOW_SERVER_UDP_PORT: "2050,6343"
+  EF_PROCESSOR_DECODE_NETFLOW9_ENABLE: "true"
+  EF_PROCESSOR_DECODE_SFLOW5_ENABLE: "true"
+  EF_OUTPUT_ELASTICSEARCH_INDEX_TEMPLATE_ENABLE: "false"  # SECONDARY
+  EF_OUTPUT_ELASTICSEARCH_ADDRESSES: "${ELASTICSEARCH_HOST}"
+```
 
 ## Switch Configuration
 
 ### Cisco Nexus (sFlow v5)
 
 ```cisco
-# On each Nexus switch
 feature sflow
-
 sflow collector-ip <COLLECTOR_IP> vrf default
 sflow collector-port 6343
 sflow agent-ip <switch-ip>
@@ -138,15 +146,14 @@ sflow max-sampled-size 128
 sflow counter-poll-interval 20
 sflow max-datagram-size 1400
 
-# Configure interfaces to monitor
-sflow data-source interface <interface-name>
-# ... add more interfaces as needed
+# Configure interfaces
+sflow data-source interface Ethernet1/1
+sflow data-source interface port-channel1
 ```
 
 ### Juniper (NetFlow v9)
 
 ```juniper
-# On Juniper router
 set services flow-monitoring version 9
 set forwarding-options sampling input rate 4096
 set forwarding-options sampling family inet output flow-server <COLLECTOR_IP> port 2050
@@ -155,22 +162,21 @@ set forwarding-options sampling family inet output flow-server <COLLECTOR_IP> ve
 
 ## Elasticsearch Indices
 
-| Index Pattern | Description | Retention |
-|---------------|-------------|-----------|
-| `elastiflow-flow-ecs-8.0-2.5-rollover` | Main flow data | ILM managed |
-| `elastiflow-metric-ecs-8.0-2.5-*` | Metrics | ILM managed |
-| `elastiflow-telemetry_flow-ecs-*` | Telemetry | ILM managed |
+| Index Pattern | Description | ILM Policy |
+|---------------|-------------|------------|
+| `elastiflow-flow-ecs-*` | Flow records | elastiflow |
+| `elastiflow-metric-ecs-*` | Metrics | elastiflow |
+| `elastiflow-telemetry_flow-ecs-*` | Telemetry | elastiflow |
 
-### ILM Policy
+### ILM Policy (Default: 3-day retention)
 
 ```json
 {
   "policy": {
     "phases": {
-      "hot": { "min_age": "0ms", "actions": { "rollover": { "max_size": "50gb", "max_age": "7d" } } },
-      "warm": { "min_age": "7d", "actions": { "shrink": { "number_of_shards": 1 }, "forcemerge": { "max_num_segments": 1 } } },
-      "cold": { "min_age": "30d", "actions": {} },
-      "delete": { "min_age": "365d", "actions": { "delete": {} } }
+      "hot": { "min_age": "0ms", "actions": { "rollover": { "max_age": "1d", "max_primary_shard_size": "10gb" } } },
+      "warm": { "min_age": "0d", "actions": { "shrink": { "number_of_shards": 1 }, "forcemerge": { "max_num_segments": 1 } } },
+      "delete": { "min_age": "3d", "actions": { "delete": {} } }
     }
   }
 }
@@ -178,47 +184,23 @@ set forwarding-options sampling family inet output flow-server <COLLECTOR_IP> ve
 
 ## Kibana Dashboards
 
-Pre-built dashboards are available in `configs/elastiflow/dashboards/`:
+Pre-built dashboards in `configs/elastiflow/dashboards/`:
 
-1. **[Unified Flow] Conversation Partners** - Traffic by source/destination
-2. **[Unified Flow] Top-N Analysis** - Top talkers, destinations, ports
-3. **[Unified Flow] Detailed Traffic Analysis** - Comprehensive flow breakdown
+1. **[Unified Flow] Detailed Traffic Analysis** - Traffic overview
+2. **[Unified Flow] Conversation Partners** - Source-destination pairs
+3. **[Unified Flow] Top-N Analysis** - Top talkers, ports, ASNs
 
-### Import Dashboards
+### Import
 
 ```bash
-# In Kibana: Stack Management → Saved Objects → Import
-# Upload: dashboards/unified-flow-dashboards.ndjson
+# Via API
+curl -k -u elastic:<password> \
+  -X POST "http://<KIBANA_IP>:5601/api/saved_objects/_import?overwrite=true" \
+  -H "kbn-xsrf: true" \
+  --form file=@configs/elastiflow/dashboards/unified-flow-dashboards.ndjson
 ```
 
-## Troubleshooting
-
-### Collector Shows "unhealthy"
-
-Check logs:
-```bash
-docker logs flow-collector --tail 50
-```
-
-Common issues:
-1. **Bootstrap failure** - Index template conflict
-   - Solution: Ensure only ONE collector has `INDEX_TEMPLATE_ENABLE: true`
-2. **Permission denied** - Volume permissions
-   - Solution: `docker volume rm elastiflow-data && docker compose up -d`
-3. **Connection refused** - Elasticsearch unreachable
-   - Check network, TLS settings, credentials
-
-### No Data from Specific Device
-
-1. **Check switch config** - Is sFlow/NetFlow enabled?
-2. **Check firewall** - UDP port open on collector?
-3. **Verify data arrival**:
-   ```bash
-   ss -uln | grep 6343  # Check listening
-   ss -uln | grep 2050
-   ```
-
-### Query by Device
+## Query Examples
 
 ```json
 // Filter by device/exporter IP
@@ -229,51 +211,40 @@ Common issues:
 
 // Filter by destination IP
 { "term": { "destination.ip": "<DEST_IP>" } }
+
+// Filter by protocol
+{ "term": { "network.transport": "tcp" } }
 ```
 
-## Maintenance
+## Troubleshooting
 
-### Restart Collectors
+### Collector Unhealthy
 
 ```bash
-# On collector host
-cd ~/elastiflow
-docker compose restart
+# Check logs
+docker logs flow-collector --tail 50
+
+# Check health endpoint
+curl http://localhost:8080/health
 ```
 
-### Check Health
+**Common causes:**
+1. **Index template conflict** - Ensure only primary has `INDEX_TEMPLATE_ENABLE: true`
+2. **Connection refused** - Check ES connectivity, TLS settings
+3. **Auth failed** - Verify `ELASTIC_PASSWORD`
+
+### No Data from Devices
 
 ```bash
-docker ps --filter name=flow
-docker logs flow-collector --tail 20
+# Check if ports are listening
+ss -uln | grep -E "(2050|6343)"
+
+# Check switch config (Cisco)
+show sflow
+
+# Check incoming packets
+tcpdump -i any udp port 6343 -n
 ```
-
-### Update Configuration
-
-1. Edit `docker-compose.yml`
-2. `docker compose down`
-3. `docker compose up -d`
-
-## Files in This Repository
-
-```
-configs/elastiflow/
-├── docker-compose-n1.yml      # Backend N1 (NetFlow, primary)
-├── docker-compose-n2.yml      # Backend N2 (sFlow, secondary)
-├── dashboards/
-│   └── unified-flow-dashboards.ndjson
-├── ilm-policy.json            # Elasticsearch ILM policy
-└── index-template.json        # Field mappings
-```
-
-## Changelog
-
-| Date | Change |
-|------|--------|
-| 2026-02-15 | Fixed dual-collector bootstrap conflict (INDEX_TEMPLATE_ENABLE:false on secondary) |
-| 2026-02-14 | Added sFlow data collection from multiple switches |
-| 2026-02-12 | Initial deployment with Juniper NetFlow |
 
 ---
-
 *Last updated: 2026-02-15*

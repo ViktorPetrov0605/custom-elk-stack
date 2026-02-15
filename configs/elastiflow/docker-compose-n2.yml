@@ -1,7 +1,9 @@
 # ElastiFlow Flow Collector - Backend N2 (sFlow Secondary)
-# Location: 10.4.4.90
-# Purpose: sFlow v5 collection from Cisco Nexus switches (10.4.4.3, 10.4.4.4)
-# NOTE: This is SECONDARY - INDEX_TEMPLATE_ENABLE=false to avoid bootstrap conflict
+# This is SECONDARY - INDEX_TEMPLATE_ENABLE=false to avoid bootstrap conflict
+# 
+# Required environment variables (set via .env or deploy.conf):
+#   ELASTICSEARCH_HOST - Elasticsearch endpoint (e.g., 10.0.0.1:9200)
+#   ELASTIC_PASSWORD   - Password for elastic user
 
 services:
   flow-collector:
@@ -29,9 +31,9 @@ services:
       
       # Elasticsearch Output
       EF_OUTPUT_ELASTICSEARCH_ENABLE: "true"
-      EF_OUTPUT_ELASTICSEARCH_ADDRESSES: "10.4.4.87:9200"
+      EF_OUTPUT_ELASTICSEARCH_ADDRESSES: "${ELASTICSEARCH_HOST}"
       EF_OUTPUT_ELASTICSEARCH_USERNAME: "elastic"
-      EF_OUTPUT_ELASTICSEARCH_PASSWORD: "telehouse"
+      EF_OUTPUT_ELASTICSEARCH_PASSWORD: "${ELASTIC_PASSWORD}"
       
       # Index Configuration - SECONDARY DOES NOT MANAGE TEMPLATES
       # IMPORTANT: Set to "false" to prevent bootstrap conflict with N1
