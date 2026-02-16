@@ -1,0 +1,16 @@
+version: '3'
+services:
+  logstash:
+    build: .
+    image: logstash-flow:latest
+    container_name: logstash-flow
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+      - ./flow-template.json:/usr/share/logstash/templates/flow-template.json:ro
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "3"

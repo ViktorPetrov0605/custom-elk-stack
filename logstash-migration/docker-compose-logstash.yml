@@ -1,0 +1,33 @@
+# Logstash Unified Flow Collector
+# Replaces ElastiFlow for NetFlow and sFlow collection
+# No license limits - handles unlimited flow volume
+
+services:
+  logstash:
+    image: docker.elastic.co/logstash/logstash:8.16.0
+    container_name: logstash-flow
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - "LS_JAVA_OPTS=-Xms2g -Xmx2g"
+      - "ES_HOSTS=${ELASTICSEARCH_HOST}"
+      - "ES_USER=elastic"
+      - "ES_PASSWORD=${ELASTIC_PASSWORD}"
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+      - ./flow-template.json:/usr/share/logstash/templates/flow-template.json:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9600/_node/stats"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "3"
+
+# For high-volume deployments, increase Java heap:
+# - "LS_JAVA_OPTS=-Xms4g -Xmx4g" for 4GB heap
+# - "LS_JAVA_OPTS=-Xms8g -Xmx8g" for 8GB heap
