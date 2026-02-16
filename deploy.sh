@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-# ELK Stack with ElastiFlow Deployment Script
-# Deploys Elasticsearch/Kibana frontend + ElastiFlow collectors
+# ELK Stack with Logstash Deployment Script
+# Deploys Elasticsearch/Kibana frontend + Logstash collectors
 #
 # Usage: ./deploy.sh [OPTIONS]
 #   -h, --help      Show help
 #   -g, --generate  Generate example config file
 #   -c, --check     Check prerequisites only
 #   -f, --frontend  Deploy frontend (ES + Kibana) only
-#   -e, --elastiflow Deploy ElastiFlow collector only
+#   -b, --backend   Deploy backend (ES remote + Logstash) only
 #   -i, --import    Import Kibana dashboards only
 #   -v, --verify    Verify deployment health
 
@@ -35,16 +35,16 @@ CONFIG_FILE="${SCRIPT_DIR}/deploy.conf"
 
 create_example_config() {
     cat > "$CONFIG_FILE" << 'EOF'
-# ELK Stack with ElastiFlow Deployment Configuration
+# ELK Stack with Logstash Deployment Configuration
 # Copy this file and customize for your environment
 
 # ============================================================
 # ELASTICSEARCH CLUSTER
 # ============================================================
-CLUSTER_NAME="flow-monitoring-cluster"
-STACK_VERSION="8.16.0"
+CLUSTER_NAME="netflow-cluster"
+STACK_VERSION="9.2.4"
 LICENSE="basic"
-MEM_LIMIT="4g"
+MEM_LIMIT="4294967296"
 
 # ============================================================
 # SECURITY (CHANGE THESE!)
@@ -52,7 +52,7 @@ MEM_LIMIT="4g"
 ELASTIC_PASSWORD="your-secure-password-here"
 KIBANA_PASSWORD="your-kibana-password-here"
 
-# Generate encryption keys: openssl rand -hex 32
+# Generate encryption keys: openssl rand -base64 32
 KIBANA_ENCRYPTION_KEY=""
 KIBANA_SECURITY_KEY=""
 KIBANA_REPORTING_KEY=""
@@ -60,48 +60,21 @@ KIBANA_REPORTING_KEY=""
 # ============================================================
 # FRONTEND SERVER (Kibana + Elasticsearch)
 # ============================================================
-FRONTEND_IP="10.0.0.10"
+FRONTEND_IP="10.4.4.87"
 ES_PORT="9200"
 KIBANA_PORT="5601"
 
 # ============================================================
-# ELASTICSEARCH HOST (for ElastiFlow collectors)
-# Usually same as FRONTEND_IP
+# BACKEND SERVERS (Logstash Collectors)
+# Comma-separated list of all backend IPs
 # ============================================================
-ELASTICSEARCH_HOST="10.0.0.10:9200"
+BACKEND_IP="10.4.4.21,10.4.4.90"
 
 # ============================================================
-# ELASTIFLOW COLLECTOR 1 (Primary - NetFlow)
-# IMPORTANT: This collector manages ES index templates
+# DASHBOARDS & ILM
 # ============================================================
-ELASTIFLOW_1_NAME="netflow-collector"
-ELASTIFLOW_1_IP="10.0.0.20"
-ELASTIFLOW_1_PORTS="2050"
-ELASTIFLOW_1_NETFLOW="true"
-ELASTIFLOW_1_SFLOW="false"
-ELASTIFLOW_1_TEMPLATE_MANAGER="true"
-
-# ============================================================
-# ELASTIFLOW COLLECTOR 2 (Secondary - sFlow)
-# IMPORTANT: TEMPLATE_MANAGER must be "false" to avoid conflict
-# ============================================================
-ELASTIFLOW_2_NAME="sflow-collector"
-ELASTIFLOW_2_IP="10.0.0.30"
-ELASTIFLOW_2_PORTS="2050,6343"
-ELASTIFLOW_2_NETFLOW="true"
-ELASTIFLOW_2_SFLOW="true"
-ELASTIFLOW_2_TEMPLATE_MANAGER="false"
-
-# ============================================================
-# ADDITIONAL COLLECTORS (Optional)
-# Copy the pattern above for more collectors
-# ============================================================
-
-# ============================================================
-# DASHBOARDS
-# ============================================================
-DASHBOARD_FILE="$SCRIPT_DIR/configs/elastiflow/dashboards/unified-flow-dashboards.ndjson"
-ILM_POLICY_FILE="$SCRIPT_DIR/configs/elastiflow/ilm-policy.json"
+DASHBOARD_FILE="$SCRIPT_DIR/dashboards/unified-flow-dashboards.ndjson"
+ILM_POLICY_FILE="$SCRIPT_DIR/ilm-policy.json"
 EOF
     
     log_info "Example config created at: $CONFIG_FILE"
@@ -120,7 +93,7 @@ load_config() {
     # Validate required variables
     local required_vars=(
         "CLUSTER_NAME" "STACK_VERSION" "ELASTIC_PASSWORD"
-        "FRONTEND_IP" "ELASTICSEARCH_HOST"
+        "FRONTEND_IP"
     )
     
     for var in "${required_vars[@]}"; do
@@ -132,9 +105,9 @@ load_config() {
     
     # Generate Kibana keys if not set
     if [ -z "$KIBANA_ENCRYPTION_KEY" ]; then
-        KIBANA_ENCRYPTION_KEY=$(openssl rand -hex 32)
-        KIBANA_SECURITY_KEY=$(openssl rand -hex 32)
-        KIBANA_REPORTING_KEY=$(openssl rand -hex 32)
+        KIBANA_ENCRYPTION_KEY=$(openssl rand -base64 32)
+        KIBANA_SECURITY_KEY=$(openssl rand -base64 32)
+        KIBANA_REPORTING_KEY=$(openssl rand -base64 32)
         log_info "Generated Kibana encryption keys"
     fi
 }
@@ -214,6 +187,7 @@ DNS.1 = localhost
 DNS.2 = *.flow-monitoring.local
 DNS.3 = elasticsearch
 DNS.4 = kibana
+DNS.5 = es-remote
 IP.1 = 127.0.0.1
 IP.2 = $FRONTEND_IP
 EOF
@@ -237,6 +211,50 @@ EOF
     chmod 755 "$certs_dir"
     
     log_success "Certificates generated"
+}
+
+# ============================================================
+# UNICAST HOSTS
+# ============================================================
+
+create_unicast_hosts() {
+    local unicast_file="$SCRIPT_DIR/unicast_hosts.txt"
+    
+    # Frontend nodes
+    echo "$FRONTEND_IP:9300" > "$unicast_file"
+    echo "$FRONTEND_IP:9301" >> "$unicast_file"
+    
+    # Backend nodes
+    IFS=',' read -ra BACKEND_IPS <<< "$BACKEND_IP"
+    for ip in "${BACKEND_IPS[@]}"; do
+        ip=$(echo "$ip" | xargs)  # trim whitespace
+        echo "$ip:9300" >> "$unicast_file"
+    done
+    
+    log_info "Created unicast_hosts.txt with $(wc -l < "$unicast_file") entries"
+}
+
+# ============================================================
+# ENV FILE
+# ============================================================
+
+create_env_file() {
+    cat > "$SCRIPT_DIR/.env" << EOF
+CLUSTER_NAME=$CLUSTER_NAME
+STACK_VERSION=$STACK_VERSION
+LICENSE=$LICENSE
+MEM_LIMIT=$MEM_LIMIT
+ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+KIBANA_PASSWORD=${KIBANA_PASSWORD:-$ELASTIC_PASSWORD}
+KIBANA_ENCRYPTION_KEY=$KIBANA_ENCRYPTION_KEY
+KIBANA_SECURITY_KEY=$KIBANA_SECURITY_KEY
+KIBANA_REPORTING_KEY=$KIBANA_REPORTING_KEY
+FRONTEND_IP=$FRONTEND_IP
+BACKEND_IP=$BACKEND_IP
+ES_PORT=$ES_PORT
+KIBANA_PORT=$KIBANA_PORT
+EOF
+    log_info "Created .env file"
 }
 
 # ============================================================
@@ -298,131 +316,92 @@ deploy_frontend() {
     log_success "Frontend deployment complete"
 }
 
-create_unicast_hosts() {
-    local unicast_file="$SCRIPT_DIR/unicast_hosts.txt"
-    
-    # Frontend nodes
-    echo "$FRONTEND_IP:9300" > "$unicast_file"
-    echo "$FRONTEND_IP:9301" >> "$unicast_file"
-    
-    # ElastiFlow collector nodes (if they run ES data nodes)
-    local num=1
-    while [ -n "$(eval echo "\${ELASTIFLOW_${num}_IP:-}")" ]; do
-        local ip=$(eval echo "\${ELASTIFLOW_${num}_IP}")
-        echo "$ip:9300" >> "$unicast_file"
-        ((num++))
-    done
-    
-    log_info "Created unicast_hosts.txt with $(wc -l < "$unicast_file") entries"
-}
-
-create_env_file() {
-    cat > "$SCRIPT_DIR/.env" << EOF
-CLUSTER_NAME=$CLUSTER_NAME
-STACK_VERSION=$STACK_VERSION
-LICENSE=$LICENSE
-MEM_LIMIT=$MEM_LIMIT
-ELASTIC_PASSWORD=$ELASTIC_PASSWORD
-KIBANA_PASSWORD=${KIBANA_PASSWORD:-$ELASTIC_PASSWORD}
-KIBANA_ENCRYPTION_KEY=$KIBANA_ENCRYPTION_KEY
-KIBANA_SECURITY_KEY=$KIBANA_SECURITY_KEY
-KIBANA_REPORTING_KEY=$KIBANA_REPORTING_KEY
-FRONTEND_IP=$FRONTEND_IP
-ES_PORT=$ES_PORT
-KIBANA_PORT=$KIBANA_PORT
-ELASTICSEARCH_HOST=$ELASTICSEARCH_HOST
-EOF
-    log_info "Created .env file"
-}
-
 # ============================================================
-# ELASTIFLOW COLLECTOR DEPLOYMENT
+# BACKEND DEPLOYMENT (ES Remote + Logstash)
 # ============================================================
 
-deploy_elastiflow() {
-    local num=$1
-    
-    if [ -z "$num" ]; then
-        # Deploy all collectors
-        local i=1
-        while [ -n "$(eval echo "\${ELASTIFLOW_${i}_IP:-}")" ]; do
-            deploy_elastiflow_collector $i
-            ((i++))
-        done
-        return
-    fi
-    
-    deploy_elastiflow_collector $num
-}
-
-deploy_elastiflow_collector() {
-    local num=$1
-    local name=$(eval echo "\${ELASTIFLOW_${num}_NAME:-collector-$num}")
-    local ip=$(eval echo "\${ELASTIFLOW_${num}_IP}")
-    local ports=$(eval echo "\${ELASTIFLOW_${num}_PORTS:-2050}")
-    local netflow=$(eval echo "\${ELASTIFLOW_${num}_NETFLOW:-true}")
-    local sflow=$(eval echo "\${ELASTIFLOW_${num}_SFLOW:-false}")
-    local template_mgr=$(eval echo "\${ELASTIFLOW_${num}_TEMPLATE_MANAGER:-false}")
-    
+deploy_backend() {
     log_info "=========================================="
-    log_info "DEPLOYING ELASTIFLOW: $name ($ip)"
+    log_info "DEPLOYING BACKEND (ES Remote + Logstash)"
     log_info "=========================================="
-    
-    if [ -z "$ip" ]; then
-        log_error "No IP configured for ElastiFlow collector $num"
-        return 1
-    fi
     
     local current_ip=$(hostname -I | awk '{print $1}')
-    if [ "$current_ip" != "$ip" ]; then
-        log_warn "Current IP ($current_ip) doesn't match $name ($ip)"
-        log_info "Deploy manually on $ip:"
+    
+    # Check if we're on a backend server
+    local is_backend=false
+    IFS=',' read -ra BACKEND_IPS <<< "$BACKEND_IP"
+    for ip in "${BACKEND_IPS[@]}"; do
+        ip=$(echo "$ip" | xargs)
+        if [ "$current_ip" = "$ip" ]; then
+            is_backend=true
+            break
+        fi
+    done
+    
+    if [ "$is_backend" = false ]; then
+        log_warn "Current IP ($current_ip) is not in BACKEND_IP list"
+        log_info "Deploy manually on backend servers:"
         echo ""
-        echo "  ssh root@$ip"
-        echo "  cd /opt/elastiflow"
-        echo "  # Copy configs/elastiflow/docker-compose-n*.yml"
-        echo "  # Create .env with ELASTICSEARCH_HOST and ELASTIC_PASSWORD"
-        echo "  docker compose up -d"
-        echo ""
+        IFS=',' read -ra BACKEND_IPS <<< "$BACKEND_IP"
+        for ip in "${BACKEND_IPS[@]}"; do
+            ip=$(echo "$ip" | xargs)
+            echo "  ssh root@$ip"
+            echo "  cd /path/to/custom-elk-stack"
+            echo "  ./deploy.sh --backend"
+            echo ""
+        done
         return 0
     fi
     
-    # Choose compose file based on template manager setting
-    local compose_file="$SCRIPT_DIR/configs/elastiflow/docker-compose-n2.yml"
-    if [ "$template_mgr" = "true" ]; then
-        compose_file="$SCRIPT_DIR/configs/elastiflow/docker-compose-n1.yml"
+    # Deploy on this backend server
+    if [ ! -f "$SCRIPT_DIR/certs/ca/ca.crt" ]; then
+        log_error "Certificates not found. Copy certs/ from frontend server:"
+        echo "  scp -r root@$FRONTEND_IP:/path/to/custom-elk-stack/certs ./"
+        exit 1
     fi
     
-    # Create .env for collector
-    cat > "$SCRIPT_DIR/.env.collector" << EOF
-ELASTICSEARCH_HOST=$ELASTICSEARCH_HOST
-ELASTIC_PASSWORD=$ELASTIC_PASSWORD
-EOF
+    create_env_file
     
-    log_info "Starting ElastiFlow collector..."
+    log_info "Starting ES remote node and Logstash..."
     cd "$SCRIPT_DIR"
-    docker-compose -f "$compose_file" --env-file .env.collector down 2>/dev/null || true
-    docker-compose -f "$compose_file" --env-file .env.collector up -d
+    docker-compose -f docker-compose-backend.yml down 2>/dev/null || true
+    docker-compose -f docker-compose-backend.yml up -d
     
-    log_info "Waiting for collector to start..."
-    sleep 10
+    log_info "Waiting for ES remote node..."
+    local retries=30
+    while [ $retries -gt 0 ]; do
+        if curl -s -k "https://localhost:9200/_cluster/health" \
+            -u "elastic:$ELASTIC_PASSWORD" 2>/dev/null | grep -q "green\|yellow"; then
+            log_success "ES remote node is up"
+            break
+        fi
+        sleep 10
+        ((retries--))
+        echo -n "."
+    done
     
-    if docker ps --format '{{.Names}}' | grep -q "flow-collector"; then
-        log_success "ElastiFlow collector $name is running"
-        log_info "Ports: $ports"
-    else
-        log_error "ElastiFlow collector failed to start"
-        docker logs flow-collector --tail 20 2>/dev/null || true
-        return 1
+    if [ $retries -eq 0 ]; then
+        log_error "ES remote node failed to start"
+        docker-compose -f docker-compose-backend.yml logs es-remote 2>/dev/null | tail -20
+        exit 1
     fi
     
-    # Verify health
+    # Check Logstash
     sleep 5
-    if curl -s "http://localhost:8080/health" | grep -q "healthy"; then
-        log_success "Collector health check passed"
+    if docker ps --format '{{.Names}}' | grep -q "logstash-flow"; then
+        log_success "Logstash is running"
+        
+        # Verify Logstash is receiving data
+        if curl -s "http://localhost:9600/_node/stats" 2>/dev/null | grep -q "logstash"; then
+            log_success "Logstash API is responding"
+        fi
     else
-        log_warn "Collector health check failed - check logs"
+        log_error "Logstash failed to start"
+        docker logs logstash-flow --tail 20 2>/dev/null || true
+        exit 1
     fi
+    
+    log_success "Backend deployment complete on $current_ip"
 }
 
 # ============================================================
@@ -435,8 +414,9 @@ import_dashboards() {
     log_info "=========================================="
     
     if [ ! -f "$DASHBOARD_FILE" ]; then
-        log_error "Dashboard file not found: $DASHBOARD_FILE"
-        return 1
+        log_warn "Dashboard file not found: $DASHBOARD_FILE"
+        log_info "Skipping dashboard import"
+        return 0
     fi
     
     log_info "Importing: $(basename "$DASHBOARD_FILE")"
@@ -462,17 +442,88 @@ apply_ilm_policy() {
     log_info "=========================================="
     
     if [ ! -f "$ILM_POLICY_FILE" ]; then
-        log_warn "ILM policy file not found: $ILM_POLICY_FILE"
-        return 0
+        log_info "Creating default ILM policy..."
+        
+        # Default 3-day retention policy
+        curl -s -k -X PUT "https://$FRONTEND_IP:$ES_PORT/_ilm/policy/flow-data-3-day" \
+            -u "elastic:$ELASTIC_PASSWORD" \
+            -H "Content-Type: application/json" \
+            -d '{
+                "policy": {
+                    "phases": {
+                        "hot": {
+                            "min_age": "0ms",
+                            "actions": {
+                                "rollover": {
+                                    "max_age": "1d",
+                                    "max_primary_shard_size": "50gb"
+                                },
+                                "set_priority": {"priority": 100}
+                            }
+                        },
+                        "warm": {
+                            "min_age": "1d",
+                            "actions": {
+                                "forcemerge": {"max_num_segments": 1},
+                                "set_priority": {"priority": 50}
+                            }
+                        },
+                        "delete": {
+                            "min_age": "3d",
+                            "actions": {"delete": {}}
+                        }
+                    }
+                }
+            }' | grep -q "acknowledged" && \
+            log_success "ILM policy 'flow-data-3-day' created" || \
+            log_warn "ILM policy may already exist"
+    else
+        log_info "Applying ILM policy from file..."
+        curl -s -k -X PUT "https://$FRONTEND_IP:$ES_PORT/_ilm/policy/elastiflow" \
+            -u "elastic:$ELASTIC_PASSWORD" \
+            -H "Content-Type: application/json" \
+            -d @"$ILM_POLICY_FILE" | grep -q "acknowledged" && \
+            log_success "ILM policy applied" || \
+            log_warn "ILM policy may already exist"
     fi
+}
+
+create_index_template() {
+    log_info "=========================================="
+    log_info "CREATING INDEX TEMPLATE"
+    log_info "=========================================="
     
-    log_info "Applying ILM policy..."
-    curl -s -k -X PUT "https://$FRONTEND_IP:$ES_PORT/_ilm/policy/elastiflow" \
+    log_info "Creating logstash-flow index template..."
+    curl -s -k -X PUT "https://$FRONTEND_IP:$ES_PORT/_index_template/logstash-flow" \
         -u "elastic:$ELASTIC_PASSWORD" \
         -H "Content-Type: application/json" \
-        -d @"$ILM_POLICY_FILE" | grep -q "acknowledged" && \
-        log_success "ILM policy applied" || \
-        log_warn "ILM policy may already exist"
+        -d '{
+            "index_patterns": ["logstash-flow-*"],
+            "template": {
+                "settings": {
+                    "index": {
+                        "lifecycle": {"name": "flow-data-3-day", "rollover_alias": "logstash-flow"},
+                        "number_of_shards": "2",
+                        "number_of_replicas": "1"
+                    }
+                },
+                "mappings": {
+                    "dynamic_templates": [
+                        {"strings_as_keywords": {"match_mapping_type": "string", "mapping": {"type": "keyword", "ignore_above": 1024}}},
+                        {"ip_fields": {"match": "*ip", "mapping": {"type": "ip"}}}
+                    ],
+                    "properties": {
+                        "@timestamp": {"type": "date"},
+                        "source": {"properties": {"ip": {"type": "ip"}, "port": {"type": "integer"}, "bytes": {"type": "long"}, "packets": {"type": "long"}}},
+                        "destination": {"properties": {"ip": {"type": "ip"}, "port": {"type": "integer"}, "bytes": {"type": "long"}, "packets": {"type": "long"}}},
+                        "network": {"properties": {"bytes": {"type": "long"}, "packets": {"type": "long"}, "transport": {"type": "keyword"}, "protocol": {"type": "keyword"}}},
+                        "host": {"properties": {"ip": {"type": "ip"}, "name": {"type": "keyword"}}}
+                    }
+                }
+            }
+        }' | grep -q "acknowledged" && \
+        log_success "Index template created" || \
+        log_warn "Index template may already exist"
 }
 
 # ============================================================
@@ -510,12 +561,17 @@ verify_deployment() {
     
     # Check indices
     log_info "Checking flow indices..."
-    local indices=$(curl -s -k "https://$FRONTEND_IP:$ES_PORT/_cat/indices/elastiflow-*" \
+    local indices=$(curl -s -k "https://$FRONTEND_IP:$ES_PORT/_cat/indices/logstash-flow-*" \
         -u "elastic:$ELASTIC_PASSWORD" 2>/dev/null | wc -l)
     if [ "$indices" -gt 0 ]; then
-        log_success "Found $indices elastiflow indices"
+        log_success "Found $indices logstash-flow indices"
+        
+        # Show latest index
+        local latest=$(curl -s -k "https://$FRONTEND_IP:$ES_PORT/_cat/indices/logstash-flow-*?h=index,docs.count,store.size&s=index:desc" \
+            -u "elastic:$ELASTIC_PASSWORD" 2>/dev/null | head -1)
+        log_info "Latest: $latest"
     else
-        log_warn "No elastiflow indices yet (will be created when data arrives)"
+        log_warn "No logstash-flow indices yet (will be created when data arrives)"
     fi
     
     # Summary
@@ -523,10 +579,10 @@ verify_deployment() {
     log_info "=========================================="
     log_info "ACCESS INFORMATION"
     log_info "=========================================="
-    echo "Kibana:      http://$FRONTEND_IP:$KIBANA_PORT"
+    echo "Kibana:       http://$FRONTEND_IP:$KIBANA_PORT"
     echo "Elasticsearch: https://$FRONTEND_IP:$ES_PORT"
-    echo "Username:    elastic"
-    echo "Password:    [from deploy.conf]"
+    echo "Username:     elastic"
+    echo "Password:     [from deploy.conf]"
     echo ""
 }
 
@@ -536,7 +592,7 @@ verify_deployment() {
 
 show_help() {
     cat << EOF
-ELK Stack with ElastiFlow Deployment Script
+ELK Stack with Logstash Deployment Script
 
 Usage: $0 [OPTIONS]
 
@@ -545,21 +601,21 @@ Options:
     -g, --generate  Generate example deploy.conf
     -c, --check     Check prerequisites only
     -f, --frontend  Deploy frontend (ES + Kibana)
-    -e, --elastiflow Deploy ElastiFlow collectors
-    -i, --import    Import Kibana dashboards
+    -b, --backend   Deploy backend (ES remote + Logstash)
+    -i, --import    Import Kibana dashboards + ILM
     -v, --verify    Verify deployment
 
 Configuration:
     Edit deploy.conf before deployment.
 
 Architecture:
-    Frontend Server:
-        - Elasticsearch (master, data, ingest)
+    Frontend Server (10.4.4.87):
+        - Elasticsearch (master, data, ingest) x2
         - Kibana
 
-    ElastiFlow Collectors (deploy on separate servers):
-        - Collector N1 (Primary): Manages ES index templates
-        - Collector N2+ (Secondary): Template management disabled
+    Backend Servers (10.4.4.21, 10.4.4.90):
+        - Elasticsearch (data, ingest) - remote node
+        - Logstash - flow collector
 
 Network Ports:
     Frontend:
@@ -567,17 +623,19 @@ Network Ports:
         - 9300-9301: Elasticsearch transport
         - 5601: Kibana
 
-    ElastiFlow:
+    Backend:
+        - 9200: ES remote HTTP
+        - 9300: ES remote transport
         - 2050/udp: NetFlow
         - 6343/udp: sFlow
 
 Examples:
     $0 --generate           # Create deploy.conf
     $0 --check              # Check prerequisites
-    $0 --frontend           # Deploy ES + Kibana
-    $0 --elastiflow         # Deploy ElastiFlow collectors
-    $0 --import             # Import dashboards
-    $0                      # Full deployment
+    $0 --frontend           # Deploy ES + Kibana on frontend
+    $0 --backend            # Deploy ES + Logstash on backend
+    $0 --import             # Import dashboards & ILM policies
+    $0                      # Full deployment (frontend only)
 
 EOF
 }
@@ -595,7 +653,7 @@ main() {
             -g|--generate) create_example_config; exit 0 ;;
             -c|--check) mode="check"; shift ;;
             -f|--frontend) mode="frontend"; shift ;;
-            -e|--elastiflow) mode="elastiflow"; shift ;;
+            -b|--backend) mode="backend"; shift ;;
             -i|--import) mode="import"; shift ;;
             -v|--verify) mode="verify"; shift ;;
             *) shift ;;
@@ -604,7 +662,7 @@ main() {
     
     echo ""
     echo "╔══════════════════════════════════════════════════════════╗"
-    echo "║    ELK Stack with ElastiFlow Deployment                  ║"
+    echo "║    ELK Stack with Logstash Deployment                   ║"
     echo "╚══════════════════════════════════════════════════════════╝"
     echo ""
     
@@ -618,17 +676,19 @@ main() {
             deploy_frontend
             import_dashboards
             apply_ilm_policy
+            create_index_template
             verify_deployment
             ;;
-        elastiflow)
+        backend)
             check_prerequisites
             load_config
-            deploy_elastiflow
+            deploy_backend
             ;;
         import)
             load_config
             import_dashboards
             apply_ilm_policy
+            create_index_template
             ;;
         verify)
             load_config
@@ -640,7 +700,7 @@ main() {
             deploy_frontend
             import_dashboards
             apply_ilm_policy
-            deploy_elastiflow
+            create_index_template
             verify_deployment
             ;;
     esac
