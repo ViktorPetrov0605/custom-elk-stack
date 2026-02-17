@@ -172,9 +172,11 @@ generate_certificates() {
     log_info "Generating certificates..."
     mkdir -p "$certs_dir/ca" "$certs_dir/wildcard"
     
-    # Generate CA
+    # Generate CA with proper extensions
     openssl req -x509 -new -nodes -sha256 -days 3650 \
         -subj "/CN=elasticsearch-ca" \
+        -addext "basicConstraints=critical,CA:TRUE" \
+        -addext "keyUsage=critical,keyCertSign,cRLSign" \
         -keyout "$certs_dir/ca/ca.key" \
         -out "$certs_dir/ca/ca.crt" 2>/dev/null
     
@@ -189,7 +191,8 @@ prompt = no
 CN = *.flow-monitoring.local
 
 [v3_req]
-keyUsage = digitalSignature, keyEncipherment, dataEncipherment
+basicConstraints = CA:FALSE
+keyUsage = critical, digitalSignature, keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth, clientAuth
 subjectAltName = @alt_names
 
