@@ -27,6 +27,15 @@ log_warn() { echo -e "${YELLOW}[WARN]${NC}  $1"; }
 log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Detect Docker Compose command
+if command -v docker-compose &> /dev/null; then
+    DC="docker-compose"
+elif docker compose version &> /dev/null; then
+    DC="docker compose"
+else
+    DC="docker-compose" # fallback for check function
+fi
 CONFIG_FILE="${SCRIPT_DIR}/deploy.conf"
 
 # ============================================================
@@ -122,7 +131,9 @@ check_prerequisites() {
     local missing=()
     
     command -v docker &> /dev/null || missing+=("docker")
-    command -v docker-compose &> /dev/null || missing+=("docker-compose")
+    if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/null; then
+        missing+=("docker-compose or docker-plugin-compose")
+    fi
     command -v openssl &> /dev/null || missing+=("openssl")
     command -v curl &> /dev/null || missing+=("curl")
     
@@ -273,8 +284,8 @@ deploy_frontend() {
     cd "$SCRIPT_DIR"
     
     log_info "Starting Elasticsearch and Kibana..."
-    docker-compose -f docker-compose-frontend.yml down 2>/dev/null || true
-    docker-compose -f docker-compose-frontend.yml up -d
+    $DC -f docker-compose-frontend.yml down 2>/dev/null || true
+    $DC -f docker-compose-frontend.yml up -d
     
     log_info "Waiting for Elasticsearch..."
     local retries=30
@@ -291,7 +302,7 @@ deploy_frontend() {
     
     if [ $retries -eq 0 ]; then
         log_error "Elasticsearch failed to start"
-        docker-compose -f docker-compose-frontend.yml logs es-frontend 2>/dev/null | tail -20
+        $DC -f docker-compose-frontend.yml logs es-frontend 2>/dev/null | tail -20
         exit 1
     fi
     
@@ -309,7 +320,7 @@ deploy_frontend() {
     
     if [ $retries -eq 0 ]; then
         log_error "Kibana failed to start"
-        docker-compose -f docker-compose-frontend.yml logs kibana 2>/dev/null | tail -20
+        $DC -f docker-compose-frontend.yml logs kibana 2>/dev/null | tail -20
         exit 1
     fi
     
@@ -364,8 +375,8 @@ deploy_backend() {
     
     log_info "Starting ES remote node and Logstash..."
     cd "$SCRIPT_DIR"
-    docker-compose -f docker-compose-backend.yml down 2>/dev/null || true
-    docker-compose -f docker-compose-backend.yml up -d
+    $DC -f docker-compose-backend.yml down 2>/dev/null || true
+    $DC -f docker-compose-backend.yml up -d
     
     log_info "Waiting for ES remote node..."
     local retries=30
@@ -382,7 +393,7 @@ deploy_backend() {
     
     if [ $retries -eq 0 ]; then
         log_error "ES remote node failed to start"
-        docker-compose -f docker-compose-backend.yml logs es-remote 2>/dev/null | tail -20
+        $DC -f docker-compose-backend.yml logs es-remote 2>/dev/null | tail -20
         exit 1
     fi
     
