@@ -189,7 +189,7 @@ prompt = no
 CN = *.flow-monitoring.local
 
 [v3_req]
-keyUsage = keyEncipherment, dataEncipherment
+keyUsage = digitalSignature, keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth, clientAuth
 subjectAltName = @alt_names
 
