@@ -6,15 +6,6 @@ services:
     user: "0"
     command: >
       bash -c '
-        if [ ! -f config/certs/ca.zip ]; then
-          bin/elasticsearch-certutil ca --silent --pem -out config/certs/ca.zip;
-          unzip config/certs/ca.zip -d config/certs;
-        fi;
-        if [ ! -f config/certs/certs.zip ]; then
-          echo -ne "instances:\n  - name: wildcard\n    dns: [localhost, \"*\"]\n    ip: [127.0.0.1]\n" > config/certs/instances.yml;
-          bin/elasticsearch-certutil cert --silent --pem -out config/certs/certs.zip --in config/certs/instances.yml --ca-cert config/certs/ca/ca.crt --ca-key config/certs/ca/ca.key;
-          unzip config/certs/certs.zip -d config/certs;
-        fi;
         chown -R 1000:0 config/certs;
         until curl -s -k --cacert config/certs/ca/ca.crt https://${FRONTEND_IP}:9200 | grep -q "missing authentication credentials"; do sleep 5; done;
         curl -s -k -X POST --cacert config/certs/ca/ca.crt -u "elastic:${ELASTIC_PASSWORD}" -H "Content-Type: application/json" https://${FRONTEND_IP}:9200/_security/user/kibana_system/_password -d "{\"password\":\"${KIBANA_PASSWORD}\"}";
