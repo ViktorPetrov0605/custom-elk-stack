@@ -112,7 +112,7 @@ EOF
 
 # Step 3: Create initial index with alias
 log_info "Creating initial index..."
-curl -s -k -u "$ES_USER:$ES_PASSWORD" -X DELETE "https://$ES_HOST/logstash-flow-*" 2>/dev/null || true
+curl -s -k -u "$ES_USER:$ES_PASSWORD" -X DELETE "https://$ES_HOST/logstash-flow-*?expand_wildcards=all" 2>/dev/null || true
 curl -s -k -u "$ES_USER:$ES_PASSWORD" -X PUT "https://$ES_HOST/logstash-flow-000001" \
   -H "Content-Type: application/json" \
   -d '{
