@@ -28,6 +28,7 @@ Hypothesis: `[host][ip]` field in Logstash (NetFlow codec) is either missing, na
 - [x] Set replicas to 0 and shards to 1 for data locality.
 - [x] Enable GeoIP and AS enrichment.
 - [x] Create and import Sankey dashboard for AS analysis.
+- [x] Fix dashboard NDJSON parsing error (Resolved nested field mapping and object references).
 
 ## 5. Documentation
 - [x] Update `tasks/lessons.md` with the field mapping discovery.
