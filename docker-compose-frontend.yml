@@ -24,7 +24,7 @@ services:
     environment:
       - node.name=es-frontend
       - cluster.name=${CLUSTER_NAME}
-      - cluster.initial_master_nodes=es-frontend,es-frontend-2
+      - cluster.initial_master_nodes=es-frontend,es-frontend-2,es-frontend-2
       - node.roles=master,data,ingest
       - node.attr.node_type=frontend
       - discovery.seed_providers=file
@@ -61,7 +61,7 @@ services:
     environment:
       - node.name=es-frontend-2
       - cluster.name=${CLUSTER_NAME}
-      - cluster.initial_master_nodes=es-frontend,es-frontend-2
+      - cluster.initial_master_nodes=es-frontend,es-frontend-2,es-frontend-2
       - node.roles=master,data,ingest
       - node.attr.node_type=frontend
       - discovery.seed_providers=file
