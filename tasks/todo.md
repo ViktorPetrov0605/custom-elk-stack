@@ -26,8 +26,10 @@ Hypothesis: `[host][ip]` field in Logstash (NetFlow codec) is either missing, na
 - [x] Check and fix ILM policy (Fixed rollover_alias error).
 - [x] Update ILM to 7-day retention.
 - [x] Set replicas to 0 and shards to 1 for data locality.
+- [x] Enable GeoIP and AS enrichment.
+- [x] Create and import Sankey dashboard for AS analysis.
 
 ## 5. Documentation
 - [x] Update `tasks/lessons.md` with the field mapping discovery.
-- [x] Update `memory/2026-02-19.md` with ILM resolution.
-- [x] Push final config, tasks, and lessons to GitHub.
+- [x] Update `memory/2026-02-19.md` with ILM resolution and AS dashboard.
+- [x] Push final config, tasks, lessons, and dashboard NDJSON to GitHub.
