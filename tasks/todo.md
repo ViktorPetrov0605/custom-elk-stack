@@ -24,8 +24,10 @@ Hypothesis: `[host][ip]` field in Logstash (NetFlow codec) is either missing, na
 - [x] Verify `device.name` and `device.ip` are correctly populated with the collector's source IP.
 - [x] Check Kibana dashboard for visualization updates.
 - [x] Check and fix ILM policy (Fixed rollover_alias error).
+- [x] Update ILM to 7-day retention.
+- [x] Set replicas to 0 and shards to 1 for data locality.
 
 ## 5. Documentation
 - [x] Update `tasks/lessons.md` with the field mapping discovery.
 - [x] Update `memory/2026-02-19.md` with ILM resolution.
-- [x] Push final config to GitHub.
+- [x] Push final config, tasks, and lessons to GitHub.
