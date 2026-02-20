@@ -1,0 +1,145 @@
+version: "3.8"
+services:
+  setup:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    volumes: ["./certs:/usr/share/elasticsearch/config/certs"]
+    user: "0"
+    command: >
+      bash -c '
+        chown -R 1000:0 config/certs;
+        until curl -s -k --cacert config/certs/ca/ca.crt https://${FRONTEND_IP}:9200 | grep -q "missing authentication credentials"; do sleep 5; done;
+        curl -s -k -X POST --cacert config/certs/ca/ca.crt -u "elastic:${ELASTIC_PASSWORD}" -H "Content-Type: application/json" https://${FRONTEND_IP}:9200/_security/user/kibana_system/_password -d "{\"password\":\"${KIBANA_PASSWORD}\"}";
+      '
+
+  es-frontend:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    volumes: 
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./unicast_hosts.txt:/usr/share/elasticsearch/config/unicast_hosts.txt
+      - data-frontend:/usr/share/elasticsearch/data
+    ports:
+      - "${ES_PORT}:9200"
+      - "9300:9300"
+    cap_add: [IPC_LOCK]
+    environment:
+      - node.name=es-frontend
+      - cluster.name=${CLUSTER_NAME}
+      - cluster.initial_master_nodes=es-frontend,es-frontend-2
+      - node.roles=master,data,ingest
+      - node.attr.node_type=frontend
+      - discovery.seed_providers=file
+      - discovery.seed_hosts=${FRONTEND_IP}:9301,${BACKEND_IP}
+      - network.publish_host=${FRONTEND_IP}
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - xpack.license.self_generated.type=${LICENSE}
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.verification_mode=certificate
+      - xpack.security.http.ssl.key=certs/wildcard/wildcard.key
+      - xpack.security.http.ssl.certificate=certs/wildcard/wildcard.crt
+      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt
+      - xpack.security.transport.ssl.key=certs/wildcard/wildcard.key
+      - xpack.security.transport.ssl.certificate=certs/wildcard/wildcard.crt
+      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
+    mem_limit: ${MEM_LIMIT}
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+
+  es-frontend-2:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
+    volumes: 
+      - ./certs:/usr/share/elasticsearch/config/certs
+      - ./unicast_hosts.txt:/usr/share/elasticsearch/config/unicast_hosts.txt
+      - data-frontend-2:/usr/share/elasticsearch/data
+    ports:
+      - "9201:9200"
+      - "9301:9300"
+    cap_add: [IPC_LOCK]
+    environment:
+      - node.name=es-frontend-2
+      - cluster.name=${CLUSTER_NAME}
+      - cluster.initial_master_nodes=es-frontend,es-frontend-2
+      - node.roles=master,data,ingest
+      - node.attr.node_type=frontend
+      - discovery.seed_providers=file
+      - discovery.seed_hosts=${FRONTEND_IP}:9300,${BACKEND_IP}
+      - network.publish_host=${FRONTEND_IP}
+      - transport.port=9300
+      - transport.publish_port=9301
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - xpack.license.self_generated.type=${LICENSE}
+      - bootstrap.memory_lock=true
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - xpack.security.http.ssl.enabled=true
+      - xpack.security.http.ssl.verification_mode=certificate
+      - xpack.security.http.ssl.key=certs/wildcard/wildcard.key
+      - xpack.security.http.ssl.certificate=certs/wildcard/wildcard.crt
+      - xpack.security.http.ssl.certificate_authorities=certs/ca/ca.crt
+      - xpack.security.transport.ssl.key=certs/wildcard/wildcard.key
+      - xpack.security.transport.ssl.certificate=certs/wildcard/wildcard.crt
+      - xpack.security.transport.ssl.certificate_authorities=certs/ca/ca.crt
+    mem_limit: ${MEM_LIMIT}
+    ulimits:
+      memlock: { soft: -1, hard: -1 }
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
+    volumes: ["./certs:/usr/share/kibana/config/certs"]
+    ports: ["${KIBANA_PORT}:5601"]
+    environment:
+      - ELASTICSEARCH_HOSTS=https://${FRONTEND_IP}:9200
+      - ELASTICSEARCH_USERNAME=kibana_system
+      - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
+      - ELASTICSEARCH_SSL_VERIFICATIONMODE=certificate
+      - ELASTICSEARCH_SSL_CERTIFICATEAUTHORITIES=config/certs/ca/ca.crt
+      - XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY=${KIBANA_ENCRYPTION_KEY}
+      - XPACK_SECURITY_ENCRYPTIONKEY=${KIBANA_SECURITY_KEY}
+      - XPACK_REPORTING_ENCRYPTIONKEY=${KIBANA_REPORTING_KEY}
+    mem_limit: ${MEM_LIMIT}
+
+  # NetFlow auto-installer - installs integration after Kibana starts
+  netflow-installer:
+    image: curlimages/curl:latest
+    environment:
+      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - KIBANA_URL=http://kibana:5601
+      - ES_URL=https://es-frontend:9200
+    volumes:
+      - ./init-scripts:/init-scripts:ro
+      - ./certs:/certs:ro
+    command: >
+      sh -c '
+        echo "=== NetFlow Auto-Installer ===";
+        echo "Waiting for Kibana to be ready...";
+        for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30; do
+          if curl -s http://kibana:5601/api/status 2>/dev/null | grep -q "available"; then
+            echo "✓ Kibana is ready (attempt $$i)";
+            break;
+          fi;
+          echo "  Waiting... ($$i/30)";
+          sleep 10;
+        done;
+        echo "Installing NetFlow integration...";
+        curl -X POST http://kibana:5601/api/fleet/epm/packages/netflow-2.24.1 \
+          -H "Content-Type: application/json" \
+          -H "kbn-xsrf: true" \
+          -u "elastic:$${ELASTIC_PASSWORD}" \
+          -s -o /tmp/netflow_install.json -w "HTTP Status: %{http_code}\n" || echo "Install command failed";
+        cat /tmp/netflow_install.json || echo "No response file";
+        echo "NetFlow installation attempt complete";
+        sleep 30;
+      '
+    depends_on:
+      - kibana
+    restart: "no"
+
+volumes:
+  data-frontend:
+    driver: local
+  data-frontend-2:
+    driver: local
