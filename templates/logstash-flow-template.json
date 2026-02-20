@@ -1,0 +1,1 @@
+{"index_templates":[{"name":"logstash-flow-template","index_template":{"index_patterns":["logstash-flow-*"],"template":{"settings":{"index":{"lifecycle":{"name":"logstash-flow-policy","rollover_alias":"logstash-flow"},"number_of_shards":"1","number_of_replicas":"0"}}},"composed_of":[],"priority":200,"created_date_millis":1771492277512,"modified_date_millis":1771598894475}}]}
