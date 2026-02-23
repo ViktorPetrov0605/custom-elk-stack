@@ -1,12 +1,17 @@
 # Unified NetFlow & sFlow Monitoring Stack
 
-Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) and sFlow (Cisco Nexus) collection.
+Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) and sFlow (Cisco Nexus) collection. Optimized for TeleHouse/TelePoint environments.
 
-## Key Improvements (2026.02.23)
-- **Serialized Indexing**: Indices now use numbering (`-000001`, `-000002`) and rollover automatically at **10GB per shard**.
-- **Backend Data Locality**: Index templates force flow data to stay on Backend nodes, keeping the Frontend (87) master nodes lightweight for Kibana.
-- **Strict Mapping**: Explicit field types (IP, Keyword, Long) for `device.ip`, `source.ip`, and `destination.ip` to prevent Kibana "Fielddata" errors.
-- **Automated Lifecycle**: Includes an hourly cron job to prune old indices, maintaining a rotating window of 10x 10GB logs.
+## ⚠️ Critical Deployment Traps (READ FIRST)
+
+*   **PERMISSION DENIED / UID MATCH:** Logstash will crash-loop if the host user's UID doesn't match the internal container expectations. 
+    *   *Symptom:* `[FATAL] (LoadError) failure to load file: build.rb (Permission denied)`
+    *   *Location:* **10.4.4.21** uses UID **1003**. You must manually update `docker-compose-backend.yml` to include `user: "1003:1003"` if redeploying there.
+*   **THE NETFLOW TEMPLATE DELAY:** After restarting a collector, dashboards will show **zero data** for the first 1-5 minutes for Juniper devices.
+    *   *Why:* Logstash must wait for the hardware to send a "NetFlow Template" before it can decode traffic. 
+    *   *Action:* Grab a coffee and wait; do not assume the service is broken if `docker ps` is up.
+*   **SSL WARNINGS:** For internal TeleHouse convenience, this setup uses self-signed certificates. 
+    *   Always use `curl -k` and `ssl_verification_mode => none`.
 
 ---
 
@@ -15,96 +20,62 @@ Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) an
 - **Frontend (10.4.4.87)**:
   - 2x Elasticsearch Nodes (Master/Data Role)
   - 1x Kibana (Port 5601)
+  - Manages ILM policies and Index Templates.
 - **Backends (10.4.4.21, 10.4.4.90)**:
-  - 1x Elasticsearch Data Node (Local storage)
+  - 1x Elasticsearch Remote Node (Local storage only)
   - 1x Logstash Collector (NetFlow: 2050, sFlow: 6343)
-
----
-
-## Repository Structure
-
-- `deploy.sh`: Unified deployment script for Frontend/Backend.
-- `logstash-unified.conf`: The active multi-protocol Logstash pipeline.
-- `templates/`:
-  - `logstash-flow-template.json`: Explicit field mappings and node allocation rules.
-  - `logstash-flow-policy.json`: ILM policy for 10GB primary shard rollover.
-- `scripts/`:
-  - `prune_indices.sh`: Manual index cleanup script (keeps last 10 indices).
-- `dashboards/`: Latest compatible dashboard exports (NDJSON).
-
----
-
-## Setup & Deployment
-
-### 1. Configure the Environment
-Generate and edit the configuration file:
-```bash
-./deploy.sh --generate
-nano deploy.conf
-```
-
-### 2. Deploy Frontend (10.4.4.87)
-This sets up ES, Kibana, applies ILM/Templates, and bootstraps the first index:
-```bash
-./deploy.sh --frontend
-```
-
-### 3. Deploy Backends (Collectors)
-Run on both 10.4.4.21 and 10.4.4.90:
-```bash
-./deploy.sh --backend
-```
-
-### 4. Import Dashboards
-```bash
-./deploy.sh --import
-```
+  - **Data Locality:** Shards are automatically routed to stay on these nodes, keeping the Frontend lightweight.
 
 ---
 
 ## Index Management (Serialized)
 
-The system is configured for **Serialized Rollover**:
-- **Write Alias**: `logstash-flow-write`
-- **Naming**: `logstash-flow-YYYY.MM.DD-00000x`
-- **Rollover**: Automatic at **10GB**.
-- **Retention**: Controlled by crontab running `./scripts/prune_indices.sh` (Keeps latest 10 indices).
+The system is configured for a **Size + Count** rotation:
+1.  **Rollover (ILM):** Indices rollover automatically when they hit **10GB**.
+2.  **Numbering:** Indices use a serial suffix (`-000001`, `-000002`).
+3.  **Rotation (Cron):** An hourly cron job (`./scripts/prune_indices.sh`) keeps exactly the **latest 10 indices**.
+    *   *Total System Capacity:* ~100GB of flow data.
+
+---
+
+## Setup & Deployment
+
+1.  **Configure Environment**:
+    `./deploy.sh --generate`
+2.  **Deploy Frontend (10.4.4.87)**:
+    `./deploy.sh --frontend`
+3.  **Deploy Backends (Collectors)**:
+    `./deploy.sh --backend`
+4.  **Import Dashboards**:
+    `./deploy.sh --import`
 
 ---
 
 ## Scaling: Adding Multiple Netflow Devices
 
-To add additional NetFlow sources (e.g., more Juniper or Cisco switches) without manual configuration:
+Adding new switches (e.g., a new Juniper at 10.4.4.96) is now automatic:
 
-1.  **Configure Switch**: Point NetFlow exports to your Backend IP on port **2050**.
-2.  **Mapping (Optional)**: If the new switch has a different sampling rate (e.g., 2048 instead of 4096), add it to the `dictionary` in `logstash-unified.conf`:
+1.  **Configure Switch**: Point NetFlow v9 exports to your Backend IP on port **2050**.
+2.  **IP Identification:** Because we use `network_mode: host` or the `netflow.exporter.ipv4_address` field, devices are labeled by their real Management IP, not Docker's bridge IP.
+3.  **Multipliers (Optional)**: If the new switch has a different sampling rate, update the `dictionary` in `logstash-unified.conf`:
     ```ruby
     dictionary => {
-      "10.4.4.93" => "4096"
-      "10.4.4.96" => "2048"  # New device
+      "10.4.4.93" => "4096",
+      "10.4.4.96" => "2048"
     }
     ```
-3.  **Automatic Detection**: Because of `network_mode: host`, the device IP will be automatically captured from the packet source. No other changes are required.
 
 ---
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `@timestamp` | date | Event time |
-| `device.ip` | ip | Exporter IP |
-| `source.ip` | ip | Source IP address |
-| `destination.ip` | ip | Destination IP address |
-| `network.bytes` | long | Total bytes (Juniper 4096 multiplier applied) |
-| `network.transport`| keyword| Protocol (tcp/udp/icmp) |
-
----
-
-## Troubleshooting
+## Common Troubleshooting
 
 **Error: "Fielddata is disabled"**
-- **Cause**: Fields mapped as `text` accidentally.
-- **Fix**: Re-run `./deploy.sh --frontend` to reapply templates, followed by:
+- **Cause:** A field was accidentally mapped as `text` (likely in a new index created without the template).
+- **Fix:** Re-apply the frontend template and manually rollover the index:
   `curl -k -u elastic:telehouse -X POST "https://10.4.4.87:9200/logstash-flow-write/_rollover"`
 
+**Data Missing After Restart?**
+- Check `docker logs logstash-flow`. If you see "Can't (yet) decode flowset...", just wait for the switch template to arrive.
+
 ---
-*Maintained by TeleHouse/TelePoint NetOps - ValentinBot*
+*Maintained by TeleHouse/TelePoint NetOps*
