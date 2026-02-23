@@ -1,0 +1,37 @@
+[
+  {
+    "type": "visualization",
+    "id": "sankey-viz-01",
+    "attributes": {
+      "title": "Flow Visualization",
+      "visState": "{\"type\":\"lens\",\"params\":{\"type\":\"sankey\",\"layers\":[{\"layerId\":\"layer-1\",\"accessors\":[\"metric-1\"],\"splitBy\":[{\"field\":\"source.ip\",\"type\":\"terms\"},{\"field\":\"destination.ip\",\"type\":\"terms\"}],\"metric\":{\"type\":\"sum\",\"field\":\"network.bytes\"}}]}}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
+      }
+    },
+    "references": [
+      {
+        "name": "indexpattern-0",
+        "type": "index-pattern",
+        "id": "unified-flow-pattern"
+      }
+    ]
+  },
+  {
+    "type": "dashboard",
+    "id": "flow-dashboard-01",
+    "attributes": {
+      "title": "Network Traffic Dashboard",
+      "panelsJSON": "[{\"gridData\":{\"w\":24,\"h\":15,\"x\":0,\"y\":0,\"i\":\"1\"},\"version\":\"9.0.0\",\"panelIndex\":\"1\",\"embeddableConfig\":{},\"panelRefName\":\"panel_0\"}]"
+    },
+    "references": [
+      {
+        "name": "panel_0",
+        "type": "visualization",
+        "id": "sankey-viz-01"
+      }
+    ]
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "persistent-ssh": {
+      "command": "/home/valentinbot/.openclaw/terminal-venv/bin/python3",
+      "args": [
+        "/home/valentinbot/.openclaw/workspace/projects/persistent_terminal/persistent_terminal.py"
+      ],
+      "description": "Interactive SSH"
+    }
+  }
+}

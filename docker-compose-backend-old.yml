@@ -1,0 +1,40 @@
+version: '3.3'
+
+services:
+  es-remote:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.2.4
+    container_name: es-remote
+    environment:
+      - node.name=es-remote
+      - cluster.name=netflow-cluster
+      - discovery.seed_hosts=10.4.4.87:9300,10.4.4.87:9301
+      - cluster.initial_master_nodes=es-frontend
+      - network.publish_host=10.4.4.21
+      - network.bind_host=0.0.0.0
+      - xpack.security.enabled=true
+      - xpack.security.transport.ssl.enabled=true
+      - xpack.security.transport.ssl.verification_mode=certificate
+      - bootstrap.memory_lock=true
+      - 'ES_JAVA_OPTS=-Xms1g -Xmx1g'
+      - ELASTIC_PASSWORD=telehouse
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+      - ./certs:/usr/share/elasticsearch/config/certs:ro
+    network_mode: host
+    restart: unless-stopped
+
+  logstash-flow:
+    image: docker.elastic.co/logstash/logstash:9.2.4
+    container_name: logstash-flow
+    environment:
+      - xpack.monitoring.enabled=false
+      - ELASTIC_PASSWORD=telehouse
+    volumes:
+      - ./logstash-unified.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+      - ./certs:/usr/share/logstash/config/certs:ro
+    network_mode: host
+    restart: unless-stopped
