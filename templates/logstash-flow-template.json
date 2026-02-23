@@ -1,1 +1,56 @@
-{"index_templates":[{"name":"logstash-flow-template","index_template":{"index_patterns":["logstash-flow-*"],"template":{"settings":{"index":{"lifecycle":{"name":"logstash-flow-policy","rollover_alias":"logstash-flow"},"number_of_shards":"1","number_of_replicas":"0"}},"mappings":{"dynamic_templates":[{"strings_as_keyword":{"mapping":{"type":"keyword"},"match_mapping_type":"string"}}],"properties":{"@timestamp":{"type":"date"},"destination":{"properties":{"port":{"type":"integer"},"ip":{"type":"ip"}}},"source":{"properties":{"port":{"type":"integer"},"ip":{"type":"ip"}}},"network":{"properties":{"bytes":{"type":"long"},"packets":{"type":"long"},"iana_number":{"type":"keyword"}}}}}},"composed_of":[],"priority":200,"created_date_millis":1771492277512,"modified_date_millis":1771600770609}}]}
+{
+  "index_patterns": [
+    "logstash-flow-*"
+  ],
+  "template": {
+    "settings": {
+      "index.lifecycle.name": "logstash-flow-policy",
+      "index.lifecycle.rollover_alias": "logstash-flow-write",
+      "index.routing.allocation.exclude.node_type": "frontend",
+      "number_of_shards": 2,
+      "number_of_replicas": 1
+    },
+    "mappings": {
+      "dynamic_templates": [
+        {
+          "strings_as_keyword": {
+            "match_mapping_type": "string",
+            "mapping": {
+              "type": "keyword"
+            }
+          }
+        }
+      ],
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "device": {
+          "properties": {
+            "ip": { "type": "ip" },
+            "name": { "type": "keyword" }
+          }
+        },
+        "source": {
+          "properties": {
+            "ip": { "type": "ip" },
+            "port": { "type": "integer" }
+          }
+        },
+        "destination": {
+          "properties": {
+            "ip": { "type": "ip" },
+            "port": { "type": "integer" }
+          }
+        },
+        "network": {
+          "properties": {
+            "bytes": { "type": "long" },
+            "packets": { "type": "long" },
+            "transport": { "type": "keyword" },
+            "iana_number": { "type": "keyword" }
+          }
+        }
+      }
+    }
+  },
+  "priority": 100
+}

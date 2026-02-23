@@ -1,22 +1,29 @@
 #!/bin/bash
-# 
-# Keep only the N newest logstash-flow indices to protect disk space.
-# Uses serial index naming established for Unified Pipeline.
-#
+ELASTIC_USER=${1:-"elastic"}
+ELASTIC_PASS=${2:-"telehouse"}
+ELASTIC_URL="https://localhost:9200"
+PATTERN="logstash-flow-*"
+MAX_INDEXES=10
 
-KEEP_COUNT=10
-ES_URL="https://10.4.4.87:9200"
-USER_AUTH="elastic:telehouse"
+log() { echo "$(date '+%Y-%m-%d %H:%M:%S') $1"; }
 
-# Get list of indices, sort them naturally, take all except the last N
-indices_to_delete=$(curl -s -k -u "$USER_AUTH" "$ES_URL/_cat/indices/logstash-flow-*?h=index&s=index" | head -n -$KEEP_COUNT)
+# Get all indexes matching pattern, sorted by creation date (using _cat/indices/s=index sorts alphanumeric, which works for sequential names)
+INDEX_LIST=$(curl -k -s -u $ELASTIC_USER:$ELASTIC_PASS "$ELASTIC_URL/_cat/indices/$PATTERN?s=index&h=index")
+INDEX_COUNT=$(echo "$INDEX_LIST" | grep -v '^$' | wc -l)
 
-if [ -z "$indices_to_delete" ]; then
-    echo "$(date): No indices to prune. (Count <= $KEEP_COUNT)"
-    exit 0
+if [ "$INDEX_COUNT" -gt "$MAX_INDEXES" ]; then
+    log "Found $INDEX_COUNT indexes. Keeping max $MAX_INDEXES. Deleting oldest..."
+    
+    # Calculate how many to delete
+    TO_DELETE_COUNT=$(($INDEX_COUNT - $MAX_INDEXES))
+    
+    # Get the names of the oldest N indexes
+    TO_DELETE_NAMES=$(echo "$INDEX_LIST" | head -n $TO_DELETE_COUNT)
+    
+    for idx in $TO_DELETE_NAMES; do
+        log "Deleting index: $idx"
+        curl -k -s -u $ELASTIC_USER:$ELASTIC_PASS -X DELETE "$ELASTIC_URL/$idx"
+    done
+else
+    log "Total indexes: $INDEX_COUNT. No cleanup needed."
 fi
-
-for idx in $indices_to_delete; do
-    echo "$(date): Deleting old index: $idx"
-    curl -s -k -u "$USER_AUTH" -X DELETE "$ES_URL/$idx"
-done

@@ -1,0 +1,2 @@
+FROM docker.elastic.co/logstash/logstash:9.2.4
+RUN bin/logstash-plugin install logstash-codec-sflow

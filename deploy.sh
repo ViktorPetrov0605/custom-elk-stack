@@ -29,11 +29,18 @@ else
 fi
 
 create_example_config() {
-    cat > "$CONFIG_FILE" << 'EOF'
+    cat > "$CONFIG_FILE" << EOF
 # Deployment Configuration
 CLUSTER_NAME="netflow-cluster"
 STACK_VERSION="9.2.4"
-ELASTIC_PASSWORD="CHANGEME"
+ELASTIC_PASSWORD="telehouse"
+KIBANA_PASSWORD="telehouse"
+
+# Generated encryption keys: openssl rand -base64 32
+KIBANA_ENCRYPTION_KEY="$(openssl rand -base64 32)"
+KIBANA_SECURITY_KEY="$(openssl rand -base64 32)"
+KIBANA_REPORTING_KEY="$(openssl rand -base64 32)"
+
 FRONTEND_IP="10.4.4.87"
 BACKEND_IPS="10.4.4.21,10.4.4.90"
 EOF
@@ -48,13 +55,41 @@ load_config() {
     source "$CONFIG_FILE"
 }
 
+create_env_file() {
+    cat > "$SCRIPT_DIR/.env" << EOF
+CLUSTER_NAME=$CLUSTER_NAME
+STACK_VERSION=$STACK_VERSION
+ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+KIBANA_PASSWORD=$KIBANA_PASSWORD
+KIBANA_ENCRYPTION_KEY=$KIBANA_ENCRYPTION_KEY
+KIBANA_SECURITY_KEY=$KIBANA_SECURITY_KEY
+KIBANA_REPORTING_KEY=$KIBANA_REPORTING_KEY
+FRONTEND_IP=$FRONTEND_IP
+EOF
+    log_info "Created .env file"
+}
+
 deploy_frontend() {
     log_info "Deploying Frontend (ES + Kibana)..."
+    create_env_file
     $DC -f docker-compose-frontend.yml up -d
 }
 
 deploy_backend() {
     log_info "Deploying Backend (Collector)..."
+    local current_ip=$(hostname -I | awk '{print \$1}')
+    
+    # Check if we're on a backend server or if user forces it
+    # For automated scripts, we just assume this is a backend if called with --backend
+    
+    cat > "$SCRIPT_DIR/.env" << EOF
+CLUSTER_NAME=$CLUSTER_NAME
+STACK_VERSION=$STACK_VERSION
+ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+FRONTEND_IP=$FRONTEND_IP
+BACKEND_IP=$current_ip
+EOF
+
     $DC -f docker-compose-backend.yml up -d
 }
 
@@ -66,10 +101,21 @@ apply_templates() {
         -H "Content-Type: application/json" -d @templates/logstash-flow-policy.json
     
     # 2. Index Template
-    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "https://$FRONTEND_IP:9200/_index_template/logstash-flow-template" \
+    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "https://$FRONTEND_IP:9200/_index_template/logstash-flow" \
         -H "Content-Type: application/json" -d @templates/logstash-flow-template.json
+        
+    # 3. Bootstrap initial index
+    log_info "Bootstrapping initial serialized index..."
+    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "https://$FRONTEND_IP:9200/%3Clogstash-flow-%7Bnow%2Fd%7D-000001%3E" \
+        -H "Content-Type: application/json" -d '{"aliases": {"logstash-flow-write": {"is_write_index": true}}}'
     
-    log_success "Templates applied to https://$FRONTEND_IP:9200"
+    log_success "Templates and bootstrap applied to https://$FRONTEND_IP:9200"
+}
+
+setup_cron() {
+    log_info "Setting up hourly maintenance cron job..."
+    (crontab -l 2>/dev/null | grep -v "prune_indices.sh"; echo "0 * * * * $SCRIPT_DIR/scripts/prune_indices.sh $ELASTIC_PASSWORD >> $SCRIPT_DIR/maintenance.log 2>&1") | crontab -
+    log_success "Cron job established."
 }
 
 import_dashboards() {
@@ -85,7 +131,7 @@ import_dashboards() {
 
 case "$1" in
     --generate) create_example_config ;;
-    --frontend) load_config; deploy_frontend; apply_templates ;;
+    --frontend) load_config; deploy_frontend; apply_templates; setup_cron ;;
     --backend)  load_config; deploy_backend ;;
     --import)   load_config; import_dashboards ;;
     *) echo "Usage: $0 {--generate|--frontend|--backend|--import}" ;;

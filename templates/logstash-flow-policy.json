@@ -1,1 +1,14 @@
-{"logstash-flow-policy":{"version":9,"modified_date":"2026-02-20T15:09:31.660Z","policy":{"phases":{"delete":{"min_age":"7d","actions":{"delete":{"delete_searchable_snapshot":true}}},"hot":{"min_age":"0ms","actions":{"rollover":{"max_size":"10gb"}}}}},"in_use_by":{"indices":["logstash-flow-2026.02.20","logstash-flow-2026.02.20-000001"],"data_streams":[],"composable_templates":["logstash-flow-template"]}}}
+{
+  "policy": {
+    "phases": {
+      "hot": {
+        "min_age": "0ms",
+        "actions": {
+          "rollover": {
+            "max_primary_shard_size": "10gb"
+          }
+        }
+      }
+    }
+  }
+}
