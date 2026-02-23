@@ -2,7 +2,7 @@
 
 Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) and sFlow (Cisco Nexus) collection. Optimized for TeleHouse/TelePoint environments.
 
-## ⚠️ Critical Deployment Traps (READ FIRST)
+## Critical Deployment Traps (READ FIRST)
 
 *   **PERMISSION DENIED / UID MATCH:** Logstash will crash-loop if the host user's UID doesn't match the internal container expectations. 
     *   *Symptom:* `[FATAL] (LoadError) failure to load file: build.rb (Permission denied)`
