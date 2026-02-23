@@ -42,14 +42,12 @@ services:
       context: .
       dockerfile: Dockerfile-logstash
     container_name: logstash-flow
-    # Set user to match host UID if standard image prevents startup (e.g. 1003:1003 for backend-1)
-    # user: "1000:1000"
+    # SHARE HOST NETWORK: Allows seeing true Source IPs of router/switch packets
+    network_mode: host
+    command: /usr/share/logstash/bin/logstash -f /usr/share/logstash/pipeline/logstash-unified.conf
     volumes:
       - ./logstash-unified.conf:/usr/share/logstash/pipeline/logstash-unified.conf
       - ./certs/ca/ca.crt:/usr/share/logstash/ca.crt
-    ports:
-      - "2050:2050/udp"
-      - "6343:6343/udp"
     environment:
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
       - QUEUE_TYPE=persisted
