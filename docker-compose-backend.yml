@@ -42,7 +42,7 @@ services:
       context: .
       dockerfile: Dockerfile-logstash
     container_name: logstash-flow
-    # SHARE HOST NETWORK: Allows seeing true Source IPs of router/switch packets
+    # Using host network to see real Source IPs
     network_mode: host
     command: /usr/share/logstash/bin/logstash -f /usr/share/logstash/pipeline/logstash-unified.conf
     volumes:
@@ -50,6 +50,7 @@ services:
       - ./certs/ca/ca.crt:/usr/share/logstash/ca.crt
     environment:
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - ELASTICSEARCH_HOST=localhost
       - QUEUE_TYPE=persisted
       - QUEUE_MAX_BYTES=1gb
     depends_on:
