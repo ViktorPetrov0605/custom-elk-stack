@@ -72,7 +72,21 @@ The system is configured for **Serialized Rollover**:
 
 ---
 
-## Analytics Schema
+## Scaling: Adding Multiple Netflow Devices
+
+To add additional NetFlow sources (e.g., more Juniper or Cisco switches) without manual configuration:
+
+1.  **Configure Switch**: Point NetFlow exports to your Backend IP on port **2050**.
+2.  **Mapping (Optional)**: If the new switch has a different sampling rate (e.g., 2048 instead of 4096), add it to the `dictionary` in `logstash-unified.conf`:
+    ```ruby
+    dictionary => {
+      "10.4.4.93" => "4096"
+      "10.4.4.96" => "2048"  # New device
+    }
+    ```
+3.  **Automatic Detection**: Because of `network_mode: host`, the device IP will be automatically captured from the packet source. No other changes are required.
+
+---
 
 | Field | Type | Description |
 |-------|------|-------------|
