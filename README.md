@@ -2,7 +2,7 @@
 
 Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) and sFlow (Cisco Nexus) collection.
 
-## 🚀 Key Improvements (2026.02.20)
+## Key Improvements (2026.02.20)
 - **Automatic Rollover**: Indices now roll over automatically at **10GB** to optimize shard performance.
 - **Strict Mapping**: Explicit field types (IP, Keyword, Long) prevent Kibana "Fielddata" errors.
 - **Sankey AS Analysis**: Brand new interactive Sankey diagram for Source-to-Destination AS flow analysis.
@@ -10,7 +10,7 @@ Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) an
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 - **Frontend (10.4.4.87)**:
   - 2x Elasticsearch Nodes (Master/Data)
@@ -21,7 +21,7 @@ Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) an
 
 ---
 
-## 📦 Repository Structure
+## Repository Structure
 
 - `deploy.sh`: Unified deployment script for Frontend/Backend.
 - `logstash-unified.conf`: The active multi-protocol Logstash pipeline.
@@ -34,7 +34,7 @@ Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) an
 
 ---
 
-## ⚙️ Setup & Deployment
+## Setup & Deployment
 
 ### 1. Configure the Environment
 Generate and edit the configuration file:
@@ -61,7 +61,7 @@ Run on both 10.4.4.21 and 10.4.4.90:
 
 ---
 
-## 🗑️ Index Management (ILM)
+## Index Management (ILM)
 
 The system is configured for **Rollover-based indexing**:
 - **Write Alias**: `logstash-flow`
@@ -76,7 +76,7 @@ To manually enforce a strict count of 10 indices (deleting the oldest), use the 
 
 ---
 
-## 📊 Analytics Schema
+## Analytics Schema
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -88,7 +88,7 @@ To manually enforce a strict count of 10 indices (deleting the oldest), use the 
 
 ---
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 **Common: "Fielddata is disabled"**
 - **Cause**: Elasticsearch guessed a field as "text" instead of "keyword/ip".
