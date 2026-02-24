@@ -62,6 +62,26 @@ load_config() {
     source "$CONFIG_FILE"
 }
 
+create_unicast_hosts() {
+    local unicast_file="$SCRIPT_DIR/unicast_hosts.txt"
+    
+    # Start fresh
+    # Add Frontend
+    echo "$FRONTEND_IP:9300" > "$unicast_file"
+    echo "$FRONTEND_IP:9301" >> "$unicast_file"
+    
+    # Add Backends from comma list
+    IFS=',' read -ra BACKEND_ARRAY <<< "$BACKEND_IPS"
+    for ip in "${BACKEND_ARRAY[@]}"; do
+        ip=$(echo "$ip" | xargs) # trim
+        if [ ! -z "$ip" ] && [ "$ip" != "$FRONTEND_IP" ]; then
+            echo "$ip:9300" >> "$unicast_file"
+        fi
+    done
+    
+    log_info "Generated unicast_hosts.txt with $(wc -l < "$unicast_file") entries"
+}
+
 create_env_file() {
     cat > "$SCRIPT_DIR/.env" << EOF
 CLUSTER_NAME=$CLUSTER_NAME
@@ -83,6 +103,7 @@ EOF
 deploy_frontend() {
     log_info "Deploying Frontend (ES + Kibana)..."
     create_env_file
+    create_unicast_hosts
     $DC -f docker-compose-frontend.yml up -d
 }
 
