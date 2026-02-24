@@ -33,6 +33,16 @@ create_example_config() {
 # Deployment Configuration
 CLUSTER_NAME="netflow-cluster"
 STACK_VERSION="9.2.4"
+LICENSE="basic"
+MEM_LIMIT="4294967296"
+
+# Connectivity
+FRONTEND_IP="{YOUR_FRONTEND_IP}"
+BACKEND_IPS="{YOUR_BACKEND_IP_1},{YOUR_BACKEND_IP_2}"
+ES_PORT="9200"
+KIBANA_PORT="5601"
+
+# Security
 ELASTIC_PASSWORD="telehouse"
 KIBANA_PASSWORD="telehouse"
 
@@ -40,9 +50,6 @@ KIBANA_PASSWORD="telehouse"
 KIBANA_ENCRYPTION_KEY="$(openssl rand -base64 32)"
 KIBANA_SECURITY_KEY="$(openssl rand -base64 32)"
 KIBANA_REPORTING_KEY="$(openssl rand -base64 32)"
-
-FRONTEND_IP="{YOUR_FRONTEND_IP}"
-BACKEND_IPS="{YOUR_BACKEND_IP_1},{YOUR_BACKEND_IP_2}"
 EOF
     log_info "Example config created at: $CONFIG_FILE"
 }
@@ -59,12 +66,16 @@ create_env_file() {
     cat > "$SCRIPT_DIR/.env" << EOF
 CLUSTER_NAME=$CLUSTER_NAME
 STACK_VERSION=$STACK_VERSION
+LICENSE=${LICENSE:-basic}
+MEM_LIMIT=${MEM_LIMIT:-4294967296}
 ELASTIC_PASSWORD=$ELASTIC_PASSWORD
 KIBANA_PASSWORD=$KIBANA_PASSWORD
 KIBANA_ENCRYPTION_KEY=$KIBANA_ENCRYPTION_KEY
 KIBANA_SECURITY_KEY=$KIBANA_SECURITY_KEY
 KIBANA_REPORTING_KEY=$KIBANA_REPORTING_KEY
 FRONTEND_IP=$FRONTEND_IP
+ES_PORT=${ES_PORT:-9200}
+KIBANA_PORT=${KIBANA_PORT:-5601}
 EOF
     log_info "Created .env file"
 }
@@ -77,17 +88,17 @@ deploy_frontend() {
 
 deploy_backend() {
     log_info "Deploying Backend (Collector)..."
-    local current_ip=$(hostname -I | awk '{print \$1}')
-    
-    # Check if we're on a backend server or if user forces it
-    # For automated scripts, we just assume this is a backend if called with --backend
+    local current_ip=$(hostname -I | awk '{print $1}')
     
     cat > "$SCRIPT_DIR/.env" << EOF
 CLUSTER_NAME=$CLUSTER_NAME
 STACK_VERSION=$STACK_VERSION
+LICENSE=${LICENSE:-basic}
+MEM_LIMIT=${MEM_LIMIT:-4294967296}
 ELASTIC_PASSWORD=$ELASTIC_PASSWORD
 FRONTEND_IP=$FRONTEND_IP
 BACKEND_IP=$current_ip
+ES_PORT=${ES_PORT:-9200}
 EOF
 
     $DC -f docker-compose-backend.yml up -d
@@ -95,26 +106,27 @@ EOF
 
 apply_templates() {
     log_info "Applying ILM Policy and Index Templates from templates/ folder..."
+    local ES_URL="https://$FRONTEND_IP:${ES_PORT:-9200}"
     
     # 1. ILM Policy
-    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "https://$FRONTEND_IP:9200/_ilm/policy/logstash-flow-policy" \
+    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/_ilm/policy/logstash-flow-policy" \
         -H "Content-Type: application/json" -d @templates/logstash-flow-policy.json
     
     # 2. Index Template
-    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "https://$FRONTEND_IP:9200/_index_template/logstash-flow" \
+    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/_index_template/logstash-flow" \
         -H "Content-Type: application/json" -d @templates/logstash-flow-template.json
         
     # 3. Bootstrap initial index
     log_info "Bootstrapping initial serialized index..."
-    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "https://$FRONTEND_IP:9200/%3Clogstash-flow-%7Bnow%2Fd%7D-000001%3E" \
+    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/%3Clogstash-flow-%7Bnow%2Fd%7D-000001%3E" \
         -H "Content-Type: application/json" -d '{"aliases": {"logstash-flow-write": {"is_write_index": true}}}'
     
-    log_success "Templates and bootstrap applied to https://$FRONTEND_IP:9200"
+    log_success "Templates and bootstrap applied to $ES_URL"
 }
 
 setup_cron() {
     log_info "Setting up hourly maintenance cron job..."
-    (crontab -l 2>/dev/null | grep -v "prune_indices.sh"; echo "0 * * * * $SCRIPT_DIR/scripts/prune_indices.sh $ELASTIC_PASSWORD >> $SCRIPT_DIR/maintenance.log 2>&1") | crontab -
+    (crontab -l 2>/dev/null | grep -v "prune_indices.sh"; echo "0 * * * * $SCRIPT_DIR/scripts/prune_indices.sh elastic $ELASTIC_PASSWORD >> $SCRIPT_DIR/maintenance.log 2>&1") | crontab -
     log_success "Cron job established."
 }
 
@@ -123,7 +135,7 @@ import_dashboards() {
     for f in dashboards/*.ndjson; do
         log_info "Importing $f..."
         curl -s -k -u "elastic:$ELASTIC_PASSWORD" \
-            -X POST "http://$FRONTEND_IP:5601/api/saved_objects/_import?overwrite=true" \
+            -X POST "http://$FRONTEND_IP:${KIBANA_PORT:-5601}/api/saved_objects/_import?overwrite=true" \
             -H "kbn-xsrf: true" --form file=@"$f"
     done
     log_success "Dashboard import process complete."
