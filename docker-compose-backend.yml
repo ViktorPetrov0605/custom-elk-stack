@@ -1,5 +1,5 @@
 # Backend Node - Elasticsearch + Logstash Collector
-# Deploy on: 192.168.1.21 (NetFlow) or 192.168.1.90 (sFlow)
+# Deploy on: {YOUR_BACKEND_IP_1} (NetFlow) or {YOUR_BACKEND_IP_2} (sFlow)
 
 version: "3.8"
 services:
