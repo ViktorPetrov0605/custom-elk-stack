@@ -62,18 +62,83 @@ load_config() {
     source "$CONFIG_FILE"
 }
 
+generate_certificates() {
+    log_info "Checking certificates..."
+    local certs_dir="$SCRIPT_DIR/certs"
+
+    if [ -f "$certs_dir/ca/ca.crt" ] && [ -f "$certs_dir/wildcard/wildcard.crt" ]; then
+        log_success "Certificates already exist"
+        return 0
+    fi
+
+    log_info "Generating certificates..."
+    mkdir -p "$certs_dir/ca" "$certs_dir/wildcard"
+
+    # Generate CA
+    openssl req -x509 -new -nodes -sha256 -days 3650 \
+        -subj "/CN=elasticsearch-ca" \
+        -addext "basicConstraints=critical,CA:TRUE" \
+        -addext "keyUsage=critical,keyCertSign,cRLSign" \
+        -keyout "$certs_dir/ca/ca.key" \
+        -out "$certs_dir/ca/ca.crt" 2>/dev/null
+
+    # Create SAN config
+    cat > "$certs_dir/wildcard.cnf" << EOF
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+
+[req_distinguished_name]
+CN = *.flow-monitoring.local
+
+[v3_req]
+basicConstraints = CA:FALSE
+keyUsage = critical, digitalSignature, keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth, clientAuth
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = localhost
+DNS.2 = *.flow-monitoring.local
+DNS.3 = elasticsearch
+DNS.4 = kibana
+DNS.5 = es-remote
+IP.1 = 127.0.0.1
+IP.2 = $FRONTEND_IP
+EOF
+
+    # Generate and sign certificate
+    openssl req -new -nodes -sha256 \
+        -config "$certs_dir/wildcard.cnf" \
+        -keyout "$certs_dir/wildcard/wildcard.key" \
+        -out "$certs_dir/wildcard/wildcard.csr" 2>/dev/null
+
+    openssl x509 -req -sha256 -days 3650 \
+        -in "$certs_dir/wildcard/wildcard.csr" \
+        -CA "$certs_dir/ca/ca.crt" \
+        -CAkey "$certs_dir/ca/ca.key" \
+        -CAcreateserial \
+        -extensions v3_req \
+        -extfile "$certs_dir/wildcard.cnf" \
+        -out "$certs_dir/wildcard/wildcard.crt" 2>/dev/null
+
+    chmod 600 "$certs_dir/ca/ca.key" "$certs_dir/wildcard/wildcard.key" 2>/dev/null || true
+    chmod 755 "$certs_dir"
+
+    log_success "Certificates generated"
+}
+
 create_unicast_hosts() {
     local unicast_file="$SCRIPT_DIR/unicast_hosts.txt"
     
     # Start fresh
-    # Add Frontend
     echo "$FRONTEND_IP:9300" > "$unicast_file"
     echo "$FRONTEND_IP:9301" >> "$unicast_file"
     
-    # Add Backends from comma list
     IFS=',' read -ra BACKEND_ARRAY <<< "$BACKEND_IPS"
     for ip in "${BACKEND_ARRAY[@]}"; do
-        ip=$(echo "$ip" | xargs) # trim
+        ip=$(echo "$ip" | xargs)
         if [ ! -z "$ip" ] && [ "$ip" != "$FRONTEND_IP" ]; then
             echo "$ip:9300" >> "$unicast_file"
         fi
@@ -104,6 +169,7 @@ deploy_frontend() {
     log_info "Deploying Frontend (ES + Kibana)..."
     create_env_file
     create_unicast_hosts
+    generate_certificates
     $DC -f docker-compose-frontend.yml up -d
 }
 
