@@ -41,8 +41,8 @@ KIBANA_ENCRYPTION_KEY="$(openssl rand -base64 32)"
 KIBANA_SECURITY_KEY="$(openssl rand -base64 32)"
 KIBANA_REPORTING_KEY="$(openssl rand -base64 32)"
 
-FRONTEND_IP="10.4.4.87"
-BACKEND_IPS="10.4.4.21,10.4.4.90"
+FRONTEND_IP="192.168.1.10"
+BACKEND_IPS="192.168.1.21,192.168.1.90"
 EOF
     log_info "Example config created at: $CONFIG_FILE"
 }

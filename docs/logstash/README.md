@@ -166,17 +166,17 @@ ECS-compliant mapping for:
 
 **Filter by exporting device:**
 ```
-host.ip: 10.4.4.93
+host.ip: 10.0.0.93
 ```
 
 **Filter by source device:**
 ```
-source.ip: 10.4.4.93
+source.ip: 10.0.0.93
 ```
 
 **Filter by destination:**
 ```
-destination.ip: 10.4.4.3
+destination.ip: 10.0.0.3
 ```
 
 ### Available Fields
@@ -195,28 +195,28 @@ destination.ip: 10.4.4.3
 
 **View all flows from a specific exporter:**
 ```
-host.ip: 10.4.4.93
+host.ip: 10.0.0.93
 ```
 
 **View flows between two devices:**
 ```
-(source.ip: 10.4.4.93 AND destination.ip: 10.4.4.3) OR
-(source.ip: 10.4.4.3 AND destination.ip: 10.4.4.93)
+(source.ip: 10.0.0.93 AND destination.ip: 10.0.0.3) OR
+(source.ip: 10.0.0.3 AND destination.ip: 10.0.0.93)
 ```
 
 **View traffic by protocol:**
 ```
-host.ip: 10.4.4.93 AND network.transport: tcp
+host.ip: 10.0.0.93 AND network.transport: tcp
 ```
 
 **View high-volume flows:**
 ```
-host.ip: 10.4.4.93 AND network.bytes > 1000000
+host.ip: 10.0.0.93 AND network.bytes > 1000000
 ```
 
 **View conversations on specific port:**
 ```
-(destination.port: 443 OR source.port: 443) AND host.ip: 10.4.4.93
+(destination.port: 443 OR source.port: 443) AND host.ip: 10.0.0.93
 ```
 
 **Filter by flow locality:**
@@ -228,14 +228,14 @@ flow.locality: public        # Both sides are public
 
 **Exclude specific traffic:**
 ```
-host.ip: 10.4.4.93 AND NOT destination.port: (22 OR 53)
+host.ip: 10.0.0.93 AND NOT destination.port: (22 OR 53)
 ```
 
 ### Using Dashboard Filters
 
 1. Open any Unified Flow dashboard
 2. Click the **KQL search bar** at the top
-3. Type your filter (e.g., `host.ip: 10.4.4.93`)
+3. Type your filter (e.g., `host.ip: 10.0.0.93`)
 4. Press **Enter** - all visualizations update automatically
 
 ### Dashboard-Specific Filters
@@ -341,7 +341,7 @@ curl -k -u elastic:password \
   -H "Content-Type: application/json" \
   -d '{
     "query": {
-      "term": { "host.ip": "10.4.4.93" }
+      "term": { "host.ip": "10.0.0.93" }
     },
     "aggs": {
       "total_flows": { "value_count": { "field": "_id" } },
