@@ -6,6 +6,28 @@
         "actions": {
           "rollover": {
             "max_primary_shard_size": "10gb"
+          },
+          "set_priority": {
+            "priority": 100
+          }
+        }
+      },
+      "warm": {
+        "min_age": "1d",
+        "actions": {
+          "forcemerge": {
+            "max_num_segments": 1
+          },
+          "set_priority": {
+            "priority": 50
+          }
+        }
+      },
+      "delete": {
+        "min_age": "3d",
+        "actions": {
+          "delete": {
+            "delete_searchable_snapshot": true
           }
         }
       }
