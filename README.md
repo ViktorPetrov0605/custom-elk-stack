@@ -157,4 +157,3 @@ Adding new switches (e.g., a new Juniper at {NEW_SWITCH_IP}) is now automatic:
 - Check `docker logs logstash-flow`. If you see "Can't (yet) decode flowset...", just wait for the switch template to arrive.
 
 ---
-*Maintained by TeleHouse/TelePoint NetOps*
