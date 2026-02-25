@@ -41,16 +41,92 @@ The system is configured for a **Size + Count** rotation:
 
 ---
 
-## Setup & Deployment
+## 🛠 Setup & Deployment (Step-by-Step)
 
-1.  **Configure Environment**:
-    `./deploy.sh --generate`
-2.  **Deploy Frontend ({YOUR_FRONTEND_IP})**:
-    `./deploy.sh --frontend`
-3.  **Deploy Backends (Collectors)**:
-    `./deploy.sh --backend`
-4.  **Import Dashboards**:
-    `./deploy.sh --import`
+Follow these steps in the exact order listed. Skipping steps or changing the order will lead to cluster synchronization failures.
+
+### Phase 0: Prerequisites
+Ensure all participating servers (Frontend and Backends) meet the following requirements:
+*   **Docker & Docker Compose:** Installed and running (`docker compose version` should return >2.20).
+*   **Operating System:** Linux (Ubuntu/Debian recommended).
+*   **Networking:** Port **9300** and **9301** must be open between all nodes for cluster communication.
+*   **Hardware:** Minimum 8GB RAM per node (ES requires significant heap memory).
+
+### Phase 1: Global Configuration (On Frontend Node)
+1.  Clone this repository to the server intended to be the **Frontend (87)**.
+2.  Generate the base configuration template:
+    ```bash
+    ./deploy.sh --generate
+    ```
+3.  Edit the generated `deploy.conf` using `nano` or `vi`:
+    *   `FRONTEND_IP`: The static IP of the current server.
+    *   `BACKEND_IPS`: Comma-separated list of all other nodes (e.g., `10.4.4.21,10.4.4.90`).
+    *   `ELASTIC_PASSWORD`: Set your secure cluster password.
+    *   *Note:* The script will automatically generate Kibana encryption keys for you during this step.
+
+### Phase 2: Mastering the Cluster (Deploy Frontend)
+1.  Execute the frontend deployment:
+    ```bash
+    ./deploy.sh --frontend
+    ```
+2.  **What this does automatically:**
+    *   Creates a `.env` file with your credentials.
+    *   Generates `unicast_hosts.txt` (The cluster's phonebook).
+    *   **Generates SSL Certificates:** Creates the Root CA and Wildcard keys in the `./certs` folder.
+    *   Starts Elasticsearch (2 nodes) and Kibana.
+    *   Applies the 10GB ILM policies and Index Templates via API.
+    *   Bootstraps the first serialized index (`-000001`).
+    *   Installs the hourly maintenance cron job.
+
+### Phase 3: The Diplomatic Mission (Certificate Transfer)
+**CRITICAL:** The backends cannot join the cluster without the keys generated in Phase 2.
+1.  From the Frontend node, securely copy the project files to the Backend nodes:
+    ```bash
+    # Run once for each backend
+    scp -r ~/custom-elk-stack {USER}@{BACKEND_IP}:~/
+    ```
+2.  Verify that the `~/custom-elk-stack/certs` directory exists and is populated on the backend servers.
+
+### Phase 4: Setting up Remote Nodes (Deploy Backends)
+Perform these steps on **each** Backend server:
+1.  **Check the UID Trap:**
+    Run `id`. If your UID is **not 1000** (e.g., it is `1003`):
+    *   Open `docker-compose-backend.yml`.
+    *   Find the `logstash` service.
+    *   Uncomment and set `user: "1003:1003"` to match your system.
+2.  **Initialize the Node:**
+    ```bash
+    ./deploy.sh --backend
+    ```
+3.  **Automatic Discovery:** The script will detect the local IP, create a specific `.env` file, and point the node back to the Frontend master. The node will join the cluster and immediately begin readying the collectors.
+
+### Phase 5: Verification & Dashboards
+1.  **Check Cluster Health:** On the Frontend, run:
+    ```bash
+    curl -k -u elastic:{YOUR_PASSWORD} https://localhost:9200/_cat/nodes?v
+    ```
+    *All nodes should be visible and listed as 'di' or 'dim'.*
+2.  **Import Visualizations:** On the Frontend, run:
+    ```bash
+    ./deploy.sh --import
+    ```
+3.  **Access UI:** Open `http://{FRONTEND_IP}:5601` in your browser. Log in as `elastic`.
+
+### Phase 6: Final Audit
+Use these commands on the **Frontend** server to verify that all automation (ILM, Cron, Dashboards) is functioning correctly:
+
+*   **Check ILM Policy:**
+    ```bash
+    curl -k -u elastic:{ELASTIC_PASSWORD} -X GET "https://localhost:9200/_ilm/policy/logstash-flow-policy?pretty"
+    ```
+*   **Check Maintenance Cronjob:**
+    ```bash
+    crontab -l
+    ```
+*   **Verify Dashboard Import:**
+    ```bash
+    curl -s -u elastic:{ELASTIC_PASSWORD} -X GET "http://localhost:5601/api/saved_objects/_find?type=dashboard" -H "kbn-xsrf: true"
+    ```
 
 ---
 
