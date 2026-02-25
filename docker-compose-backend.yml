@@ -50,6 +50,7 @@ services:
       - ./certs/ca/ca.crt:/usr/share/logstash/ca.crt
     environment:
       - ELASTIC_PASSWORD=${ELASTIC_PASSWORD}
+      - FRONTEND_IP=${FRONTEND_IP}
       - ELASTICSEARCH_HOST=localhost
       - QUEUE_TYPE=persisted
       - QUEUE_MAX_BYTES=1gb
