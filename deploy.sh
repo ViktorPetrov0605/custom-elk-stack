@@ -220,6 +220,9 @@ apply_templates() {
         log_success "Index Template acknowledged" || log_error "Index Template failed"
         
     # 3. Bootstrap initial index
+    log_info "Clearing any conflicting concrete indices..."
+    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X DELETE "$ES_URL/logstash-flow-write" >/dev/null 2>&1 || true
+    
     log_info "Bootstrapping initial serialized index..."
     curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/%3Clogstash-flow-%7Bnow%2Fd%7D-000001%3E" \
         -H "Content-Type: application/json" -d '{"aliases": {"logstash-flow-write": {"is_write_index": true}}}' | grep -q "\"acknowledged\":true" && \
