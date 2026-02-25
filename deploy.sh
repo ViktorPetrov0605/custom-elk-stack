@@ -165,6 +165,15 @@ EOF
     log_info "Created .env file"
 }
 
+check_root() {
+    if [[ $EUID -eq 0 ]]; then
+        log_warn "RUNNING AS ROOT USER DETECTED!"
+        log_warn "Running this script as root may cause unpredictable file permission issues."
+        log_warn "It is recommended to run as a standard user with 'docker' group access."
+        echo ""
+    fi
+}
+
 deploy_frontend() {
     log_info "DEPLOYING FRONTEND INFRASTRUCTURE (ES + Kibana)"
     create_env_file
@@ -251,8 +260,8 @@ import_dashboards() {
 
 case "$1" in
     --generate) create_example_config ;;
-    --frontend) load_config; deploy_frontend ;;
-    --backend)  load_config; deploy_backend ;;
-    --import)   load_config; apply_templates; setup_cron; import_dashboards ;;
+    --frontend) check_root; load_config; deploy_frontend ;;
+    --backend)  check_root; load_config; deploy_backend ;;
+    --import)   check_root; load_config; apply_templates; setup_cron; import_dashboards ;;
     *) echo "Usage: $0 {--generate|--frontend|--backend|--import}" ;;
 esac

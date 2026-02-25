@@ -1,7 +1,6 @@
 # Backend Node - Elasticsearch + Logstash Collector
 # Deploy on: {YOUR_BACKEND_IP_1} (NetFlow) or {YOUR_BACKEND_IP_2} (sFlow)
 
-version: "3.8"
 services:
   es-remote:
     image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
