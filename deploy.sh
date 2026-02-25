@@ -138,7 +138,7 @@ create_unicast_hosts() {
     
     IFS=',' read -ra BACKEND_ARRAY <<< "$BACKEND_IPS"
     for ip in "${BACKEND_ARRAY[@]}"; do
-        ip=$(echo "$ip" | xargs)
+        ip=$(echo "$ip" | xargs) # trim
         if [ ! -z "$ip" ] && [ "$ip" != "$FRONTEND_IP" ]; then
             echo "$ip:9300" >> "$unicast_file"
         fi
@@ -166,11 +166,12 @@ EOF
 }
 
 deploy_frontend() {
-    log_info "Deploying Frontend (ES + Kibana)..."
+    log_info "DEPLOYING FRONTEND INFRASTRUCTURE (ES + Kibana)"
     create_env_file
     create_unicast_hosts
     generate_certificates
     $DC -f docker-compose-frontend.yml up -d
+    log_success "Frontend containers started. Wait 1-2 minutes for initialization before running --import."
 }
 
 deploy_backend() {
@@ -192,46 +193,66 @@ EOF
 }
 
 apply_templates() {
-    log_info "Applying ILM Policy and Index Templates from templates/ folder..."
+    log_info "=========================================="
+    log_info "APPLYING ILM POLICY AND INDEX TEMPLATES"
+    log_info "=========================================="
     local ES_URL="https://$FRONTEND_IP:${ES_PORT:-9200}"
     
     # 1. ILM Policy
+    log_info "Pushing ILM Policy: logstash-flow-policy"
     curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/_ilm/policy/logstash-flow-policy" \
-        -H "Content-Type: application/json" -d @templates/logstash-flow-policy.json
+        -H "Content-Type: application/json" -d @templates/logstash-flow-policy.json | grep -q "acknowledged" && \
+        log_success "ILM Policy acknowledged" || log_error "ILM Policy failed"
     
     # 2. Index Template
+    log_info "Pushing Index Template: logstash-flow"
     curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/_index_template/logstash-flow" \
-        -H "Content-Type: application/json" -d @templates/logstash-flow-template.json
+        -H "Content-Type: application/json" -d @templates/logstash-flow-template.json | grep -q "acknowledged" && \
+        log_success "Index Template acknowledged" || log_error "Index Template failed"
         
     # 3. Bootstrap initial index
     log_info "Bootstrapping initial serialized index..."
     curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/%3Clogstash-flow-%7Bnow%2Fd%7D-000001%3E" \
-        -H "Content-Type: application/json" -d '{"aliases": {"logstash-flow-write": {"is_write_index": true}}}'
-    
-    log_success "Templates and bootstrap applied to $ES_URL"
+        -H "Content-Type: application/json" -d '{"aliases": {"logstash-flow-write": {"is_write_index": true}}}' | grep -q "\"acknowledged\":true" && \
+        log_success "Index bootstrap complete" || log_warn "Index may already exist (expected if re-running)"
 }
 
 setup_cron() {
-    log_info "Setting up hourly maintenance cron job..."
+    log_info "=========================================="
+    log_info "SETTING UP MAINTENANCE CRONJOB"
+    log_info "=========================================="
     (crontab -l 2>/dev/null | grep -v "prune_indices.sh"; echo "0 * * * * $SCRIPT_DIR/scripts/prune_indices.sh elastic $ELASTIC_PASSWORD >> $SCRIPT_DIR/maintenance.log 2>&1") | crontab -
-    log_success "Cron job established."
+    log_success "Hourly maintenance cron established."
 }
 
 import_dashboards() {
-    log_info "Importing Dashboards from dashboards/ folder..."
-    for f in dashboards/*.ndjson; do
-        log_info "Importing $f..."
+    log_info "=========================================="
+    log_info "IMPORTING KIBANA DASHBOARDS"
+    log_info "=========================================="
+    
+    # Check if unified file exists
+    local DASH_FILE="dashboards/unified-flow-dashboards.ndjson"
+    if [ -f "$DASH_FILE" ]; then
+        log_info "Importing consolidated dashboards from $DASH_FILE..."
         curl -s -k -u "elastic:$ELASTIC_PASSWORD" \
             -X POST "http://$FRONTEND_IP:${KIBANA_PORT:-5601}/api/saved_objects/_import?overwrite=true" \
-            -H "kbn-xsrf: true" --form file=@"$f"
-    done
-    log_success "Dashboard import process complete."
+            -H "kbn-xsrf: true" --form file=@"$DASH_FILE" | grep -q "successCount" && \
+            log_success "Dashboards imported successfully" || log_error "Dashboard import failed (check Kibana availability)"
+    else
+        log_warn "Standard dashboard file not found. Trying wildcards..."
+        for f in dashboards/*.ndjson; do
+            log_info "Importing $f..."
+            curl -s -k -u "elastic:$ELASTIC_PASSWORD" \
+                -X POST "http://$FRONTEND_IP:${KIBANA_PORT:-5601}/api/saved_objects/_import?overwrite=true" \
+                -H "kbn-xsrf: true" --form file=@"$f"
+        done
+    fi
 }
 
 case "$1" in
     --generate) create_example_config ;;
-    --frontend) load_config; deploy_frontend; apply_templates; setup_cron ;;
+    --frontend) load_config; deploy_frontend ;;
     --backend)  load_config; deploy_backend ;;
-    --import)   load_config; import_dashboards ;;
+    --import)   load_config; apply_templates; setup_cron; import_dashboards ;;
     *) echo "Usage: $0 {--generate|--frontend|--backend|--import}" ;;
 esac
