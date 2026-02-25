@@ -12,6 +12,9 @@ Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) an
     *   *Action:* Grab a coffee and wait; do not assume the service is broken if `docker ps` is up.
 *   **SSL WARNINGS:** For internal TeleHouse convenience, this setup uses self-signed certificates. 
     *   Always use `curl -k` and `ssl_verification_mode => none`.
+*   **MANDATORY CERTIFICATE TRANSFER:** The `deploy.sh` script generates certificates on the Frontend, but **does not** automatically send them to Backends. 
+    *   *Action:* You must manually copy the `certs/` folder to every Backend server:
+    `scp -r ~/custom-elk-stack/certs thsadmin@{YOUR_BACKEND_IP}:~/custom-elk-stack/`
 
 ---
 
