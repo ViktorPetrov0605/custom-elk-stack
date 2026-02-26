@@ -8,7 +8,7 @@
       "index.lifecycle.rollover_alias": "logstash-flow-write",
       "index.routing.allocation.exclude.node_type": "frontend",
       "number_of_shards": 2,
-      "number_of_replicas": 1
+      "number_of_replicas": 0
     },
     "mappings": {
       "dynamic_templates": [
