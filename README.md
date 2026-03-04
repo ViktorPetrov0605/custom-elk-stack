@@ -34,10 +34,15 @@ Distributed ELK deployment utilizing Logstash for unlimited NetFlow (Juniper) an
 ## Index Management (Serialized)
 
 The system is configured for a **Size + Count** rotation:
-1.  **Rollover (ILM):** Indices rollover automatically when they hit **10GB**.
-2.  **Numbering:** Indices use a serial suffix (`-000001`, `-000002`).
-3.  **Rotation (Cron):** An hourly cron job (`./scripts/prune_indices.sh`) keeps exactly the **latest 10 indices**.
-    *   *Total System Capacity:* ~100GB of flow data.
+1.  **Rollover (ILM):** Indices rollover when **each primary shard** hits **5GB** (2 shards × 5GB = **10GB per index** total).
+2.  **Replicas:** 0 (data is not replicated; each shard exists on exactly one node).
+3.  **Numbering:** Indices use a sequential serial suffix (`-000001`, `-000002`, etc.) without date patterns.
+4.  **Rotation (Cron):** An hourly cron job (`./scripts/prune_indices.sh`) keeps exactly the **latest 10 indices**.
+    *   *Total System Capacity:* ~100GB of flow data (10 indices × 10GB each).
+
+**Sources:**
+- Elasticsearch ILM rollover uses `max_primary_shard_size` which measures total size of all primary shards (replicas excluded) — [Elasticsearch ILM Rollover Docs](https://www.elastic.co/docs/reference/elasticsearch/index-lifecycle-actions/ilm-rollover)
+- Index rollover requires naming pattern `^-.*-\d+$` (e.g., `logstash-flow-000001`) for sequential numbering — [Elasticsearch Rollover Index Requirements](https://www.elastic.co/guide/en/elasticsearch/reference/current/ilm-rollover.html)
 
 ---
 

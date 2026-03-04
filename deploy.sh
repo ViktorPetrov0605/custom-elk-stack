@@ -224,7 +224,7 @@ apply_templates() {
     curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X DELETE "$ES_URL/logstash-flow-write" >/dev/null 2>&1 || true
     
     log_info "Bootstrapping initial serialized index..."
-    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/%3Clogstash-flow-%7Bnow%2Fd%7D-000001%3E" \
+    curl -s -k -u "elastic:$ELASTIC_PASSWORD" -X PUT "$ES_URL/logstash-flow-000001" \
         -H "Content-Type: application/json" -d '{"aliases": {"logstash-flow-write": {"is_write_index": true}}}' | grep -q "\"acknowledged\":true" && \
         log_success "Index bootstrap complete" || log_warn "Index may already exist (expected if re-running)"
 }
