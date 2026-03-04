@@ -134,9 +134,9 @@ openclaw gateway restart
 
 ### ElastiFlow/ELK Stack
 - **Status:** Production
-- **Kibana:** 10.4.4.87
-- **NetFlow:** 10.4.4.21
-- **sFlow:** 10.4.4.90
+- **Kibana:** {YOUR_FRONTEND_IP}
+- **NetFlow:** {YOUR_BACKEND_IP_1}
+- **sFlow:** {YOUR_BACKEND_IP_2}
 
 ---
 
@@ -144,12 +144,12 @@ openclaw gateway restart
 
 | Device | IP | Type | User | Password |
 |--------|-----|------|------|----------|
-| TH-Nexus-1 | 10.4.4.3 | Cisco Nexus | admin | t3l3h0us3 |
-| TH-Nexus-2 | 10.4.4.4 | Cisco Nexus | admin | t3l3h0us3 |
-| Backend-N1 | 10.4.4.21 | Linux | telehouse | T3l3h0us# |
-| Backend-N2 | 10.4.4.90 | Linux | telehouse | T3l3h0us# |
-| Kibana-ES | 10.4.4.87 | ES/Kibana | elastic | telehouse |
-| **RADIUS** | - | All devices | openclaw | Enf2K?zBGsAH_W95 |
+| TH-Nexus-1 | {YOUR_NEXUS_1_IP} | Cisco Nexus | admin | {YOUR_NEXUS_PASSWORD} |
+| TH-Nexus-2 | {YOUR_NEXUS_2_IP} | Cisco Nexus | admin | {YOUR_NEXUS_PASSWORD} |
+| Backend-N1 | {YOUR_BACKEND_IP_1} | Linux | {YOUR_SSH_USER} | {YOUR_SSH_PASSWORD} |
+| Backend-N2 | {YOUR_BACKEND_IP_2} | Linux | {YOUR_SSH_USER} | {YOUR_SSH_PASSWORD} |
+| Kibana-ES | {YOUR_FRONTEND_IP} | ES/Kibana | elastic | {YOUR_ELASTIC_PASSWORD} |
+| **RADIUS** | - | All devices | openclaw | {YOUR_RADIUS_PASSWORD} |
 
 ---
 
@@ -199,7 +199,7 @@ This repo is automatically backed up every hour via cron:
 - **Node Version:** v22.22.0
 - **OS:** Debian 13 (Linux 6.12.63+deb13-amd64)
 - **Workspace:** `/home/valentinbot/.openclaw/workspace`
-- **Gateway:** ws://10.4.4.52:18789
+- **Gateway:** ws://{YOUR_GATEWAY_IP}:18789
 
 ---
 

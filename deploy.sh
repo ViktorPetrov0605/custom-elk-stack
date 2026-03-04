@@ -43,8 +43,8 @@ ES_PORT="9200"
 KIBANA_PORT="5601"
 
 # Security
-ELASTIC_PASSWORD="telehouse"
-KIBANA_PASSWORD="telehouse"
+ELASTIC_PASSWORD="CHANGEME_STRONG_PASSWORD"
+KIBANA_PASSWORD="CHANGEME_STRONG_PASSWORD"
 
 # Generated encryption keys: openssl rand -base64 32
 KIBANA_ENCRYPTION_KEY="$(openssl rand -base64 32)"

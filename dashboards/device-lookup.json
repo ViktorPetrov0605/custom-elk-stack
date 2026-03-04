@@ -1,20 +1,14 @@
 {
-  "description": "Static IP-to-device-name mappings for Kibana dashboard field formatter",
+  "description": "Static IP-to-device-name mappings for Kibana dashboard field formatter. Replace with your network's device IPs and names.",
   "field": "device.ip",
   "formatter": "static_lookup",
   "unknownKeyValue": "",
   "lookupEntries": [
-    {"key": "192.168.36.21", "value": "TP3-Access1"},
-    {"key": "192.168.36.22", "value": "TP3-Access2"},
-    {"key": "192.168.36.25", "value": "TP3-Access3"},
-    {"key": "192.168.36.26", "value": "TP3-Access4"},
-    {"key": "192.168.36.27", "value": "TP3-Access5"},
-    {"key": "192.168.36.28", "value": "TP3-Access6"},
-    {"key": "192.168.36.33", "value": "TP3-Access7"},
-    {"key": "192.168.36.34", "value": "TP3-Access8"},
-    {"key": "192.168.36.35", "value": "TP3-Access9"},
-    {"key": "192.168.36.36", "value": "TP3-Access10"},
-    {"key": "192.168.36.70", "value": "TP3-VPC_Access1"},
-    {"key": "192.168.36.71", "value": "TP3-VPC_Access2"}
+    {"key": "192.168.XX.21", "value": "DEVICE_NAME_1"},
+    {"key": "192.168.XX.22", "value": "DEVICE_NAME_2"},
+    {"key": "192.168.XX.25", "value": "DEVICE_NAME_3"},
+    {"key": "192.168.XX.26", "value": "DEVICE_NAME_4"},
+    {"key": "192.168.XX.27", "value": "DEVICE_NAME_5"},
+    {"key": "192.168.XX.28", "value": "DEVICE_NAME_6"}
   ]
 }

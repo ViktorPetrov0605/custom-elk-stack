@@ -39,3 +39,10 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+# Sensitive data
+MEMORY.md
+deploy.conf
+certs/
+*.key
+*.pem
+*.crt

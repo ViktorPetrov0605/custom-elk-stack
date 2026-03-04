@@ -186,7 +186,7 @@ Adding new switches (e.g., a new Juniper at {NEW_SWITCH_IP}) is now automatic:
 **Error: "Fielddata is disabled"**
 - **Cause:** A field was accidentally mapped as `text` (likely in a new index created without the template).
 - **Fix:** Re-apply the frontend template and manually rollover the index:
-  `curl -k -u elastic:telehouse -X POST "https://{YOUR_FRONTEND_IP}:9200/logstash-flow-write/_rollover"`
+  `curl -k -u elastic:{ELASTIC_PASSWORD} -X POST "https://{YOUR_FRONTEND_IP}:9200/logstash-flow-write/_rollover"`
 
 **Data Missing After Restart?**
 - Check `docker logs logstash-flow`. If you see "Can't (yet) decode flowset...", just wait for the switch template to arrive.

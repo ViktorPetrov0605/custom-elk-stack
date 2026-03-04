@@ -1,6 +1,6 @@
 #!/bin/bash
 ELASTIC_USER=${1:-"elastic"}
-ELASTIC_PASS=${2:-"telehouse"}
+ELASTIC_PASS=${2:-"CHANGEME"}
 ELASTIC_URL="https://localhost:9200"
 PATTERN="logstash-flow-*"
 MAX_INDEXES=10
