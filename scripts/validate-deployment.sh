@@ -90,9 +90,9 @@ fi
 # =============================================================================
 echo -e "${YELLOW}4. Checking ILM Status on Indices...${NC}"
 
-MANAGED_COUNT=$(curl -k -s -u "$ES_AUTH" "$ES_URL/logstash-flow-*/_ilm/explain?pretty" 2>/dev/null | grep -c '"managed":true' 2>/dev/null || echo "0")
+MANAGED_COUNT=$(curl -k -s -u "$ES_AUTH" "$ES_URL/logstash-flow-*/_ilm/explain" 2>/dev/null | grep -o '"managed":true' | wc -l | tr -d '[:space:]')
 
-if [ "$MANAGED_COUNT" -gt 0 ]; then
+if [ "$MANAGED_COUNT" -gt 0 ] 2>/dev/null; then
     log_pass "$MANAGED_COUNT indices managed by ILM"
 else
     log_fail "No indices found with ILM management"
@@ -117,7 +117,7 @@ fi
 echo -e "${YELLOW}6. Current Index Sizes...${NC}"
 
 curl -k -s -u "$ES_AUTH" "$ES_URL/_cat/indices/logstash-flow-*?v&s=index" 2>/dev/null | \
-    awk 'NR<=1 {print} NR>1 && NR<=11 {printf "  %s  %s  %s\n", $1, $3, $5}' || \
+    awk 'NR==1 {print} NR>1 {printf "  %s  %s  %s\n", $1, $3, $5}' || \
     log_info "No indices found yet"
 
 echo ""
