@@ -46,6 +46,31 @@ The system is configured for a **Size + Count** rotation:
 
 ---
 
+## Device Name Lookup (Static Formatter)
+
+Dashboards support human-readable device names via a static lookup table:
+
+**File:** `dashboards/device-lookup.json`
+
+```json
+{
+  "field": "device.ip",
+  "lookupEntries": [
+    {"key": "192.168.36.21", "value": "TP3-Access1"},
+    {"key": "192.168.36.22", "value": "TP3-Access2"}
+  ]
+}
+```
+
+**To customize for your network:**
+1. Edit `dashboards/device-lookup.json` with your device IPs and names
+2. Re-import dashboards: `./deploy.sh --import`
+3. The lookup is applied to the `device.ip` field in all visualizations
+
+**How it works:** Kibana's `static_lookup` field formatter replaces raw IPs with friendly names in all tables, charts, and legends. The lookup is stored in the index pattern's `fieldFormatMap`.
+
+---
+
 ## 🛠 Setup & Deployment (Step-by-Step)
 
 Follow these steps in the exact order listed. Skipping steps or changing the order will lead to cluster synchronization failures.
