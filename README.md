@@ -157,6 +157,11 @@ Use these commands on the **Frontend** server to verify that all automation (ILM
     ```bash
     curl -s -u elastic:{ELASTIC_PASSWORD} -X GET "http://localhost:5601/api/saved_objects/_find?type=dashboard" -H "kbn-xsrf: true"
     ```
+*   **Run Full Validation Script:**
+    ```bash
+    ./scripts/validate-deployment.sh
+    ```
+    Automatically checks ILM policy, index template, dashboards, ILM status, and index sizes. Reads credentials from `deploy.conf`.
 
 ---
 
