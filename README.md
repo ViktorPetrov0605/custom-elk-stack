@@ -192,3 +192,50 @@ Adding new switches (e.g., a new Juniper at {NEW_SWITCH_IP}) is now automatic:
 - Check `docker logs logstash-flow`. If you see "Can't (yet) decode flowset...", just wait for the switch template to arrive.
 
 ---
+
+## 📊 Traffic Sankey Diagram
+
+Visualize source→destination traffic flows by byte volume using a custom Vega-based Sankey diagram.
+
+![Sankey Diagram](screenshots/sankey-diagram.jpg)
+
+*Source IPs on the left, destination IPs on the right. Band width = byte volume. Hover to highlight individual flows. Click a group to isolate its traffic.*
+
+### How to Install
+
+1. Open Kibana → **Visualize Library** → **Create Visualization**
+2. Select **Vega** (under "Aggregation Based")
+3. Paste the JSON spec from `dashboards/sankey-flow.hjson`
+4. Save as `[Flow] Traffic Sankey`
+5. Add to any dashboard
+
+> ⚠️ **Important:** Use pure JSON format, not HJSON. Kibana 9.x silently fails on unquoted keys like `%context%` and wildcards in index names.
+
+### Customisation
+
+| Parameter | Default | Notes |
+|-----------|---------|-------|
+| Index | `logstash-flow-*` | Change to your index pattern |
+| Source field | `source.ip` | Set to your ECS source field |
+| Destination field | `destination.ip` | Set to your ECS dest field |
+| Byte field | `network.bytes` | Set to your byte/traffic field |
+| Scale divisor | `/ 1048576` (MB) | Adjust so node values land in ~1-1000 range |
+| Max pairs | `size: 1000` | Increase for more flows, decrease for performance |
+
+### Implementation Details
+
+Full research, implementation journey, and lessons learned in [`sankey.md`](sankey.md). Three bugs were identified and fixed during development:
+- **HJSON parse failure** — Kibana 9.x requires pure JSON, not HJSON syntax
+- **Infinite y-axis domain** — raw bytes need scaling to MB to avoid zero-stack nodes
+- **Shard allocation** — prod routing rules (`exclude frontend`) block single-box testing
+
+### Synthetic Test Data
+
+Generate test data without devices or Logstash:
+
+```bash
+python3 scripts/generate-synthetic-flow-data.py --count 5000
+```
+
+See [`sankey.md`](sankey.md) for full documentation.
+

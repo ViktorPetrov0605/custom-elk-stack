@@ -46,3 +46,10 @@ certs/
 *.key
 *.pem
 *.crt
+
+# Generated/secret files
+.env
+deploy.conf
+certs/
+maintenance.log
+unicast_hosts.txt
